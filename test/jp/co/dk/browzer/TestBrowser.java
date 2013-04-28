@@ -14,6 +14,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 
 	@Test
 	public void constractor() {
+		
+		// 接続に成功すること
 		try {
 			Browzer browzer = new Browzer("http://blog.livedoor.jp/kinisoku/archives/3334999.html");
 		} catch (BrowzingException e) {

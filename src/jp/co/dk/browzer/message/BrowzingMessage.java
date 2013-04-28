@@ -130,6 +130,9 @@ public class BrowzingMessage extends AbstractMessage {
 	/** 入力処理にて異常が発生しました。 */
 	public static final BrowzingMessage ERROR_READ_PROCESS_FAILED = new BrowzingMessage("E037");
 	
+	/** このページはHTMLでないため、アンカータグを取得できません。 */
+	public static final BrowzingMessage ERROR_THIS_PAGE_IS_NOT_HTML = new BrowzingMessage("E038");
+	
 	/** HTTPステータスコード：100 クライアントにリクエストを継続することを指示します。 */
 	public static final BrowzingMessage HTTP_STATUS_CODE_100 = new BrowzingMessage("STATUS100");
 	

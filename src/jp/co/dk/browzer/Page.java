@@ -23,6 +23,7 @@ import jp.co.dk.browzer.property.BrowzerProperty;
 import jp.co.dk.document.Element;
 import jp.co.dk.document.exception.DocumentException;
 import jp.co.dk.document.html.HtmlDocument;
+import jp.co.dk.document.html.HtmlElement;
 import jp.co.dk.document.html.constant.HtmlElementName;
 import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 import jp.co.dk.document.html.element.A;
@@ -372,6 +373,25 @@ public class Page implements XmlConvertable{
 	}
 	
 	/**
+	 * このHTMLのページが保持する外部リソースへのタグ一覧を取得します。<p/>
+	 * このページがHTMLでない場合、例外を送出します。
+	 * 
+	 * TODO 実装途中
+	 * 
+	 * @return リソースへのリンク一覧
+	 * @throws BrowzingException このページがHTMLでない場合
+	 */
+	public Map<String, List<HtmlElement>> getElements() throws BrowzingException {
+		Map<String, List<HtmlElement>> htmlElemenetMap = new HashMap<String, List<HtmlElement>>();
+		if (this.getDocument() instanceof HtmlDocument) {
+			
+		} else {
+			throw new BrowzingException(ERROR_THIS_PAGE_IS_NOT_HTML);
+		}
+		return htmlElemenetMap;
+	}
+	
+	/**
 	 * フォーム一覧を取得します。<p/>
 	 * このページに存在するすべてのフォームタグを取得します。<br/>
 	 * このページがHTMLでない場合、例外を送出します。
@@ -701,6 +721,18 @@ public class Page implements XmlConvertable{
 	public jp.co.dk.xml.Element convert() throws XmlDocumentException {
 		jp.co.dk.xml.Element element = new jp.co.dk.xml.Element("page");
 		element.addAttribute(new Attribute("url", this.url));
+		
+		try {
+			if (this.getDocument() instanceof HtmlDocument) {
+				List<A> anchorList = this.getAnchor();
+				for (A anchor : anchorList) {
+					jp.co.dk.xml.Element anchorElement = new jp.co.dk.xml.Element("anchor");
+					anchorElement.addAttribute(new Attribute("url",anchor.getHref()));
+				}
+			}
+		} catch (BrowzingException e) {
+			throw new XmlDocumentException(e);
+		}
 		return element;
 	}
 }
