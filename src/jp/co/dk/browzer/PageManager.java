@@ -7,6 +7,9 @@ import java.util.List;
 
 import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.html.element.Form;
+import jp.co.dk.document.xml.XmlConvertable;
+import jp.co.dk.document.xml.XmlElement;
+import jp.co.dk.document.xml.exception.XmlDocumentException;
 
 
 /**
@@ -15,7 +18,7 @@ import jp.co.dk.browzer.html.element.Form;
  * @version 1.0
  * @author D.Kanno
  */
-class PageManager {
+class PageManager implements XmlConvertable{
 	
 	/** 親ページ管理オブジェクト */
 	private PageManager parentPage;
@@ -149,6 +152,15 @@ class PageManager {
 		} else {
 			return true;
 		}
+	}
+
+	@Override
+	public XmlElement convert() throws XmlDocumentException {
+		XmlElement xmlElement = this.page.convert();
+		for (PageManager pageManager : this.childPageList) {
+			xmlElement.appendChild(pageManager);
+		}
+		return xmlElement;
 	}
 	
 }
