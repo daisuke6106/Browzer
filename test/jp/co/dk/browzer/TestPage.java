@@ -28,12 +28,13 @@ public class TestPage extends TestBrowzerFoundation {
 	
 	@Test
 	public void constructor() throws BrowzingException {
+		// 引数にnullを設定した場合、例外が返却されること
 		Page page = null ;
 		try {
 			page = new Page(null);
 			fail();
 		} catch (BrowzingException e) {
-			success(e);
+			assertEquals(e.getMessageObj(), jp.co.dk.browzer.message.BrowzingMessage.ERROR_URL_IS_NOT_SET);
 		}
 		
 		try {
