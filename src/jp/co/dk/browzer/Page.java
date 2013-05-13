@@ -23,7 +23,6 @@ import jp.co.dk.browzer.property.BrowzerProperty;
 import jp.co.dk.document.Element;
 import jp.co.dk.document.exception.DocumentException;
 import jp.co.dk.document.html.HtmlDocument;
-import jp.co.dk.document.html.HtmlElement;
 import jp.co.dk.document.html.constant.HtmlElementName;
 import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 import jp.co.dk.document.html.element.A;
@@ -697,14 +696,14 @@ public class Page implements XmlConvertable{
 	}
 
 	@Override
-	public jp.co.dk.xml.XmlElement convert() throws jp.co.dk.xml.exception.XmlDocumentException {
-		jp.co.dk.xml.XmlElement xmlElement = new jp.co.dk.xml.XmlElement("page");
-		xmlElement.addAttribute(new jp.co.dk.xml.XmlAttribute("url",this.url));
-		xmlElement.addAttribute(new jp.co.dk.xml.XmlAttribute("protocol",this.protocol));
-		xmlElement.addAttribute(new jp.co.dk.xml.XmlAttribute("host",this.host));
-		xmlElement.addAttribute(new jp.co.dk.xml.XmlAttribute("path",this.path));
+	public jp.co.dk.xml.Element convert() throws jp.co.dk.xml.exception.XmlDocumentException {
+		jp.co.dk.xml.Element xmlElement = new jp.co.dk.xml.Element("page");
+		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("url",this.url));
+		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("protocol",this.protocol));
+		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("host",this.host));
+		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("path",this.path));
 		long size = this.getSize();
-		if (size != -1) xmlElement.addAttribute(new jp.co.dk.xml.XmlAttribute("size", Long.toString(size))); 
+		if (size != -1) xmlElement.addAttribute(new jp.co.dk.xml.Attribute("size", Long.toString(size))); 
 		return xmlElement;
 	}
 }

@@ -11,8 +11,7 @@ import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.html.element.A;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.html.element.Image;
-import jp.co.dk.xml.XmlAttribute;
-import jp.co.dk.xml.XmlElement;
+import jp.co.dk.xml.Attribute;
 import jp.co.dk.xml.XmlConvertable;
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
@@ -281,9 +280,9 @@ public class Browzer implements XmlConvertable{
 	}
 
 	@Override
-	public XmlElement convert() throws jp.co.dk.xml.exception.XmlDocumentException {
-		XmlElement xmlElement = new XmlElement("browzer");
-		xmlElement.addAttribute(new XmlAttribute("",""));
+	public jp.co.dk.xml.Element convert() throws jp.co.dk.xml.exception.XmlDocumentException {
+		jp.co.dk.xml.Element xmlElement = new jp.co.dk.xml.Element("browzer");
+		xmlElement.addAttribute(new Attribute("",""));
 		return xmlElement;
 	}
 	
