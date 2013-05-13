@@ -28,7 +28,7 @@ public class TestPage extends TestBrowzerFoundation {
 	
 	@Test
 	public void constructor() throws BrowzingException {
-		// 引数にnullを設定した場合、例外が返却されること
+		// 引数にnullを設定した場合、例外が送出されること。
 		Page page = null ;
 		try {
 			page = new Page(null);
@@ -37,6 +37,7 @@ public class TestPage extends TestBrowzerFoundation {
 			assertEquals(e.getMessageObj(), jp.co.dk.browzer.message.BrowzingMessage.ERROR_URL_IS_NOT_SET);
 		}
 		
+		// 引数に不正な文字列を設定した場合、例外が送出されること。
 		try {
 			page = new Page("aaa");
 			fail();
@@ -44,12 +45,13 @@ public class TestPage extends TestBrowzerFoundation {
 			success(e);
 		}
 		
+		// 引数に存在するURLを設定された場合、正常にインスタンスが生成できること。
 		try {
 			page = new Page("https://www.google.com");
 		} catch (BrowzingException e) {
 			fail(e);
 		}
-		
+		// 引数に存在するURLを設定された場合、正常にインスタンスが生成できること。(パラメータあり)
 		try {
 			page = new Page("http://www.google.co.jp/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CCUQFjAA&url=http%3A%2F%2Ftest.jp%2F&ei=if9NULqAIanBiQf1uIHACg&usg=AFQjCNFAiQ33DWa0llvM8UoNTY_aKUckbg&sig2=VmamtFiwcu4ABy2tGn5hfQ");
 		} catch (BrowzingException e) {
@@ -60,11 +62,13 @@ public class TestPage extends TestBrowzerFoundation {
 	
 	@Test
 	public void getMove() throws BrowzingException {
-	
+		// ２つのページのインスタンスを生成する。
 		Page page1 = super.createPage("http://ja.wikipedia.org/wiki/HyperText_Markup_Language");
 		Page page2 = super.createPage("http://ja.wikipedia.org/wiki/HTML5");
 		List<A> elementPage1 = page1.getAnchor();
 		List<A> elementPage2 = page2.getAnchor();
+		
+		// movePageメソッドにnullを設定した場合、例外を送出すること。
 		try {
 			jp.co.dk.browzer.html.element.A nullAnchor = null;
 			page1.move(nullAnchor);
@@ -72,6 +76,7 @@ public class TestPage extends TestBrowzerFoundation {
 			if (e.getMessageObj() != ERROR_SPECIFIED_ANCHOR_IS_NOT_SET) fail(e);
 		}
 		
+		// movePageメソッドに異なるページのアンカーオブジェクトを設定した場合、例外が送出されること。
 		try {
 			page1.move((jp.co.dk.browzer.html.element.A)elementPage2.get(0));
 		} catch (BrowzingException e) {
