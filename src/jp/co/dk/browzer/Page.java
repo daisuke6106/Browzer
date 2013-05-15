@@ -454,7 +454,7 @@ public class Page implements XmlConvertable{
 	 * @param path ダウンロード先ディレクトリパス
 	 * @throws ダウンロードに失敗した場合
 	 */
-	public void download(File path) throws BrowzingException {
+	protected void download(File path) throws BrowzingException {
 		StringBuilder pathStr = new StringBuilder(path.getAbsolutePath()).append('/').append(this.host).append('/').append(this.getPath());
 		File downloadPath = new File(pathStr.toString());
 		try {
@@ -491,7 +491,7 @@ public class Page implements XmlConvertable{
 	 * @return URLオブジェクト
 	 * @throws BrowzingException 指定されたURL文字列に指定されたプロトコルが未知である場合
 	 */
-	private URL createURL(String url) throws BrowzingException{
+	protected URL createURL(String url) throws BrowzingException{
 		URL urlObj;
 		try {
 			urlObj = new URL(url);
@@ -510,7 +510,7 @@ public class Page implements XmlConvertable{
 	 * @return URLコネクション
 	 * @throws BrowzingException URLが参照するリモートオブジェクトへの接続時に入出力例外が発生した場合
 	 */
-	private HttpURLConnection createURLConnection(URL urlObj, HtmlRequestMethodName method) throws BrowzingException{
+	protected HttpURLConnection createURLConnection(URL urlObj, HtmlRequestMethodName method) throws BrowzingException{
 		HttpURLConnection urlConnection;
 		try {
 			urlConnection = (HttpURLConnection)urlObj.openConnection();
@@ -532,7 +532,7 @@ public class Page implements XmlConvertable{
 	 * @return 入力ストリーム
 	 * @throws BrowzingException 入力ストリームの作成中に入出力エラーが発生した場合
 	 */
-	private InputStream getUrlInputStream( URLConnection connection ) throws BrowzingException {
+	protected InputStream getUrlInputStream( URLConnection connection ) throws BrowzingException {
 		InputStream inputStream;
 		try {
 			inputStream = connection.getInputStream();
@@ -549,7 +549,7 @@ public class Page implements XmlConvertable{
 	 * @param path パス文字列
 	 * @return 拡張子
 	 */
-	private BrowzingExtension getExtension(String path) {
+	protected BrowzingExtension getExtension(String path) {
 		String urlExtension;
 		int index = path.lastIndexOf('.');
 		if (index == -1 ) {
@@ -572,7 +572,7 @@ public class Page implements XmlConvertable{
 	 * @param url URLオブジェクト
 	 * @return パラメータマップ
 	 */
-	private Map<String, String> getParameter(URL url) {
+	protected Map<String, String> getParameter(URL url) {
 		Map<String, String> parameters = new HashMap<String, String>();
 		String query = url.getQuery();
 		if (query == null) {
@@ -605,7 +605,7 @@ public class Page implements XmlConvertable{
 	 * @param urlObj URLオブジェクト
 	 * @return パスリスト
 	 */
-	private List<String> getPath(URL urlObj) {
+	protected List<String> getPath(URL urlObj) {
 		String path = urlObj.getPath();
 		List<String> list = new ArrayList<String>();
 		String[] pathElements = path.split("/");
@@ -627,7 +627,7 @@ public class Page implements XmlConvertable{
 	 * @param requestMap リクエストヘッダマップ
 	 * @return リクエストヘッダが設定されたURLコネクション
 	 */
-	private HttpURLConnection setRequestProperty(HttpURLConnection connection ,Map<String,String> requestMap) {
+	protected HttpURLConnection setRequestProperty(HttpURLConnection connection ,Map<String,String> requestMap) {
 		if ( connection == null || requestMap == null) {
 			return connection;
 		}
@@ -642,7 +642,7 @@ public class Page implements XmlConvertable{
 	 * 
 	 * @return 判定結果（true=スラッシュあり、false=スラッシュなし）
 	 */
-	private boolean hasTrailingSlash() { 
+	protected boolean hasTrailingSlash() { 
 		return this.path.indexOf('/') == this.path.length();
 	}
 	
@@ -652,7 +652,7 @@ public class Page implements XmlConvertable{
 	 * 
 	 * @return map リクエストヘッダマップ
 	 */
-	private Map<String, String> getRequestHeaderByPorperty() {
+	protected Map<String, String> getRequestHeaderByPorperty() {
 		Map<String, String> map = new HashMap<String, String>();
 		java.util.List<Property> requestHeader = BrowzerProperty.REQUEST_HEADER.getPropertyList();
 		for (Property property : requestHeader) {
@@ -670,7 +670,7 @@ public class Page implements XmlConvertable{
 	 * 
 	 * @return リクエストヘッダ
 	 */
-	private Map<String, String> getCookies() {
+	protected Map<String, String> getCookies() {
 		Map<String, String> map = new HashMap<String, String>();
 		List<String> coolies = this.header.getHeader(HeaderField.SET_COOKIE);
 		if (coolies == null || coolies.size() == 0) return map;
@@ -680,7 +680,7 @@ public class Page implements XmlConvertable{
 		return map;
 	}
 	
-	private String defaultFileName(Header header) {
+	protected String defaultFileName(Header header) {
 		StringBuilder sb = new StringBuilder("default");
 		ContentsType contentType = header.getContentsType();
 		if (contentType != null) {
