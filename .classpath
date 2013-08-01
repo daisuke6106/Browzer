@@ -10,5 +10,5 @@
 	<classpathentry kind="lib" path="lib/test/jmockit.jar"/>
 	<classpathentry kind="lib" path="lib/test/testtemplate.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="output" path="classes"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>

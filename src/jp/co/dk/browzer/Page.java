@@ -80,13 +80,13 @@ public class Page implements XmlConvertable{
 		this.url        = url;
 		this.urlObj     = this.createURL(url);
 		this.connection = this.createURLConnection(this.urlObj, HtmlRequestMethodName.GET);
-		this.protocol   = this.urlObj.getProtocol();
-		this.host       = this.urlObj.getHost();
-		this.path       = this.urlObj.getPath();
-		this.pathList   = this.getPath(this.urlObj);
+		this.protocol   = this.getProtocol(this.urlObj);
+		this.host       = this.getHost(this.urlObj);
+		this.path       = this.getPath(this.urlObj);
+		this.pathList   = this.getPathList(this.urlObj);
 		
 		this.parameter  = this.getParameter(this.urlObj);
-		this.header     = new Header(this.connection);
+		this.header     = this.createHeader(this.connection);
 		
 	}
 	
@@ -106,10 +106,10 @@ public class Page implements XmlConvertable{
 		}
 		this.url  = urlObj.toString();
 		this.connection = this.createURLConnection(this.urlObj, form.getMethod());
-		this.protocol   = this.urlObj.getProtocol();
-		this.host       = this.urlObj.getHost();
-		this.path       = this.urlObj.getPath();
-		this.pathList   = this.getPath(this.urlObj);
+		this.protocol   = this.getProtocol(this.urlObj);
+		this.host       = this.getHost(this.urlObj);
+		this.path       = this.getPath(this.urlObj);
+		this.pathList   = this.getPathList(this.urlObj);
 		this.connection = this.setRequestProperty(this.connection, requestProperty);
 		try {
 			BufferedWriter outputStream = new BufferedWriter(new OutputStreamWriter(this.connection.getOutputStream()));
@@ -118,7 +118,7 @@ public class Page implements XmlConvertable{
 		} catch (IOException e) {
 			throw new BrowzingException(ERROR_FAILED_TO_SEND_MESSAGE, new String[]{this.url, form.getMethod().getMethod()}, e);
 		}
-		this.header     = new Header(this.connection);
+		this.header     = this.createHeader(this.connection);
 		
 	}
 	
@@ -605,7 +605,7 @@ public class Page implements XmlConvertable{
 	 * @param urlObj URLオブジェクト
 	 * @return パスリスト
 	 */
-	protected List<String> getPath(URL urlObj) {
+	protected List<String> getPathList(URL urlObj) {
 		String path = urlObj.getPath();
 		List<String> list = new ArrayList<String>();
 		String[] pathElements = path.split("/");
@@ -688,6 +688,22 @@ public class Page implements XmlConvertable{
 			sb.append('.').append(extension);
 		}
 		return sb.toString();
+	}
+
+	protected String getProtocol(URL urlObject) {
+		return urlObject.getProtocol();
+	}
+	
+	protected String getHost(URL urlObject) {
+		return urlObject.getHost();
+	}
+	
+	protected String getPath(URL urlObject) {
+		return urlObject.getPath();
+	}
+	
+	protected Header createHeader(HttpURLConnection connection) throws BrowzingException {
+		return new Header(this.connection);
 	}
 	
 	@Override
