@@ -7,7 +7,6 @@
 	<classpathentry kind="lib" path="lib/property.jar"/>
 	<classpathentry kind="lib" path="lib/document.jar"/>
 	<classpathentry kind="lib" path="lib/dk_xml.jar"/>
-	<classpathentry kind="lib" path="lib/test/jmockit.jar"/>
 	<classpathentry kind="lib" path="lib/test/testtemplate.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
