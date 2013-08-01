@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="Browzer" default="all" basedir=".">
+	
+	<!-- プロパティファイル読み込み -->
+	<property file="./build.properties"/>
+	
+	<!-- 共通タスク読み込み -->
+	<import file="${commons.antxml.path}"/>
+	
+	<!--================================================-->
+	<!-- 全ジョブ実行 -->
+	<!--================================================-->
+	<target name="all">
+		<antcall target="jar"/>
+		<antcall target="test_jar"/>
+		<antcall target="jar_all"/>
+		<antcall target="test_jar_all"/>
+		<antcall target="doc"/>
+		<antcall target="doc_jar"/>
+		<antcall target="src_jar"/>
+		<antcall target="test_src_jar"/>
+		<antcall target="test_execute"/>
+		<antcall target="clean"/>
+		<antcall target="clean_doc"/>
+	</target>
+</project>
