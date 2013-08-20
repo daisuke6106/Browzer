@@ -15,3 +15,4 @@ import org.junit.runners.Suite.SuiteClasses;
 	TestForm.class,
 })
 public class TestAll {}
+ 
