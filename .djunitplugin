@@ -1,6 +1,6 @@
 #djUnit Plugin Settings
-#Sat Aug 03 20:40:09 JST 2013
-CoverageIncludedPatterns=
+#Mon Aug 12 00:23:04 JST 2013
+CoverageIncludedPatterns=jp.co.dk.browzer.*;
 VirtualMockIgnoreLibrary=false
 CoverageExcludedPatterns=
 UseMarker=true
