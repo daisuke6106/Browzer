@@ -1,3 +1,4 @@
+
 package jp.co.dk.browzer;
 
 import java.io.File;
@@ -36,7 +37,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
  * @version 1.0
  * @author D.Kanno
  */
-public class Browzer implements XmlConvertable{
+public class Browzer {
 	
 	/** ページ管理オブジェクト */
 	private PageManager pageManager;
@@ -234,10 +235,11 @@ public class Browzer implements XmlConvertable{
 	 * ・保存先のファイルがすでに存在する場合<br/>
 	 * 
 	 * @param path ダウンロード先ディレクトリパス
+	 * @return 保存したファイルのオブジェクト
 	 * @throws ダウンロードに失敗した場合
 	 */
-	public void save(File path) throws BrowzingException {
-		this.pageManager.getPage().save(path);
+	public File save(File path) throws BrowzingException {
+		return this.pageManager.getPage().save(path);
 	}
 	
 	/**
@@ -250,10 +252,11 @@ public class Browzer implements XmlConvertable{
 	 * ・保存先のファイルがすでに存在する場合<br/>
 	 * 
 	 * @param path ダウンロード先ディレクトリパス
+	 * @return 保存したファイルのオブジェクト
 	 * @throws ダウンロードに失敗した場合
 	 */
-	public void save(File path, String fileName) throws BrowzingException {
-		this.pageManager.getPage().save(path, fileName);
+	public File save(File path, String fileName) throws BrowzingException {
+		return this.pageManager.getPage().save(path, fileName);
 	}
 	
 	/**
@@ -277,13 +280,6 @@ public class Browzer implements XmlConvertable{
 		} else {
 			return false;
 		}
-	}
-
-	@Override
-	public jp.co.dk.xml.Element convert() throws jp.co.dk.xml.exception.XmlDocumentException {
-		jp.co.dk.xml.Element xmlElement = new jp.co.dk.xml.Element("browzer");
-		xmlElement.addAttribute(new Attribute("",""));
-		return xmlElement;
 	}
 	
 }

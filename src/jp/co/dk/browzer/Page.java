@@ -418,11 +418,12 @@ public class Page implements XmlConvertable{
 	 * ・保存先のファイルがすでに存在する場合<br/>
 	 * 
 	 * @param path ダウンロード先ディレクトリパス
+	 * @return 保存したファイルのオブジェクト
 	 * @throws ダウンロードに失敗した場合
 	 */
-	public void save(File path) throws BrowzingException {
+	public File save(File path) throws BrowzingException {
 		try {
-			this.getDocument().save(path, this.getFileName());
+			return this.getDocument().save(path, this.getFileName());
 		} catch (DocumentException e) {
 			throw new BrowzingException(ERROR_FAILED_TO_DOWNLOAD, url, e);
 		}
@@ -437,11 +438,12 @@ public class Page implements XmlConvertable{
 	 * ・保存先のファイルがすでに存在する場合<br/>
 	 * 
 	 * @param path ダウンロード先ディレクトリパス
+	 * @return 保存したファイルのオブジェクト
 	 * @throws ダウンロードに失敗した場合
 	 */
-	public void save(File path, String fileName) throws BrowzingException {
+	public File save(File path, String fileName) throws BrowzingException {
 		try {
-			this.getDocument().save(path, fileName);
+			return this.getDocument().save(path, fileName);
 		} catch (DocumentException e) {
 			throw new BrowzingException(ERROR_FAILED_TO_DOWNLOAD, url, e);
 		}

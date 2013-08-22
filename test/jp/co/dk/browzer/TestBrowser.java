@@ -1,10 +1,12 @@
 package jp.co.dk.browzer;
 
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
+import static org.junit.Assert.*;
 
 import java.util.List;
 import java.util.Map;
 
+import jp.co.dk.browzer.download.DownloadJudge;
 import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.html.element.A;
 import jp.co.dk.browzer.html.element.Form;
@@ -14,6 +16,7 @@ import jp.co.dk.document.ElementName;
 import jp.co.dk.document.html.HtmlDocument;
 import jp.co.dk.document.html.HtmlElement;
 import jp.co.dk.document.html.constant.HtmlElementName;
+import jp.co.dk.document.html.element.form.Text;
 
 import mockit.Expectations;
 import mockit.Mocked;
@@ -145,10 +148,11 @@ public class TestBrowser extends TestBrowzerFoundation {
 			browzer.move(anhor);
 			fail();
 		} catch (BrowzingException e) {
-			if (e.getMessageObj() != ERROR_SPECIFIED_ANCHOR_IS_NOT_SET) ;
+			if (e.getMessageObj() != ERROR_SPECIFIED_ANCHOR_IS_NOT_SET) fail(e);
 		}
 		
-		// 遷移先にnullを指定した場合、例外が送出されることを確認。
+		// イメージ要素に遷移する
+		// 異なるページオブジェクトにあるURLを指定した場合、例外が発生すること。
 		try {
 			String url1 = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
 			String url2 = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
@@ -157,11 +161,93 @@ public class TestBrowser extends TestBrowzerFoundation {
 			HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
 			HtmlDocument document2 = (HtmlDocument)browzer2.getPage().getDocument();
 			List<Element> imageList1 = document1.getElement(HtmlElementName.IMG);
-			List<Element> imageList2 = document2.getElement(HtmlElementName.IMG);
-			
+			Element randomElement = super.getRandomElement(imageList1);
+			browzer2.move((Image)randomElement);
 			fail();
 		} catch (BrowzingException e) {
-			if (e.getMessageObj() != ERROR_SPECIFIED_ANCHOR_IS_NOT_SET) ;
+			if (e.getMessageObj() != ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) ;
+		}
+		
+		// イメージ要素に遷移する
+		// 遷移先が指定されていなかった（空文字）場合、例外を送出すること。
+		try {
+			String url1 = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
+			Browzer browzer1 = super.getBrowzer(url1);
+			HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
+			List<Element> imageList1 = document1.getElement(HtmlElementName.IMG);
+			final Image image = (Image) super.getRandomElement(imageList1);
+			new Expectations(image) {{
+            	image.getSrc();
+                returns("");
+	        }};
+	        browzer1.move(image);
+			fail();
+		}catch (BrowzingException e) {
+			if (e.getMessageObj() != ERROR_ANCHOR_HAS_NOT_URL) fail(e);
+		}
+		
+		// イメージ要素に遷移する
+		// 引数に指定された値が不正でない場合、正常に遷移できること。
+		try {
+			String url1 = "http://gigazine.net/";
+			Browzer browzer1 = super.getBrowzer(url1);
+			HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
+			List<Element> imageList1 = document1.getElement(HtmlElementName.IMG);
+			Image image = (Image) super.getRandomElement(imageList1);
+	        Page imagePage = browzer1.move(image);
+	        assertEquals(imagePage.getURL(), image.getSrc());
+		}catch (BrowzingException e) {
+			fail(e);
+		}
+		
+		
+		// FORM要素に遷移する
+		// 遷移先にnullを指定した場合、例外が送出されることを確認。
+		try {
+			String url = "http://www.tohoho-web.com/html/form.htm";
+			Browzer browzer = super.getBrowzer(url);
+			Form form = null;
+			browzer.move(form);
+			fail();
+		} catch (BrowzingException e) {
+			if (e.getMessageObj() != ERROR_SPECIFIED_FORM_IS_NOT_SET) fail(e);
+		}
+		
+		// FROM要素に遷移する
+		// 異なるページオブジェクトにあるURLを指定した場合、例外が発生すること。
+		try {
+			String url1 = "http://www.tohoho-web.com/html/form.htm";
+			String url2 = "http://www.tohoho-web.com/html/form.htm";
+			Browzer browzer1 = super.getBrowzer(url1);
+			Browzer browzer2 = super.getBrowzer(url2);
+			HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
+			HtmlDocument document2 = (HtmlDocument)browzer2.getPage().getDocument();
+			List<Element> formList1 = document1.getElement(HtmlElementName.FORM);
+			browzer2.move((Form)formList1.get(0));
+			fail();
+		} catch (BrowzingException e) {
+			if (e.getMessageObj() != ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) ;
+		}
+		
+		// FROM要素に遷移する
+		// 正常な値が設定された場合、正常に遷移できること。
+		try {
+			String url1 = "http://www.tohoho-web.com/html/form.htm";
+			Browzer browzer1 = super.getBrowzer(url1);
+			HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
+			List<Element> formList1 = document1.getElement(HtmlElementName.FORM);
+			Form formElement = (Form)formList1.get(0);
+			List<HtmlElement> formList = formElement.getFormElementList();
+			Text txt1 = (Text)formList.get(0);
+			Text txt2 = (Text)formList.get(1);
+			txt1.setValue("test");
+			txt2.setValue("value");
+			browzer1.move(formElement);
+			HtmlDocument document2 = (HtmlDocument)browzer1.getPage().getDocument();
+			assertHasString(document2.toString(), "NAME = test");
+			assertHasString(document2.toString(), "ADDR = value");
+		} catch (BrowzingException e) {
+			fail(e);
 		}
 	}
 	
@@ -234,6 +320,96 @@ public class TestBrowser extends TestBrowzerFoundation {
 			if (!browzer2.ableMoveNextPage()) fail(); 
 			browzer2.move(browzer2.getAnchor().get(0));
 			if (!browzer2.ableMoveNextPage()) fail(); 
+		} catch (BrowzingException e) {
+			fail(e);
+		}
+	}
+	
+	@Test
+	public void save() {
+		// HTMLファイルを指定ディレクトリへ保存する
+		try {
+			// Shift_JIS
+			Browzer browzer1 = new Browzer("http://www.tohoho-web.com/html/meta.htm");
+			java.io.File file1 = browzer1.save(super.getTestTmpDir());
+			if(!file1.exists() && file1.getName().equals("meta.htm")) fail();
+			
+			// UTF-8
+			Browzer browzer2 = new Browzer("http://news.2chblog.jp/archives/51702010.html");
+			java.io.File file2 = browzer2.save(super.getTestTmpDir());
+			if(!file2.exists() && file2.getName().equals("51702010.html")) fail();
+			
+			// EUC-JP
+			Browzer browzer3 = new Browzer("http://d.hatena.ne.jp/teraliso/20081202");
+			java.io.File file3 = browzer3.save(super.getTestTmpDir());
+			if(!file3.exists() && file3.getName().equals("default.html")) fail();
+			
+		} catch (BrowzingException e) {
+			fail(e);
+		}
+		
+		// HTMLファイルを指定ディレクトリへ指定名称にて保存する
+		try {
+			// Shift_JIS
+			// ２回ダウンロードを実行した場合でも正常にダウンロードできること
+			Browzer browzer1 = new Browzer("http://www.tohoho-web.com/html/meta.htm");
+			java.io.File file1_1 = browzer1.save(super.getTestTmpDir(), "aaaaaa1.html");
+			java.io.File file1_2 = browzer1.save(super.getTestTmpDir(), "aaaaaa2.html");
+			if(!file1_1.exists() && file1_1.getName().equals("aaaaaa1.html")) fail();
+			if(!file1_2.exists() && file1_2.getName().equals("aaaaaa2.html")) fail();
+			
+			// UTF-8
+			Browzer browzer2 = new Browzer("http://news.2chblog.jp/archives/51702010.html");
+			java.io.File file2 = browzer2.save(super.getTestTmpDir(), "bbbbbb.html");
+			if(!file2.exists() && file2.getName().equals("bbbbbb.html")) fail();
+			
+			// EUC-JP
+			Browzer browzer3 = new Browzer("http://d.hatena.ne.jp/teraliso/20081202");
+			java.io.File file3 = browzer3.save(super.getTestTmpDir(), "cccccc.html");
+			if(!file3.exists() && file3.getName().equals("cccccc.html")) fail();
+			
+		} catch (BrowzingException e) {
+			fail(e);
+		}
+		
+		// 指定の条件でダウンロード実行した場合、正常にダウンロードできること。
+		try {
+			// HTMLの場合のみ、実行すること。
+			DownloadJudge downloadJudge = new DownloadJudge() {
+				@Override
+				public boolean judge(Page page) {
+					jp.co.dk.document.File file;
+					try {
+						file = page.getDocument();
+					} catch (BrowzingException e) {
+						return false;
+					}
+					if(file instanceof HtmlDocument) return true;
+					return false;
+				}
+			};
+			
+			// ダウンロード条件にnullが指定された場合、saveは実行されず、falseが返却されること。
+			Browzer browzer1 = new Browzer("http://www.tohoho-web.com/html/meta.htm");
+			DownloadJudge nullDownloadJudge = null;
+			boolean result1 = browzer1.save(super.getTestTmpDir(), nullDownloadJudge);
+			assertFalse(result1);
+			
+			// イメージの場合、saveは実行されず、falseが返却されること。
+			Browzer browzer2 = new Browzer("http://blog-imgs-21-origin.fc2.com/v/i/p/vipvipblogblog/13944.jpg");
+			boolean result2 = browzer2.save(super.getTestTmpDir(), downloadJudge);
+			assertFalse(result2);
+			
+			// XMLの場合、saveは実行されず、falseが返却されること。
+			Browzer browzer3 = new Browzer("http://rss.dailynews.yahoo.co.jp/fc/rss.xml");
+			boolean result3 = browzer3.save(super.getTestTmpDir(), downloadJudge);
+			assertFalse(result3);
+			
+			// HTMLの場合、saveは実行され、trueが返却されること。
+			Browzer browzer4 = new Browzer("http://www.tohoho-web.com/html/form.htm");
+			boolean result4 = browzer4.save(super.getTestTmpDir(), downloadJudge);
+			assertTrue(result4);
+			
 		} catch (BrowzingException e) {
 			fail(e);
 		}
