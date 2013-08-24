@@ -88,11 +88,26 @@ public class TestBrowser extends TestBrowzerFoundation {
 			if ( e.getMessageObj() != ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) fail(e);
 		}
 		
+		// 遷移先に指定したアンカーに遷移先が設定されていなかった場合、例外が送出されることを確認。
+		try {
+			String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
+			Browzer browzer1 = super.getBrowzer(url);
+			final A anchor = (A) super.getRandomElement(browzer1.getAnchor());
+			new Expectations(anchor) {{
+				anchor.getHref();
+	            returns("");
+	        }};
+			Page page = browzer1.move(anchor);
+			fail();
+		} catch (BrowzingException e) {
+			if ( e.getMessageObj() != ERROR_ANCHOR_HAS_NOT_URL) fail(e);
+		}
+		
 		// URLオブジェクトを指定した場合、正常に遷移できること。
 		try {
 			String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
 			Browzer browzer1 = super.getBrowzer(url);
-			A anchor = browzer1.getAnchor().get(0);
+			A anchor = super.getRandomElement(browzer1.getAnchor());
 			browzer1.move(anchor);
 			Page page = browzer1.getPage();
 			assertEquals(page.getURL(), anchor.getHref());
@@ -105,7 +120,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 		try {
 			String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
 			Browzer browzer1 = super.getBrowzer(url, 0);
-			browzer1.move(browzer1.getAnchor().get(0));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
 			fail();
 		} catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_REACHED_TO_THE_MAXIMUM_LEVEL) fail(e);
@@ -116,8 +131,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 		try {
 			String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
 			Browzer browzer1 = super.getBrowzer(url, 1);
-			browzer1.move(browzer1.getAnchor().get(0));
-			browzer1.move(browzer1.getAnchor().get(0));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
 			fail();
 		} catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_REACHED_TO_THE_MAXIMUM_LEVEL) fail(e);
@@ -128,12 +143,12 @@ public class TestBrowser extends TestBrowzerFoundation {
 		try {
 			String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
 			Browzer browzer1 = super.getBrowzer(url, 5);
-			browzer1.move(browzer1.getAnchor().get(0));
-			browzer1.move(browzer1.getAnchor().get(0));
-			browzer1.move(browzer1.getAnchor().get(0));
-			browzer1.move(browzer1.getAnchor().get(0));
-			browzer1.move(browzer1.getAnchor().get(0));
-			browzer1.move(browzer1.getAnchor().get(0));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
 			fail();
 		} catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_REACHED_TO_THE_MAXIMUM_LEVEL) fail(e);
@@ -189,7 +204,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 		// イメージ要素に遷移する
 		// 引数に指定された値が不正でない場合、正常に遷移できること。
 		try {
-			String url1 = "http://gigazine.net/";
+			String url1 = "http://d.hatena.ne.jp/torutk/20110118/p1";
 			Browzer browzer1 = super.getBrowzer(url1);
 			HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
 			List<Element> imageList1 = document1.getElement(HtmlElementName.IMG);
@@ -257,7 +272,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 		try {
 			String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
 			Browzer browzer1 = super.getBrowzer(url);
-			A anchor = browzer1.getAnchor().get(0);
+			A anchor = super.getRandomElement(browzer1.getAnchor());
 			browzer1.move(anchor);
 			browzer1.back();
 			Page page = browzer1.getPage();
@@ -303,22 +318,22 @@ public class TestBrowser extends TestBrowzerFoundation {
 		try {
 			String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
 			Browzer browzer1 = super.getBrowzer(url, 5);
-			browzer1.move(browzer1.getAnchor().get(0));
-			browzer1.move(browzer1.getAnchor().get(0));
-			browzer1.move(browzer1.getAnchor().get(0));
-			browzer1.move(browzer1.getAnchor().get(0));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
 			if (!browzer1.ableMoveNextPage()) fail(); 
-			browzer1.move(browzer1.getAnchor().get(0));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
 			if (browzer1.ableMoveNextPage()) fail(); 
 			
 			Browzer browzer2 = super.getBrowzer(url);
-			browzer2.move(browzer2.getAnchor().get(0));
+			browzer2.move(super.getRandomElement(browzer2.getAnchor()));
 			if (!browzer2.ableMoveNextPage()) fail();
-			browzer2.move(browzer2.getAnchor().get(0));
+			browzer2.move(super.getRandomElement(browzer2.getAnchor()));
 			if (!browzer2.ableMoveNextPage()) fail(); 
-			browzer2.move(browzer2.getAnchor().get(0));
+			browzer2.move(super.getRandomElement(browzer2.getAnchor()));
 			if (!browzer2.ableMoveNextPage()) fail(); 
-			browzer2.move(browzer2.getAnchor().get(0));
+			browzer2.move(super.getRandomElement(browzer2.getAnchor()));
 			if (!browzer2.ableMoveNextPage()) fail(); 
 		} catch (BrowzingException e) {
 			fail(e);
