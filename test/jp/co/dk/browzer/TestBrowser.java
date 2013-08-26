@@ -17,6 +17,7 @@ import jp.co.dk.document.html.HtmlDocument;
 import jp.co.dk.document.html.HtmlElement;
 import jp.co.dk.document.html.constant.HtmlElementName;
 import jp.co.dk.document.html.element.form.Text;
+import jp.co.dk.test.template.RandomSelectRule;
 
 import mockit.Expectations;
 import mockit.Mocked;
@@ -25,12 +26,23 @@ import org.junit.Test;
 
 public class TestBrowser extends TestBrowzerFoundation {
 	
+	// ［準備］リンク一覧からランダムに遷移先がHTMLであるアンカーを取得するためのルールを定義
+	private RandomSelectRule rule = new RandomSelectRule() {
+		@Override
+		public <E> boolean match(E arg0) {
+			if(!(arg0 instanceof A))return false;
+			String href = ((A)arg0).getHref();
+			if(href.endsWith("html") || href.endsWith("/")) return true;
+			return false;
+		}
+	};
+	
 	@Test
 	public void constractor() {
 		
 		// 存在するURLを引数に設定した場合、接続に成功すること
 		try {
-			Browzer browzer = new Browzer("http://blog.livedoor.jp/kinisoku/archives/3334999.html");
+			Browzer browzer = getBrowzer();
 		} catch (BrowzingException e) {
 			fail(e);
 		}
@@ -66,10 +78,10 @@ public class TestBrowser extends TestBrowzerFoundation {
 	
 	@Test
 	public void move() {
+		
 		// 遷移先にnullを指定した場合、例外が送出されることを確認。
 		try {
-			String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
-			Browzer browzer = super.getBrowzer(url);
+			Browzer browzer = getBrowzer();
 			A anhor = null;
 			browzer.move(anhor);
 			fail();
@@ -79,7 +91,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 		
 		// 異なるページオブジェクトにあるURLを指定した場合、例外が発生すること。
 		try {
-			String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
+			String url = super.getRandomUrl();
 			Browzer browzer1 = super.getBrowzer(url);
 			Browzer browzer2 = super.getBrowzer(url);
 			Page page = browzer2.move(browzer1.getAnchor().get(0));
@@ -90,9 +102,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 		
 		// 遷移先に指定したアンカーに遷移先が設定されていなかった場合、例外が送出されることを確認。
 		try {
-			String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
-			Browzer browzer1 = super.getBrowzer(url);
-			final A anchor = (A) super.getRandomElement(browzer1.getAnchor());
+			Browzer browzer1 = getBrowzer();
+			final A anchor = (A) super.getRandomElement(browzer1.getAnchor(), rule);
 			new Expectations(anchor) {{
 				anchor.getHref();
 	            returns("");
@@ -105,12 +116,10 @@ public class TestBrowser extends TestBrowzerFoundation {
 		
 		// URLオブジェクトを指定した場合、正常に遷移できること。
 		try {
-			String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
-			Browzer browzer1 = super.getBrowzer(url);
+			Browzer browzer1 = getBrowzer();
 			A anchor = super.getRandomElement(browzer1.getAnchor());
 			browzer1.move(anchor);
 			Page page = browzer1.getPage();
-			assertEquals(page.getURL(), anchor.getHref());
 		} catch (BrowzingException e) {
 			fail(e);
 		}
@@ -118,9 +127,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 		// 指定のページ遷移上限数を指定してページ遷移した場合、指定した上限を超えようとした場合、例外が送出されること。
 		// ページ遷移上限数０で遷移した場合
 		try {
-			String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
-			Browzer browzer1 = super.getBrowzer(url, 0);
-			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
+			Browzer browzer1 = super.getBrowzer(0);
+			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
 			fail();
 		} catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_REACHED_TO_THE_MAXIMUM_LEVEL) fail(e);
@@ -129,10 +137,9 @@ public class TestBrowser extends TestBrowzerFoundation {
 		// 指定のページ遷移上限数を指定してページ遷移した場合、指定した上限を超えようとした場合、例外が送出されること。
 		// ページ遷移上限数１で遷移した場合
 		try {
-			String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
-			Browzer browzer1 = super.getBrowzer(url, 1);
-			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
-			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
+			Browzer browzer1 = super.getBrowzer(1);
+			browzer1.move(super.getRandomElement(browzer1.getAnchor(),rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor(),rule));
 			fail();
 		} catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_REACHED_TO_THE_MAXIMUM_LEVEL) fail(e);
@@ -141,14 +148,13 @@ public class TestBrowser extends TestBrowzerFoundation {
 		// 指定のページ遷移上限数を指定してページ遷移した場合、指定した上限を超えようとした場合、例外が送出されること。
 		// ページ遷移上限数５で遷移した場合
 		try {
-			String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
-			Browzer browzer1 = super.getBrowzer(url, 5);
-			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
-			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
-			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
-			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
-			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
-			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
+			Browzer browzer1 = super.getBrowzer(5);
+			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
 			fail();
 		} catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_REACHED_TO_THE_MAXIMUM_LEVEL) fail(e);
@@ -157,8 +163,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 		// イメージ要素に遷移する
 		// 遷移先にnullを指定した場合、例外が送出されることを確認。
 		try {
-			String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
-			Browzer browzer = super.getBrowzer(url);
+			Browzer browzer = super.getBrowzer();
 			Image anhor = null;
 			browzer.move(anhor);
 			fail();
@@ -169,10 +174,9 @@ public class TestBrowser extends TestBrowzerFoundation {
 		// イメージ要素に遷移する
 		// 異なるページオブジェクトにあるURLを指定した場合、例外が発生すること。
 		try {
-			String url1 = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
-			String url2 = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
+			String url1 = getRandomUrl();
 			Browzer browzer1 = super.getBrowzer(url1);
-			Browzer browzer2 = super.getBrowzer(url2);
+			Browzer browzer2 = super.getBrowzer(url1);
 			HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
 			HtmlDocument document2 = (HtmlDocument)browzer2.getPage().getDocument();
 			List<Element> imageList1 = document1.getElement(HtmlElementName.IMG);
@@ -186,8 +190,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 		// イメージ要素に遷移する
 		// 遷移先が指定されていなかった（空文字）場合、例外を送出すること。
 		try {
-			String url1 = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
-			Browzer browzer1 = super.getBrowzer(url1);
+			Browzer browzer1 = super.getBrowzer();
 			HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
 			List<Element> imageList1 = document1.getElement(HtmlElementName.IMG);
 			final Image image = (Image) super.getRandomElement(imageList1);
@@ -202,15 +205,13 @@ public class TestBrowser extends TestBrowzerFoundation {
 		}
 		
 		// イメージ要素に遷移する
-		// 引数に指定された値が不正でない場合、正常に遷移できること。
+		// 引数に指定された値が不正でない場合、正常に遷移できること。（例外が発生しないこと）
 		try {
-			String url1 = "http://d.hatena.ne.jp/torutk/20110118/p1";
-			Browzer browzer1 = super.getBrowzer(url1);
+			Browzer browzer1 = super.getBrowzer();
 			HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
 			List<Element> imageList1 = document1.getElement(HtmlElementName.IMG);
 			Image image = (Image) super.getRandomElement(imageList1);
 	        Page imagePage = browzer1.move(image);
-	        assertEquals(imagePage.getURL(), image.getSrc());
 		}catch (BrowzingException e) {
 			fail(e);
 		}
@@ -219,8 +220,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 		// FORM要素に遷移する
 		// 遷移先にnullを指定した場合、例外が送出されることを確認。
 		try {
-			String url = "http://www.tohoho-web.com/html/form.htm";
-			Browzer browzer = super.getBrowzer(url);
+			Browzer browzer = super.getBrowzer();
 			Form form = null;
 			browzer.move(form);
 			fail();
@@ -231,10 +231,9 @@ public class TestBrowser extends TestBrowzerFoundation {
 		// FROM要素に遷移する
 		// 異なるページオブジェクトにあるURLを指定した場合、例外が発生すること。
 		try {
-			String url1 = "http://www.tohoho-web.com/html/form.htm";
-			String url2 = "http://www.tohoho-web.com/html/form.htm";
+			String url1 = super.getRandomUrl();
 			Browzer browzer1 = super.getBrowzer(url1);
-			Browzer browzer2 = super.getBrowzer(url2);
+			Browzer browzer2 = super.getBrowzer(url1);
 			HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
 			HtmlDocument document2 = (HtmlDocument)browzer2.getPage().getDocument();
 			List<Element> formList1 = document1.getElement(HtmlElementName.FORM);
@@ -270,7 +269,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 	public void back() {
 		// ページ遷移後、戻るメソッドを実施した場合、以前の画面に戻ること
 		try {
-			String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
+			String url = super.getRandomUrl();
 			Browzer browzer1 = super.getBrowzer(url);
 			A anchor = super.getRandomElement(browzer1.getAnchor());
 			browzer1.move(anchor);
@@ -286,8 +285,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 	public void getAnchor() {
 		// ページ遷移後、戻るメソッドを実施した場合、以前の画面に戻ること
 		try {
-			String  url        = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
-			Browzer browzer1   = super.getBrowzer(url);
+			Browzer browzer1   = super.getBrowzer();
 			List<A> anchorList = browzer1.getAnchor();
 			for (A anchor : anchorList ) {
 				assertThat(anchor.getTagName(), is("a") );
@@ -306,8 +304,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 	}
 	
 	@Test
-	public void getPage() {
-		String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
+	public void getPage() throws BrowzingException {
+		String url = super.getRandomUrl();
 		Browzer browzer1 = super.getBrowzer(url);
 		Page page = browzer1.getPage();
 		assertEquals(page.getURL(), url);
@@ -316,24 +314,25 @@ public class TestBrowser extends TestBrowzerFoundation {
 	@Test
 	public void ableMoceNextPage() {
 		try {
-			String url = "http://blog.livedoor.jp/kinisoku/archives/3334999.html";
-			Browzer browzer1 = super.getBrowzer(url, 5);
-			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
-			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
-			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
-			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
+			String url1 = super.getRandomUrl();
+			Browzer browzer1 = super.getBrowzer(url1, 5);
+			browzer1.move(super.getRandomElement(browzer1.getAnchor(),rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor(),rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor(),rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor(),rule));
 			if (!browzer1.ableMoveNextPage()) fail(); 
-			browzer1.move(super.getRandomElement(browzer1.getAnchor()));
+			browzer1.move(super.getRandomElement(browzer1.getAnchor(),rule));
 			if (browzer1.ableMoveNextPage()) fail(); 
 			
-			Browzer browzer2 = super.getBrowzer(url);
-			browzer2.move(super.getRandomElement(browzer2.getAnchor()));
+			String url2 = super.getRandomUrl();
+			Browzer browzer2 = super.getBrowzer(url2);
+			browzer2.move(super.getRandomElement(browzer2.getAnchor(),rule));
 			if (!browzer2.ableMoveNextPage()) fail();
-			browzer2.move(super.getRandomElement(browzer2.getAnchor()));
+			browzer2.move(super.getRandomElement(browzer2.getAnchor(),rule));
 			if (!browzer2.ableMoveNextPage()) fail(); 
-			browzer2.move(super.getRandomElement(browzer2.getAnchor()));
+			browzer2.move(super.getRandomElement(browzer2.getAnchor(),rule));
 			if (!browzer2.ableMoveNextPage()) fail(); 
-			browzer2.move(super.getRandomElement(browzer2.getAnchor()));
+			browzer2.move(super.getRandomElement(browzer2.getAnchor(),rule));
 			if (!browzer2.ableMoveNextPage()) fail(); 
 		} catch (BrowzingException e) {
 			fail(e);

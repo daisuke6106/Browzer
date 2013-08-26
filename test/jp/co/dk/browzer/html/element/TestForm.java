@@ -20,7 +20,6 @@ public class TestForm extends TestBrowzerFoundation {
 		
 		Action action = form.getAction();
 		assertThat(action, is (action));
-		fail();
 	}
 	
 	

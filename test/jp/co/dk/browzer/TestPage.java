@@ -2,6 +2,8 @@ package jp.co.dk.browzer;
 
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
@@ -9,7 +11,9 @@ import java.util.List;
 import java.util.Map;
 
 import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.html.element.Action;
 import jp.co.dk.browzer.html.element.Form;
+import jp.co.dk.browzer.http.header.Header;
 import jp.co.dk.document.Element;
 import jp.co.dk.document.File;
 import jp.co.dk.document.html.HtmlDocument;
@@ -18,8 +22,12 @@ import jp.co.dk.document.html.constant.HtmlElementName;
 import jp.co.dk.document.html.element.A;
 import jp.co.dk.document.html.element.form.Password;
 import jp.co.dk.document.html.element.form.Text;
+import jp.co.dk.document.html.exception.HtmlDocumentException;
+import jp.co.dk.document.message.DocumentMessage;
 
+import mockit.Deencapsulation;
 import mockit.Expectations;
+import mockit.Mocked;
 
 import org.junit.Test;
 
@@ -57,10 +65,47 @@ public class TestPage extends TestBrowzerFoundation {
 			fail(e);
 		}
 		
+		// FORM指定して遷移する際に、URLの作成に失敗した場合、指定の例外が出力されること。
+		try {
+			page = new Page("http://www.tohoho-web.com/html/form.htm");
+			HtmlDocument document1 = (HtmlDocument)page.getDocument();
+			List<Element> formList1 = document1.getElement(HtmlElementName.FORM);
+			final Form formElement = (Form)formList1.get(0);
+			List<HtmlElement> formList = formElement.getFormElementList();
+			Text txt1 = (Text)formList.get(0);
+			Text txt2 = (Text)formList.get(1);
+			txt1.setValue("test");
+			txt2.setValue("value");
+			
+			new Expectations(formElement) {{
+				formElement.getAction();
+				result = new HtmlDocumentException(DocumentMessage.ERROR_AN_INVALID_URL_WAS_SPECIFIED, "Dummy URL", new Exception());
+			}};
+			Page newPage = new Page(formElement, new HashMap<String, String>());
+			fail();
+		} catch (BrowzingException e) {
+			if(e.getMessageObj() != ERROR_AN_INVALID_URL_WAS_SPECIFIED) fail();
+		}
+		
+		// FORM指定して遷移する際に、引数のリクエストヘッダマップにnullが設定された場合、空のマップが生成されること。
+		try {
+			page = new Page("http://www.tohoho-web.com/html/form.htm");
+			HtmlDocument document1 = (HtmlDocument)page.getDocument();
+			List<Element> formList1 = document1.getElement(HtmlElementName.FORM);
+			final Form formElement = (Form)formList1.get(0);
+			List<HtmlElement> formList = formElement.getFormElementList();
+			Text txt1 = (Text)formList.get(0);
+			Text txt2 = (Text)formList.get(1);
+			txt1.setValue("test");
+			txt2.setValue("value");
+			Page newPage = new Page(formElement, null);
+		} catch (BrowzingException e) {
+			fail();
+		}
 	}
 	
 	@Test
-	public void getMove() throws BrowzingException {
+	public void move() throws BrowzingException {
 		// ２つのページのインスタンスを生成する。
 		Page page1 = super.createPage("http://ja.wikipedia.org/wiki/HyperText_Markup_Language");
 		Page page2 = super.createPage("http://ja.wikipedia.org/wiki/HTML5");
@@ -135,37 +180,65 @@ public class TestPage extends TestBrowzerFoundation {
 		
 		// FORMに値を設定して遷移した場合、正常に遷移できること。
 		// また、送信したパラメータに設定した値が設定されていること。
-		HtmlDocument htmlDocument = (HtmlDocument)page3.getDocument();
-		List<Element> form = htmlDocument.getElement(HtmlElementName.FORM);
-		Form formElement = (Form)form.get(0);
-		List<HtmlElement> formList = formElement.getFormElementList();
-		Text txt1 = (Text)formList.get(0);
-		Text txt2 = (Text)formList.get(1);
-		txt1.setValue("test");
-		txt2.setValue("value");
-		Page page5 = page3.move(formElement);
-		HtmlDocument htmlDocument1 = (HtmlDocument)page5.getDocument();
-		assertHasString(htmlDocument1.toString(), "NAME = test");
-		assertHasString(htmlDocument1.toString(), "ADDR = value");
+		try {
+			HtmlDocument htmlDocument = (HtmlDocument)page3.getDocument();
+			List<Element> form = htmlDocument.getElement(HtmlElementName.FORM);
+			Form formElement = (Form)form.get(0);
+			List<HtmlElement> formList = formElement.getFormElementList();
+			Text txt1 = (Text)formList.get(0);
+			Text txt2 = (Text)formList.get(1);
+			txt1.setValue("test");
+			txt2.setValue("value");
+			Page page5 = page3.move(formElement);
+			HtmlDocument htmlDocument1 = (HtmlDocument)page5.getDocument();
+			assertHasString(htmlDocument1.toString(), "NAME = test");
+			assertHasString(htmlDocument1.toString(), "ADDR = value");
+		} catch (BrowzingException e) {
+			fail(e);
+		}
+		
+		// FORMに値を設定して遷移した場合、正常に遷移できること。
+		// また、送信したパラメータに設定した値が設定されていること。
+		try {
+			HtmlDocument htmlDocument = (HtmlDocument)page3.getDocument();
+			List<Element> form = htmlDocument.getElement(HtmlElementName.FORM);
+			Form formElement = (Form)form.get(0);
+			List<HtmlElement> formList = formElement.getFormElementList();
+			Text txt1 = (Text)formList.get(0);
+			Text txt2 = (Text)formList.get(1);
+			txt1.setValue("test");
+			txt2.setValue("value");
+			Page page5 = page3.move(formElement, null);
+			HtmlDocument htmlDocument1 = (HtmlDocument)page5.getDocument();
+			assertHasString(htmlDocument1.toString(), "NAME = test");
+			assertHasString(htmlDocument1.toString(), "ADDR = value");
+		} catch (BrowzingException e) {
+			fail(e);
+		}
 	}
 	
 	@Test
 	public void getHost() throws BrowzingException {
+		// URLにホスト名のみ指定して作成していた場合でもホスト名のみ抽出されること。
 		Page page1 = super.createPage("http://ja.wikipedia.org");
 		assertEquals(page1.getHost(), "ja.wikipedia.org");
 		
+		// URLにホスト名＋パスを指定して作成した場合でも、ホスト名を正常に取得できること。
 		Page page2 = super.createPage("http://ja.wikipedia.org/wiki/HyperText_Markup_Language");
 		assertEquals(page2.getHost(), "ja.wikipedia.org");
 	}
 	
 	@Test
 	public void getURL() throws BrowzingException{
+		// URLにホスト名のみ指定して作成していた場合、正常にURLが返却されること。
 		Page page1 = new Page("http://ja.wikipedia.org");
 		assertEquals("http://ja.wikipedia.org", page1.getURL());
 		
+		// URLにホスト名＋パスを指定して作成していた場合、正常にURLが返却されること。
 		Page page2 = super.createPage("http://ja.wikipedia.org/wiki/HyperText_Markup_Language");
 		assertEquals("http://ja.wikipedia.org/wiki/HyperText_Markup_Language", page2.getURL());
 		
+		// URLにホスト名＋パス＋パラメータを指定して作成していた場合、正常にURLが返却されること。
 		Page page3 = new Page("http://phpjavascriptroom.com/?t=js&p=location4");
 		assertEquals("http://phpjavascriptroom.com/?t=js&p=location4", page3.getURL());
 		
@@ -173,15 +246,107 @@ public class TestPage extends TestBrowzerFoundation {
 	
 	@Test
 	public void getURLObject() throws MalformedURLException, BrowzingException {
-		Page page = new Page("http://phpjavascriptroom.com/?t=js&p=location4");
-		assertEquals("http://phpjavascriptroom.com/?t=js&p=location4", page.getURL().toString());
+		// URLにホスト名のみ指定して作成していた場合、正常にURLが返却されること。
+		Page page1 = new Page("http://ja.wikipedia.org");
+		assertEquals("http://ja.wikipedia.org", page1.getURLObject().toString());
+		
+		// URLにホスト名＋パスを指定して作成していた場合、正常にURLが返却されること。
+		Page page2 = super.createPage("http://ja.wikipedia.org/wiki/HyperText_Markup_Language");
+		assertEquals("http://ja.wikipedia.org/wiki/HyperText_Markup_Language", page2.getURLObject().toString());
+		
+		// URLにホスト名＋パス＋パラメータを指定して作成していた場合、正常にURLが返却されること。
+		Page page3 = new Page("http://phpjavascriptroom.com/?t=js&p=location4");
+		assertEquals("http://phpjavascriptroom.com/?t=js&p=location4", page3.getURLObject().toString());
 	}
 	
 	@Test
 	public void getDocument() throws BrowzingException{
-			Page page1 = new Page("http://phpjavascriptroom.com/?t=js&p=location4");
-			jp.co.dk.document.File document1 = page1.getDocument();
-			if (!(document1 instanceof jp.co.dk.document.html.HtmlDocument)) fail(); 
+		// 通常にURLからドキュメンとオブジェクトを取得した場合、正常に取得できること。(HTMLの場合)
+		Page page1 = new Page("http://phpjavascriptroom.com/?t=js&p=location4");
+		jp.co.dk.document.File document1 = page1.getDocument();
+		if (!(document1 instanceof jp.co.dk.document.html.HtmlDocument)) fail(); 
+		
+		// 通常にURLからドキュメンとオブジェクトを取得した場合、正常に取得できること。(XMLの場合)
+		Page page2 = new Page("http://rss.dailynews.yahoo.co.jp/fc/rss.xml");
+		jp.co.dk.document.File document2 = page2.getDocument();
+		if (!(document2 instanceof jp.co.dk.document.xml.XmlDocument)) fail(); 
+		
+		// 通常にURLからドキュメンとオブジェクトを取得した場合、正常に取得できること。(IMGの場合)
+		Page page3 = new Page("http://blog-imgs-21-origin.fc2.com/v/i/p/vipvipblogblog/13944.jpg");
+		jp.co.dk.document.File document3 = page3.getDocument();
+		if (!(document3 instanceof jp.co.dk.document.File)) fail(); 
+		
+		// 通常にURLからドキュメンとオブジェクトを取得した場合、かつ、拡張子が存在しない場合、
+		// 判断不可能として例外が発生すること。
+		try {
+			Page page4 = new Page("http://phpjavascriptroom.com/?t=js&p=location4");
+			final Header header = page4.getHeader();
+			new Expectations(header) {
+				{
+					header.getContentsType();
+					result = null;
+				}
+			};
+			Deencapsulation.setField(page4, header);
+			jp.co.dk.document.File document4 = page4.getDocument();
+			if (!(document4 instanceof jp.co.dk.document.File)) fail(); 
+		} catch (BrowzingException e) {
+			if (e.getMessageObj() != ERROR_NON_SUPPORTED_EXTENSION) fail(e);
+		}
+		
+		// 通常にURLからドキュメンとオブジェクトを取得した場合、かつ、拡張子が存在する場合、
+		// ドキュメントファクトリが正常に呼び出されること。
+		try {
+			Page page4 = new Page("http://docs.oracle.com/javase/jp/6/api/java/net/URL.html");
+			final Header header = page4.getHeader();
+			new Expectations(header) {
+				{
+					header.getContentsType();
+					result = null;
+				}
+			};
+			Deencapsulation.setField(page4, header);
+			jp.co.dk.document.File document4 = page4.getDocument();
+			if (!(document4 instanceof jp.co.dk.document.html.HtmlDocument)) fail(); 
+		} catch (BrowzingException e) {
+			fail(e);
+		}
+		
+		// 通常にURLからドキュメンとオブジェクトを取得した場合、かつ、拡張子が存在する場合、
+		// ドキュメントファクトリが正常に呼び出されること。
+		try {
+			Page page4 = new Page("http://rss.dailynews.yahoo.co.jp/fc/rss.xml");
+			final Header header = page4.getHeader();
+			new Expectations(header) {
+				{
+					header.getContentsType();
+					result = null;
+				}
+			};
+			Deencapsulation.setField(page4, header);
+			jp.co.dk.document.File document4 = page4.getDocument();
+			if (!(document4 instanceof jp.co.dk.document.xml.XmlDocument)) fail(); 
+		} catch (BrowzingException e) {
+			fail(e);
+		}
+		
+		// 通常にURLからドキュメンとオブジェクトを取得した場合、かつ、拡張子が存在する場合、
+		// ドキュメントファクトリが正常に呼び出されること。
+		try {
+			Page page4 = new Page("http://blog-imgs-21-origin.fc2.com/v/i/p/vipvipblogblog/13944.jpg");
+			final Header header = page4.getHeader();
+			new Expectations(header) {
+				{
+					header.getContentsType();
+					result = null;
+				}
+			};
+			Deencapsulation.setField(page4, header);
+			jp.co.dk.document.File document4 = page4.getDocument();
+			if (!(document4 instanceof jp.co.dk.document.File)) fail(); 
+		} catch (BrowzingException e) {
+			fail(e);
+		}
 	}
 	
 	@Test
@@ -225,6 +390,15 @@ public class TestPage extends TestBrowzerFoundation {
 		assertEquals(new Page("http://gigazine.net").getExtension(), "html");
 		assertEquals(new Page("http://blog-imgs-21-origin.fc2.com/v/i/p/vipvipblogblog/13944.jpg").getExtension(), "jpg");
 		assertEquals(new Page("http://www.tohoho-web.com/html/meta.htm").getExtension(), "htm");
+		
+		final Page page = new Page("http://gigazine.net");
+		new Expectations(page) {
+			{
+				page.getFileName();
+				result = "aaa";
+			}
+		};
+		assertEquals(page.getExtension(), "");
 	}
 	
 	@Test
@@ -329,6 +503,26 @@ public class TestPage extends TestBrowzerFoundation {
 			if(!file3.exists() && file3.getName().equals("ccc.html")) fail();
 		} catch (BrowzingException e) {
 			fail(e);
+		}
+		
+		// 保存に失敗した場合、例外が発生すること。
+		// 例外はもう一度同じ名前で保存し、エラーとすることで発生させる。
+		try {
+			Page page1 = new Page("http://www.tohoho-web.com/html/meta.htm");
+			java.io.File file1 = page1.save(super.getTestTmpDir());
+			fail();
+		} catch (BrowzingException e) {
+			if (e.getMessageObj() != ERROR_FAILED_TO_DOWNLOAD) fail(e);
+		}
+		
+		// 保存に失敗した場合、例外が発生すること。
+		// 例外はもう一度同じ名前で保存し、エラーとすることで発生させる。
+		try {
+			Page page1 = new Page("http://www.tohoho-web.com/html/meta.htm");
+			java.io.File file1 = page1.save(super.getTestTmpDir(), "aaa.html");
+			fail();
+		} catch (BrowzingException e) {
+			if (e.getMessageObj() != ERROR_FAILED_TO_DOWNLOAD) fail(e);
 		}
 	}
 	

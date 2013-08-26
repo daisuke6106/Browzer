@@ -12,13 +12,11 @@ public class TestA extends TestBrowzerFoundation {
 	
 	@Test
 	public void getHref() throws BrowzingException {
-		Browzer browzer = super.getBrowzer("http://www.google.com");
-		List<A> anchorList = browzer.getAnchor();
-		assertThat(anchorList.get(0).getHref(), is ("http://www.google.co.jp/"));
+		
 	}
 	
 	@Test
-	public void getPage() {
+	public void getPage() throws BrowzingException {
 		Browzer browzer = super.getBrowzer("http://takenokosokuhou.com/archives/18579834.html");
 		assertThat(browzer.getPage().getURL(), is ("http://takenokosokuhou.com/archives/18579834.html"));
 	}
