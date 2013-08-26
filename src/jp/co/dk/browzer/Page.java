@@ -98,7 +98,7 @@ public class Page implements XmlConvertable{
 	 * @param requestProperty リクエストヘッダマップ
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
-	private Page(Form form, Map<String, String> requestProperty) throws BrowzingException {
+	protected Page(Form form, Map<String, String> requestProperty) throws BrowzingException {
 		try {
 			this.urlObj = form.getAction().getURL();
 		} catch (HtmlDocumentException e) {
@@ -267,7 +267,6 @@ public class Page implements XmlConvertable{
 			return this.document;
 		} else {
 			BrowzingExtension extension = this.getExtension(this.path);
-			if (extension == null) 	throw new BrowzingException(ERROR_NON_SUPPORTED_EXTENSION, url);
 			this.document = documentFactory.create(extension, inputStream);
 			return this.document;
 		}
@@ -292,7 +291,7 @@ public class Page implements XmlConvertable{
 	 * @return パス文字列
 	 */
 	public String getPath() {
-		if (this.pathList == null || this.pathList.size() == 0) return "";
+		if (this.pathList.size() == 0) return "";
 		String fileName = this.getFileName();
 		StringBuilder sb = new StringBuilder();
 		for (String path : this.pathList) {

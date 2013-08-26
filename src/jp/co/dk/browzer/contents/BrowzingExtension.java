@@ -13,6 +13,7 @@ public enum BrowzingExtension {
 	
 	/** XML */
 	XML(new String[]{"xml"})
+	
 	;
 	
 	private String[] extension;

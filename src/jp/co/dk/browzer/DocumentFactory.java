@@ -41,7 +41,7 @@ class DocumentFactory {
 	 * @throws BrowzingExtension Documentの生成に失敗した場合
 	 */
 	public File create(BrowzingExtension extension, InputStream inputStream) throws BrowzingException {
-		if (extension == null) throw new BrowzingException(ERROR_NON_SUPPORTED_EXTENSION);
+		if (extension == null) return new jp.co.dk.document.File(inputStream);
 		try {
 			switch (extension) {
 				case HTML:
