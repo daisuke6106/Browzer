@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="2.0.2" sequence="0" timestamp="1377461503904" analysisTimestamp="1377461503954" release="">
+  <Project projectName="">
+    <Jar>/home/dk/projects/Browzer/browzer.jar</Jar>
+    <AuxClasspathEntry>/home/dk/projects/Browzer/lib/dk_xml_all.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/dk/projects/Browzer/lib/document_all.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/dk/projects/Browzer/lib/message_all.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/dk/projects/Browzer/lib/property_all.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/dk/projects/Browzer/lib/test/jmockit-coverage.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/dk/projects/Browzer/lib/test/jmockit.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/dk/projects/Browzer/lib/test/testtemplate_all.jar</AuxClasspathEntry>
+    <SrcDir>/home/dk/projects/Browzer/src</SrcDir>
+  </Project>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE">
+    <Class classname="jp.co.dk.browzer.Browzer">
+      <SourceLine classname="jp.co.dk.browzer.Browzer" start="56" end="281" sourcefile="Browzer.java" sourcepath="jp/co/dk/browzer/Browzer.java"/>
+    </Class>
+    <Field classname="jp.co.dk.browzer.Browzer" name="pageRedirectHandler" signature="Ljp/co/dk/browzer/PageRedirectHandler;" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.Browzer" sourcefile="Browzer.java" sourcepath="jp/co/dk/browzer/Browzer.java"/>
+    </Field>
+    <SourceLine classname="jp.co.dk.browzer.Browzer" start="68" end="68" startBytecode="6" endBytecode="6" sourcefile="Browzer.java" sourcepath="jp/co/dk/browzer/Browzer.java"/>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" abbrev="Dm" category="I18N">
+    <Class classname="jp.co.dk.browzer.Page">
+      <SourceLine classname="jp.co.dk.browzer.Page" start="77" end="724" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.Page" name="&lt;init&gt;" signature="(Ljp/co/dk/document/html/element/Form;Ljava/util/Map;)V" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.Page" start="101" end="123" startBytecode="0" endBytecode="439" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
+    </Method>
+    <Method classname="java.io.OutputStreamWriter" name="&lt;init&gt;" signature="(Ljava/io/OutputStream;)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.OutputStreamWriter" start="109" end="115" startBytecode="0" endBytecode="108" sourcefile="OutputStreamWriter.java" sourcepath="java/io/OutputStreamWriter.java"/>
+    </Method>
+    <SourceLine classname="jp.co.dk.browzer.Page" start="115" end="115" startBytecode="134" endBytecode="134" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
+  </BugInstance>
+  <BugInstance type="WMI_WRONG_MAP_ITERATOR" priority="2" abbrev="WMI" category="PERFORMANCE">
+    <Class classname="jp.co.dk.browzer.Page">
+      <SourceLine classname="jp.co.dk.browzer.Page" start="77" end="724" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.Page" name="setRequestProperty" signature="(Ljava/net/HttpURLConnection;Ljava/util/Map;)Ljava/net/HttpURLConnection;" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.Page" start="632" end="638" startBytecode="0" endBytecode="202" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
+    </Method>
+    <SourceLine classname="jp.co.dk.browzer.Page" start="636" end="636" startBytecode="48" endBytecode="48" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
+  </BugInstance>
+  <BugInstance type="RV_EXCEPTION_NOT_THROWN" priority="1" abbrev="RV" category="CORRECTNESS">
+    <Class classname="jp.co.dk.browzer.PageManager">
+      <SourceLine classname="jp.co.dk.browzer.PageManager" start="34" end="162" sourcefile="PageManager.java" sourcepath="jp/co/dk/browzer/PageManager.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.PageManager" name="move" signature="(Ljp/co/dk/browzer/html/element/Form;)Ljp/co/dk/browzer/PageManager;" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.PageManager" start="111" end="117" startBytecode="0" endBytecode="207" sourcefile="PageManager.java" sourcepath="jp/co/dk/browzer/PageManager.java"/>
+    </Method>
+    <Method classname="jp.co.dk.browzer.exception.BrowzingException" name="&lt;init&gt;" signature="(Ljp/co/dk/message/MessageInterface;Ljava/lang/String;)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="jp.co.dk.browzer.exception.BrowzingException" start="43" end="44" startBytecode="0" endBytecode="72" sourcefile="BrowzingException.java" sourcepath="jp/co/dk/browzer/exception/BrowzingException.java"/>
+    </Method>
+    <SourceLine classname="jp.co.dk.browzer.PageManager" start="112" end="112" startBytecode="33" endBytecode="33" sourcefile="PageManager.java" sourcepath="jp/co/dk/browzer/PageManager.java"/>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" abbrev="Dm" category="I18N">
+    <Class classname="jp.co.dk.browzer.PageRedirectHandler">
+      <SourceLine classname="jp.co.dk.browzer.PageRedirectHandler" start="27" end="111" sourcefile="PageRedirectHandler.java" sourcepath="jp/co/dk/browzer/PageRedirectHandler.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.PageRedirectHandler" name="redirect" signature="(Ljp/co/dk/browzer/Page;)Ljp/co/dk/browzer/Page;" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.PageRedirectHandler" start="45" end="111" startBytecode="0" endBytecode="1014" sourcefile="PageRedirectHandler.java" sourcepath="jp/co/dk/browzer/PageRedirectHandler.java"/>
+    </Method>
+    <Method classname="java.io.InputStreamReader" name="&lt;init&gt;" signature="(Ljava/io/InputStream;)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.InputStreamReader" start="72" end="79" startBytecode="0" endBytecode="108" sourcefile="InputStreamReader.java" sourcepath="java/io/InputStreamReader.java"/>
+    </Method>
+    <SourceLine classname="jp.co.dk.browzer.PageRedirectHandler" start="85" end="85" startBytecode="286" endBytecode="286" sourcefile="PageRedirectHandler.java" sourcepath="jp/co/dk/browzer/PageRedirectHandler.java"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP" priority="2" abbrev="EI" category="MALICIOUS_CODE">
+    <Class classname="jp.co.dk.browzer.contents.BrowzingExtension">
+      <SourceLine classname="jp.co.dk.browzer.contents.BrowzingExtension" start="9" end="46" sourcefile="BrowzingExtension.java" sourcepath="jp/co/dk/browzer/contents/BrowzingExtension.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.contents.BrowzingExtension" name="getExtension" signature="()[Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.contents.BrowzingExtension" start="31" end="31" startBytecode="0" endBytecode="46" sourcefile="BrowzingExtension.java" sourcepath="jp/co/dk/browzer/contents/BrowzingExtension.java"/>
+    </Method>
+    <Field classname="jp.co.dk.browzer.contents.BrowzingExtension" name="extension" signature="[Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.contents.BrowzingExtension" sourcefile="BrowzingExtension.java" sourcepath="jp/co/dk/browzer/contents/BrowzingExtension.java"/>
+    </Field>
+    <SourceLine classname="jp.co.dk.browzer.contents.BrowzingExtension" start="31" end="31" startBytecode="4" endBytecode="4" sourcefile="BrowzingExtension.java" sourcepath="jp/co/dk/browzer/contents/BrowzingExtension.java"/>
+  </BugInstance>
+  <BugInstance type="NM_SAME_SIMPLE_NAME_AS_SUPERCLASS" priority="1" abbrev="Nm" category="BAD_PRACTICE">
+    <Class classname="jp.co.dk.browzer.html.HtmlElementFactory">
+      <SourceLine classname="jp.co.dk.browzer.html.HtmlElementFactory" start="15" end="34" sourcefile="HtmlElementFactory.java" sourcepath="jp/co/dk/browzer/html/HtmlElementFactory.java"/>
+    </Class>
+    <Class classname="jp.co.dk.document.html.HtmlElementFactory">
+      <SourceLine classname="jp.co.dk.document.html.HtmlElementFactory" start="31" end="241" sourcefile="HtmlElementFactory.java" sourcepath="jp/co/dk/document/html/HtmlElementFactory.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="EQ_DOESNT_OVERRIDE_EQUALS" priority="2" abbrev="Eq" category="STYLE">
+    <Class classname="jp.co.dk.browzer.html.element.A">
+      <SourceLine classname="jp.co.dk.browzer.html.element.A" start="28" end="61" sourcefile="A.java" sourcepath="jp/co/dk/browzer/html/element/A.java"/>
+    </Class>
+    <Method classname="jp.co.dk.document.html.HtmlElement" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false" role="METHOD_DID_YOU_MEAN_TO_OVERRIDE">
+      <SourceLine classname="jp.co.dk.document.html.HtmlElement" start="365" end="368" startBytecode="0" endBytecode="127" sourcefile="HtmlElement.java" sourcepath="jp/co/dk/document/html/HtmlElement.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="NM_SAME_SIMPLE_NAME_AS_SUPERCLASS" priority="1" abbrev="Nm" category="BAD_PRACTICE">
+    <Class classname="jp.co.dk.browzer.html.element.A">
+      <SourceLine classname="jp.co.dk.browzer.html.element.A" start="28" end="61" sourcefile="A.java" sourcepath="jp/co/dk/browzer/html/element/A.java"/>
+    </Class>
+    <Class classname="jp.co.dk.document.html.element.A">
+      <SourceLine classname="jp.co.dk.document.html.element.A" start="23" end="68" sourcefile="A.java" sourcepath="jp/co/dk/document/html/element/A.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="NM_SAME_SIMPLE_NAME_AS_SUPERCLASS" priority="1" abbrev="Nm" category="BAD_PRACTICE">
+    <Class classname="jp.co.dk.browzer.html.element.Action">
+      <SourceLine classname="jp.co.dk.browzer.html.element.Action" start="23" end="34" sourcefile="Action.java" sourcepath="jp/co/dk/browzer/html/element/Action.java"/>
+    </Class>
+    <Class classname="jp.co.dk.document.html.element.Action">
+      <SourceLine classname="jp.co.dk.document.html.element.Action" start="28" end="93" sourcefile="Action.java" sourcepath="jp/co/dk/document/html/element/Action.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="EQ_DOESNT_OVERRIDE_EQUALS" priority="2" abbrev="Eq" category="STYLE">
+    <Class classname="jp.co.dk.browzer.html.element.Form">
+      <SourceLine classname="jp.co.dk.browzer.html.element.Form" start="12" end="40" sourcefile="Form.java" sourcepath="jp/co/dk/browzer/html/element/Form.java"/>
+    </Class>
+    <Method classname="jp.co.dk.document.html.HtmlElement" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false" role="METHOD_DID_YOU_MEAN_TO_OVERRIDE">
+      <SourceLine classname="jp.co.dk.document.html.HtmlElement" start="365" end="368" startBytecode="0" endBytecode="127" sourcefile="HtmlElement.java" sourcepath="jp/co/dk/document/html/HtmlElement.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="NM_SAME_SIMPLE_NAME_AS_SUPERCLASS" priority="1" abbrev="Nm" category="BAD_PRACTICE">
+    <Class classname="jp.co.dk.browzer.html.element.Form">
+      <SourceLine classname="jp.co.dk.browzer.html.element.Form" start="12" end="40" sourcefile="Form.java" sourcepath="jp/co/dk/browzer/html/element/Form.java"/>
+    </Class>
+    <Class classname="jp.co.dk.document.html.element.Form">
+      <SourceLine classname="jp.co.dk.document.html.element.Form" start="37" end="134" sourcefile="Form.java" sourcepath="jp/co/dk/document/html/element/Form.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="EQ_DOESNT_OVERRIDE_EQUALS" priority="2" abbrev="Eq" category="STYLE">
+    <Class classname="jp.co.dk.browzer.html.element.Image">
+      <SourceLine classname="jp.co.dk.browzer.html.element.Image" start="28" end="61" sourcefile="Image.java" sourcepath="jp/co/dk/browzer/html/element/Image.java"/>
+    </Class>
+    <Method classname="jp.co.dk.document.html.HtmlElement" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false" role="METHOD_DID_YOU_MEAN_TO_OVERRIDE">
+      <SourceLine classname="jp.co.dk.document.html.HtmlElement" start="365" end="368" startBytecode="0" endBytecode="127" sourcefile="HtmlElement.java" sourcepath="jp/co/dk/document/html/HtmlElement.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="NM_SAME_SIMPLE_NAME_AS_SUPERCLASS" priority="1" abbrev="Nm" category="BAD_PRACTICE">
+    <Class classname="jp.co.dk.browzer.html.element.Image">
+      <SourceLine classname="jp.co.dk.browzer.html.element.Image" start="28" end="61" sourcefile="Image.java" sourcepath="jp/co/dk/browzer/html/element/Image.java"/>
+    </Class>
+    <Class classname="jp.co.dk.document.html.element.Image">
+      <SourceLine classname="jp.co.dk.document.html.element.Image" start="12" end="23" sourcefile="Image.java" sourcepath="jp/co/dk/document/html/element/Image.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="BC_UNCONFIRMED_CAST" priority="2" abbrev="BC" category="STYLE">
+    <Class classname="jp.co.dk.browzer.html.selector.PatternMatchAnchorSelector">
+      <SourceLine classname="jp.co.dk.browzer.html.selector.PatternMatchAnchorSelector" start="21" end="40" sourcefile="PatternMatchAnchorSelector.java" sourcepath="jp/co/dk/browzer/html/selector/PatternMatchAnchorSelector.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.html.selector.PatternMatchAnchorSelector" name="judgment" signature="(Ljp/co/dk/document/Element;)Z" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.html.selector.PatternMatchAnchorSelector" start="30" end="40" startBytecode="0" endBytecode="31" sourcefile="PatternMatchAnchorSelector.java" sourcepath="jp/co/dk/browzer/html/selector/PatternMatchAnchorSelector.java"/>
+    </Method>
+    <Type descriptor="Ljp/co/dk/document/html/HtmlElement;" role="TYPE_FOUND">
+      <SourceLine classname="jp.co.dk.document.html.HtmlElement" start="57" end="446" sourcefile="HtmlElement.java" sourcepath="jp/co/dk/document/html/HtmlElement.java"/>
+    </Type>
+    <Type descriptor="Ljp/co/dk/document/html/element/A;" role="TYPE_EXPECTED">
+      <SourceLine classname="jp.co.dk.document.html.element.A" start="23" end="68" sourcefile="A.java" sourcepath="jp/co/dk/document/html/element/A.java"/>
+    </Type>
+    <LocalVariable name="element" register="1" pc="30" role="LOCAL_VARIABLE_VALUE_OF"/>
+    <SourceLine classname="jp.co.dk.browzer.html.selector.PatternMatchAnchorSelector" start="34" end="34" startBytecode="31" endBytecode="31" sourcefile="PatternMatchAnchorSelector.java" sourcepath="jp/co/dk/browzer/html/selector/PatternMatchAnchorSelector.java"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="2" abbrev="DLS" category="STYLE">
+    <Class classname="jp.co.dk.browzer.html.selector.PatternMatchAnchorSelector">
+      <SourceLine classname="jp.co.dk.browzer.html.selector.PatternMatchAnchorSelector" start="21" end="40" sourcefile="PatternMatchAnchorSelector.java" sourcepath="jp/co/dk/browzer/html/selector/PatternMatchAnchorSelector.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.html.selector.PatternMatchAnchorSelector" name="judgment" signature="(Ljp/co/dk/document/Element;)Z" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.html.selector.PatternMatchAnchorSelector" start="30" end="40" startBytecode="0" endBytecode="31" sourcefile="PatternMatchAnchorSelector.java" sourcepath="jp/co/dk/browzer/html/selector/PatternMatchAnchorSelector.java"/>
+    </Method>
+    <LocalVariable name="host" register="2" pc="8" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="jp.co.dk.browzer.html.selector.PatternMatchAnchorSelector" start="30" end="30" startBytecode="7" endBytecode="7" sourcefile="PatternMatchAnchorSelector.java" sourcepath="jp/co/dk/browzer/html/selector/PatternMatchAnchorSelector.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.NO_LOADS" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="host"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.BASE_VALUE" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+  </BugInstance>
+  <BugInstance type="BC_UNCONFIRMED_CAST" priority="2" abbrev="BC" category="STYLE">
+    <Class classname="jp.co.dk.browzer.html.selector.PatternMatchImgSelector">
+      <SourceLine classname="jp.co.dk.browzer.html.selector.PatternMatchImgSelector" start="21" end="39" sourcefile="PatternMatchImgSelector.java" sourcepath="jp/co/dk/browzer/html/selector/PatternMatchImgSelector.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.html.selector.PatternMatchImgSelector" name="judgment" signature="(Ljp/co/dk/document/Element;)Z" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.html.selector.PatternMatchImgSelector" start="30" end="39" startBytecode="0" endBytecode="27" sourcefile="PatternMatchImgSelector.java" sourcepath="jp/co/dk/browzer/html/selector/PatternMatchImgSelector.java"/>
+    </Method>
+    <Type descriptor="Ljp/co/dk/document/html/HtmlElement;" role="TYPE_FOUND">
+      <SourceLine classname="jp.co.dk.document.html.HtmlElement" start="57" end="446" sourcefile="HtmlElement.java" sourcepath="jp/co/dk/document/html/HtmlElement.java"/>
+    </Type>
+    <Type descriptor="Ljp/co/dk/browzer/html/element/Image;" role="TYPE_EXPECTED">
+      <SourceLine classname="jp.co.dk.browzer.html.element.Image" start="28" end="61" sourcefile="Image.java" sourcepath="jp/co/dk/browzer/html/element/Image.java"/>
+    </Type>
+    <LocalVariable name="element" register="1" pc="22" role="LOCAL_VARIABLE_VALUE_OF"/>
+    <SourceLine classname="jp.co.dk.browzer.html.selector.PatternMatchImgSelector" start="33" end="33" startBytecode="23" endBytecode="23" sourcefile="PatternMatchImgSelector.java" sourcepath="jp/co/dk/browzer/html/selector/PatternMatchImgSelector.java"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE">
+    <Class classname="jp.co.dk.browzer.html.selector.PatternMatchImgSelector">
+      <SourceLine classname="jp.co.dk.browzer.html.selector.PatternMatchImgSelector" start="21" end="39" sourcefile="PatternMatchImgSelector.java" sourcepath="jp/co/dk/browzer/html/selector/PatternMatchImgSelector.java"/>
+    </Class>
+    <Field classname="jp.co.dk.browzer.html.selector.PatternMatchImgSelector" name="page" signature="Ljp/co/dk/browzer/Page;" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.html.selector.PatternMatchImgSelector" sourcefile="PatternMatchImgSelector.java" sourcepath="jp/co/dk/browzer/html/selector/PatternMatchImgSelector.java"/>
+    </Field>
+    <SourceLine classname="jp.co.dk.browzer.html.selector.PatternMatchImgSelector" start="24" end="24" startBytecode="36" endBytecode="36" sourcefile="PatternMatchImgSelector.java" sourcepath="jp/co/dk/browzer/html/selector/PatternMatchImgSelector.java"/>
+  </BugInstance>
+  <BugInstance type="BC_UNCONFIRMED_CAST" priority="2" abbrev="BC" category="STYLE">
+    <Class classname="jp.co.dk.browzer.html.selector.RedirectMetaSelector">
+      <SourceLine classname="jp.co.dk.browzer.html.selector.RedirectMetaSelector" start="9" end="22" sourcefile="RedirectMetaSelector.java" sourcepath="jp/co/dk/browzer/html/selector/RedirectMetaSelector.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.html.selector.RedirectMetaSelector" name="judgment" signature="(Ljp/co/dk/document/Element;)Z" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.html.selector.RedirectMetaSelector" start="13" end="22" startBytecode="0" endBytecode="24" sourcefile="RedirectMetaSelector.java" sourcepath="jp/co/dk/browzer/html/selector/RedirectMetaSelector.java"/>
+    </Method>
+    <Type descriptor="Ljp/co/dk/document/html/HtmlElement;" role="TYPE_FOUND">
+      <SourceLine classname="jp.co.dk.document.html.HtmlElement" start="57" end="446" sourcefile="HtmlElement.java" sourcepath="jp/co/dk/document/html/HtmlElement.java"/>
+    </Type>
+    <Type descriptor="Ljp/co/dk/document/html/element/Meta;" role="TYPE_EXPECTED">
+      <SourceLine classname="jp.co.dk.document.html.element.Meta" start="23" end="51" sourcefile="Meta.java" sourcepath="jp/co/dk/document/html/element/Meta.java"/>
+    </Type>
+    <LocalVariable name="element" register="1" pc="22" role="LOCAL_VARIABLE_VALUE_OF"/>
+    <SourceLine classname="jp.co.dk.browzer.html.selector.RedirectMetaSelector" start="16" end="16" startBytecode="23" endBytecode="23" sourcefile="RedirectMetaSelector.java" sourcepath="jp/co/dk/browzer/html/selector/RedirectMetaSelector.java"/>
+  </BugInstance>
+  <BugInstance type="BC_UNCONFIRMED_CAST" priority="2" abbrev="BC" category="STYLE">
+    <Class classname="jp.co.dk.browzer.html.selector.SameHostAnchorSelector">
+      <SourceLine classname="jp.co.dk.browzer.html.selector.SameHostAnchorSelector" start="13" end="29" sourcefile="SameHostAnchorSelector.java" sourcepath="jp/co/dk/browzer/html/selector/SameHostAnchorSelector.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.html.selector.SameHostAnchorSelector" name="judgment" signature="(Ljp/co/dk/document/Element;)Z" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.html.selector.SameHostAnchorSelector" start="19" end="29" startBytecode="0" endBytecode="29" sourcefile="SameHostAnchorSelector.java" sourcepath="jp/co/dk/browzer/html/selector/SameHostAnchorSelector.java"/>
+    </Method>
+    <Type descriptor="Ljp/co/dk/document/html/HtmlElement;" role="TYPE_FOUND">
+      <SourceLine classname="jp.co.dk.document.html.HtmlElement" start="57" end="446" sourcefile="HtmlElement.java" sourcepath="jp/co/dk/document/html/HtmlElement.java"/>
+    </Type>
+    <Type descriptor="Ljp/co/dk/browzer/html/element/A;" role="TYPE_EXPECTED">
+      <SourceLine classname="jp.co.dk.browzer.html.element.A" start="28" end="61" sourcefile="A.java" sourcepath="jp/co/dk/browzer/html/element/A.java"/>
+    </Type>
+    <LocalVariable name="element" register="1" pc="30" role="LOCAL_VARIABLE_VALUE_OF"/>
+    <SourceLine classname="jp.co.dk.browzer.html.selector.SameHostAnchorSelector" start="23" end="23" startBytecode="31" endBytecode="31" sourcefile="SameHostAnchorSelector.java" sourcepath="jp/co/dk/browzer/html/selector/SameHostAnchorSelector.java"/>
+  </BugInstance>
+  <BugInstance type="MS_SHOULD_BE_FINAL" priority="1" abbrev="MS" category="MALICIOUS_CODE">
+    <Class classname="jp.co.dk.browzer.property.BrowzerProperty">
+      <SourceLine classname="jp.co.dk.browzer.property.BrowzerProperty" start="15" end="264" sourcefile="BrowzerProperty.java" sourcepath="jp/co/dk/browzer/property/BrowzerProperty.java"/>
+    </Class>
+    <Field classname="jp.co.dk.browzer.property.BrowzerProperty" name="REQUEST_HEADER" signature="Ljp/co/dk/browzer/property/BrowzerProperty;" isStatic="true">
+      <SourceLine classname="jp.co.dk.browzer.property.BrowzerProperty" sourcefile="BrowzerProperty.java" sourcepath="jp/co/dk/browzer/property/BrowzerProperty.java"/>
+    </Field>
+    <SourceLine classname="jp.co.dk.browzer.property.BrowzerProperty" start="15" end="15" startBytecode="9" endBytecode="9" sourcefile="BrowzerProperty.java" sourcepath="jp/co/dk/browzer/property/BrowzerProperty.java"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Mon, 26 Aug 2013 05:11:43 +0900" total_classes="29" referenced_classes="160" total_bugs="21" total_size="2466" num_packages="12" vm_version="22.0-b10" cpu_seconds="35.15" clock_seconds="26.18" peak_mbytes="158.83" alloc_mbytes="780.50" gc_seconds="0.43" priority_2="12" priority_1="9">
+    <PackageStats package="jp.co.dk.browzer" total_bugs="5" total_types="7" total_size="462" priority_2="2" priority_1="3">
+      <ClassStats class="jp.co.dk.browzer.Browzer" sourceFile="Browzer.java" interface="false" size="68" bugs="1" priority_2="1"/>
+      <ClassStats class="jp.co.dk.browzer.DocumentFactory" sourceFile="DocumentFactory.java" interface="false" size="22" bugs="0"/>
+      <ClassStats class="jp.co.dk.browzer.DocumentFactory$1" sourceFile="DocumentFactory.java" interface="false" size="6" bugs="0"/>
+      <ClassStats class="jp.co.dk.browzer.Page" sourceFile="Page.java" interface="false" size="257" bugs="2" priority_2="1" priority_1="1"/>
+      <ClassStats class="jp.co.dk.browzer.PageManager" sourceFile="PageManager.java" interface="false" size="63" bugs="1" priority_1="1"/>
+      <ClassStats class="jp.co.dk.browzer.PageRedirectHandler" sourceFile="PageRedirectHandler.java" interface="false" size="42" bugs="1" priority_1="1"/>
+      <ClassStats class="jp.co.dk.browzer.PageRedirectHandler$1" sourceFile="PageRedirectHandler.java" interface="false" size="4" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="jp.co.dk.browzer.contents" total_bugs="1" total_types="1" total_size="22" priority_2="1">
+      <ClassStats class="jp.co.dk.browzer.contents.BrowzingExtension" sourceFile="BrowzingExtension.java" interface="false" size="22" bugs="1" priority_2="1"/>
+    </PackageStats>
+    <PackageStats package="jp.co.dk.browzer.download" total_bugs="0" total_types="1" total_size="2">
+      <ClassStats class="jp.co.dk.browzer.download.DownloadJudge" sourceFile="DownloadJudge.java" interface="true" size="2" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="jp.co.dk.browzer.exception" total_bugs="0" total_types="1" total_size="26">
+      <ClassStats class="jp.co.dk.browzer.exception.BrowzingException" sourceFile="BrowzingException.java" interface="false" size="26" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="jp.co.dk.browzer.html" total_bugs="1" total_types="1" total_size="16" priority_1="1">
+      <ClassStats class="jp.co.dk.browzer.html.HtmlElementFactory" sourceFile="HtmlElementFactory.java" interface="false" size="16" bugs="1" priority_1="1"/>
+    </PackageStats>
+    <PackageStats package="jp.co.dk.browzer.html.element" total_bugs="4" total_types="4" total_size="59" priority_1="4">
+      <ClassStats class="jp.co.dk.browzer.html.element.A" sourceFile="A.java" interface="false" size="18" bugs="1" priority_1="1"/>
+      <ClassStats class="jp.co.dk.browzer.html.element.Action" sourceFile="Action.java" interface="false" size="11" bugs="1" priority_1="1"/>
+      <ClassStats class="jp.co.dk.browzer.html.element.Form" sourceFile="Form.java" interface="false" size="12" bugs="1" priority_1="1"/>
+      <ClassStats class="jp.co.dk.browzer.html.element.Image" sourceFile="Image.java" interface="false" size="18" bugs="1" priority_1="1"/>
+    </PackageStats>
+    <PackageStats package="jp.co.dk.browzer.html.selector" total_bugs="6" total_types="4" total_size="67" priority_2="6">
+      <ClassStats class="jp.co.dk.browzer.html.selector.PatternMatchAnchorSelector" sourceFile="PatternMatchAnchorSelector.java" interface="false" size="20" bugs="2" priority_2="2"/>
+      <ClassStats class="jp.co.dk.browzer.html.selector.PatternMatchImgSelector" sourceFile="PatternMatchImgSelector.java" interface="false" size="19" bugs="2" priority_2="2"/>
+      <ClassStats class="jp.co.dk.browzer.html.selector.RedirectMetaSelector" sourceFile="RedirectMetaSelector.java" interface="false" size="12" bugs="1" priority_2="1"/>
+      <ClassStats class="jp.co.dk.browzer.html.selector.SameHostAnchorSelector" sourceFile="SameHostAnchorSelector.java" interface="false" size="16" bugs="1" priority_2="1"/>
+    </PackageStats>
+    <PackageStats package="jp.co.dk.browzer.http.header" total_bugs="0" total_types="5" total_size="1429">
+      <ClassStats class="jp.co.dk.browzer.http.header.CharSet" sourceFile="CharSet.java" interface="false" size="29" bugs="0"/>
+      <ClassStats class="jp.co.dk.browzer.http.header.ContentsType" sourceFile="ContentsType.java" interface="false" size="1213" bugs="0"/>
+      <ClassStats class="jp.co.dk.browzer.http.header.Header" sourceFile="Header.java" interface="false" size="53" bugs="0"/>
+      <ClassStats class="jp.co.dk.browzer.http.header.HeaderField" sourceFile="HeaderField.java" interface="false" size="119" bugs="0"/>
+      <ClassStats class="jp.co.dk.browzer.http.header.HeaderFieldType" sourceFile="HeaderField.java" interface="false" size="15" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="jp.co.dk.browzer.http.header.record" total_bugs="0" total_types="3" total_size="152">
+      <ClassStats class="jp.co.dk.browzer.http.header.record.HttpStatusCode" sourceFile="HttpStatusCode.java" interface="false" size="103" bugs="0"/>
+      <ClassStats class="jp.co.dk.browzer.http.header.record.HttpStatusType" sourceFile="HttpStatusType.java" interface="false" size="17" bugs="0"/>
+      <ClassStats class="jp.co.dk.browzer.http.header.record.ResponseRecord" sourceFile="ResponseRecord.java" interface="false" size="32" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="jp.co.dk.browzer.message" total_bugs="0" total_types="1" total_size="167">
+      <ClassStats class="jp.co.dk.browzer.message.BrowzingMessage" sourceFile="BrowzingMessage.java" interface="false" size="167" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="jp.co.dk.browzer.property" total_bugs="1" total_types="1" total_size="64" priority_1="1">
+      <ClassStats class="jp.co.dk.browzer.property.BrowzerProperty" sourceFile="BrowzerProperty.java" interface="false" size="64" bugs="1" priority_1="1"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="2154" invocations="185" avgMicrosecondsPerInvocation="11645" maxMicrosecondsPerInvocation="612301" standardDeviationMircosecondsPerInvocation="61959"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="1969" invocations="188" avgMicrosecondsPerInvocation="10476" maxMicrosecondsPerInvocation="695437" standardDeviationMircosecondsPerInvocation="55764"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="1705" invocations="791" avgMicrosecondsPerInvocation="2156" maxMicrosecondsPerInvocation="101617" standardDeviationMircosecondsPerInvocation="7095"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="1692" invocations="160" avgMicrosecondsPerInvocation="10576" maxMicrosecondsPerInvocation="151684" standardDeviationMircosecondsPerInvocation="21992"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="1143" invocations="203" avgMicrosecondsPerInvocation="5632" maxMicrosecondsPerInvocation="70843" standardDeviationMircosecondsPerInvocation="10715"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="1080" invocations="202" avgMicrosecondsPerInvocation="5347" maxMicrosecondsPerInvocation="225875" standardDeviationMircosecondsPerInvocation="16854"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="1029" invocations="189" avgMicrosecondsPerInvocation="5444" maxMicrosecondsPerInvocation="64798" standardDeviationMircosecondsPerInvocation="9720"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="944" invocations="160" avgMicrosecondsPerInvocation="5903" maxMicrosecondsPerInvocation="56125" standardDeviationMircosecondsPerInvocation="10711"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="674" invocations="573" avgMicrosecondsPerInvocation="1177" maxMicrosecondsPerInvocation="39471" standardDeviationMircosecondsPerInvocation="3216"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="530" invocations="161" avgMicrosecondsPerInvocation="3296" maxMicrosecondsPerInvocation="44407" standardDeviationMircosecondsPerInvocation="7270"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="520" invocations="190" avgMicrosecondsPerInvocation="2740" maxMicrosecondsPerInvocation="34672" standardDeviationMircosecondsPerInvocation="5348"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.impl.ZipCodeBaseFactory" totalMilliseconds="506" invocations="21" avgMicrosecondsPerInvocation="24105" maxMicrosecondsPerInvocation="498403" standardDeviationMircosecondsPerInvocation="106058"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="477" invocations="189" avgMicrosecondsPerInvocation="2525" maxMicrosecondsPerInvocation="34282" standardDeviationMircosecondsPerInvocation="4946"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="408" invocations="160" avgMicrosecondsPerInvocation="2550" maxMicrosecondsPerInvocation="46487" standardDeviationMircosecondsPerInvocation="5565"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="378" invocations="209" avgMicrosecondsPerInvocation="1812" maxMicrosecondsPerInvocation="65027" standardDeviationMircosecondsPerInvocation="6851"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="369" invocations="160" avgMicrosecondsPerInvocation="2308" maxMicrosecondsPerInvocation="26535" standardDeviationMircosecondsPerInvocation="4272"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="352" invocations="160" avgMicrosecondsPerInvocation="2202" maxMicrosecondsPerInvocation="37521" standardDeviationMircosecondsPerInvocation="5307"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.UnreadFields" totalMilliseconds="297" invocations="29" avgMicrosecondsPerInvocation="10246" maxMicrosecondsPerInvocation="195556" standardDeviationMircosecondsPerInvocation="35433"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.LiveLocalStoreDataflowFactory" totalMilliseconds="248" invocations="185" avgMicrosecondsPerInvocation="1341" maxMicrosecondsPerInvocation="31149" standardDeviationMircosecondsPerInvocation="3674"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.ReflectiveClasses" totalMilliseconds="247" invocations="160" avgMicrosecondsPerInvocation="1543" maxMicrosecondsPerInvocation="23206" standardDeviationMircosecondsPerInvocation="3479"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.LoadOfKnownNullValue" totalMilliseconds="242" invocations="29" avgMicrosecondsPerInvocation="8368" maxMicrosecondsPerInvocation="111967" standardDeviationMircosecondsPerInvocation="20362"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="241" invocations="160" avgMicrosecondsPerInvocation="1509" maxMicrosecondsPerInvocation="20973" standardDeviationMircosecondsPerInvocation="3085"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="239" invocations="794" avgMicrosecondsPerInvocation="302" maxMicrosecondsPerInvocation="44559" standardDeviationMircosecondsPerInvocation="1809"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNullDeref$CheckCallSitesAndReturnInstructions" totalMilliseconds="219" invocations="185" avgMicrosecondsPerInvocation="1184" maxMicrosecondsPerInvocation="17345" standardDeviationMircosecondsPerInvocation="2713"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="196" invocations="191" avgMicrosecondsPerInvocation="1029" maxMicrosecondsPerInvocation="146043" standardDeviationMircosecondsPerInvocation="10535"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.EqualsOperandShouldHaveClassCompatibleWithThis" totalMilliseconds="188" invocations="160" avgMicrosecondsPerInvocation="1180" maxMicrosecondsPerInvocation="11418" standardDeviationMircosecondsPerInvocation="2183"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="176" invocations="739" avgMicrosecondsPerInvocation="238" maxMicrosecondsPerInvocation="16168" standardDeviationMircosecondsPerInvocation="888"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.StreamResourceTracker" totalMilliseconds="165" invocations="8" avgMicrosecondsPerInvocation="20635" maxMicrosecondsPerInvocation="27089" standardDeviationMircosecondsPerInvocation="6374"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>
