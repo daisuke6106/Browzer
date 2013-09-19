@@ -109,7 +109,7 @@ class PageManager implements XmlConvertable{
 	 */
 	PageManager move(Form form) throws BrowzingException {
 		int nextLevel = this.nestLevel+1;
-		if ( !(this.maxNestLevel<0) && this.maxNestLevel < nextLevel) new BrowzingException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));
+		if ( !(this.maxNestLevel<0) && this.maxNestLevel < nextLevel) throw new BrowzingException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));
 		Page nextPage = this.page.move(form);
 		nextPage = pageRedirectHandler.redirect(nextPage);
 		PageManager childPageManager = new PageManager(this, nextPage, this.pageRedirectHandler, nextLevel, this.maxNestLevel);

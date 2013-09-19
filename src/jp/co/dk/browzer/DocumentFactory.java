@@ -7,6 +7,7 @@ import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.html.HtmlElementFactory;
 import jp.co.dk.browzer.http.header.ContentsType;
 import jp.co.dk.document.File;
+import jp.co.dk.document.exception.DocumentException;
 import jp.co.dk.document.html.exception.HtmlDocumentException;
 import jp.co.dk.document.xml.exception.XmlDocumentException;
 
@@ -41,8 +42,8 @@ class DocumentFactory {
 	 * @throws BrowzingExtension Documentの生成に失敗した場合
 	 */
 	public File create(BrowzingExtension extension, InputStream inputStream) throws BrowzingException {
-		if (extension == null) return new jp.co.dk.document.File(inputStream);
 		try {
+			if (extension == null) return new jp.co.dk.document.File(inputStream);
 			switch (extension) {
 				case HTML:
 					return new jp.co.dk.document.html.HtmlDocument(inputStream, new HtmlElementFactory(this.page));
@@ -51,7 +52,7 @@ class DocumentFactory {
 				default:
 					return new jp.co.dk.document.File(inputStream);
 			}
-		} catch (HtmlDocumentException | XmlDocumentException e) {
+		} catch (DocumentException e) {
 			throw new BrowzingException(ERROR_FAILED_TO_CREATE_DOCUMENT_INSTANCE, e);
 		}
 	}
@@ -65,8 +66,8 @@ class DocumentFactory {
 	 * @throws BrowzingExtension Documentの生成に失敗した場合
 	 */
 	public File create(ContentsType contentsType, InputStream inputStream) throws BrowzingException {
-		if (contentsType == null) throw new BrowzingException(ERROR_NON_SUPPORTED_EXTENSION);
 		try {
+			if (contentsType == null) throw new BrowzingException(ERROR_NON_SUPPORTED_EXTENSION);
 			switch (contentsType) {
 				case TEXT_HTML:
 					return new jp.co.dk.document.html.HtmlDocument(inputStream, new HtmlElementFactory(this.page));
@@ -75,7 +76,7 @@ class DocumentFactory {
 				default:
 					return new jp.co.dk.document.File(inputStream);
 			}
-		} catch (HtmlDocumentException | XmlDocumentException e) {
+		} catch (DocumentException e) {
 			throw new BrowzingException(ERROR_FAILED_TO_CREATE_DOCUMENT_INSTANCE, e);
 		}
 	}

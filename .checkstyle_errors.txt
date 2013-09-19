@@ -142,48 +142,50 @@ Starting audit...
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:277: 行が 80 文字を超えています。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:277:94: '{' の前にホワイトスペースがありません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:284: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:13: '.*' 形式のインポートの使用は避けるべきです - jp.co.dk.browzer.message.BrowzingMessage.*。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:15: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:17: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:22: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:22:1: File contains tab characters (this is the first instance).
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:23:9: Javadoc コメントがありません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:24: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:25: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:28: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:31:25: Parameter page should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:31:30: 'page' がフィールドを隠しています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:34: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:35: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:37: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:41:12: @throws タグの 'BrowzingExtension' のクラス情報が取得できません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:43: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:43:28: Parameter extension should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:43:57: Parameter inputStream should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:43:89: @throws タグの 'BrowzingException' のクラス情報が取得できません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:43:89: BrowzingException のクラス情報が取得できません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:44: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:11:8: 使用されないインポートです - jp.co.dk.document.html.exception.HtmlDocumentException。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:12:8: 使用されないインポートです - jp.co.dk.document.xml.exception.XmlDocumentException。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:14: '.*' 形式のインポートの使用は避けるべきです - jp.co.dk.browzer.message.BrowzingMessage.*。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:16: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:18: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:23: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:23:1: File contains tab characters (this is the first instance).
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:24:9: Javadoc コメントがありません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:25: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:26: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:29: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:32:25: Parameter page should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:32:30: 'page' がフィールドを隠しています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:35: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:36: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:38: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:42:12: @throws タグの 'BrowzingExtension' のクラス情報が取得できません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:44: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:48: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:50: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:52: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:55: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:58: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:59: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:61: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:65:12: @throws タグの 'BrowzingExtension' のクラス情報が取得できません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:67: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:67:28: Parameter contentsType should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:67:55: Parameter inputStream should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:67:87: @throws タグの 'BrowzingException' のクラス情報が取得できません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:67:87: BrowzingException のクラス情報が取得できません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:68: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:44:28: Parameter extension should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:44:57: Parameter inputStream should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:44:89: @throws タグの 'BrowzingException' のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:44:89: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:46: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:46: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:49: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:51: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:53: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:56: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:59: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:60: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:62: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:66:12: @throws タグの 'BrowzingExtension' のクラス情報が取得できません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:68: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:72: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:74: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:76: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:79: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:82: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:68:28: Parameter contentsType should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:68:55: Parameter inputStream should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:68:87: @throws タグの 'BrowzingException' のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:68:87: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:70: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:70: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:73: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:75: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:77: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:80: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:83: Line has trailing spaces.
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Page.java:34: '.*' 形式のインポートの使用は避けるべきです - jp.co.dk.browzer.message.BrowzingMessage.*。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Page.java:36: 最初の一文はピリオドで終わらなければなりません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Page.java:38: Line has trailing spaces.
