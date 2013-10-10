@@ -20,6 +20,7 @@ import jp.co.dk.browzer.http.header.ContentsType;
 import jp.co.dk.browzer.http.header.Header;
 import jp.co.dk.browzer.http.header.HeaderField;
 import jp.co.dk.browzer.property.BrowzerProperty;
+import jp.co.dk.document.ByteDump;
 import jp.co.dk.document.Element;
 import jp.co.dk.document.exception.DocumentException;
 import jp.co.dk.document.html.HtmlDocument;
@@ -47,25 +48,26 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
  */
 public class Page implements XmlConvertable{
 	
-	private String url;
+	protected String url;
 	
-	private URL urlObj;
+	protected URL urlObj;
 	
-	private HttpURLConnection connection;
+	protected String protocol;
 	
-	private jp.co.dk.document.File document;
+	protected String host;
 	
-	private String protocol;
+	protected String path;
 	
-	private String host;
+	protected List<String> pathList;
 	
-	private String path;
+	protected Map<String, String> parameter;
 	
-	private List<String> pathList;
+	protected Header header;
 	
-	private Map<String, String> parameter;
 	
-	private Header header;
+	protected ByteDump byteDump;
+	
+	protected jp.co.dk.document.File document;
 	
 	/**
 	 * コンストラクタ<p>
@@ -76,7 +78,6 @@ public class Page implements XmlConvertable{
 	 */
 	public Page(String url) throws BrowzingException {
 		if (url == null || url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);
-		
 		this.url        = url;
 		this.urlObj     = this.createURL(url);
 		this.connection = this.createURLConnection(this.urlObj, HtmlRequestMethodName.GET);
@@ -84,11 +85,14 @@ public class Page implements XmlConvertable{
 		this.host       = this.getHost(this.urlObj);
 		this.path       = this.getPath(this.urlObj);
 		this.pathList   = this.getPathList(this.urlObj);
-		
 		this.parameter  = this.getParameter(this.urlObj);
 		this.header     = this.createHeader(this.connection);
 		
+		InputStream inputstream = this.getUrlInputStream(this.connection);
+		this.byteDump   = this.getByteDump(inputstream);
 	}
+	
+//	protected Page(String url, )
 	
 	/**
 	 * コンストラクタ<p>
@@ -496,7 +500,6 @@ public class Page implements XmlConvertable{
 		URL urlObj;
 		try {
 			urlObj = new URL(url);
-			
 		} catch (MalformedURLException e1) {
 			throw new BrowzingException( ERROR_PROTOCOL_OF_THE_URL_SPECIFIED_IS_UNKNOWN, url, e1 );
 		}
@@ -689,6 +692,14 @@ public class Page implements XmlConvertable{
 			sb.append('.').append(extension);
 		}
 		return sb.toString();
+	}
+	
+	protected ByteDump getByteDump(InputStream inputstream) throws BrowzingException {
+		try {
+			return new ByteDump(inputstream);
+		} catch (DocumentException e) {
+			throw new BrowzingException(ERROR_READ_PROCESS_FAILED);
+		}
 	}
 
 	protected String getProtocol(URL urlObject) {
