@@ -64,10 +64,11 @@ public class Page implements XmlConvertable{
 	
 	protected Header header;
 	
-	
 	protected ByteDump byteDump;
 	
 	protected jp.co.dk.document.File document;
+	
+	protected URLConnection connection;
 	
 	/**
 	 * コンストラクタ<p>
@@ -88,8 +89,7 @@ public class Page implements XmlConvertable{
 		this.parameter  = this.getParameter(this.urlObj);
 		this.header     = this.createHeader(this.connection);
 		
-		InputStream inputstream = this.getUrlInputStream(this.connection);
-		this.byteDump   = this.getByteDump(inputstream);
+		this.byteDump   = this.getByteDump(this.connection);
 	}
 	
 //	protected Page(String url, )
@@ -631,7 +631,7 @@ public class Page implements XmlConvertable{
 	 * @param requestMap リクエストヘッダマップ
 	 * @return リクエストヘッダが設定されたURLコネクション
 	 */
-	protected HttpURLConnection setRequestProperty(HttpURLConnection connection ,Map<String,String> requestMap) {
+	protected URLConnection setRequestProperty(URLConnection connection ,Map<String,String> requestMap) {
 		if ( connection == null || requestMap == null) {
 			return connection;
 		}
@@ -694,11 +694,11 @@ public class Page implements XmlConvertable{
 		return sb.toString();
 	}
 	
-	protected ByteDump getByteDump(InputStream inputstream) throws BrowzingException {
+	protected ByteDump getByteDump(URLConnection connection) throws BrowzingException {
 		try {
-			return new ByteDump(inputstream);
+			return new ByteDump(this.getUrlInputStream(connection));
 		} catch (DocumentException e) {
-			throw new BrowzingException(ERROR_READ_PROCESS_FAILED);
+			throw new BrowzingException(ERROR_READ_PROCESS_FAILED, e);
 		}
 	}
 
@@ -714,7 +714,7 @@ public class Page implements XmlConvertable{
 		return urlObject.getPath();
 	}
 	
-	protected Header createHeader(HttpURLConnection connection) throws BrowzingException {
+	protected Header createHeader(URLConnection connection) throws BrowzingException {
 		return new Header(this.connection);
 	}
 	
