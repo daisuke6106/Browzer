@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JMockit Coverage Report - BrowzingMessage.java</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <link rel='stylesheet' type='text/css' href='../../../../../coverage.css'/>
+  <script type='text/javascript' src='../../../../../coverage.js'></script>
+  <script type='text/javascript' src='../../../../../prettify.js'></script>
+</head>
+<body onload='prettyPrint()'>
+  <table cellpadding='0' cellspacing='1'>
+    <caption>Browzer/src/jp/co/dk/browzer/message/BrowzingMessage.java</caption>
+    <tr>
+      <td class='line'>1</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>package jp.co.dk.browzer.message;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import jp.co.dk.message.AbstractMessage;
+</div><span>import ...</span></pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>/**
+ * BrowzingMessageは、ブラウザ操作にて使用するメッセージを定義する定数クラスです。
+ * 
+ * @version 1.0
+ * @author D.Kanno
+ */</div><span>/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>11</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l11s0'>public class BrowzingMessage extends AbstractMessage {</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>13</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** アクセスを行うページに認証を要求されました。ユーザ、パスワードを入力してください。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>14</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l14s0'>	public static final BrowzingMessage INFO_PLEASE_INPUT_USER_AND_PASSWORD = new BrowzingMessage("I001");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>16</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** ユーザ＝　*/</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>17</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l17s0'>	public static final BrowzingMessage INFO_USER = new BrowzingMessage("I002");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>19</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** パスワード＝　*/</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>20</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l20s0'>	public static final BrowzingMessage INFO_PASSWORD = new BrowzingMessage("I003");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>22</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** URLが設定されていません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>23</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l23s0'>	public static final BrowzingMessage ERROR_URL_IS_NOT_SET = new BrowzingMessage("E001");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>25</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 指定されたURLのプロトコルが不明です。URL=[{0}] */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>26</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l26s0'>	public static final BrowzingMessage ERROR_PROTOCOL_OF_THE_URL_SPECIFIED_IS_UNKNOWN = new BrowzingMessage("E002");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>28</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** URLが参照するリモートオブジェクトへの接続時に入出力例外が発生しました。URL=[{0}] */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>29</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l29s0'>	public static final BrowzingMessage ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL = new BrowzingMessage("E003");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>31</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 入力ストリームの作成中に入出力エラーが発生しました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>32</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l32s0'>	public static final BrowzingMessage ERROR_IO_ERROR_WAS_OCCURRED_WHILE_CREATING_THE_INPUT_STREAM = new BrowzingMessage("E004");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>34</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTMLの解析に失敗しました。*/</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>35</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l35s0'>	public static final BrowzingMessage ERROR_FAILED_TO_PARSE_HTML = new BrowzingMessage("E005");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>37</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** XMLの解析に失敗しました。*/</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>38</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l38s0'>	public static final BrowzingMessage ERROR_FAILED_TO_PARSE_XML = new BrowzingMessage("E006");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>40</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** ドキュメントインスタンスの生成に失敗しました。class=[{0}]*/</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>41</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l41s0'>	public static final BrowzingMessage ERROR_FAILED_TO_CREATE_DOCUMENT_INSTANCE = new BrowzingMessage("E007");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>43</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 指定のURLの拡張子はサポートしていません。URL=[{0}]*/</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>44</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l44s0'>	public static final BrowzingMessage ERROR_NON_SUPPORTED_EXTENSION = new BrowzingMessage("E008");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>46</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 指定のディレクトリはすでに存在します。PATH=[{0}]*/</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>47</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l47s0'>	public static final BrowzingMessage ERROR_THE_SPECIFIED_DIRECTORY_ALREADY_EXISTS = new BrowzingMessage("E009");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>49</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 指定のディレクトリの作成に失敗しました。PATH=[{0}]*/</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>50</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l50s0'>	public static final BrowzingMessage ERROR_FAILED_TO_CREATE_THE_SPECIFIED_DIRECTORY = new BrowzingMessage("E010");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>52</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** ダウンロードディレクトリが存在しません。PATH=[{0}] */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>53</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l53s0'>	public static final BrowzingMessage ERROR_DOWNLOAD_DIR_IS_NOT_FOUND = new BrowzingMessage("E011");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>55</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 指定のパスはディレクトリではありません。PATH=[{0}] */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>56</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l56s0'>	public static final BrowzingMessage ERROR_SPECIFIED_PATH_IS_NOT_DIRECTORY = new BrowzingMessage("E012");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>58</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 指定のパスにすでにファイルが存在します。PATH=[{0}] */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>59</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l59s0'>	public static final BrowzingMessage ERROR_FILE_APLREADY_EXISTS_IN_THE_SPECIFIED_PATH = new BrowzingMessage("E013");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>61</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** ダウンロードに失敗しました。URL=[{0}] */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>62</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l62s0'>	public static final BrowzingMessage ERROR_FAILED_TO_DOWNLOAD = new BrowzingMessage("E014");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>64</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** レスポンスレコードが取得できませんでした。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>65</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l65s0'>	public static final BrowzingMessage ERROR_RECORD_RESPONSE_COULD_NOT_BE_OBTAINED = new BrowzingMessage("E015");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>67</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** レスポンスレコードが規定のフォーマットではありません。レスポンスヘッダ=[{0}] */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>68</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l68s0'>	public static final BrowzingMessage ERROR_RECORD_RESPONSE_IS_NOT_A_PRESCRIBED_FORMAT = new BrowzingMessage("E016");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>70</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコードが規定のコード値ではありません。HTTPステータスコード=[{0}] */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>71</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l71s0'>	public static final BrowzingMessage ERROR_HTTP_STATUS_CODE_IS_NOT_SPECIFIED_IN_THE_CODE_VALUE = new BrowzingMessage("E017");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>73</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** サーバより返信されたHTTPステータスコードが正常値以外を返却しました。HTTPステータスコード=[{0}],詳細=[{1}],URL=[{2}] */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>74</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l74s0'>	public static final BrowzingMessage ERROR_HTTP_STATUS_CODE_IS_SENT_BACK_FROM_SERVER_HAS_RETURNED_NON_NORMAL = new BrowzingMessage("E018");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>76</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 指定されたアンカーにはHREF要素が設定されていません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>77</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l77s0'>	public static final BrowzingMessage ERROR_SPECIFIED_ANCHOR_HAS_NOT_URL = new BrowzingMessage("E019");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>79</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 指定のメソッドはサポートしていません。METHOD=[{0}] */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>80</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l80s0'>	public static final BrowzingMessage ERROR_SPECIFIED_METHOD_IS_NOT_SUPPORTED = new BrowzingMessage("E020");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>82</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 不正なURLが指定されました。URI=[{0}] */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>83</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l83s0'>	public static final BrowzingMessage ERROR_AN_INVALID_URL_WAS_SPECIFIED = new BrowzingMessage("E021");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>85</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** メッセージの送信に失敗しました。URL=[{0}],METHOD=[{1}] */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>86</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l86s0'>	public static final BrowzingMessage ERROR_FAILED_TO_SEND_MESSAGE = new BrowzingMessage("E022");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>88</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** FORMが指定されていません。*/</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>89</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l89s0'>	public static final BrowzingMessage ERROR_FORM_IS_NOT_SPECIFIED = new BrowzingMessage("E023");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>91</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 遷移先のアンカーが指定されていません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>92</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l92s0'>	public static final BrowzingMessage ERROR_SPECIFIED_ANCHOR_IS_NOT_SET = new BrowzingMessage("E024");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>94</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** ダウンロードディレクトリを作成できませんでした。PATH=[{0}] */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>95</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l95s0'>	public static final BrowzingMessage ERROR_COULD_NOT_CREATE_DOWNLOAD_DIRECTORY = new BrowzingMessage("E025");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>97</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 指定のアンカーにURLが設定されていません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>98</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l98s0'>	public static final BrowzingMessage ERROR_ANCHOR_HAS_NOT_URL = new BrowzingMessage("E026");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>100</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** ページが設定されていません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>101</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l101s0'>	public static final BrowzingMessage ERROR_PAGE_IS_NOT_SET = new BrowzingMessage("E027");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>103</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 検索対象のファイル名が設定されていません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>104</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l104s0'>	public static final BrowzingMessage ERROR_SEARCH_TARGET_FILE_NAME_IS_NOT_SET = new BrowzingMessage("E028");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>106</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 指定されたアンカーは現在アクティブになっているページには存在しません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>107</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l107s0'>	public static final BrowzingMessage ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE = new BrowzingMessage("E029");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>109</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** このページはHTMLではないためアンカーを取得することはできません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>110</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l110s0'>	public static final BrowzingMessage ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML = new BrowzingMessage("E030");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>112</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 遷移先のアンカーが指定されていません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>113</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l113s0'>	public static final BrowzingMessage ERROR_SPECIFIED_FORM_IS_NOT_SET = new BrowzingMessage("E031");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>115</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 指定されたFORMは現在アクティブになっているページには存在しません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>116</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l116s0'>	public static final BrowzingMessage ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE = new BrowzingMessage("E032");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>118</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** URL補完に失敗しました。補完元URL=[{0}] 補完対象URL=[{1}] */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>119</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l119s0'>	public static final BrowzingMessage ERROR_COMPRETION_URL = new BrowzingMessage("E033");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>121</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** スレッド停止に失敗しました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>122</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l122s0'>	public static final BrowzingMessage ERROR_THREAD_STOP = new BrowzingMessage("E034");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>124</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** リダイレクト先のURLが設定されていません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>125</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l125s0'>	public static final BrowzingMessage ERROR_REDIRECT_LOCATION_NOT_FOUND = new BrowzingMessage("E035");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>127</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 最大遷移レベルに達しました。LEVEL=[{0}] */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>128</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l128s0'>	public static final BrowzingMessage ERROR_REACHED_TO_THE_MAXIMUM_LEVEL = new BrowzingMessage("E036");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>130</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** 入力処理にて異常が発生しました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>131</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l131s0'>	public static final BrowzingMessage ERROR_READ_PROCESS_FAILED = new BrowzingMessage("E037");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>133</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** このページはHTMLでないため、アンカータグを取得できません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>134</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l134s0'>	public static final BrowzingMessage ERROR_THIS_PAGE_IS_NOT_HTML = new BrowzingMessage("E038");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>136</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：100 クライアントにリクエストを継続することを指示します。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>137</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l137s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_100 = new BrowzingMessage("STATUS100");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>139</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：101 上位バージョンのHTTPでのリクエストを要求します。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>140</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l140s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_101 = new BrowzingMessage("STATUS101");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>142</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：200 リクエストは成功しました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>143</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l143s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_200 = new BrowzingMessage("STATUS200");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>145</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：201 リクエスト成功/異なる場所にリソースが作成されました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>146</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l146s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_201 = new BrowzingMessage("STATUS201");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>148</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：202 要求は受け付けられましたが処理は未完了です。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>149</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l149s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_202 = new BrowzingMessage("STATUS202");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>151</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：203 リクエスト成功/返される結果はオリジナルのものでありません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>152</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l152s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_203 = new BrowzingMessage("STATUS203");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>154</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：204 リクエスト成功/返すべきリソースはありません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>155</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l155s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_204 = new BrowzingMessage("STATUS204");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>157</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：205 リクエスト成功/クライアントにリセットを要求します。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>158</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l158s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_205 = new BrowzingMessage("STATUS205");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>160</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：206 リクエスト成功/部分的な内容を返します。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>161</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l161s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_206 = new BrowzingMessage("STATUS206");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>163</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：300 複数の場所に置かれたリソースが利用可能です。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>164</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l164s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_300 = new BrowzingMessage("STATUS300");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>166</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：301 他の場所に移転しました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>167</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l167s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_301 = new BrowzingMessage("STATUS301");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>169</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：302 一時的に他の場所に移転しました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>170</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l170s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_302 = new BrowzingMessage("STATUS302");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>172</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：303 他の場所を参照してください。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>173</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l173s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_303 = new BrowzingMessage("STATUS303");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>175</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：304 要求されたリソースに変更はありません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>176</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l176s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_304 = new BrowzingMessage("STATUS304");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>178</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：305 特定のプロキシ経由でのみ要求を受け付けます。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>179</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l179s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_305 = new BrowzingMessage("STATUS305");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>181</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：307 要求されたリソースは一時的に異なるアドレスに置かれています。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>182</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l182s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_307 = new BrowzingMessage("STATUS307");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>184</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：400 リクエストの書式にエラーがあります。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>185</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l185s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_400 = new BrowzingMessage("STATUS400");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>187</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：401 ユーザー認証が必要です。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>188</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l188s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_401 = new BrowzingMessage("STATUS401");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>190</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：402 メッセージ未設定　(将来拡張用)。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>191</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l191s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_402 = new BrowzingMessage("STATUS402");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>193</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：403 アクセス権限がありません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>194</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l194s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_403 = new BrowzingMessage("STATUS403");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>196</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：404 要求されたリソースは存在しません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>197</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l197s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_404 = new BrowzingMessage("STATUS404");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>199</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：405 許可されていない要求メソッドです。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>200</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l200s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_405 = new BrowzingMessage("STATUS405");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>202</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：406 受け入れられないリソースです。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>203</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l203s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_406 = new BrowzingMessage("STATUS406");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>205</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：407 プロキシ認証が必要です。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>206</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l206s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_407 = new BrowzingMessage("STATUS407");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>208</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：408 時間内にリクエストが完了しませんでした。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>209</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l209s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_408 = new BrowzingMessage("STATUS408");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>211</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：409 リソースに対するリクエストに矛盾があります。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>212</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l212s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_409 = new BrowzingMessage("STATUS409");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>214</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：410 要求されたリソースは現在はサーバーに存在しません(移転先不明)。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>215</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l215s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_410 = new BrowzingMessage("STATUS410");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>217</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：411 Content-Lengthに満たない長さのリクエストです。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>218</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l218s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_411 = new BrowzingMessage("STATUS411");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>220</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：412 リクエストヘッダの条件が満たされませんでした。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>221</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l221s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_412 = new BrowzingMessage("STATUS412");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>223</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：413 許容長さを超えるリクエストエンティティが含まれています。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>224</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l224s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_413 = new BrowzingMessage("STATUS413");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>226</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：414 要求されたアドレスが長すぎます。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>227</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l227s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_414 = new BrowzingMessage("STATUS414");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>229</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：415 サーバーでサポートされていないメディア形式を要求しました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>230</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l230s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_415 = new BrowzingMessage("STATUS415");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>232</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：416 If-Rangeリクエストヘッダーで指定された範囲が無効です。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>233</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l233s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_416 = new BrowzingMessage("STATUS416");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>235</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：417 Expectリクエストヘッダフィールド拡張が合致しません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>236</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l236s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_417 = new BrowzingMessage("STATUS417");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>238</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：500 リクエスト処理中に予期せぬエラーが発生しました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>239</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l239s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_500 = new BrowzingMessage("STATUS500");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>241</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：501 サーバーはリクエストを処理する機能を有していません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>242</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l242s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_501 = new BrowzingMessage("STATUS501");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>244</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：502 上位サーバーから無効な応答を受けました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>245</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l245s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_502 = new BrowzingMessage("STATUS502");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>247</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：503 過負荷またはメンテナンス中のため要求を処理できません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>248</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l248s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_503 = new BrowzingMessage("STATUS503");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>250</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：504 上位サーバーとの間でタイムアウトが発生しました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>251</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l251s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_504 = new BrowzingMessage("STATUS504");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>253</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：505 サポートされていないバージョンのHTTPです。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>254</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l254s0'>	public static final BrowzingMessage HTTP_STATUS_CODE_505 = new BrowzingMessage("STATUS505");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>256</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected BrowzingMessage(String messageId) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>257</td><td class='count'>81</td>
+      <td><pre class='prettyprint covered' id='l257s0'>		super(messageId);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>258</td><td class='count'>81</td>
+      <td><pre class='prettyprint covered' id='l258s0'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>260</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+  </table>
+</body>
+</html>

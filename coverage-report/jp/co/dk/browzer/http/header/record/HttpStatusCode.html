@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JMockit Coverage Report - HttpStatusCode.java</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <link rel='stylesheet' type='text/css' href='../../../../../../../coverage.css'/>
+  <script type='text/javascript' src='../../../../../../../coverage.js'></script>
+  <script type='text/javascript' src='../../../../../../../prettify.js'></script>
+</head>
+<body onload='prettyPrint()'>
+  <table cellpadding='0' cellspacing='1'>
+    <caption>Browzer/src/jp/co/dk/browzer/http/header/record/HttpStatusCode.java</caption>
+    <tr>
+      <td class='line'>1</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l1s0'>package jp.co.dk.browzer.http.header.record;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import jp.co.dk.browzer.message.BrowzingMessage;
+import jp.co.dk.message.MessageInterface;
+</div><span>import ...</span></pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>/**
+ * HttpStatusCodeは、HTTP通信にて使用されるHTTPレスポンスヘッダのステータスコードを定義する定数クラス
+ * 
+ * @version 1.0
+ * @author D.Kanno
+ */</div><span>/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>12</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>public enum HttpStatusCode {</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>14</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：100 クライアントにリクエストを継続することを指示します。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>15</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_100("100", HttpStatusType.INFOMATIONAL, BrowzingMessage.HTTP_STATUS_CODE_100),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>17</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：101 上位バージョンのHTTPでのリクエストを要求します。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>18</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_101("101", HttpStatusType.INFOMATIONAL, BrowzingMessage.HTTP_STATUS_CODE_101),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>20</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：200 リクエストは成功しました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>21</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_200("200", HttpStatusType.SUCCESS, BrowzingMessage.HTTP_STATUS_CODE_200),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>23</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：201 リクエスト成功/異なる場所にリソースが作成されました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>24</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_201("201", HttpStatusType.SUCCESS, BrowzingMessage.HTTP_STATUS_CODE_201),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>26</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：202 要求は受け付けられましたが処理は未完了です。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>27</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_202("202", HttpStatusType.SUCCESS, BrowzingMessage.HTTP_STATUS_CODE_202),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>29</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：203 リクエスト成功/返される結果はオリジナルのものでありません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>30</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_203("203", HttpStatusType.SUCCESS, BrowzingMessage.HTTP_STATUS_CODE_203),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>32</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：204 リクエスト成功/返すべきリソースはありません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>33</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_204("204", HttpStatusType.SUCCESS, BrowzingMessage.HTTP_STATUS_CODE_204),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>35</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：204 リクエスト成功/返すべきリソースはありません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>36</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_205("205", HttpStatusType.SUCCESS, BrowzingMessage.HTTP_STATUS_CODE_205),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>38</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：206 リクエスト成功/部分的な内容を返します。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>39</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_206("206", HttpStatusType.SUCCESS, BrowzingMessage.HTTP_STATUS_CODE_206),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>41</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：300 複数の場所に置かれたリソースが利用可能です。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>42</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_300("300", HttpStatusType.REDIRECTION, BrowzingMessage.HTTP_STATUS_CODE_300),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>44</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：301 他の場所に移転しました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>45</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_301("301", HttpStatusType.REDIRECTION, BrowzingMessage.HTTP_STATUS_CODE_301),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>47</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：302 一時的に他の場所に移転しました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>48</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_302("302", HttpStatusType.REDIRECTION, BrowzingMessage.HTTP_STATUS_CODE_302),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>50</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：303 他の場所を参照してください。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>51</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_303("303", HttpStatusType.REDIRECTION, BrowzingMessage.HTTP_STATUS_CODE_303),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>53</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：303 他の場所を参照してください。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>54</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_304("304", HttpStatusType.REDIRECTION, BrowzingMessage.HTTP_STATUS_CODE_304),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>56</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：305 特定のプロキシ経由でのみ要求を受け付けます。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>57</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_305("305", HttpStatusType.REDIRECTION, BrowzingMessage.HTTP_STATUS_CODE_305),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>59</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：307 要求されたリソースは一時的に異なるアドレスに置かれています。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>60</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_307("307", HttpStatusType.REDIRECTION, BrowzingMessage.HTTP_STATUS_CODE_307),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>62</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：400 リクエストの書式にエラーがあります。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>63</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_400("400", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_400),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>65</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：401 ユーザー認証が必要です。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>66</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_401("401", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_401),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>68</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：402 メッセージ未設定　(将来拡張用)。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>69</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_402("402", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_402),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>71</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：403 アクセス権限がありません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>72</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_403("403", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_403),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>74</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：404 要求されたリソースは存在しません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>75</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_404("404", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_404),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>77</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：405 許可されていない要求メソッドです。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>78</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_405("405", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_405),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>80</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：406 受け入れられないリソースです。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>81</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_406("406", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_406),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>83</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：407 プロキシ認証が必要です。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>84</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_407("407", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_407),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>86</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：408 時間内にリクエストが完了しませんでした。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>87</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_408("408", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_408),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>89</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：409 リソースに対するリクエストに矛盾があります。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>90</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_409("409", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_409),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>92</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：410 要求されたリソースは現在はサーバーに存在しません(移転先不明)。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>93</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_410("410", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_410),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>95</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：411 Content-Lengthに満たない長さのリクエストです。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>96</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_411("411", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_411),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>98</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：412 リクエストヘッダの条件が満たされませんでした。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>99</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_412("412", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_412),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>101</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：413 許容長さを超えるリクエストエンティティが含まれています。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>102</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_413("413", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_413),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>104</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：414 要求されたアドレスが長すぎます。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>105</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_414("414", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_414),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>107</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：415 サーバーでサポートされていないメディア形式を要求しました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>108</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_415("415", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_415),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>110</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：416 If-Rangeリクエストヘッダーで指定された範囲が無効です。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>111</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_416("416", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_416),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>113</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：417 Expectリクエストヘッダフィールド拡張が合致しません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>114</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_417("417", HttpStatusType.CLIENT_ERROR, BrowzingMessage.HTTP_STATUS_CODE_417),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>116</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：500 リクエスト処理中に予期せぬエラーが発生しました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>117</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_500("500", HttpStatusType.SERVER_ERROR, BrowzingMessage.HTTP_STATUS_CODE_500),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>119</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：501 サーバーはリクエストを処理する機能を有していません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>120</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_501("501", HttpStatusType.SERVER_ERROR, BrowzingMessage.HTTP_STATUS_CODE_501),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>122</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：502 上位サーバーから無効な応答を受けました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>123</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_502("502", HttpStatusType.SERVER_ERROR, BrowzingMessage.HTTP_STATUS_CODE_502),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>125</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：503 過負荷またはメンテナンス中のため要求を処理できません。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>126</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_503("503", HttpStatusType.SERVER_ERROR, BrowzingMessage.HTTP_STATUS_CODE_503),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>128</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：504 上位サーバーとの間でタイムアウトが発生しました。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>129</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_504("504", HttpStatusType.SERVER_ERROR, BrowzingMessage.HTTP_STATUS_CODE_504),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>131</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** HTTPステータスコード：505 サポートされていないバージョンのHTTPです。 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>132</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	STATUS_505("505", HttpStatusType.SERVER_ERROR, BrowzingMessage.HTTP_STATUS_CODE_505),</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>133</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>135</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private String code;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>137</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private HttpStatusType type;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>139</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private MessageInterface message;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>141</td><td class='count'>40</td>
+      <td><pre class='prettyprint covered' id='l141s0'>	private HttpStatusCode(String code, HttpStatusType type, MessageInterface message) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>142</td><td class='count'>40</td>
+      <td><pre class='prettyprint covered' id='l142s0'>		this.code = code;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>143</td><td class='count'>40</td>
+      <td><pre class='prettyprint covered' id='l143s0'>		this.type = type;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>144</td><td class='count'>40</td>
+      <td><pre class='prettyprint covered' id='l144s0'>		this.message = message;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>145</td><td class='count'>40</td>
+      <td><pre class='prettyprint covered' id='l145s0'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * HTTPステータスコードを返却します。
+	 * 
+	 * @return HTTPステータスコード
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>152</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public String getCode() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>153</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l153s0'>		return this.code;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>154</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * 指定されたHTTPステータスコードがこのステータスコードと一致するか判定します。
+	 * 
+	 * @param code 判定対象のコード
+	 * @return 判定結果（true=コードが一致、false=コードが不一致）
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>162</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public boolean isCode(String code) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>163</td><td class='count'>2440</td>
+      <td><pre class='prettyprint covered' id='l163s0'>		return this.code.equals(code);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>164</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * このHTTPステータスコードの種別を取得します。
+	 * 
+	 * @return HTTPステータスコード種別
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>171</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public HttpStatusType getStatusType() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>172</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l172s0'>		return this.type;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>173</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * このHTTPステータスコードに該当するメッセージを取得します。
+	 * 
+	 * @return メッセージオブジェクト
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>180</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public MessageInterface getMessage() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>181</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l181s0'>		return this.message;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>182</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>183</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+  </table>
+</body>
+</html>

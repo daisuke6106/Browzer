@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JMockit Coverage Report - HeaderField.java</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <link rel='stylesheet' type='text/css' href='../../../../../../coverage.css'/>
+  <script type='text/javascript' src='../../../../../../coverage.js'></script>
+  <script type='text/javascript' src='../../../../../../prettify.js'></script>
+</head>
+<body onload='prettyPrint()'>
+  <table cellpadding='0' cellspacing='1'>
+    <caption>Browzer/src/jp/co/dk/browzer/http/header/HeaderField.java</caption>
+    <tr>
+      <td class='line'>1</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l1s0'>package jp.co.dk.browzer.http.header;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import jp.co.dk.browzer.http.header.HeaderFieldType;
+</div><span>import ...</span></pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>/**
+ * HeaderFieldは、HTTP通信にて使用されるヘッダを定義する定数クラス
+ * 
+ * @version 1.0
+ * @author D.Kanno
+ */</div><span>/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>11</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>public enum HeaderField {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>12</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	ACCEPT("Accept", HeaderFieldType.REQUEST, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>13</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	ACCEPT_CHARSET("Accept-Charset", HeaderFieldType.REQUEST, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>14</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	ACCEPT_ENCODING("Accept-Encoding", HeaderFieldType.REQUEST, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>15</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	ACCEPT_LANGUAGE("Accept-Language", HeaderFieldType.REQUEST, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>16</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	AUTHORIZATION("Authorization", HeaderFieldType.REQUEST, 1.0), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>17</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	EXPECT("Expect", HeaderFieldType.REQUEST, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>18</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	FROM("From", HeaderFieldType.REQUEST, 1.0), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>19</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	HOST("Host", HeaderFieldType.REQUEST, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>20</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	IF_MODIFIED_SINCE("If-Modified-Since", HeaderFieldType.REQUEST, 1.0), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>21</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	IF_MATCH("If-Match", HeaderFieldType.REQUEST, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>22</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	IF_NONE_MATCH("If-None-Match", HeaderFieldType.REQUEST, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>23</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	IF_RANGE("If-Range", HeaderFieldType.REQUEST, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>24</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	IF_UNMODIFIED_SINCE("If-Unmodified-Since", HeaderFieldType.REQUEST, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>25</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	MAX_FORWARDS("Max-Forwards", HeaderFieldType.REQUEST, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>26</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	PROXY_AUTHORIZATION("Proxy-Authorization", HeaderFieldType.REQUEST, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>27</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	RANGE("Range", HeaderFieldType.REQUEST, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>28</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	REFERER("Referer", HeaderFieldType.REQUEST, 1.0), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>29</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	TE("TE", HeaderFieldType.REQUEST, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>30</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	USER_AGENT("User-Agent", HeaderFieldType.REQUEST, 1.0), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>31</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	ALLOW("Allow", HeaderFieldType.ENTITY, 1.0), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>32</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	CONTENT_ENCODING("Content-Encoding", HeaderFieldType.ENTITY, 1.0), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>33</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	CONTENT_LANGUAGE("Content-Language", HeaderFieldType.ENTITY, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>34</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	CONTENT_LENGTH("Content-Length", HeaderFieldType.ENTITY, 1.0), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>35</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	CONTENT_LOCATION("Content-Location", HeaderFieldType.ENTITY, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>36</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	CONTENT_MD5("Content-MD5", HeaderFieldType.ENTITY, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>37</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	CONTENT_RANGE("Content-Range", HeaderFieldType.ENTITY, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>38</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	CONTENT_TYPE("Content-Type", HeaderFieldType.ENTITY, 1.0), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>39</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	EXPIRES("Expires", HeaderFieldType.ENTITY, 1.0), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>40</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	LAST_MODIFIED("Last-Modified", HeaderFieldType.ENTITY, 1.0), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>41</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	ACCEPT_RANGES("Accept-Ranges", HeaderFieldType.RESPONSE, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>42</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	AGE("Age", HeaderFieldType.RESPONSE, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>43</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	ETAG("ETag", HeaderFieldType.RESPONSE, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>44</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	LOCATION("Location", HeaderFieldType.RESPONSE, 1.0), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>45</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	PROXY_AUTHENTICATE("Proxy-Authenticate", HeaderFieldType.RESPONSE, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>46</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	RETRY_AFTER("Retry-After", HeaderFieldType.RESPONSE, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>47</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	SERVER("Server", HeaderFieldType.RESPONSE, 1.0), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>48</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	VARY("Vary", HeaderFieldType.RESPONSE, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>49</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	WWW_AUTHENTICATE("WWW-Authenticate", HeaderFieldType.RESPONSE, 1.0), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>50</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	CACHE_CONTROL("Cache-Control", HeaderFieldType.GENERAL, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>51</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	CONNECTION("Connection", HeaderFieldType.GENERAL, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>52</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	DATE("Date", HeaderFieldType.GENERAL, 1.0), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>53</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	PRAGMA("Pragma", HeaderFieldType.GENERAL, 1.0), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>54</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	TRAILER("Trailer", HeaderFieldType.GENERAL, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>55</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	TRANSFER_ENCODING("Transfer-Encoding", HeaderFieldType.GENERAL, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>56</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	UPGRADE("Upgrade", HeaderFieldType.GENERAL, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>57</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	VIA("Via", HeaderFieldType.GENERAL, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>58</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	WARNING("Warning", HeaderFieldType.GENERAL, 1.1),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>60</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	SET_COOKIE("Set-Cookie", HeaderFieldType.RESPONSE, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>61</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	COOKIE("Cookie", HeaderFieldType.REQUEST, 1.1), </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>62</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>64</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private String headerField;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>66</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private HeaderFieldType fieldType;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>68</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private double version;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>70</td><td class='count'>49</td>
+      <td><pre class='prettyprint covered' id='l70s0'>	private HeaderField(String headerField, HeaderFieldType fieldType, double version) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>71</td><td class='count'>49</td>
+      <td><pre class='prettyprint covered' id='l71s0'>		this.headerField = headerField;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>72</td><td class='count'>49</td>
+      <td><pre class='prettyprint covered' id='l72s0'>		this.fieldType   = fieldType;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>73</td><td class='count'>49</td>
+      <td><pre class='prettyprint covered' id='l73s0'>		this.version     = version;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>74</td><td class='count'>49</td>
+      <td><pre class='prettyprint covered' id='l74s0'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * ヘッダーフィールド文字列を取得します。
+	 * 
+	 * @return ヘッダーフィールド文字列
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>81</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public String getHeaderField() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>82</td><td class='count'>64</td>
+      <td><pre class='prettyprint covered' id='l82s0'>		return this.headerField;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>83</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * ヘッダーフィールドの種別を取得します。
+	 * 
+	 * @return ヘッダーフィールド種別
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>90</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public HeaderFieldType getHeaderFieldType() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>91</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l91s0'>		return this.fieldType;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>92</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * このヘッダーフィールドが使用できるHTTPのバージョン番号を取得します。
+	 * 
+	 * @return バージョン番号
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>99</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public double getVersion() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>100</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l100s0'>		return this.version;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>101</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>102</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>104</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l104s0'>enum HeaderFieldType {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>105</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	REQUEST, </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>106</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	ENTITY, </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>107</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	RESPONSE, </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>108</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	GENERAL, </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>109</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>110</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -157,7 +157,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
 			fail();
 		} catch (BrowzingException e) {
-			if (e.getMessageObj() != ERROR_REACHED_TO_THE_MAXIMUM_LEVEL) fail(e);
+			assertEquals(e.getMessageObj(), ERROR_REACHED_TO_THE_MAXIMUM_LEVEL);
 		}
 		
 		// イメージ要素に遷移する
@@ -231,14 +231,19 @@ public class TestBrowser extends TestBrowzerFoundation {
 		// FROM要素に遷移する
 		// 異なるページオブジェクトにあるURLを指定した場合、例外が発生すること。
 		try {
-			String url1 = super.getRandomUrl();
-			Browzer browzer1 = super.getBrowzer(url1);
-			Browzer browzer2 = super.getBrowzer(url1);
-			HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
-			HtmlDocument document2 = (HtmlDocument)browzer2.getPage().getDocument();
-			List<Element> formList1 = document1.getElement(HtmlElementName.FORM);
-			browzer2.move((Form)formList1.get(0));
-			fail();
+			while(true) {
+				String url1 = super.getRandomUrl();
+				Browzer browzer1 = super.getBrowzer(url1);
+				Browzer browzer2 = super.getBrowzer(url1);
+				HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
+				List<Element> formList1 = document1.getElement(HtmlElementName.FORM);
+				if (formList1.size() == 0) {
+					continue;
+				} else {
+					browzer2.move((Form)formList1.get(0));
+					fail();
+				}
+			}
 		} catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) ;
 		}

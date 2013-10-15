@@ -59,6 +59,7 @@ public class PageRedirectHandler {
 							Meta meta = (Meta)element;
 							if (HttpEquivName.REFRESH == meta.getHttpEquiv()) {
 								String contents = meta.getContent();
+								if (contents.equals("")) contents = "1"; 
 								int sleepType = Integer.parseInt(contents);
 								try {
 									Thread.sleep(sleepType * 1000);

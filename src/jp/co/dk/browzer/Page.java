@@ -143,7 +143,7 @@ public class Page implements XmlConvertable{
 			throw new BrowzingException(ERROR_FAILED_TO_SEND_MESSAGE, new String[]{this.url, form.getMethod().getMethod()}, e);
 		}
 		this.header     = this.createHeader(connection);
-		
+		this.byteDump   = this.getByteDump(connection);
 	}
 	
 	/**

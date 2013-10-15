@@ -161,7 +161,6 @@ public class Browzer {
 	 * ページ戻り実行<p/>
 	 * 現在アクティブになっているページの遷移元ページをアクティブ状態にした上で、ページを取得します。
 	 * 
-	 * @param anchor 遷移先アンカー
 	 * @return ページオブジェクト
 	 * @throws BrowzingException 遷移に失敗した場合
 	 */

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JMockit Coverage Report - CharSet.java</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <link rel='stylesheet' type='text/css' href='../../../../../../coverage.css'/>
+  <script type='text/javascript' src='../../../../../../coverage.js'></script>
+  <script type='text/javascript' src='../../../../../../prettify.js'></script>
+</head>
+<body onload='prettyPrint()'>
+  <table cellpadding='0' cellspacing='1'>
+    <caption>Browzer/src/jp/co/dk/browzer/http/header/CharSet.java</caption>
+    <tr>
+      <td class='line'>1</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l1s0'>package jp.co.dk.browzer.http.header;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>/**
+ * CharSetは、HTTPヘッダに含まれるコンテンツタイプに設定されているキャラクタセットを表す定数クラス。
+ * 
+ * @version 1.0
+ * @author D.Kanno
+ */</div><span>/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>9</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>public enum CharSet {</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>11</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** ISO-8859-1 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>12</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	ISO_8859_1("ISO-8859-1"),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>14</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** ISO_2002_JP */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>15</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	ISO_2002_JP("ISO-2022-JP"),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>17</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** Shift_JIS */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>18</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	SHIFT_JIS("Shift_JIS"),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>20</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** EUC_JP */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>21</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	EUC_JP("EUC-JP"),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>23</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** UTF_8 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>24</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	UTF_8("UTF-8"),</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>26</td><td>&nbsp;</td>
+      <td><pre class='comment'>	/** UTF_8 */</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>27</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	UTF_16("UTF-16"),</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>28</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>30</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private String charset;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>32</td><td class='count'>6</td>
+      <td><pre class='prettyprint covered' id='l32s0'>	private CharSet(String charset) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>33</td><td class='count'>6</td>
+      <td><pre class='prettyprint covered' id='l33s0'>		this.charset = charset;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>34</td><td class='count'>6</td>
+      <td><pre class='prettyprint covered' id='l34s0'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * コンテンツタイプにこのキャラクタセットが含まれるか判定する。
+	 * 
+	 * @param contentType コンテンツタイプ
+	 * @return 判定結果（true=, false=）
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>42</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public boolean isEncording(String contentType) {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>317</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#55aa00' onclick='hidePath()'>Path coverage: 2/3</span>
+        <span class='uncovered' onclick="showPath(this,'l43s0 l43s1')">A: 0</span>
+        <span class='covered' onclick="showPath(this,'l43s0 l44s0 l44s1')">B: 37</span>
+        <span class='covered' onclick="showPath(this,'l43s0 l44s0 l45s0')">C: 280</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>43</td><td class='count'>317</td>
+      <td><pre class='prettyprint jmp'>		<span id='l43s0' title='Executions: 317' class='covered'>if (contentType == null)</span> <span id='l43s1' title='Executions: 0' class='uncovered'>return false;</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>44</td><td class='count'>317</td>
+      <td><pre class='prettyprint jmp'>		<span id='l44s0' title='Executions: 317' class='covered'>if (contentType.toUpperCase().indexOf(this.charset.toUpperCase()) != -1) return true;</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>45</td><td class='count'>280</td>
+      <td><pre class='prettyprint covered' id='l45s0'>		return false;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>46</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * キャラクターセット文字列を取得する。
+	 * 
+	 * @param contentType コンテンツタイプ
+	 * @return 判定結果（true=, false=）
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>54</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public String getEncoding() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>55</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l55s0'>		return this.charset;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>56</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>58</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+  </table>
+</body>
+</html>

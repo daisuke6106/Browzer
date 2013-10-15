@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JMockit Coverage Report - ResponseRecord.java</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <link rel='stylesheet' type='text/css' href='../../../../../../../coverage.css'/>
+  <script type='text/javascript' src='../../../../../../../coverage.js'></script>
+  <script type='text/javascript' src='../../../../../../../prettify.js'></script>
+</head>
+<body onload='prettyPrint()'>
+  <table cellpadding='0' cellspacing='1'>
+    <caption>Browzer/src/jp/co/dk/browzer/http/header/record/ResponseRecord.java</caption>
+    <tr>
+      <td class='line'>1</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>package jp.co.dk.browzer.http.header.record;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.message.BrowzingMessage;
+</div><span>import ...</span></pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>/**
+ * ResponseRecordは、HTTP通信にて使用されるHTTPヘッダに含まれるレスポンスレコードを表すクラス
+ * 
+ * @version 1.0
+ * @author D.Kanno
+ */</div><span>/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>17</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>public class ResponseRecord {</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>19</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l19s0'>	private Pattern <span class='instance covered' title='Reads: 61 Writes: 61'>pattern</span> = Pattern.compile("HTTP/(.*?) +(.*?) +(.*?)");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>21</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private String <span class='instance covered' title='Reads: 61 Writes: 61'>responseRecord</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>23</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private String <span class='instance uncovered' title='Reads: 0 Writes: 61'>httpVersion</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>25</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private String <span class='instance covered' title='Reads: 2440 Writes: 61'>httpStatusCodeStr</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>27</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private String <span class='instance uncovered' title='Reads: 0 Writes: 61'>responsePhrase</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>29</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private HttpStatusCode <span class='instance covered' title='Reads: 61 Writes: 61'>httpStatusCode</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * コンストラクタ&lt;br/>
+	 * 
+	 * URLコネクションより取得したヘッダーフィールドを元にレスポンスレコードインスタンスを生成する。
+	 * 
+	 * @param headerMap
+	 * @throws BrowzingException
+	 */    <tr>
+      <td></td><td class='count'>61</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#cc3300' onclick='hidePath()'>Path coverage: 1/5</span>
+        <span class='uncovered' onclick="showPath(this,'l39s0 l41s0 l42s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l39s0 l41s0 l41s1 l42s0')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l39s0 l41s0 l41s1 l44s0 l46s0 l51s0')">C: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l39s0 l41s0 l41s1 l44s0 l46s0 l47s0 l54s0 l54s1 l60s0 l61s0')">D: 0</span>
+        <span class='covered' onclick="showPath(this,'l39s0 l41s0 l41s1 l44s0 l46s0 l47s0 l54s0 l54s1 l60s0 l63s0')">E: 61</span>
+      </td>
+    </tr>
+</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>39</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l39s0'>	public ResponseRecord(Map&lt;String, List&lt;String>> headerMap) throws BrowzingException {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>40</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l40s0'>		List&lt;String> responseRecordList = headerMap.get(null);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>41</td><td class='count'>61</td>
+      <td><pre class='prettyprint jmp'>		<span id='l41s0' title='Executions: 61' class='covered'>if (responseRecordList == null</span> || <span id='l41s1' title='Executions: 61' class='covered'>responseRecordList.size() != 1) {</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>42</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l42s0'>			throw new BrowzingException(BrowzingMessage.ERROR_RECORD_RESPONSE_COULD_NOT_BE_OBTAINED);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>43</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>44</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l44s0'>		this.responseRecord = responseRecordList.get(0);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>45</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l45s0'>		Matcher matcher = pattern.matcher(this.responseRecord);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>46</td><td class='count'>61</td>
+      <td><pre class='prettyprint jmp'>		<span id='l46s0' title='Executions: 61' class='covered'>if (matcher.find()) {</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>47</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l47s0'>			this.httpVersion = matcher.group(1);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>48</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l48s0'>			this.httpStatusCodeStr = matcher.group(2);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>49</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l49s0'>			this.responsePhrase = matcher.group(3);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>50</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		} else {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>51</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l51s0'>			throw new BrowzingException(BrowzingMessage.ERROR_RECORD_RESPONSE_IS_NOT_A_PRESCRIBED_FORMAT, this.responseRecord);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>52</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>54</td><td class='count'>2501</td>
+      <td><pre class='prettyprint covered' id='l54s0'>		for (HttpStatusCode httpStatusCode : HttpStatusCode.values()) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>55</td><td class='count'>2440</td>
+      <td><pre class='prettyprint jmp'>			<span id='l55s0' title='Executions: 2440' class='covered'>if (httpStatusCode.isCode(this.httpStatusCodeStr)) {</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>56</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l56s0'>				this.httpStatusCode = httpStatusCode;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>57</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>58</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>60</td><td class='count'>61</td>
+      <td><pre class='prettyprint jmp'>		<span id='l60s0' title='Executions: 61' class='covered'>if (this.httpStatusCode == null)</span> <span id='l60s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>61</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l61s0'>			throw new BrowzingException(BrowzingMessage.ERROR_HTTP_STATUS_CODE_IS_NOT_SPECIFIED_IN_THE_CODE_VALUE, this.httpStatusCodeStr);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>62</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>63</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l63s0'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * レスポンスレコードに設定されたHTTPバージョンを取得する。
+	 * 
+	 * @return HTTPバージョン
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>70</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public String getHttpVersion() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>71</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l71s0'>		return this.httpVersion;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>72</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * レスポンスレコードに設定されたHTTPステータスコードを取得する。
+	 * 
+	 * @return HTTPステータスコード
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>79</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public HttpStatusCode getHttpStatusCode() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>80</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l80s0'>		return this.httpStatusCode;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>81</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * レスポンスレコードに設定された応答フレーズを取得する。
+	 * 
+	 * @return 応用フレーズ
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>88</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public String getResponsePhrase() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>89</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l89s0'>		return this.responsePhrase;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>90</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>93</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+  </table>
+</body>
+</html>
