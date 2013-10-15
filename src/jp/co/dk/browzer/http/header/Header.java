@@ -1,5 +1,6 @@
 package jp.co.dk.browzer.http.header;
 
+import java.io.Serializable;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +15,11 @@ import jp.co.dk.browzer.http.header.record.ResponseRecord;
  * @version 1.0
  * @author D.Kanno
  */
-public class Header {
+public class Header implements Serializable{
 	
+	/** シリアルバージョンID */
+	private static final long serialVersionUID = 3560283562725038491L;
+
 	private Map<String, List<String>> headerMap;
 	
 	private ResponseRecord responseRecord;
