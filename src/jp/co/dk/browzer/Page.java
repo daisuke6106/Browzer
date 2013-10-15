@@ -68,8 +68,6 @@ public class Page implements XmlConvertable{
 	
 	protected jp.co.dk.document.File document;
 	
-	protected URLConnection connection;
-	
 	/**
 	 * コンストラクタ<p>
 	 * 指定のURL文字列からページのインスタンスを生成する。
@@ -81,18 +79,38 @@ public class Page implements XmlConvertable{
 		if (url == null || url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);
 		this.url        = url;
 		this.urlObj     = this.createURL(url);
-		this.connection = this.createURLConnection(this.urlObj, HtmlRequestMethodName.GET);
 		this.protocol   = this.getProtocol(this.urlObj);
 		this.host       = this.getHost(this.urlObj);
 		this.path       = this.getPath(this.urlObj);
 		this.pathList   = this.getPathList(this.urlObj);
 		this.parameter  = this.getParameter(this.urlObj);
-		this.header     = this.createHeader(this.connection);
 		
-		this.byteDump   = this.getByteDump(this.connection);
+		URLConnection connection = this.createURLConnection(this.urlObj, HtmlRequestMethodName.GET);
+		this.header     = this.createHeader(connection);
+		this.byteDump   = this.getByteDump(connection);
 	}
 	
-//	protected Page(String url, )
+	/**
+	 * コンストラクタ<p>
+	 * 指定のURL文字列、通信した際のヘッダー、ページデータといった過去に通信した際に取得したデータからページのインスタンスを生成する。
+	 * 
+	 * @param url    URLを表す文字列
+	 * @param header ヘッダーオブジェクト
+	 * @param data   ページデータ
+	 * @throws BrowzingException ページインスタンス生成に失敗した場合
+	 */
+	protected Page(String url, Header header, ByteDump data) throws BrowzingException {
+		if (url == null || url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);
+		this.url        = url;
+		this.urlObj     = this.createURL(url);
+		this.protocol   = this.getProtocol(this.urlObj);
+		this.host       = this.getHost(this.urlObj);
+		this.path       = this.getPath(this.urlObj);
+		this.pathList   = this.getPathList(this.urlObj);
+		this.parameter  = this.getParameter(this.urlObj);
+		this.header = header;
+		this.byteDump = data;
+	}
 	
 	/**
 	 * コンストラクタ<p>
@@ -109,20 +127,22 @@ public class Page implements XmlConvertable{
 			throw new BrowzingException(ERROR_AN_INVALID_URL_WAS_SPECIFIED, e);
 		}
 		this.url  = urlObj.toString();
-		this.connection = this.createURLConnection(this.urlObj, form.getMethod());
+		
 		this.protocol   = this.getProtocol(this.urlObj);
 		this.host       = this.getHost(this.urlObj);
 		this.path       = this.getPath(this.urlObj);
 		this.pathList   = this.getPathList(this.urlObj);
-		this.connection = this.setRequestProperty(this.connection, requestProperty);
+		
+		URLConnection connection = this.createURLConnection(this.urlObj, form.getMethod());
+		connection = this.setRequestProperty(connection, requestProperty);
 		try {
-			BufferedWriter outputStream = new BufferedWriter(new OutputStreamWriter(this.connection.getOutputStream()));
+			BufferedWriter outputStream = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream()));
 			outputStream.write(form.createMessage());
 			outputStream.close();
 		} catch (IOException e) {
 			throw new BrowzingException(ERROR_FAILED_TO_SEND_MESSAGE, new String[]{this.url, form.getMethod().getMethod()}, e);
 		}
-		this.header     = this.createHeader(this.connection);
+		this.header     = this.createHeader(connection);
 		
 	}
 	
@@ -264,7 +284,7 @@ public class Page implements XmlConvertable{
 	 * @throws BrowzingException ドキュメントオブジェクトの生成に失敗した場合
 	 */
 	public jp.co.dk.document.File getDocument(DocumentFactory documentFactory) throws BrowzingException {
-		InputStream inputStream = this.getUrlInputStream(this.connection);
+		InputStream inputStream = this.byteDump.getStream();
 		ContentsType contentsType = this.header.getContentsType();
 		if (contentsType != null) {
 			this.document = documentFactory.create(contentsType, inputStream);
@@ -715,7 +735,7 @@ public class Page implements XmlConvertable{
 	}
 	
 	protected Header createHeader(URLConnection connection) throws BrowzingException {
-		return new Header(this.connection);
+		return new Header(connection);
 	}
 	
 	@Override
