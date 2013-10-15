@@ -12,8 +12,6 @@ import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.html.element.A;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.html.element.Image;
-import jp.co.dk.xml.Attribute;
-import jp.co.dk.xml.XmlConvertable;
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
 /**

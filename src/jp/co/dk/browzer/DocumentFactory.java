@@ -8,8 +8,6 @@ import jp.co.dk.browzer.html.HtmlElementFactory;
 import jp.co.dk.browzer.http.header.ContentsType;
 import jp.co.dk.document.File;
 import jp.co.dk.document.exception.DocumentException;
-import jp.co.dk.document.html.exception.HtmlDocumentException;
-import jp.co.dk.document.xml.exception.XmlDocumentException;
 
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 

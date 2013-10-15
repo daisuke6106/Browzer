@@ -7,8 +7,6 @@ import java.util.List;
 
 import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.html.element.Form;
-import jp.co.dk.document.xml.XmlElement;
-import jp.co.dk.document.xml.exception.XmlDocumentException;
 import jp.co.dk.xml.XmlConvertable;
 
 /**
