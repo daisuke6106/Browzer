@@ -127,10 +127,10 @@ public class BrowzingMessage extends AbstractMessage {
 	/** 最大遷移レベルに達しました。LEVEL=[{0}] */
 	public static final BrowzingMessage ERROR_REACHED_TO_THE_MAXIMUM_LEVEL = new BrowzingMessage("E036");
 	
-	/** 入力処理にて異常が発生しました。 */
+	/** 入力処理にて異常が発生しました。URL=[{0}] */
 	public static final BrowzingMessage ERROR_READ_PROCESS_FAILED = new BrowzingMessage("E037");
 	
-	/** このページはHTMLでないため、アンカータグを取得できません。 */
+	/** このページはHTMLでないため、アンカータグを取得できません。URL=[{0}] */
 	public static final BrowzingMessage ERROR_THIS_PAGE_IS_NOT_HTML = new BrowzingMessage("E038");
 	
 	/** HTTPステータスコード：100 クライアントにリクエストを継続することを指示します。 */

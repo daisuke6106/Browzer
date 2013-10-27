@@ -134,7 +134,7 @@ public class Page implements XmlConvertable{
 	 * @param data           ページデータ
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
-	protected Page(String url, Header header, ByteDump data) throws BrowzingException {
+	protected Page(String url, Map<String,String> requestHeader, Header responseHeader, ByteDump data) throws BrowzingException {
 		if (url == null || url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);
 		this.url            = url;
 		this.urlObj         = this.createURL(url);
@@ -143,7 +143,8 @@ public class Page implements XmlConvertable{
 		this.path           = this.getPath(this.urlObj);
 		this.pathList       = this.getPathList(this.urlObj);
 		this.parameter      = this.getParameter(this.urlObj);
-		this.responseHeader = header;
+		this.requestHeader  = requestHeader;
+		this.responseHeader = responseHeader;
 		this.byteDump       = data;
 	}
 	
@@ -753,7 +754,7 @@ public class Page implements XmlConvertable{
 		try {
 			return new ByteDump(this.getUrlInputStream(connection));
 		} catch (DocumentException e) {
-			throw new BrowzingException(ERROR_READ_PROCESS_FAILED, e);
+			throw new BrowzingException(ERROR_READ_PROCESS_FAILED, this.url, e);
 		}
 	}
 
