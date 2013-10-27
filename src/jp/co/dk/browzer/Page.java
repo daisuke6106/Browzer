@@ -120,8 +120,8 @@ public class Page implements XmlConvertable{
 		} catch (IOException e) {
 			throw new BrowzingException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, urlObj.toString(), e );
 		}
-		this.responseHeader     = this.createHeader(connection);
-		this.byteDump   = this.getByteDump(connection);
+		this.responseHeader = this.createHeader(connection);
+		this.byteDump       = this.getByteDump(connection);
 	}
 	
 	/**
@@ -136,15 +136,15 @@ public class Page implements XmlConvertable{
 	 */
 	protected Page(String url, Header header, ByteDump data) throws BrowzingException {
 		if (url == null || url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);
-		this.url        = url;
-		this.urlObj     = this.createURL(url);
-		this.protocol   = this.getProtocol(this.urlObj);
-		this.host       = this.getHost(this.urlObj);
-		this.path       = this.getPath(this.urlObj);
-		this.pathList   = this.getPathList(this.urlObj);
-		this.parameter  = this.getParameter(this.urlObj);
+		this.url            = url;
+		this.urlObj         = this.createURL(url);
+		this.protocol       = this.getProtocol(this.urlObj);
+		this.host           = this.getHost(this.urlObj);
+		this.path           = this.getPath(this.urlObj);
+		this.pathList       = this.getPathList(this.urlObj);
+		this.parameter      = this.getParameter(this.urlObj);
 		this.responseHeader = header;
-		this.byteDump = data;
+		this.byteDump       = data;
 	}
 	
 	/**
@@ -177,8 +177,8 @@ public class Page implements XmlConvertable{
 		} catch (IOException e) {
 			throw new BrowzingException(ERROR_FAILED_TO_SEND_MESSAGE, new String[]{this.url, form.getMethod().getMethod()}, e);
 		}
-		this.responseHeader     = this.createHeader(connection);
-		this.byteDump   = this.getByteDump(connection);
+		this.responseHeader = this.createHeader(connection);
+		this.byteDump       = this.getByteDump(connection);
 	}
 	
 	/**
