@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Document"/>
 	<classpathentry kind="lib" path="lib/dk_xml_all.jar"/>
 	<classpathentry kind="lib" path="lib/document_all.jar"/>
 	<classpathentry kind="lib" path="lib/message_all.jar"/>
