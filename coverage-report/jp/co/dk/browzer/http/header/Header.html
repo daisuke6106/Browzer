@@ -53,22 +53,22 @@ import jp.co.dk.browzer.http.header.record.ResponseRecord;
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>23</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private Map&lt;String, List&lt;String>> <span class='instance covered' title='Reads: 222 Writes: 108'>headerMap</span>;</pre></td>
+      <td><pre class='prettyprint'>	private Map&lt;String, List&lt;String>> <span class='instance covered' title='Reads: 125 Writes: 61'>headerMap</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>25</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private ResponseRecord <span class='instance uncovered' title='Reads: 17 Writes: 108'>responseRecord</span>;</pre></td>
+      <td><pre class='prettyprint'>	private ResponseRecord <span class='instance uncovered' title='Reads: 0 Writes: 61'>responseRecord</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>27</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private ContentsType <span class='instance covered' title='Reads: 75 Writes: 108'>contentsType</span>;</pre></td>
+      <td><pre class='prettyprint'>	private ContentsType <span class='instance covered' title='Reads: 36 Writes: 61'>contentsType</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>29</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private CharSet <span class='instance uncovered' title='Reads: 0 Writes: 76'>charSet</span>;</pre></td>
+      <td><pre class='prettyprint'>	private CharSet <span class='instance uncovered' title='Reads: 0 Writes: 37'>charSet</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -81,51 +81,51 @@ import jp.co.dk.browzer.http.header.record.ResponseRecord;
 	 * @param connection URLコネクション
 	 * @throws BrowzingException ヘッダ設定値が不正、またはサポートできない場合
 	 */    <tr>
-      <td></td><td class='count'>108</td>
+      <td></td><td class='count'>61</td>
       <td class='paths'>
         <span style='cursor:default; background-color:#aa5500' onclick='hidePath()'>Path coverage: 1/3</span>
         <span class='uncovered' onclick="showPath(this,'l39s0 l44s0 l58s0')">A: 0</span>
         <span class='uncovered' onclick="showPath(this,'l39s0 l44s0 l44s1 l58s0')">B: 0</span>
-        <span class='covered' onclick="showPath(this,'l39s0 l44s0 l44s1 l45s0 l45s1 l51s0 l51s1 l58s0')">C: 108</span>
+        <span class='covered' onclick="showPath(this,'l39s0 l44s0 l44s1 l45s0 l45s1 l51s0 l51s1 l58s0')">C: 61</span>
       </td>
     </tr>
 </div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>39</td><td class='count'>108</td>
+      <td class='line'>39</td><td class='count'>61</td>
       <td><pre class='prettyprint covered' id='l39s0'>	public Header(URLConnection connection) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>40</td><td class='count'>108</td>
+      <td class='line'>40</td><td class='count'>61</td>
       <td><pre class='prettyprint covered' id='l40s0'>		this.headerMap = connection.getHeaderFields();</pre></td>
     </tr>
     <tr>
-      <td class='line'>41</td><td class='count'>108</td>
+      <td class='line'>41</td><td class='count'>61</td>
       <td><pre class='prettyprint covered' id='l41s0'>		this.responseRecord = new ResponseRecord(this.headerMap);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>43</td><td class='count'>108</td>
+      <td class='line'>43</td><td class='count'>61</td>
       <td><pre class='prettyprint covered' id='l43s0'>		List&lt;String> contentsTypeList = this.getHeader(HeaderField.CONTENT_TYPE);</pre></td>
     </tr>
     <tr>
-      <td class='line'>44</td><td class='count'>108</td>
-      <td><pre class='prettyprint jmp'>		<span id='l44s0' title='Executions: 108' class='covered'>if (contentsTypeList != null</span> && <span id='l44s1' title='Executions: 108' class='covered'>contentsTypeList.size() == 1 ) {</span></pre></td>
+      <td class='line'>44</td><td class='count'>61</td>
+      <td><pre class='prettyprint jmp'>		<span id='l44s0' title='Executions: 61' class='covered'>if (contentsTypeList != null</span> && <span id='l44s1' title='Executions: 61' class='covered'>contentsTypeList.size() == 1 ) {</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>45</td><td class='count'>131</td>
+      <td class='line'>45</td><td class='count'>80</td>
       <td><pre class='prettyprint covered' id='l45s0'>			for (ContentsType contentsType : ContentsType.values()) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>46</td><td class='count'>131</td>
-      <td><pre class='prettyprint jmp'>				<span id='l46s0' title='Executions: 131' class='covered'>if (contentsType.isType(contentsTypeList.get(0))){</span></pre></td>
+      <td class='line'>46</td><td class='count'>80</td>
+      <td><pre class='prettyprint jmp'>				<span id='l46s0' title='Executions: 80' class='covered'>if (contentsType.isType(contentsTypeList.get(0))){</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>47</td><td class='count'>108</td>
+      <td class='line'>47</td><td class='count'>61</td>
       <td><pre class='prettyprint covered' id='l47s0'>					this.contentsType = contentsType;</pre></td>
     </tr>
     <tr>
-      <td class='line'>48</td><td class='count'>108</td>
+      <td class='line'>48</td><td class='count'>61</td>
       <td><pre class='prettyprint covered' id='l48s0'>					break;</pre></td>
     </tr>
     <tr>
@@ -137,19 +137,19 @@ import jp.co.dk.browzer.http.header.record.ResponseRecord;
       <td><pre class='prettyprint'>			}</pre></td>
     </tr>
     <tr>
-      <td class='line'>51</td><td class='count'>574</td>
+      <td class='line'>51</td><td class='count'>341</td>
       <td><pre class='prettyprint covered' id='l51s0'>			for (CharSet charSet : CharSet.values()) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>52</td><td class='count'>542</td>
-      <td><pre class='prettyprint jmp'>				<span id='l52s0' title='Executions: 542' class='covered'>if (charSet.isEncording(contentsTypeList.get(0))){</span></pre></td>
+      <td class='line'>52</td><td class='count'>317</td>
+      <td><pre class='prettyprint jmp'>				<span id='l52s0' title='Executions: 317' class='covered'>if (charSet.isEncording(contentsTypeList.get(0))){</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>53</td><td class='count'>76</td>
+      <td class='line'>53</td><td class='count'>37</td>
       <td><pre class='prettyprint covered' id='l53s0'>					this.charSet = charSet;</pre></td>
     </tr>
     <tr>
-      <td class='line'>54</td><td class='count'>76</td>
+      <td class='line'>54</td><td class='count'>37</td>
       <td><pre class='prettyprint covered' id='l54s0'>					break;</pre></td>
     </tr>
     <tr>
@@ -165,7 +165,7 @@ import jp.co.dk.browzer.http.header.record.ResponseRecord;
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>58</td><td class='count'>108</td>
+      <td class='line'>58</td><td class='count'>61</td>
       <td><pre class='prettyprint covered' id='l58s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -245,28 +245,28 @@ import jp.co.dk.browzer.http.header.record.ResponseRecord;
       <td><pre class='prettyprint'>	public List&lt;String> getHeader(HeaderField headerField) {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>114</td>
+      <td></td><td class='count'>64</td>
       <td class='paths'>
         <span style='cursor:default; background-color:#55aa00' onclick='hidePath()'>Path coverage: 2/3</span>
         <span class='uncovered' onclick="showPath(this,'l86s0 l86s1')">A: 0</span>
-        <span class='covered' onclick="showPath(this,'l86s0 l87s0 l88s0 l88s1')">B: 3</span>
-        <span class='covered' onclick="showPath(this,'l86s0 l87s0 l88s0 l89s0')">C: 111</span>
+        <span class='covered' onclick="showPath(this,'l86s0 l87s0 l88s0 l88s1')">B: 2</span>
+        <span class='covered' onclick="showPath(this,'l86s0 l87s0 l88s0 l89s0')">C: 62</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>86</td><td class='count'>114</td>
-      <td><pre class='prettyprint jmp'>		<span id='l86s0' title='Executions: 114' class='covered'>if (headerField == null)</span> <span id='l86s1' title='Executions: 0' class='uncovered'>return new ArrayList&lt;String>();</span></pre></td>
+      <td class='line'>86</td><td class='count'>64</td>
+      <td><pre class='prettyprint jmp'>		<span id='l86s0' title='Executions: 64' class='covered'>if (headerField == null)</span> <span id='l86s1' title='Executions: 0' class='uncovered'>return new ArrayList&lt;String>();</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>87</td><td class='count'>114</td>
+      <td class='line'>87</td><td class='count'>64</td>
       <td><pre class='prettyprint covered' id='l87s0'>		List&lt;String> list = this.headerMap.get(headerField.getHeaderField());</pre></td>
     </tr>
     <tr>
-      <td class='line'>88</td><td class='count'>114</td>
-      <td><pre class='prettyprint jmp'>		<span id='l88s0' title='Executions: 114' class='covered'>if (list == null)</span> <span id='l88s1' title='Executions: 3' class='covered'>return new ArrayList&lt;String>();</span></pre></td>
+      <td class='line'>88</td><td class='count'>64</td>
+      <td><pre class='prettyprint jmp'>		<span id='l88s0' title='Executions: 64' class='covered'>if (list == null)</span> <span id='l88s1' title='Executions: 2' class='covered'>return new ArrayList&lt;String>();</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>89</td><td class='count'>111</td>
+      <td class='line'>89</td><td class='count'>62</td>
       <td><pre class='prettyprint covered' id='l89s0'>		return list;</pre></td>
     </tr>
     <tr>
@@ -287,8 +287,8 @@ import jp.co.dk.browzer.http.header.record.ResponseRecord;
       <td><pre class='prettyprint'>	public ResponseRecord getResponseRecord() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>98</td><td class='count'>17</td>
-      <td><pre class='prettyprint covered' id='l98s0'>		return this.responseRecord;</pre></td>
+      <td class='line'>98</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l98s0'>		return this.responseRecord;</pre></td>
     </tr>
     <tr>
       <td class='line'>99</td><td>&nbsp;</td>
@@ -310,7 +310,7 @@ import jp.co.dk.browzer.http.header.record.ResponseRecord;
       <td><pre class='prettyprint'>	public ContentsType getContentsType() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>109</td><td class='count'>75</td>
+      <td class='line'>109</td><td class='count'>36</td>
       <td><pre class='prettyprint covered' id='l109s0'>		return this.contentsType;</pre></td>
     </tr>
     <tr>
@@ -356,29 +356,29 @@ import jp.co.dk.browzer.http.header.record.ResponseRecord;
       <td><pre class='prettyprint'>	public String getLocation() {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>3</td>
+      <td></td><td class='count'>0</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#55aa00' onclick='hidePath()'>Path coverage: 2/3</span>
+        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/3</span>
         <span class='uncovered' onclick="showPath(this,'l131s0 l132s0 l132s2')">A: 0</span>
-        <span class='covered' onclick="showPath(this,'l131s0 l132s0 l132s1 l132s2')">B: 1</span>
-        <span class='covered' onclick="showPath(this,'l131s0 l132s0 l132s1 l133s0 l134s0')">C: 2</span>
+        <span class='uncovered' onclick="showPath(this,'l131s0 l132s0 l132s1 l132s2')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l131s0 l132s0 l132s1 l133s0 l134s0')">C: 0</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>131</td><td class='count'>3</td>
-      <td><pre class='prettyprint covered' id='l131s0'>		List&lt;String> locationList = this.getHeader(HeaderField.LOCATION);</pre></td>
+      <td class='line'>131</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l131s0'>		List&lt;String> locationList = this.getHeader(HeaderField.LOCATION);</pre></td>
     </tr>
     <tr>
-      <td class='line'>132</td><td class='count'>3</td>
-      <td><pre class='prettyprint jmp'>		<span id='l132s0' title='Executions: 3' class='covered'>if (locationList == null</span> || <span id='l132s1' title='Executions: 3' class='covered'>locationList.size() == 0) return "";</span> </pre></td>
+      <td class='line'>132</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>		<span id='l132s0' title='Executions: 0' class='uncovered'>if (locationList == null</span> || <span id='l132s1' title='Executions: 0' class='uncovered'>locationList.size() == 0) return "";</span> </pre></td>
     </tr>
     <tr>
-      <td class='line'>133</td><td class='count'>2</td>
-      <td><pre class='prettyprint covered' id='l133s0'>		String location = locationList.get(0);</pre></td>
+      <td class='line'>133</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l133s0'>		String location = locationList.get(0);</pre></td>
     </tr>
     <tr>
-      <td class='line'>134</td><td class='count'>2</td>
-      <td><pre class='prettyprint covered' id='l134s0'>		return location;</pre></td>
+      <td class='line'>134</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l134s0'>		return location;</pre></td>
     </tr>
     <tr>
       <td class='line'>135</td><td>&nbsp;</td>

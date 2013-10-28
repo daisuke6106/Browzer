@@ -11,7 +11,7 @@
   <table cellpadding='0' cellspacing='1'>
     <caption>Browzer/src/jp/co/dk/browzer/http/header/CharSet.java</caption>
     <tr>
-      <td class='line'>1</td><td class='count'>108</td>
+      <td class='line'>1</td><td class='count'>61</td>
       <td><pre class='prettyprint covered' id='l1s0'>package jp.co.dk.browzer.http.header;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -119,24 +119,24 @@
       <td><pre class='prettyprint'>	public boolean isEncording(String contentType) {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>542</td>
+      <td></td><td class='count'>317</td>
       <td class='paths'>
         <span style='cursor:default; background-color:#55aa00' onclick='hidePath()'>Path coverage: 2/3</span>
         <span class='uncovered' onclick="showPath(this,'l43s0 l43s1')">A: 0</span>
-        <span class='covered' onclick="showPath(this,'l43s0 l44s0 l44s1')">B: 76</span>
-        <span class='covered' onclick="showPath(this,'l43s0 l44s0 l45s0')">C: 466</span>
+        <span class='covered' onclick="showPath(this,'l43s0 l44s0 l44s1')">B: 37</span>
+        <span class='covered' onclick="showPath(this,'l43s0 l44s0 l45s0')">C: 280</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>43</td><td class='count'>542</td>
-      <td><pre class='prettyprint jmp'>		<span id='l43s0' title='Executions: 542' class='covered'>if (contentType == null)</span> <span id='l43s1' title='Executions: 0' class='uncovered'>return false;</span></pre></td>
+      <td class='line'>43</td><td class='count'>317</td>
+      <td><pre class='prettyprint jmp'>		<span id='l43s0' title='Executions: 317' class='covered'>if (contentType == null)</span> <span id='l43s1' title='Executions: 0' class='uncovered'>return false;</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>44</td><td class='count'>542</td>
-      <td><pre class='prettyprint jmp'>		<span id='l44s0' title='Executions: 542' class='covered'>if (contentType.toUpperCase().indexOf(this.charset.toUpperCase()) != -1) return true;</span></pre></td>
+      <td class='line'>44</td><td class='count'>317</td>
+      <td><pre class='prettyprint jmp'>		<span id='l44s0' title='Executions: 317' class='covered'>if (contentType.toUpperCase().indexOf(this.charset.toUpperCase()) != -1) return true;</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>45</td><td class='count'>466</td>
+      <td class='line'>45</td><td class='count'>280</td>
       <td><pre class='prettyprint covered' id='l45s0'>		return false;</pre></td>
     </tr>
     <tr>

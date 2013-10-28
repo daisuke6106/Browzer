@@ -2,32 +2,25 @@ package jp.co.dk.browzer;
 
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import jp.co.dk.browzer.exception.BrowzingException;
-import jp.co.dk.browzer.html.element.Action;
 import jp.co.dk.browzer.html.element.Form;
-import jp.co.dk.browzer.http.header.Header;
+import jp.co.dk.browzer.http.header.ResponseHeader;
 import jp.co.dk.document.Element;
-import jp.co.dk.document.File;
 import jp.co.dk.document.html.HtmlDocument;
 import jp.co.dk.document.html.HtmlElement;
 import jp.co.dk.document.html.constant.HtmlElementName;
 import jp.co.dk.document.html.element.A;
-import jp.co.dk.document.html.element.form.Password;
 import jp.co.dk.document.html.element.form.Text;
 import jp.co.dk.document.html.exception.HtmlDocumentException;
 import jp.co.dk.document.message.DocumentMessage;
 
 import mockit.Deencapsulation;
 import mockit.Expectations;
-import mockit.Mocked;
 
 import org.junit.Test;
 
@@ -280,7 +273,7 @@ public class TestPage extends TestBrowzerFoundation {
 		// 判断不可能として例外が発生すること。
 		try {
 			Page page4 = new Page("http://phpjavascriptroom.com/?t=js&p=location4");
-			final Header header = page4.getHeader();
+			final ResponseHeader header = page4.getResponseHeader();
 			new Expectations(header) {
 				{
 					header.getContentsType();
@@ -298,7 +291,7 @@ public class TestPage extends TestBrowzerFoundation {
 		// ドキュメントファクトリが正常に呼び出されること。
 		try {
 			Page page4 = new Page("http://docs.oracle.com/javase/jp/6/api/java/net/URL.html");
-			final Header header = page4.getHeader();
+			final ResponseHeader header = page4.getResponseHeader();
 			new Expectations(header) {
 				{
 					header.getContentsType();
@@ -316,7 +309,7 @@ public class TestPage extends TestBrowzerFoundation {
 		// ドキュメントファクトリが正常に呼び出されること。
 		try {
 			Page page4 = new Page("http://rss.dailynews.yahoo.co.jp/fc/rss.xml");
-			final Header header = page4.getHeader();
+			final ResponseHeader header = page4.getResponseHeader();
 			new Expectations(header) {
 				{
 					header.getContentsType();
@@ -334,7 +327,7 @@ public class TestPage extends TestBrowzerFoundation {
 		// ドキュメントファクトリが正常に呼び出されること。
 		try {
 			Page page4 = new Page("http://blog-imgs-21-origin.fc2.com/v/i/p/vipvipblogblog/13944.jpg");
-			final Header header = page4.getHeader();
+			final ResponseHeader header = page4.getResponseHeader();
 			new Expectations(header) {
 				{
 					header.getContentsType();

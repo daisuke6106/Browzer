@@ -9,7 +9,7 @@ import java.util.List;
 
 import jp.co.dk.browzer.Page;
 import jp.co.dk.browzer.exception.BrowzingException;
-import jp.co.dk.browzer.http.header.Header;
+import jp.co.dk.browzer.http.header.ResponseHeader;
 import jp.co.dk.browzer.http.header.record.HttpStatusCode;
 import jp.co.dk.document.Element;
 import jp.co.dk.document.File;
@@ -42,7 +42,7 @@ public class PageRedirectHandler {
 	 * @throws BrowzingException 遷移に失敗した場合
 	 */
 	Page redirect(Page page) throws BrowzingException {
-		Header header = page.getHeader();
+		ResponseHeader header = page.getResponseHeader();
 		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();
 		switch(httpStatusCode.getStatusType()) {
 			case INFOMATIONAL:

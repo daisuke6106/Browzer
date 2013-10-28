@@ -17,7 +17,7 @@ import java.util.Map;
 import jp.co.dk.browzer.contents.BrowzingExtension;
 import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.http.header.ContentsType;
-import jp.co.dk.browzer.http.header.Header;
+import jp.co.dk.browzer.http.header.ResponseHeader;
 import jp.co.dk.browzer.http.header.HeaderField;
 import jp.co.dk.browzer.property.BrowzerProperty;
 import jp.co.dk.document.ByteDump;
@@ -73,7 +73,7 @@ public class Page implements XmlConvertable{
 	protected Map<String, String> requestHeader;
 	
 	/** レスポンスヘッダ */
-	protected Header responseHeader;
+	protected ResponseHeader responseHeader;
 	
 	/** ページデータ */
 	protected ByteDump byteDump;
@@ -120,7 +120,7 @@ public class Page implements XmlConvertable{
 		} catch (IOException e) {
 			throw new BrowzingException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, urlObj.toString(), e );
 		}
-		this.responseHeader = this.createHeader(connection);
+		this.responseHeader = this.createResponseHeader(connection);
 		this.byteDump       = this.getByteDump(connection);
 	}
 	
@@ -134,7 +134,7 @@ public class Page implements XmlConvertable{
 	 * @param data           ページデータ
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
-	protected Page(String url, Map<String,String> requestHeader, Header responseHeader, ByteDump data) throws BrowzingException {
+	protected Page(String url, Map<String,String> requestHeader, ResponseHeader responseHeader, ByteDump data) throws BrowzingException {
 		if (url == null || url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);
 		this.url            = url;
 		this.urlObj         = this.createURL(url);
@@ -178,7 +178,7 @@ public class Page implements XmlConvertable{
 		} catch (IOException e) {
 			throw new BrowzingException(ERROR_FAILED_TO_SEND_MESSAGE, new String[]{this.url, form.getMethod().getMethod()}, e);
 		}
-		this.responseHeader = this.createHeader(connection);
+		this.responseHeader = this.createResponseHeader(connection);
 		this.byteDump       = this.getByteDump(connection);
 	}
 	
@@ -462,9 +462,9 @@ public class Page implements XmlConvertable{
 	/**
 	 * このページのレスポンスヘッダを取得します。<p/>
 	 * 
-	 * @return レスポンスヘッダs
+	 * @return レスポンスヘッダ
 	 */
-	public Header getHeader() {
+	public ResponseHeader getResponseHeader() {
 		return this.responseHeader;
 	}
 	
@@ -740,7 +740,7 @@ public class Page implements XmlConvertable{
 		return map;
 	}
 	
-	protected String defaultFileName(Header header) {
+	protected String defaultFileName(ResponseHeader header) {
 		StringBuilder sb = new StringBuilder("default");
 		ContentsType contentType = header.getContentsType();
 		if (contentType != null) {
@@ -770,8 +770,8 @@ public class Page implements XmlConvertable{
 		return urlObject.getPath();
 	}
 	
-	protected Header createHeader(URLConnection connection) throws BrowzingException {
-		return new Header(connection);
+	protected ResponseHeader createResponseHeader(URLConnection connection) throws BrowzingException {
+		return new ResponseHeader(connection.getHeaderFields());
 	}
 	
 	@Override

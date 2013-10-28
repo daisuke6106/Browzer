@@ -1,8 +1,8 @@
 package jp.co.dk.browzer.http.header;
 
 import java.io.Serializable;
-import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,12 +10,12 @@ import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.http.header.record.ResponseRecord;
 
 /**
- * Headerは、HTTP通信にて使用されるHTTPヘッダを表すクラス
+ * ResponseHeaderは、HTTP通信にて使用されるHTTPヘッダを表すクラス
  * 
  * @version 1.0
  * @author D.Kanno
  */
-public class Header implements Serializable{
+public class ResponseHeader implements Serializable{
 	
 	/** シリアルバージョンID */
 	private static final long serialVersionUID = 3560283562725038491L;
@@ -31,13 +31,13 @@ public class Header implements Serializable{
 	/**
 	 * コンストラクタ<br/>
 	 * 
-	 * URLコネクションを元にその通信にて使用されるHTTPヘッダを取り出し本オブジェクトに保持します。
+	 * マップを元にその通信にて使用されるHTTPヘッダを取り出し本オブジェクトに保持します。
 	 * 
-	 * @param connection URLコネクション
+	 * @param responseHeader レスポンスヘッダー
 	 * @throws BrowzingException ヘッダ設定値が不正、またはサポートできない場合
 	 */
-	public Header(URLConnection connection) throws BrowzingException {
-		this.headerMap = connection.getHeaderFields();
+	public ResponseHeader(Map<String, List<String>> responseHeader) throws BrowzingException {
+		this.headerMap      = new HashMap<String, List<String>>(responseHeader);
 		this.responseRecord = new ResponseRecord(this.headerMap);
 		
 		List<String> contentsTypeList = this.getHeader(HeaderField.CONTENT_TYPE);
