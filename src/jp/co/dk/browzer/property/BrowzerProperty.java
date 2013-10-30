@@ -2,12 +2,8 @@ package jp.co.dk.browzer.property;
 
 import java.io.File;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import jp.co.dk.property.AbstractProperty;
-import jp.co.dk.property.Property;
 import jp.co.dk.property.exception.PropertyException;
 
 public class BrowzerProperty extends AbstractProperty {

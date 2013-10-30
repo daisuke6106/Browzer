@@ -80,7 +80,16 @@ public class TestPage extends TestBrowzerFoundation {
 			if(e.getMessageObj() != ERROR_AN_INVALID_URL_WAS_SPECIFIED) fail();
 		}
 		
-		// FORM指定して遷移する際に、引数のリクエストヘッダマップにnullが設定された場合、空のマップが生成されること。
+		// FORM指定して遷移する際に、Formにnullが設定された場合、例外が発生すること。
+		try {
+			Form form = null;
+			Page newPage = new Page(form, null);
+			fail();
+		} catch (BrowzingException e) {
+			if(e.getMessageObj() != ERROR_FORM_IS_NOT_SPECIFIED) fail();
+		}
+		
+		// FORM指定して遷移する際に、引数のリクエストヘッダマップにnullが設定された場合でも正常に遷移できること。
 		try {
 			page = new Page("http://www.tohoho-web.com/html/form.htm");
 			HtmlDocument document1 = (HtmlDocument)page.getDocument();

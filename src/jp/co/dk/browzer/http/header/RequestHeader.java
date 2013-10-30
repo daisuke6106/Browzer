@@ -30,4 +30,13 @@ public class RequestHeader implements Serializable{
 	public RequestHeader(Map<String, String> requestHeader) throws BrowzingException {
 		this.headerMap = new HashMap<String, String>(requestHeader);
 	}
+	
+	/**
+	 * リクエストヘッダのマップオブジェクトを取得します。
+	 * 
+	 * @return リクエストヘッダのマップオブジェクト
+	 */
+	public Map<String, String> getHeaderMap() {
+		return new HashMap<String, String>(this.headerMap);
+	}
 }

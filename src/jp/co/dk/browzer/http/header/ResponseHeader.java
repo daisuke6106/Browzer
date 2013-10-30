@@ -155,6 +155,15 @@ public class ResponseHeader implements Serializable{
 		}
 	}
 	
+	/**
+	 * レスポンスヘッダのマップオブジェクトを取得します。
+	 * 
+	 * @return レスポンスヘッダのマップオブジェクト
+	 */
+	public Map<String, List<String>> getHeaderMap() {
+		return new HashMap<String, List<String>>(this.headerMap);
+	}
+	
 	@Override
 	public String toString() {
 		return this.headerMap.toString();

@@ -17,6 +17,7 @@ import java.util.Map;
 import jp.co.dk.browzer.contents.BrowzingExtension;
 import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.http.header.ContentsType;
+import jp.co.dk.browzer.http.header.RequestHeader;
 import jp.co.dk.browzer.http.header.ResponseHeader;
 import jp.co.dk.browzer.http.header.HeaderField;
 import jp.co.dk.browzer.property.BrowzerProperty;
@@ -70,7 +71,7 @@ public class Page implements XmlConvertable{
 	protected Map<String, String> parameter;
 	
 	/** リクエストヘッダ */
-	protected Map<String, String> requestHeader;
+	protected RequestHeader requestHeader;
 	
 	/** レスポンスヘッダ */
 	protected ResponseHeader responseHeader;
@@ -114,13 +115,16 @@ public class Page implements XmlConvertable{
 		URLConnection connection = this.createURLConnection(this.urlObj, HtmlRequestMethodName.GET);
 		Map<String, String> requestHeaderByProperty = this.getRequestHeaderByPorperty();
 		requestHeaderByProperty.putAll(requestHeader);
+		
+		this.requestHeader = this.createRequestHeader(requestHeaderByProperty);
 		this.setRequestProperty(connection, requestHeaderByProperty);
 		try {
 			connection.connect();
 		} catch (IOException e) {
 			throw new BrowzingException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, urlObj.toString(), e );
 		}
-		this.responseHeader = this.createResponseHeader(connection);
+		Map<String, List<String>> responseHeader = connection.getHeaderFields();
+		this.responseHeader = this.createResponseHeader(responseHeader);
 		this.byteDump       = this.getByteDump(connection);
 	}
 	
@@ -134,7 +138,7 @@ public class Page implements XmlConvertable{
 	 * @param data           ページデータ
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
-	protected Page(String url, Map<String,String> requestHeader, ResponseHeader responseHeader, ByteDump data) throws BrowzingException {
+	protected Page(String url, Map<String,String> requestHeader, Map<String, List<String>> responseHeader, ByteDump data) throws BrowzingException {
 		if (url == null || url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);
 		this.url            = url;
 		this.urlObj         = this.createURL(url);
@@ -143,8 +147,8 @@ public class Page implements XmlConvertable{
 		this.path           = this.getPath(this.urlObj);
 		this.pathList       = this.getPathList(this.urlObj);
 		this.parameter      = this.getParameter(this.urlObj);
-		this.requestHeader  = requestHeader;
-		this.responseHeader = responseHeader;
+		this.requestHeader  = this.createRequestHeader(requestHeader);
+		this.responseHeader = this.createResponseHeader(responseHeader);
 		this.byteDump       = data;
 	}
 	
@@ -157,6 +161,7 @@ public class Page implements XmlConvertable{
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
 	protected Page(Form form, Map<String, String> requestProperty) throws BrowzingException {
+		if (form == null) throw new BrowzingException(ERROR_FORM_IS_NOT_SPECIFIED);
 		try {
 			this.urlObj = form.getAction().getURL();
 		} catch (HtmlDocumentException e) {
@@ -169,6 +174,8 @@ public class Page implements XmlConvertable{
 		this.path       = this.getPath(this.urlObj);
 		this.pathList   = this.getPathList(this.urlObj);
 		
+		if (requestProperty == null) requestProperty = new HashMap<String, String>(); 
+		this.requestHeader = this.createRequestHeader(requestProperty);
 		URLConnection connection = this.createURLConnection(this.urlObj, form.getMethod());
 		connection = this.setRequestProperty(connection, requestProperty);
 		try {
@@ -178,7 +185,8 @@ public class Page implements XmlConvertable{
 		} catch (IOException e) {
 			throw new BrowzingException(ERROR_FAILED_TO_SEND_MESSAGE, new String[]{this.url, form.getMethod().getMethod()}, e);
 		}
-		this.responseHeader = this.createResponseHeader(connection);
+		Map<String, List<String>> responseHeader = connection.getHeaderFields();
+		this.responseHeader = this.createResponseHeader(responseHeader);
 		this.byteDump       = this.getByteDump(connection);
 	}
 	
@@ -258,7 +266,7 @@ public class Page implements XmlConvertable{
 		Map<String, String> cookieRequestHeader   = this.getCookies();
 		defaultRequestHeader.putAll(cookieRequestHeader);
 		defaultRequestHeader.putAll(requestHeader);
-		return new Page(form, requestHeader);
+		return new Page(form, defaultRequestHeader);
 	}
 	
 	/**
@@ -740,9 +748,22 @@ public class Page implements XmlConvertable{
 		return map;
 	}
 	
-	protected String defaultFileName(ResponseHeader header) {
+	/**
+	 * このページのURLにファイル名が指定されていない場合に限り、ファイル名を取得します。<p/>
+	 * ファイル名は固定値で"default"が設定されます。<br/>
+	 * <br/>
+	 * 変更する場合はオーバーライドし、変更してください。<br/>
+	 * <br/>
+	 * 拡張子はレスポンスヘッダの"Content-Type"のデフォルト拡張子より取得できます。<br/>
+	 * （responseHeader.getContentsType().getDefaultExtension()にて取得）<br/>
+	 * "Content-Type"が設定されていない場合、nullが返却されます。<br/>
+	 * 
+	 * @param responseHeader レスポンスヘッダ
+	 * @return ファイル名
+	 */
+	protected String defaultFileName(ResponseHeader responseHeader) {
 		StringBuilder sb = new StringBuilder("default");
-		ContentsType contentType = header.getContentsType();
+		ContentsType contentType = responseHeader.getContentsType();
 		if (contentType != null) {
 			String extension = contentType.getDefaultExtension();
 			sb.append('.').append(extension);
@@ -750,6 +771,14 @@ public class Page implements XmlConvertable{
 		return sb.toString();
 	}
 	
+	/**
+	 * URLコネクションを元にバイトダンプのクラスオブジェクトを取得します。<p/>
+	 * 読み込みにて例外が発生した場合、BrowzingExceptionをthrowします。
+	 * 
+	 * @param connection URLコネクションオブジェクト
+	 * @return バイトダンプのインスタンス
+	 * @throws BrowzingException 読み込みにて例外が発生した場合
+	 */
 	protected ByteDump getByteDump(URLConnection connection) throws BrowzingException {
 		try {
 			return new ByteDump(this.getUrlInputStream(connection));
@@ -757,21 +786,57 @@ public class Page implements XmlConvertable{
 			throw new BrowzingException(ERROR_READ_PROCESS_FAILED, this.url, e);
 		}
 	}
-
+	
+	/**
+	 * URLオブジェクトからプロトコルを取得します。
+	 * 
+	 * @param urlObject URLオブジェクト
+	 * @return プロトコル名
+	 */
 	protected String getProtocol(URL urlObject) {
 		return urlObject.getProtocol();
 	}
 	
+	/**
+	 * URLオブジェクトからホスト名を取得します。
+	 * 
+	 * @param urlObject URLオブジェクト
+	 * @return ホスト名
+	 */
 	protected String getHost(URL urlObject) {
 		return urlObject.getHost();
 	}
 	
+	/**
+	 * URLオブジェクトからパスを表す文字列を取得します。
+	 * 
+	 * @param urlObject URLオブジェクト
+	 * @return パスを表す文字列
+	 */
 	protected String getPath(URL urlObject) {
 		return urlObject.getPath();
 	}
 	
-	protected ResponseHeader createResponseHeader(URLConnection connection) throws BrowzingException {
-		return new ResponseHeader(connection.getHeaderFields());
+	/**
+	 * リクエストヘッダのマップオブジェクトからリクエストヘッダオブジェクトのインスタンスを生成して返却します。
+	 * 
+	 * @param requestHeader リクエストヘッダのマップオブジェクト
+	 * @return リクエストヘッダオブジェクト
+	 * @throws BrowzingException リクエストヘッダのインスタンス生成に失敗した場合
+	 */
+	protected RequestHeader createRequestHeader(Map<String, String> requestHeader) throws BrowzingException {
+		return new RequestHeader(requestHeader);
+	}
+	
+	/**
+	 * レスポンスヘッダのマップオブジェクトからレスポンスヘッダオブジェクトのインスタンスを生成して返却します。
+	 * 
+	 * @param responseHeader レスポンスヘッダのマップオブジェクト
+	 * @return レスポンスヘッダオブジェクト
+	 * @throws BrowzingException レスポンスヘッダのインスタンス生成に失敗した場合
+	 */
+	protected ResponseHeader createResponseHeader(Map<String, List<String>> responseHeader) throws BrowzingException {
+		return new ResponseHeader(responseHeader);
 	}
 	
 	@Override
