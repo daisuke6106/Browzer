@@ -370,6 +370,18 @@ public class Page implements XmlConvertable{
 	}
 	
 	/**
+	 * このURLのパス一覧を取得します。
+	 * 例：<br/>
+	 * http://xxx.jp/aaa/bbb 、 http://xxx.jp/aaa/bbb/ 、http://xxx.jp/aaa/bbb/ccc.html の場合、List["aaa","bbb"]をを返却します。<br/>
+	 * http://xxx.jp/ や http://xxx.jp の場合、空のリストを返却します。<br/>
+	 * @return パス一覧
+	 * 
+	 */
+	public List<String> getPathList() {
+		return new ArrayList<String>(this.pathList);
+	}
+	
+	/**
 	 * このURLのファイル名を取得する。<p>
 	 * URLにファイル名が設定されていない場合、デフォルトのファイル名を返却する。
 	 * 
@@ -465,6 +477,24 @@ public class Page implements XmlConvertable{
 	 */
 	public long getSize() {
 		return this.responseHeader.getContentLength();
+	}
+	
+	/**
+	 * このページのデータを取得します。
+	 * 
+	 * @return ページデータ
+	 */
+	public ByteDump getData() {
+		return this.byteDump;
+	}
+	
+	/**
+	 * このページのリクエストヘッダを取得します。<p/>
+	 * 
+	 * @return リクエストヘッダ
+	 */
+	public RequestHeader getRequestHeader() {
+		return this.requestHeader;
 	}
 	
 	/**
