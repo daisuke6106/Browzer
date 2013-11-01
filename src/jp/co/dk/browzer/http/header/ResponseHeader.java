@@ -1,13 +1,19 @@
 package jp.co.dk.browzer.http.header;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.http.header.record.ResponseRecord;
+
+import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
 /**
  * ResponseHeaderは、HTTP通信にて使用されるHTTPヘッダを表すクラス
@@ -19,14 +25,16 @@ public class ResponseHeader implements Serializable{
 	
 	/** シリアルバージョンID */
 	private static final long serialVersionUID = 3560283562725038491L;
-
-	private Map<String, List<String>> headerMap;
 	
-	private ResponseRecord responseRecord;
+	protected SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", Locale.US);
 	
-	private ContentsType contentsType;
+	protected Map<String, List<String>> headerMap;
 	
-	private CharSet charSet;
+	protected ResponseRecord responseRecord;
+	
+	protected ContentsType contentsType;
+	
+	protected CharSet charSet;
 	
 	/**
 	 * コンストラクタ<br/>
@@ -152,6 +160,27 @@ public class ResponseHeader implements Serializable{
 			}
 		} else {
 			return -1;
+		}
+	}
+	
+	/**
+	 * Last-Modified取得<p/>
+	 * ヘッダに設定されているLast-Modifiedからこのページのサイズを取得する。<br/>
+	 * ヘッダにLast-Modifiedが設定されていなかった場合、nullを返却します。<br/>
+	 * ヘッダにLast-Modifiedが複数設定されていた、または、日付が不正な日付フォーマットで合った場合、例外を送出します。
+	 * 
+	 * @return 最終更新日付
+	 * @throws BrowzingException ヘッダにLast-Modifiedが複数設定されていた、または、日付が不正な日付フォーマットで合った場合
+	 */
+	public Date getLastModified() throws BrowzingException {
+		List<String> lastModifideList = this.getHeader(HeaderField.LAST_MODIFIED);
+		if (lastModifideList.size() == 0) return null; 
+		if (lastModifideList.size() > 1) throw new BrowzingException(ERROR_FAILED_TO_CONVERT_LAST_MODIFIED_FIRLD_MORE_THEN_ONE, lastModifideList.toString());
+		String lastModifideStr = lastModifideList.get(0);
+		try {
+			return this.dateFormat.parse(lastModifideStr);
+		} catch (ParseException e) {
+			throw new BrowzingException(ERROR_FAILED_TO_CONVERT_LAST_MODIFIED_FORMAT_UNKNOWN, lastModifideStr, e);
 		}
 	}
 	

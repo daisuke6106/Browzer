@@ -133,6 +133,12 @@ public class BrowzingMessage extends AbstractMessage {
 	/** このページはHTMLでないため、アンカータグを取得できません。URL=[{0}] */
 	public static final BrowzingMessage ERROR_THIS_PAGE_IS_NOT_HTML = new BrowzingMessage("E038");
 	
+	/** HTTPヘッダに設定されたリソースの最終更新時刻の変換に失敗しました。日付フォーマットが未知です。Last-Modified=[{0}] */
+	public static final BrowzingMessage ERROR_FAILED_TO_CONVERT_LAST_MODIFIED_FORMAT_UNKNOWN = new BrowzingMessage("E039");
+	
+	/** HTTPヘッダに設定されたリソースの最終更新時刻の変換に失敗しました。日付フォーマットが複数存在します。Last-Modified=[{0}] */
+	public static final BrowzingMessage ERROR_FAILED_TO_CONVERT_LAST_MODIFIED_FIRLD_MORE_THEN_ONE = new BrowzingMessage("E040");
+	
 	/** HTTPステータスコード：100 クライアントにリクエストを継続することを指示します。 */
 	public static final BrowzingMessage HTTP_STATUS_CODE_100 = new BrowzingMessage("STATUS100");
 	
