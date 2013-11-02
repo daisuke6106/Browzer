@@ -18,7 +18,6 @@
     <tr>
       <td class='line'></td><td>&nbsp;</td>
       <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import java.io.File;
-import java.math.BigDecimal;
 
 import jp.co.dk.property.AbstractProperty;
 import jp.co.dk.property.exception.PropertyException;
@@ -26,13 +25,22 @@ import jp.co.dk.property.exception.PropertyException;
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>9</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l9s0'>public class BrowzerProperty extends AbstractProperty {</pre></td>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>/**
+ * ブラウザに関するプロパティを定義するクラスです。
+ * 
+ * @version 1.0
+ * @author D.Kanno
+ */</div><span>/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>14</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l14s0'>public class BrowzerProperty extends AbstractProperty {</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>11</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l11s0'>	public static BrowzerProperty <span class='static uncovered' title='Reads: 0 Writes: 0'>REQUEST_HEADER</span> = new BrowzerProperty("header.request.");</pre></td>
+      <td class='line'>16</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l16s0'>	public static BrowzerProperty <span class='static uncovered' title='Reads: 0 Writes: 0'>REQUEST_HEADER</span> = new BrowzerProperty("header.request.");</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -46,47 +54,20 @@ import jp.co.dk.property.exception.PropertyException;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>20</td><td>&nbsp;</td>
+      <td class='line'>25</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	protected BrowzerProperty (String key) throws PropertyException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>21</td><td>&nbsp;</td>
-      <td><pre class='comment'>//		this(new File("properties/BrowzerProperty.properties"), key);</pre></td>
+      <td class='line'>26</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l26s0'>		super(new File("properties/BrowzerProperty.properties"), key);</pre></td>
     </tr>
     <tr>
-      <td class='line'>22</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l22s0'>		super(key);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>23</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l23s0'>	}</pre></td>
+      <td class='line'>27</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l27s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'></td><td>&nbsp;</td>
-      <td class='comment' onclick='showHideLines(this)'><div>	/**
-	 * コンストラクタ&lt;p>
-	 * 
-	 * 指定されたプロパティファイルパス、プロパティキーをもとにプロパティ定数クラスを生成します。
-	 * 
-	 * @param file プロパティファイルパス
-	 * @param key  プロパティキー
-	 */</div><span>	/*...*/</span></td>
-    </tr>
-    <tr>
-      <td class='line'>33</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected BrowzerProperty (File file, String key) throws PropertyException {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>34</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l34s0'>		super(file, key);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>35</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l35s0'>	}	</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>36</td><td>&nbsp;</td>
+      <td class='line'>29</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>}</pre></td>
     </tr>
   </table>

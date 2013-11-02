@@ -11,8 +11,8 @@
   <table id='packages'>
     <caption>All Packages and Files<div style='font-size: smaller'>Browzer/src</div></caption>
     <tr>
-      <th style='cursor: col-resize' onclick='showHideAllFiles()'>Packages: 1</th>
-      <th onclick='location.reload()' style='cursor: n-resize' title='Click on the title for each metric to sort by size (total number of line segments, paths, or fields).'>Files: 2</th>
+      <th style='cursor: col-resize' onclick='showHideAllFiles()'>Packages: 5</th>
+      <th onclick='location.reload()' style='cursor: n-resize' title='Click on the title for each metric to sort by size (total number of line segments, paths, or fields).'>Files: 13</th>
       <th onclick='sortTables(1)' style='cursor: n-resize' title='Measures how much of the executable production code was exercised by tests.
 An executable line of code contains one or more executable segments.
 The percentages are calculated as 100*NE/NS, where NS is the number of segments and NE the number of executed segments.'>Line</th>
@@ -23,37 +23,159 @@ To be fully exercised, a field must have the last value assigned to it read by a
 The percentages are calculated as 100*NFE/NF, where NF is the number of non-final fields and NFE the number of fully exercised fields.'>Data</th>
     </tr>
     <tr>
-      <td class='file click' onclick='showHideFiles(this)'>jp.co.dk.browzer.property</td>
+      <td class='file click' onclick='showHideFiles(this)'>jp.co.dk.browzer</td>
       <td>
         <table width='100%'>
           <tr>
-            <td class='file'><a target='_blank' href='jp/co/dk/browzer/property/BrowzerProperty.html'>BrowzerProperty.java</a>    </td>
-            <td style='background-color:#55aa00' title='Line segments: 4/6'>67%</td>
-            <td style='background-color:#7f8000' title='Paths: 1/2'>50%</td>
+            <td class='file'><a target='_blank' href='jp/co/dk/browzer/Browzer.html'>Browzer.java</a>              </td>
+            <td style='background-color:#ff0000' title='Line segments: 0/60'>0%</td>
+            <td style='background-color:#ff0000' title='Paths: 0/27'>0%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/2'>0%</td>
+          </tr>
+          <tr>
+            <td class='file'>DocumentFactory.java      </td>
+            <td colspan='3' class='unknown'>?</td>
+          </tr>
+          <tr>
+            <td class='file'><a target='_blank' href='jp/co/dk/browzer/Page.html'>Page.java</a>                 </td>
+            <td style='background-color:#ff0000' title='Line segments: 0/273'>0%</td>
+            <td style='background-color:#ff0000' title='Paths: 0/80'>0%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/11'>0%</td>
+          </tr>
+          <tr>
+            <td class='file'>PageManager.java          </td>
+            <td colspan='3' class='unknown'>?</td>
+          </tr>
+          <tr>
+            <td class='file'>PageRedirectHandler.java  </td>
+            <td colspan='3' class='unknown'>?</td>
+          </tr>
+          <tr>
+            <td class='file'>TestBrowzerFoundation.java</td>
+            <td style='background-color:#de2100' title='Line segments: 3/23'>13%</td>
+            <td style='background-color:#c63900' title='Paths: 2/9'>22%</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+        </table>
+      </td>
+      <td class='pt' style='background-color:#fd0200' title='Line segments: 3/356'>1%</td>
+      <td class='pt' style='background-color:#fb0400' title='Paths: 2/116'>2%</td>
+      <td class='pt' style='background-color:#ff0000' title='Fields: 0/13'>0%</td>
+    </tr>
+    <tr>
+      <td class='file'>jp.co.dk.browzer.exception</td>
+      <td>
+        <table width='100%'>
+          <tr>
+            <td class='file'><a target='_blank' href='jp/co/dk/browzer/exception/BrowzingException.html'>BrowzingException.java</a>    </td>
+            <td style='background-color:#bf4000' title='Line segments: 4/16'>25%</td>
+            <td style='background-color:#bf4000' title='Paths: 2/8'>25%</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+        </table>
+      </td>
+      <td class='pt' style='background-color:#bf4000' title='Line segments: 4/16'>25%</td>
+      <td class='pt' style='background-color:#bf4000' title='Paths: 2/8'>25%</td>
+      <td class='nocode'>N/A</td>
+    </tr>
+    <tr>
+      <td class='file click' onclick='showHideFiles(this)'>jp.co.dk.browzer.http.header</td>
+      <td>
+        <table width='100%'>
+          <tr>
+            <td class='file'><a target='_blank' href='jp/co/dk/browzer/http/header/CharSet.html'>CharSet.java</a>              </td>
+            <td style='background-color:#33cc00' title='Line segments: 8/10'>80%</td>
+            <td style='background-color:#55aa00' title='Paths: 4/6'>67%</td>
             <td style='background-color:#ff0000' title='Fields: 0/1'>0%</td>
           </tr>
           <tr>
-            <td class='file'>TestBrowzerProperty.java</td>
+            <td class='file'><a target='_blank' href='jp/co/dk/browzer/http/header/ContentsType.html'>ContentsType.java</a>         </td>
+            <td style='background-color:#9b6400' title='Line segments: 13/33'>39%</td>
+            <td style='background-color:#b64900' title='Paths: 4/14'>29%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/5'>0%</td>
+          </tr>
+          <tr>
+            <td class='file'><a target='_blank' href='jp/co/dk/browzer/http/header/HeaderField.html'>HeaderField.java</a>          </td>
+            <td style='background-color:#4cb300' title='Line segments: 7/10'>70%</td>
+            <td style='background-color:#7f8000' title='Paths: 3/6'>50%</td>
+            <td style='background-color:#aa5500' title='Fields: 1/3'>33%</td>
+          </tr>
+          <tr>
+            <td class='file'>RequestHeader.java        </td>
+            <td colspan='3' class='unknown'>?</td>
+          </tr>
+          <tr>
+            <td class='file'><a target='_blank' href='jp/co/dk/browzer/http/header/ResponseHeader.html'>ResponseHeader.java</a>       </td>
+            <td style='background-color:#778800' title='Line segments: 33/62'>53%</td>
+            <td style='background-color:#b14e00' title='Paths: 7/23'>30%</td>
+            <td style='background-color:#996600' title='Fields: 2/5'>40%</td>
+          </tr>
+          <tr>
+            <td class='file'>TestResponseHeader.java   </td>
             <td style='background-color:#ff0000' title='Line segments: 0/1'>0%</td>
             <td style='background-color:#ff0000' title='Paths: 0/1'>0%</td>
             <td class='nocode'>N/A</td>
           </tr>
         </table>
       </td>
-      <td class='pt' style='background-color:#6d9200' title='Line segments: 4/7'>57%</td>
-      <td class='pt' style='background-color:#aa5500' title='Paths: 1/3'>33%</td>
-      <td class='pt' style='background-color:#ff0000' title='Fields: 0/1'>0%</td>
+      <td class='pt' style='background-color:#798600' title='Line segments: 61/116'>53%</td>
+      <td class='pt' style='background-color:#a35c00' title='Paths: 18/50'>36%</td>
+      <td class='pt' style='background-color:#c83700' title='Fields: 3/14'>21%</td>
+    </tr>
+    <tr>
+      <td class='file click' onclick='showHideFiles(this)'>jp.co.dk.browzer.http.header.record</td>
+      <td>
+        <table width='100%'>
+          <tr>
+            <td class='file'><a target='_blank' href='jp/co/dk/browzer/http/header/record/HttpStatusCode.html'>HttpStatusCode.java</a>       </td>
+            <td style='background-color:#4cb300' title='Line segments: 7/10'>70%</td>
+            <td style='background-color:#7f8000' title='Paths: 3/6'>50%</td>
+            <td style='background-color:#aa5500' title='Fields: 1/3'>33%</td>
+          </tr>
+          <tr>
+            <td class='file'><a target='_blank' href='jp/co/dk/browzer/http/header/record/HttpStatusType.html'>HttpStatusType.java</a>       </td>
+            <td style='background-color:#7f8000' title='Line segments: 1/2'>50%</td>
+            <td style='background-color:#7f8000' title='Paths: 1/2'>50%</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+          <tr>
+            <td class='file'><a target='_blank' href='jp/co/dk/browzer/http/header/record/ResponseRecord.html'>ResponseRecord.java</a>       </td>
+            <td style='background-color:#4eb100' title='Line segments: 18/26'>69%</td>
+            <td style='background-color:#df2000' title='Paths: 1/8'>13%</td>
+            <td style='background-color:#55aa00' title='Fields: 4/6'>67%</td>
+          </tr>
+        </table>
+      </td>
+      <td class='pt' style='background-color:#51ae00' title='Line segments: 26/38'>68%</td>
+      <td class='pt' style='background-color:#af5000' title='Paths: 5/16'>31%</td>
+      <td class='pt' style='background-color:#718e00' title='Fields: 5/9'>56%</td>
+    </tr>
+    <tr>
+      <td class='file'>jp.co.dk.browzer.message</td>
+      <td>
+        <table width='100%'>
+          <tr>
+            <td class='file'><a target='_blank' href='jp/co/dk/browzer/message/BrowzingMessage.html'>BrowzingMessage.java</a>      </td>
+            <td style='background-color:#00ff00' title='Line segments: 86/86'>100%</td>
+            <td style='background-color:#00ff00' title='Paths: 1/1'>100%</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+        </table>
+      </td>
+      <td class='pt' style='background-color:#00ff00' title='Line segments: 86/86'>100%</td>
+      <td class='pt' style='background-color:#00ff00' title='Paths: 1/1'>100%</td>
+      <td class='nocode'>N/A</td>
     </tr>
     <tr class='total'>
       <td>Total</td><td>&nbsp;</td>
-      <td class='pt' style='background-color:#6d9200' title='Line segments: 4/7'>57%</td>
-      <td class='pt' style='background-color:#aa5500' title='Paths: 1/3'>33%</td>
-      <td class='pt' style='background-color:#ff0000' title='Fields: 0/1'>0%</td>
+      <td class='pt' style='background-color:#b44b00' title='Line segments: 180/612'>29%</td>
+      <td class='pt' style='background-color:#da2500' title='Paths: 28/191'>15%</td>
+      <td class='pt' style='background-color:#c63900' title='Fields: 8/36'>22%</td>
     </tr>
   </table>
   <p>
     <a href='http://code.google.com/p/jmockit'><img src='logo.png'></a>
-    Generated on Thu Oct 31 01:08:06 JST 2013
+    Generated on Sun Nov 03 00:42:03 JST 2013
   </p>
 </body>
 </html>
