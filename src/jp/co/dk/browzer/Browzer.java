@@ -64,7 +64,7 @@ public class Browzer {
 	 */
 	public Browzer(String url, PageRedirectHandler pageRedirectHandler) throws BrowzingException {
 		this.pageRedirectHandler = pageRedirectHandler;
-		this.pageManager         = new PageManager(new Page(url), pageRedirectHandler);
+		this.pageManager         = new PageManager(this.ceatePage(url), pageRedirectHandler);
 	}
 	
 	/**
@@ -90,7 +90,7 @@ public class Browzer {
 	 */
 	public Browzer(String url, PageRedirectHandler pageRedirectHandler, int maxNestLevel) throws BrowzingException {
 		this.pageRedirectHandler = pageRedirectHandler;
-		this.pageManager         = new PageManager(new Page(url), pageRedirectHandler, maxNestLevel);
+		this.pageManager         = new PageManager(this.ceatePage(url), pageRedirectHandler, maxNestLevel);
 	}
 	
 	/**
@@ -279,4 +279,14 @@ public class Browzer {
 		}
 	}
 	
+	/**
+	 * 指定のURLからページオブジェクトを作成する。
+	 * 
+	 * @param url URL文字列
+	 * @return ページオブジェクト
+	 * @throws BrowzingException ページクラスの生成に失敗した場合
+	 */
+	protected Page ceatePage(String url) throws BrowzingException {
+		return new Page(url);
+	}
 }
