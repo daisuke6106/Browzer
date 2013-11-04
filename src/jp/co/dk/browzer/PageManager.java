@@ -90,7 +90,7 @@ class PageManager implements XmlConvertable{
 	PageManager move(String url) throws BrowzingException {
 		int nextLevel = this.nestLevel+1;
 		if ( !(this.maxNestLevel<0) && this.maxNestLevel < nextLevel) throw new BrowzingException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));
-		Page nextPage = new Page(url);
+		Page nextPage = this.createPage(url);
 		nextPage = pageRedirectHandler.redirect(nextPage);
 		PageManager childPageManager = new PageManager(this, nextPage, this.pageRedirectHandler, nextLevel, this.maxNestLevel);
 		this.childPageList.add(childPageManager);
@@ -160,4 +160,14 @@ class PageManager implements XmlConvertable{
 		return xmlElement;
 	}
 	
+	/**
+	 * 指定のURLからページオブジェクトを作成する。
+	 * 
+	 * @param url URL文字列
+	 * @return ページオブジェクト
+	 * @throws BrowzingException ページクラスの生成に失敗した場合
+	 */
+	public Page createPage(String url) throws BrowzingException {
+		return new Page(url);
+	}
 }

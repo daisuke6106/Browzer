@@ -144,6 +144,21 @@ Starting audit...
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:289:9: メソッド 'ceatePage' は拡張するように設計されていません - abstract か final か空である必要があります。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:289:34: Parameter url should be final.
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:289:53: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:292: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:293: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:295: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:300: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:300:9: メソッド 'createPageManager' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:300:49: Parameter page should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:300:60: Parameter handler should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:303: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:304: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:306: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:312: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:312:9: メソッド 'createPageManager' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:312:49: Parameter page should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:312:60: Parameter handler should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:312:89: Parameter maxNestLevel should be final.
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:12: '.*' 形式のインポートの使用は避けるべきです - jp.co.dk.browzer.message.BrowzingMessage.*。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:14: 最初の一文はピリオドで終わらなければなりません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:16: Line has trailing spaces.
@@ -753,6 +768,10 @@ Starting audit...
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageManager.java:155: 行が 80 文字を超えています。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageManager.java:155:54: jp.co.dk.xml.exception.XmlDocumentException のクラス情報が取得できません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageManager.java:162: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageManager.java:163: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageManager.java:165: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageManager.java:170:32: Parameter url should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageManager.java:170:51: BrowzingException のクラス情報が取得できません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:0: ファイルが新しい行で終了していません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:3: '.*' 形式のインポートの使用は避けるべきです - jp.co.dk.browzer.message.BrowzingMessage.*。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:10:1: 同一パッケージからのインポートは冗長です - jp.co.dk.browzer.Page。

@@ -64,7 +64,7 @@ public class Browzer {
 	 */
 	public Browzer(String url, PageRedirectHandler pageRedirectHandler) throws BrowzingException {
 		this.pageRedirectHandler = pageRedirectHandler;
-		this.pageManager         = new PageManager(this.ceatePage(url), pageRedirectHandler);
+		this.pageManager         = this.createPageManager(this.ceatePage(url), pageRedirectHandler);
 	}
 	
 	/**
@@ -90,7 +90,7 @@ public class Browzer {
 	 */
 	public Browzer(String url, PageRedirectHandler pageRedirectHandler, int maxNestLevel) throws BrowzingException {
 		this.pageRedirectHandler = pageRedirectHandler;
-		this.pageManager         = new PageManager(this.ceatePage(url), pageRedirectHandler, maxNestLevel);
+		this.pageManager         = this.createPageManager(this.ceatePage(url), pageRedirectHandler, maxNestLevel);
 	}
 	
 	/**
@@ -288,5 +288,28 @@ public class Browzer {
 	 */
 	protected Page ceatePage(String url) throws BrowzingException {
 		return new Page(url);
+	}
+	
+	/**
+	 * 指定のページオブジェクト、ページリダイレクトハンドラからページマネージャを作成する。
+	 * 
+	 * @param page ページオブジェクト
+	 * @param handler ページリダイレクトハンドラ
+	 * @return ページマネージャオブジェクト
+	 */
+	protected PageManager createPageManager(Page page, PageRedirectHandler handler) {
+		return new PageManager(page, handler);
+	}
+	
+	/**
+	 * 指定のページオブジェクト、ページリダイレクトハンドラ、最大遷移数からページマネージャを作成する。
+	 * 
+	 * @param page ページオブジェクト
+	 * @param handler ページリダイレクトハンドラ
+	 * @param maxNestLevel 最大遷移数
+	 * @return ページマネージャオブジェクト
+	 */
+	protected PageManager createPageManager(Page page, PageRedirectHandler handler, int maxNestLevel) {
+		return new PageManager(page, handler, maxNestLevel);
 	}
 }
