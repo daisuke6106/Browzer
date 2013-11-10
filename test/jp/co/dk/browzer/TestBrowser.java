@@ -148,9 +148,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 		// 指定のページ遷移上限数を指定してページ遷移した場合、指定した上限を超えようとした場合、例外が送出されること。
 		// ページ遷移上限数５で遷移した場合
 		try {
-			Browzer browzer1 = super.getBrowzer(5);
-			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
-			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
+			Browzer browzer1 = super.getBrowzer(3);
 			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
 			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
 			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
@@ -320,9 +318,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 	public void ableMoceNextPage() {
 		try {
 			String url1 = super.getRandomUrl();
-			Browzer browzer1 = super.getBrowzer(url1, 5);
-			browzer1.move(super.getRandomElement(browzer1.getAnchor(),rule));
-			browzer1.move(super.getRandomElement(browzer1.getAnchor(),rule));
+			Browzer browzer1 = super.getBrowzer(url1, 3);
 			browzer1.move(super.getRandomElement(browzer1.getAnchor(),rule));
 			browzer1.move(super.getRandomElement(browzer1.getAnchor(),rule));
 			if (!browzer1.ableMoveNextPage()) fail(); 

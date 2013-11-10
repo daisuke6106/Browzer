@@ -46,70 +46,144 @@ public class PageRedirectHandler {
 		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();
 		switch(httpStatusCode.getStatusType()) {
 			case INFOMATIONAL:
-				return page;
+				return this.redirectBy_REDIRECTION(header, page);
 				
 			case SUCCESS:
-				
-				File file = page.getDocument();
-				if (file instanceof HtmlDocument) {
-					HtmlDocument htmlDocument = (HtmlDocument)file;
-					List<Element> metaElementList = htmlDocument.getElement(HtmlElementName.META);
-					for (Element element : metaElementList) {
-						if (element instanceof Meta) {
-							Meta meta = (Meta)element;
-							if (HttpEquivName.REFRESH == meta.getHttpEquiv()) {
-								String contents = meta.getContent();
-								if (contents.equals("")) contents = "1"; 
-								int sleepType = Integer.parseInt(contents);
-								try {
-									Thread.sleep(sleepType * 1000);
-								} catch (InterruptedException e) {
-									throw new BrowzingException(ERROR_THREAD_STOP, e); 
-								}
-								String url = meta.getAttribute("url");
-								return new Page(page.completionURL(url));
-							}
-						}
-					}
-					return page;
-				} else {
-					return page;
-				}
+				return this.redirectBy_SUCCESS(header, page);
 				
 			case REDIRECTION:
-				String location = header.getLocation();
-				if (location == null || location.equals("")) throw new BrowzingException(ERROR_REDIRECT_LOCATION_NOT_FOUND); 
-				return this.ceatePage(page.completionURL(location));
+				return this.redirectBy_REDIRECTION(header, page);
 				
 			case CLIENT_ERROR:
-				if (httpStatusCode == HttpStatusCode.STATUS_401) {
-					BufferedReader reader = new BufferedReader( new InputStreamReader(System.in));
-					System.out.print(INFO_PLEASE_INPUT_USER_AND_PASSWORD.getMessage());
-					System.out.print(INFO_USER.getMessage());
-					String line;
-					try {
-						while ((line = reader.readLine()) != null) {
-							
-						}
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						// throw new BrowzingException(e);
-					}
-					
-					System.out.print(INFO_USER.getMessage());
-				}
-				
-				throw new BrowzingException(ERROR_HTTP_STATUS_CODE_IS_SENT_BACK_FROM_SERVER_HAS_RETURNED_NON_NORMAL, 
-						new String[]{ httpStatusCode.getCode(), httpStatusCode.getMessage().getMessage(), page.getURL()});
+				return this.redirectBy_CLIENT_ERROR(header, page);
 				
 			case SERVER_ERROR:
-				throw new BrowzingException(ERROR_HTTP_STATUS_CODE_IS_SENT_BACK_FROM_SERVER_HAS_RETURNED_NON_NORMAL, 
-						new String[]{ httpStatusCode.getCode(), httpStatusCode.getMessage().getMessage(), page.getURL()});
+				return this.redirectBy_SERVER_ERROR(header, page);
 				
 			default:
 				break;
 		}
 		return page;
+	}
+	
+	/**
+	 * HTTPサーバより返却されたHTTPステータスコードが「1XX」を返却した場合の制御を定義するメソッドです。<br/>
+	 * 情報返却として、そのままのページオブジェクトを返却します。
+	 * 
+	 * @param header ページのレスポンスヘッダ
+	 * @param page   ページオブジェクト
+	 * @return ページオブジェクト
+	 * @throws BrowzingException 遷移に失敗した場合
+	 */
+	protected Page redirectBy_INFOMATIONAL(ResponseHeader header, Page page) throws BrowzingException {
+		return page;
+	}
+	
+	/**
+	 * HTTPサーバより返却されたHTTPステータスコードが「2XX」を返却した場合の制御を定義するメソッドです。<br/>
+	 * 正常に通信成功として、そのままのページオブジェクトを返却します。<br/>
+	 * <br/>
+	 * ただし、ページがHTMLであり、METAタグに「refresh」が設定されていた場合、定義された指定秒数スリープ後、「url」に定義された<br/>
+	 * URLへ遷移し、そのページのオブジェクトを返却します。
+	 * 
+	 * @param header ページのレスポンスヘッダ
+	 * @param page   ページオブジェクト
+	 * @return ページオブジェクト
+	 * @throws BrowzingException 遷移に失敗した場合
+	 */
+	protected Page redirectBy_SUCCESS(ResponseHeader header, Page page) throws BrowzingException {
+		File file = page.getDocument();
+		if (file instanceof HtmlDocument) {
+			HtmlDocument htmlDocument = (HtmlDocument)file;
+			List<Element> metaElementList = htmlDocument.getElement(HtmlElementName.META);
+			for (Element element : metaElementList) {
+				if (element instanceof Meta) {
+					Meta meta = (Meta)element;
+					if (HttpEquivName.REFRESH == meta.getHttpEquiv()) {
+						String contents = meta.getContent();
+						if (contents.equals("")) contents = "1"; 
+						int sleepType = Integer.parseInt(contents);
+						try {
+							Thread.sleep(sleepType * 1000);
+						} catch (InterruptedException e) {
+							throw new BrowzingException(ERROR_THREAD_STOP, e); 
+						}
+						String url = meta.getAttribute("url");
+						return this.ceatePage(page.completionURL(url));
+					}
+				}
+			}
+			return page;
+		} else {
+			return page;
+		}
+	}
+	
+	/**
+	 * HTTPサーバより返却されたHTTPステータスコードが「3XX」を返却した場合の制御を定義するメソッドです。<br/>
+	 * リダイレクトが実施され、リダイレクト先のページを返却します。<br/>
+	 * <br/>
+	 * リダイレクト先が指定されていなかった場合、遷移失敗とし、例外を送出します。
+	 * 
+	 * @param header ページのレスポンスヘッダ
+	 * @param page   ページオブジェクト
+	 * @return ページオブジェクト
+	 * @throws BrowzingException 遷移に失敗した場合
+	 */
+	protected Page redirectBy_REDIRECTION(ResponseHeader header, Page page) throws BrowzingException {
+		String location = header.getLocation();
+		if (location == null || location.equals("")) throw new BrowzingException(ERROR_REDIRECT_LOCATION_NOT_FOUND); 
+		return this.ceatePage(page.completionURL(location));
+	}
+	
+	/**
+	 * HTTPサーバより返却されたHTTPステータスコードが「4XX」を返却した場合の制御を定義するメソッドです。<br/>
+	 * クライアントエラーとして BrowzingException を throw します。<br/>
+	 * 「401」が返却された場合、アクセス認証を行います。（未実装）
+	 * 
+	 * @param header ページのレスポンスヘッダ
+	 * @param page   ページオブジェクト
+	 * @return ページオブジェクト
+	 * @throws BrowzingException 遷移に失敗した場合
+	 */
+	protected Page redirectBy_CLIENT_ERROR(ResponseHeader header, Page page) throws BrowzingException {
+		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();
+		if (httpStatusCode == HttpStatusCode.STATUS_401) {
+			BufferedReader reader = new BufferedReader( new InputStreamReader(System.in));
+			System.out.print(INFO_PLEASE_INPUT_USER_AND_PASSWORD.getMessage());
+			System.out.print(INFO_USER.getMessage());
+			String line;
+			try {
+				while ((line = reader.readLine()) != null) {
+					
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				// throw new BrowzingException(e);
+			}
+			
+			System.out.print(INFO_USER.getMessage());
+		}
+		
+		throw new BrowzingException(ERROR_HTTP_STATUS_CODE_IS_SENT_BACK_FROM_SERVER_HAS_RETURNED_NON_NORMAL, 
+				new String[]{ httpStatusCode.getCode(), httpStatusCode.getMessage().getMessage(), page.getURL()});
+		
+	}
+	
+	/**
+	 * HTTPサーバより返却されたHTTPステータスコードが「5XX」を返却した場合の制御を定義するメソッドです。<br/>
+	 * サーバエラーとして BrowzingException を throw します。<br/>
+	 * 
+	 * @param header ページのレスポンスヘッダ
+	 * @param page   ページオブジェクト
+	 * @return ページオブジェクト
+	 * @throws BrowzingException 遷移に失敗した場合
+	 */
+	protected Page redirectBy_SERVER_ERROR(ResponseHeader header, Page page) throws BrowzingException {
+		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();
+		throw new BrowzingException(ERROR_HTTP_STATUS_CODE_IS_SENT_BACK_FROM_SERVER_HAS_RETURNED_NON_NORMAL, 
+				new String[]{ httpStatusCode.getCode(), httpStatusCode.getMessage().getMessage(), page.getURL()});
+		
 	}
 	
 	/**

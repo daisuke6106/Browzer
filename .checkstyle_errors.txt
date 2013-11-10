@@ -827,63 +827,106 @@ Starting audit...
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:44:23: Parameter page should be final.
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:44:41: BrowzingException のクラス情報が取得できません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:46: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:49: 行が 80 文字を超えています。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:50: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:52: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:53: Line has trailing spaces.
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:55: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:55:83: 'cast' の後にホワイトスペースがありません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:56: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:57: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:59: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:59:75: 'cast' の後にホワイトスペースがありません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:60: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:56: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:58: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:59: Line has trailing spaces.
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:61: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:62: 'if' 文では '{}' を使用しなければなりません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:62: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:62: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:63: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:65: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:65:98: '1000' はマジックナンバーです。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:66: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:67: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:67: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:69: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:70: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:78: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:81: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:68: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:69: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:72: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:78: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:78:9: メソッド 'redirectBy_INFOMATIONAL' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:78:24: 名前 'redirectBy_INFOMATIONAL' はパターン '^[a-z][a-zA-Z0-9]*$' に一致しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:78:48: Parameter header should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:78:71: Parameter page should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:78:89: BrowzingException のクラス情報が取得できません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:81: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:81: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:82: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:83: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:85: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:82: 最初の一文はピリオドで終わらなければなりません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:86: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:86:84: '(' の後にホワイトスペースがあります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:87: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:88: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:91: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:91:92: 少なくとも1文はあるはずです。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:92: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:94:65: 少なくとも1文はあるはずです。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:95: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:96: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:98: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:99: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:101: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:102: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:88: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:94: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:94:9: メソッド 'redirectBy_SUCCESS' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:94:24: 名前 'redirectBy_SUCCESS' はパターン '^[a-z][a-zA-Z0-9]*$' に一致しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:94:43: Parameter header should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:94:66: Parameter page should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:94:84: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:97:67: 'cast' の後にホワイトスペースがありません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:98: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:101:59: 'cast' の後にホワイトスペースがありません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:102: 行が 80 文字を超えています。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:103: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:103:62: '{' の後にホワイトスペースがあります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:104: 'if' 文では '{}' を使用しなければなりません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:104: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:106: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:106: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:104: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:105: 行が 80 文字を超えています。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:107: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:107:62: '{' の後にホワイトスペースがあります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:108: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:114: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:115: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:117: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:122:9: メソッド 'ceatePage' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:122:34: Parameter url should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:122:53: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:107:82: '1000' はマジックナンバーです。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:108: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:109: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:109: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:111: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:112: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:121: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:122: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:127: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:133: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:133:9: メソッド 'redirectBy_REDIRECTION' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:133:24: 名前 'redirectBy_REDIRECTION' はパターン '^[a-z][a-zA-Z0-9]*$' に一致しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:133:47: Parameter header should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:133:70: Parameter page should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:133:88: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:135: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:135: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:135: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:138: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:139: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:143: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:149: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:149:9: メソッド 'redirectBy_CLIENT_ERROR' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:149:24: 名前 'redirectBy_CLIENT_ERROR' はパターン '^[a-z][a-zA-Z0-9]*$' に一致しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:149:48: Parameter header should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:149:71: Parameter page should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:149:89: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:150: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:152: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:152:68: '(' の後にホワイトスペースがあります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:153: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:157:76: 少なくとも1文はあるはずです。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:158: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:160:49: 少なくとも1文はあるはずです。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:164: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:167: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:168: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:168: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:169: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:169:46: '{' の後にホワイトスペースがあります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:170: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:172: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:173: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:176: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:182: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:182:9: メソッド 'redirectBy_SERVER_ERROR' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:182:24: 名前 'redirectBy_SERVER_ERROR' はパターン '^[a-z][a-zA-Z0-9]*$' に一致しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:182:48: Parameter header should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:182:71: Parameter page should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:182:89: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:183: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:184: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:184: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:185: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:185:46: '{' の後にホワイトスペースがあります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:186: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:188: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:189: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:191: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:196:9: メソッド 'ceatePage' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:196:34: Parameter url should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/PageRedirectHandler.java:196:53: BrowzingException のクラス情報が取得できません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/contents/BrowzingExtension.java:0: Missing package-info.java file.
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/contents/BrowzingExtension.java:3: 最初の一文はピリオドで終わらなければなりません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/contents/BrowzingExtension.java:5: Line has trailing spaces.

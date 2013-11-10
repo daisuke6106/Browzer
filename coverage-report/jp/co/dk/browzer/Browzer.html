@@ -68,7 +68,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
     </tr>
     <tr>
       <td class='line'>41</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private PageManager <span class='instance uncovered' title='Reads: 0 Writes: 0'>pageManager</span>;</pre></td>
+      <td><pre class='prettyprint'>	protected PageManager <span class='instance covered' title='Reads: 64 Writes: 33'>pageManager</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -77,7 +77,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
     </tr>
     <tr>
       <td class='line'>44</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private PageRedirectHandler <span class='instance uncovered' title='Reads: 0 Writes: 0'>pageRedirectHandler</span>;</pre></td>
+      <td><pre class='prettyprint'>	protected PageRedirectHandler <span class='instance uncovered' title='Reads: 0 Writes: 27'>pageRedirectHandler</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -95,12 +95,12 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>	public Browzer(String url) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>54</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l54s0'>		this(url, new PageRedirectHandler());</pre></td>
+      <td class='line'>54</td><td class='count'>23</td>
+      <td><pre class='prettyprint covered' id='l54s0'>		this(url, new PageRedirectHandler());</pre></td>
     </tr>
     <tr>
-      <td class='line'>55</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l55s0'>	}</pre></td>
+      <td class='line'>55</td><td class='count'>20</td>
+      <td><pre class='prettyprint covered' id='l55s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -115,20 +115,20 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>65</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l65s0'>	public Browzer(String url, PageRedirectHandler pageRedirectHandler) throws BrowzingException {</pre></td>
+      <td class='line'>65</td><td class='count'>23</td>
+      <td><pre class='prettyprint covered' id='l65s0'>	public Browzer(String url, PageRedirectHandler pageRedirectHandler) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>66</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l66s0'>		this.pageRedirectHandler = pageRedirectHandler;</pre></td>
+      <td class='line'>66</td><td class='count'>23</td>
+      <td><pre class='prettyprint covered' id='l66s0'>		this.pageRedirectHandler = pageRedirectHandler;</pre></td>
     </tr>
     <tr>
-      <td class='line'>67</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l67s0'>		this.pageManager         = new PageManager(new Page(url), pageRedirectHandler);</pre></td>
+      <td class='line'>67</td><td class='count'>23</td>
+      <td><pre class='prettyprint covered' id='l67s0'>		this.pageManager         = this.createPageManager(this.ceatePage(url), pageRedirectHandler);</pre></td>
     </tr>
     <tr>
-      <td class='line'>68</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l68s0'>	}</pre></td>
+      <td class='line'>68</td><td class='count'>20</td>
+      <td><pre class='prettyprint covered' id='l68s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -147,12 +147,12 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>	public Browzer(String url, int maxNestLevel) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>79</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l79s0'>		this(url, new PageRedirectHandler(), maxNestLevel);</pre></td>
+      <td class='line'>79</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l79s0'>		this(url, new PageRedirectHandler(), maxNestLevel);</pre></td>
     </tr>
     <tr>
-      <td class='line'>80</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l80s0'>	}</pre></td>
+      <td class='line'>80</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l80s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -168,20 +168,20 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>91</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l91s0'>	public Browzer(String url, PageRedirectHandler pageRedirectHandler, int maxNestLevel) throws BrowzingException {</pre></td>
+      <td class='line'>91</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l91s0'>	public Browzer(String url, PageRedirectHandler pageRedirectHandler, int maxNestLevel) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>92</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l92s0'>		this.pageRedirectHandler = pageRedirectHandler;</pre></td>
+      <td class='line'>92</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l92s0'>		this.pageRedirectHandler = pageRedirectHandler;</pre></td>
     </tr>
     <tr>
-      <td class='line'>93</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l93s0'>		this.pageManager         = new PageManager(new Page(url), pageRedirectHandler, maxNestLevel);</pre></td>
+      <td class='line'>93</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l93s0'>		this.pageManager         = this.createPageManager(this.ceatePage(url), pageRedirectHandler, maxNestLevel);</pre></td>
     </tr>
     <tr>
-      <td class='line'>94</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l94s0'>	}</pre></td>
+      <td class='line'>94</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l94s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -205,38 +205,38 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>	public Page move(A anchor) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
+      <td></td><td class='count'>11</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/4</span>
-        <span class='uncovered' onclick="showPath(this,'l110s0 l110s1')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l110s0 l111s0 l111s1')">B: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l110s0 l111s0 l112s0 l113s0 l113s1')">C: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l110s0 l111s0 l112s0 l113s0 l114s0 l115s0')">D: 0</span>
+        <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 4/4</span>
+        <span class='covered' onclick="showPath(this,'l110s0 l110s1')">A: 1</span>
+        <span class='covered' onclick="showPath(this,'l110s0 l111s0 l111s1')">B: 1</span>
+        <span class='covered' onclick="showPath(this,'l110s0 l111s0 l112s0 l113s0 l113s1')">C: 1</span>
+        <span class='covered' onclick="showPath(this,'l110s0 l111s0 l112s0 l113s0 l114s0 l115s0')">D: 8</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>110</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l110s0' title='Executions: 0' class='uncovered'>if (anchor == null)</span> <span id='l110s1' title='Executions: 0' class='uncovered'>throw new BrowzingException(ERROR_SPECIFIED_ANCHOR_IS_NOT_SET);</span></pre></td>
+      <td class='line'>110</td><td class='count'>14</td>
+      <td><pre class='prettyprint jmp'>		<span id='l110s0' title='Executions: 14' class='covered'>if (anchor == null)</span> <span id='l110s1' title='Executions: 1' class='covered'>throw new BrowzingException(ERROR_SPECIFIED_ANCHOR_IS_NOT_SET);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>111</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l111s0' title='Executions: 0' class='uncovered'>if (!this.pageManager.getPage().equals(anchor.getPage()))throw new BrowzingException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);</span></pre></td>
+      <td class='line'>111</td><td class='count'>13</td>
+      <td><pre class='prettyprint jmp'>		<span id='l111s0' title='Executions: 13' class='covered'>if (!this.pageManager.getPage().equals(anchor.getPage()))throw new BrowzingException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>112</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l112s0'>		String url = anchor.getHref();</pre></td>
+      <td class='line'>112</td><td class='count'>12</td>
+      <td><pre class='prettyprint covered' id='l112s0'>		String url = anchor.getHref();</pre></td>
     </tr>
     <tr>
-      <td class='line'>113</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l113s0' title='Executions: 0' class='uncovered'>if (url.equals("")) throw new BrowzingException(ERROR_ANCHOR_HAS_NOT_URL);</span></pre></td>
+      <td class='line'>113</td><td class='count'>12</td>
+      <td><pre class='prettyprint jmp'>		<span id='l113s0' title='Executions: 12' class='covered'>if (url.equals("")) throw new BrowzingException(ERROR_ANCHOR_HAS_NOT_URL);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>114</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l114s0'>		this.pageManager = this.pageManager.move(url);</pre></td>
+      <td class='line'>114</td><td class='count'>11</td>
+      <td><pre class='prettyprint covered' id='l114s0'>		this.pageManager = this.pageManager.move(url);</pre></td>
     </tr>
     <tr>
-      <td class='line'>115</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l115s0'>		return this.pageManager.getPage();</pre></td>
+      <td class='line'>115</td><td class='count'>8</td>
+      <td><pre class='prettyprint covered' id='l115s0'>		return this.pageManager.getPage();</pre></td>
     </tr>
     <tr>
       <td class='line'>116</td><td>&nbsp;</td>
@@ -367,12 +367,12 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>	public Page back() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>168</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l168s0'>		this.pageManager =	this.pageManager.back();</pre></td>
+      <td class='line'>168</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l168s0'>		this.pageManager =	this.pageManager.back();</pre></td>
     </tr>
     <tr>
-      <td class='line'>169</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l169s0'>		return this.pageManager.getPage();</pre></td>
+      <td class='line'>169</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l169s0'>		return this.pageManager.getPage();</pre></td>
     </tr>
     <tr>
       <td class='line'>170</td><td>&nbsp;</td>
@@ -403,28 +403,28 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       </td>
     </tr>
     <tr>
-      <td class='line'>181</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l181s0'>		List&lt;A> returnAnchorList = new ArrayList&lt;A>();</pre></td>
+      <td class='line'>181</td><td class='count'>15</td>
+      <td><pre class='prettyprint covered' id='l181s0'>		List&lt;A> returnAnchorList = new ArrayList&lt;A>();</pre></td>
     </tr>
     <tr>
-      <td class='line'>182</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l182s0'>		List&lt;jp.co.dk.document.html.element.A> anchorList = this.pageManager.getPage().getAnchor();</pre></td>
+      <td class='line'>182</td><td class='count'>15</td>
+      <td><pre class='prettyprint covered' id='l182s0'>		List&lt;jp.co.dk.document.html.element.A> anchorList = this.pageManager.getPage().getAnchor();</pre></td>
     </tr>
     <tr>
-      <td class='line'>183</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l183s0'>		for (jp.co.dk.document.html.element.A anchor : anchorList) {</pre></td>
+      <td class='line'>183</td><td class='count'>2904</td>
+      <td><pre class='prettyprint covered' id='l183s0'>		for (jp.co.dk.document.html.element.A anchor : anchorList) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>184</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>			<span id='l184s0' title='Executions: 0' class='uncovered'>if (anchor instanceof A)</span> <span id='l184s1' title='Executions: 0' class='uncovered'>returnAnchorList.add((A)anchor);</span></pre></td>
+      <td class='line'>184</td><td class='count'>2876</td>
+      <td><pre class='prettyprint jmp'>			<span id='l184s0' title='Executions: 2876' class='covered'>if (anchor instanceof A)</span> <span id='l184s1' title='Executions: 2876' class='covered'>returnAnchorList.add((A)anchor);</span></pre></td>
     </tr>
     <tr>
       <td class='line'>185</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>186</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l186s0'>		return returnAnchorList;</pre></td>
+      <td class='line'>186</td><td class='count'>14</td>
+      <td><pre class='prettyprint covered' id='l186s0'>		return returnAnchorList;</pre></td>
     </tr>
     <tr>
       <td class='line'>187</td><td>&nbsp;</td>
@@ -454,28 +454,28 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       </td>
     </tr>
     <tr>
-      <td class='line'>197</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l197s0'>		List&lt;Form> returnFormList = new ArrayList&lt;Form>();</pre></td>
+      <td class='line'>197</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l197s0'>		List&lt;Form> returnFormList = new ArrayList&lt;Form>();</pre></td>
     </tr>
     <tr>
-      <td class='line'>198</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l198s0'>		List&lt;jp.co.dk.document.html.element.Form> formList = this.pageManager.getPage().getForm();</pre></td>
+      <td class='line'>198</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l198s0'>		List&lt;jp.co.dk.document.html.element.Form> formList = this.pageManager.getPage().getForm();</pre></td>
     </tr>
     <tr>
-      <td class='line'>199</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l199s0'>		for (jp.co.dk.document.html.element.Form form : formList) {</pre></td>
+      <td class='line'>199</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered' id='l199s0'>		for (jp.co.dk.document.html.element.Form form : formList) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>200</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>			<span id='l200s0' title='Executions: 0' class='uncovered'>if (form instanceof Form)</span> <span id='l200s1' title='Executions: 0' class='uncovered'>returnFormList.add((Form)form);</span></pre></td>
+      <td class='line'>200</td><td class='count'>3</td>
+      <td><pre class='prettyprint jmp'>			<span id='l200s0' title='Executions: 3' class='covered'>if (form instanceof Form)</span> <span id='l200s1' title='Executions: 3' class='covered'>returnFormList.add((Form)form);</span></pre></td>
     </tr>
     <tr>
       <td class='line'>201</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>202</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l202s0'>		return returnFormList;</pre></td>
+      <td class='line'>202</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l202s0'>		return returnFormList;</pre></td>
     </tr>
     <tr>
       <td class='line'>203</td><td>&nbsp;</td>
@@ -496,8 +496,8 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>	public Page getPage() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>212</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l212s0'>		return this.pageManager.getPage();</pre></td>
+      <td class='line'>212</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l212s0'>		return this.pageManager.getPage();</pre></td>
     </tr>
     <tr>
       <td class='line'>213</td><td>&nbsp;</td>
@@ -547,8 +547,8 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>	public File save(File path) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>239</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l239s0'>		return this.pageManager.getPage().save(path);</pre></td>
+      <td class='line'>239</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l239s0'>		return this.pageManager.getPage().save(path);</pre></td>
     </tr>
     <tr>
       <td class='line'>240</td><td>&nbsp;</td>
@@ -576,8 +576,8 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>	public File save(File path, String fileName) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>256</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l256s0'>		return this.pageManager.getPage().save(path, fileName);</pre></td>
+      <td class='line'>256</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l256s0'>		return this.pageManager.getPage().save(path, fileName);</pre></td>
     </tr>
     <tr>
       <td class='line'>257</td><td>&nbsp;</td>
@@ -606,33 +606,33 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>	public boolean save(File path, DownloadJudge downloadJudge) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
+      <td></td><td class='count'>4</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/3</span>
-        <span class='uncovered' onclick="showPath(this,'l274s0 l274s1 l275s0 l276s0')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l274s0 l278s0')">B: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l274s0 l274s1 l278s0')">C: 0</span>
+        <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 3/3</span>
+        <span class='covered' onclick="showPath(this,'l274s0 l274s1 l275s0 l276s0')">A: 1</span>
+        <span class='covered' onclick="showPath(this,'l274s0 l278s0')">B: 1</span>
+        <span class='covered' onclick="showPath(this,'l274s0 l274s1 l278s0')">C: 2</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>274</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l274s0' title='Executions: 0' class='uncovered'>if (downloadJudge != null</span> && <span id='l274s1' title='Executions: 0' class='uncovered'>downloadJudge.judge(this.pageManager.getPage())){</span></pre></td>
+      <td class='line'>274</td><td class='count'>4</td>
+      <td><pre class='prettyprint jmp'>		<span id='l274s0' title='Executions: 4' class='covered'>if (downloadJudge != null</span> && <span id='l274s1' title='Executions: 3' class='covered'>downloadJudge.judge(this.pageManager.getPage())){</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>275</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l275s0'>			this.pageManager.getPage().save(path);</pre></td>
+      <td class='line'>275</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l275s0'>			this.pageManager.getPage().save(path);</pre></td>
     </tr>
     <tr>
-      <td class='line'>276</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l276s0'>			return true;</pre></td>
+      <td class='line'>276</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l276s0'>			return true;</pre></td>
     </tr>
     <tr>
       <td class='line'>277</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		} else {</pre></td>
     </tr>
     <tr>
-      <td class='line'>278</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l278s0'>			return false;</pre></td>
+      <td class='line'>278</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l278s0'>			return false;</pre></td>
     </tr>
     <tr>
       <td class='line'>279</td><td>&nbsp;</td>
@@ -644,7 +644,76 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>282</td><td>&nbsp;</td>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * 指定のURLからページオブジェクトを作成する。
+	 * 
+	 * @param url URL文字列
+	 * @return ページオブジェクト
+	 * @throws BrowzingException ページクラスの生成に失敗した場合
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>289</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected Page ceatePage(String url) throws BrowzingException {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>290</td><td class='count'>27</td>
+      <td><pre class='prettyprint covered' id='l290s0'>		return new Page(url);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>291</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * 指定のページオブジェクト、ページリダイレクトハンドラからページマネージャを作成する。
+	 * 
+	 * @param page ページオブジェクト
+	 * @param handler ページリダイレクトハンドラ
+	 * @return ページマネージャオブジェクト
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>300</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected PageManager createPageManager(Page page, PageRedirectHandler handler) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>301</td><td class='count'>20</td>
+      <td><pre class='prettyprint covered' id='l301s0'>		return new PageManager(page, handler);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>302</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * 指定のページオブジェクト、ページリダイレクトハンドラ、最大遷移数からページマネージャを作成する。
+	 * 
+	 * @param page ページオブジェクト
+	 * @param handler ページリダイレクトハンドラ
+	 * @param maxNestLevel 最大遷移数
+	 * @return ページマネージャオブジェクト
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>312</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected PageManager createPageManager(Page page, PageRedirectHandler handler, int maxNestLevel) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>313</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l313s0'>		return new PageManager(page, handler, maxNestLevel);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>314</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>315</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>}</pre></td>
     </tr>
   </table>
