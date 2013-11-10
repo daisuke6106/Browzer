@@ -82,6 +82,9 @@ public class Page implements XmlConvertable{
 	/** ページのドキュメントオブジェクト */
 	protected jp.co.dk.document.File document;
 	
+	/** URLコネクション */
+	protected URLConnection connection;
+	
 	/**
 	 * コンストラクタ<p>
 	 * 指定のURL文字列からページのインスタンスを生成する。
@@ -120,12 +123,13 @@ public class Page implements XmlConvertable{
 		this.setRequestProperty(connection, requestHeaderByProperty);
 		try {
 			connection.connect();
+			this.connection = connection;
 		} catch (IOException e) {
 			throw new BrowzingException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, urlObj.toString(), e );
 		}
 		Map<String, List<String>> responseHeader = connection.getHeaderFields();
 		this.responseHeader = this.createResponseHeader(responseHeader);
-		this.byteDump       = this.getByteDump(connection);
+		// this.byteDump       = this.getByteDump(connection);
 	}
 	
 	/**
@@ -177,9 +181,9 @@ public class Page implements XmlConvertable{
 		if (requestProperty == null) requestProperty = new HashMap<String, String>(); 
 		this.requestHeader = this.createRequestHeader(requestProperty);
 		URLConnection connection = this.createURLConnection(this.urlObj, form.getMethod());
-		connection = this.setRequestProperty(connection, requestProperty);
+		this.connection = this.setRequestProperty(connection, requestProperty);
 		try {
-			BufferedWriter outputStream = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream()));
+			BufferedWriter outputStream = new BufferedWriter(new OutputStreamWriter(this.connection.getOutputStream()));
 			outputStream.write(form.createMessage());
 			outputStream.close();
 		} catch (IOException e) {
@@ -187,7 +191,7 @@ public class Page implements XmlConvertable{
 		}
 		Map<String, List<String>> responseHeader = connection.getHeaderFields();
 		this.responseHeader = this.createResponseHeader(responseHeader);
-		this.byteDump       = this.getByteDump(connection);
+		// this.byteDump       = this.getByteDump(connection);
 	}
 	
 	/**
@@ -328,7 +332,7 @@ public class Page implements XmlConvertable{
 	 * @throws BrowzingException ドキュメントオブジェクトの生成に失敗した場合
 	 */
 	public jp.co.dk.document.File getDocument(DocumentFactory documentFactory) throws BrowzingException {
-		InputStream inputStream = this.byteDump.getStream();
+		InputStream inputStream = this.getData().getStream();
 		ContentsType contentsType = this.responseHeader.getContentsType();
 		if (contentsType != null) {
 			this.document = documentFactory.create(contentsType, inputStream);
@@ -482,9 +486,14 @@ public class Page implements XmlConvertable{
 	/**
 	 * このページのデータを取得します。
 	 * 
+	 * このページがすでにデータを取得しており、メモリー内に読み込み済みだった場合、そのデータを返却します。<br/>
+	 * このページのデータを読み込んでいなかった場合、ページからそのデータをダウンロード、メモリー内に保存してから返却します。
+	 * 
 	 * @return ページデータ
+	 * @throws BrowzingException ページデータの取得に失敗した場合
 	 */
-	public ByteDump getData() {
+	public ByteDump getData() throws BrowzingException {
+		if (this.byteDump == null) this.byteDump = this.getByteDump(this.connection); 
 		return this.byteDump;
 	}
 	

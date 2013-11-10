@@ -15,7 +15,7 @@ import jp.co.dk.xml.XmlConvertable;
  * @version 1.0
  * @author D.Kanno
  */
-class PageManager implements XmlConvertable{
+public class PageManager implements XmlConvertable{
 	
 	/** 親ページ管理オブジェクト */
 	private PageManager parentPage;
@@ -41,7 +41,7 @@ class PageManager implements XmlConvertable{
 	 * @param page ページオブジェクト
 	 * @param pageRedirectHandler ページリダイレクト制御オブジェクト
 	 */
-	PageManager(Page page, PageRedirectHandler pageRedirectHandler) {
+	public PageManager(Page page, PageRedirectHandler pageRedirectHandler) {
 		this.page                = page;
 		this.pageRedirectHandler = pageRedirectHandler;
 		this.childPageList       = new ArrayList<PageManager>();
@@ -55,7 +55,7 @@ class PageManager implements XmlConvertable{
 	 * @param pageRedirectHandler ページリダイレクト制御オブジェクト
 	 * @param maxNestLevel ページ遷移上限数
 	 */
-	PageManager(Page page, PageRedirectHandler pageRedirectHandler, int maxNestLevel) {
+	public PageManager(Page page, PageRedirectHandler pageRedirectHandler, int maxNestLevel) {
 		this.page                = page;
 		this.pageRedirectHandler = pageRedirectHandler;
 		this.maxNestLevel        = maxNestLevel;
@@ -70,7 +70,7 @@ class PageManager implements XmlConvertable{
 	 * @param nestLevel 現在のページ遷移数
 	 * @param maxNestLevel ページ遷移上限数
 	 */
-	private PageManager(PageManager parentPage, Page page,  PageRedirectHandler pageRedirectHandler, int nestLevel, int maxNestLevel) {
+	protected PageManager(PageManager parentPage, Page page,  PageRedirectHandler pageRedirectHandler, int nestLevel, int maxNestLevel) {
 		this.parentPage          = parentPage;
 		this.page                = page;
 		this.pageRedirectHandler = pageRedirectHandler;
@@ -92,7 +92,7 @@ class PageManager implements XmlConvertable{
 		if ( !(this.maxNestLevel<0) && this.maxNestLevel < nextLevel) throw new BrowzingException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));
 		Page nextPage = this.createPage(url);
 		nextPage = pageRedirectHandler.redirect(nextPage);
-		PageManager childPageManager = new PageManager(this, nextPage, this.pageRedirectHandler, nextLevel, this.maxNestLevel);
+		PageManager childPageManager = this.createPageManager(this, nextPage, this.pageRedirectHandler, nextLevel, this.maxNestLevel);
 		this.childPageList.add(childPageManager);
 		return childPageManager;
 	}
@@ -110,7 +110,7 @@ class PageManager implements XmlConvertable{
 		if ( !(this.maxNestLevel<0) && this.maxNestLevel < nextLevel) throw new BrowzingException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));
 		Page nextPage = this.page.move(form);
 		nextPage = pageRedirectHandler.redirect(nextPage);
-		PageManager childPageManager = new PageManager(this, nextPage, this.pageRedirectHandler, nextLevel, this.maxNestLevel);
+		PageManager childPageManager = this.createPageManager(this, nextPage, this.pageRedirectHandler, nextLevel, this.maxNestLevel);
 		this.childPageList.add(childPageManager);
 		return childPageManager;
 	}
@@ -169,5 +169,28 @@ class PageManager implements XmlConvertable{
 	 */
 	public Page createPage(String url) throws BrowzingException {
 		return new Page(url);
+	}
+	
+	/**
+	 * このページマネージャクラスを生成するページマネージャインスタンス生成メソッドです。<p/>
+	 * このページマネージャにてmoveが実行される際には遷移元、遷移先のページ情報を元に本メソッドが実施され遷移先のページマネージャクラスが作成されます。<br/>
+	 * 本クラスを継承する場合、必ず実装してください。<br/>
+	 * 呼び出し方法は以下の通りです。<br/>
+	 * <code>
+	 * [@]Override<br/>
+	 * protected PageManager createPageManager(PageManager pageManager, Page page, PageRedirectHandler pageRedirectHandler, int nextLevel, int maxNestLevel) {<br/>
+	 *     return new 継承したクラス名(pageManager, page, pageRedirectHandler, nextLevel, maxNestLevel);<br/>
+	 * }<br/>
+	 * </code>
+	 * 
+	 * @param pageManager         遷移元ページのページマネージャ
+	 * @param page                遷移先のページオブジェクト
+	 * @param pageRedirectHandler ページリダイレクトハンドラ
+	 * @param nextLevel           次ページのページ遷移数
+	 * @param maxNestLevel        ページ遷移上限数
+	 * @return ページマネージャ
+	 */
+	protected PageManager createPageManager(PageManager pageManager, Page page, PageRedirectHandler pageRedirectHandler, int nextLevel, int maxNestLevel) {
+		return new PageManager(pageManager, page, pageRedirectHandler, nextLevel, maxNestLevel);
 	}
 }

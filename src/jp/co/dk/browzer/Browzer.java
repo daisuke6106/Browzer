@@ -38,10 +38,10 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 public class Browzer {
 	
 	/** ページ管理オブジェクト */
-	private PageManager pageManager;
+	protected PageManager pageManager;
 	
 	/** ページリダイレクト制御オブジェクト */
-	private PageRedirectHandler pageRedirectHandler;
+	protected PageRedirectHandler pageRedirectHandler;
 	
 	/**
 	 * コンストラクタ<p/>

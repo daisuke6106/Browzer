@@ -17,7 +17,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
  * @version 1.0
  * @author D.Kanno
  */
-class DocumentFactory {
+public class DocumentFactory {
 	
 	private Page page;
 	
@@ -27,7 +27,7 @@ class DocumentFactory {
 	 * 
 	 * @param page ページオブジェクト
 	 */
-	DocumentFactory(Page page) {
+	public DocumentFactory(Page page) {
 		this.page = page;
 	}
 	

@@ -79,7 +79,7 @@ public class PageRedirectHandler {
 			case REDIRECTION:
 				String location = header.getLocation();
 				if (location == null || location.equals("")) throw new BrowzingException(ERROR_REDIRECT_LOCATION_NOT_FOUND); 
-				return new Page(page.completionURL(location));
+				return this.ceatePage(page.completionURL(location));
 				
 			case CLIENT_ERROR:
 				if (httpStatusCode == HttpStatusCode.STATUS_401) {
@@ -110,5 +110,16 @@ public class PageRedirectHandler {
 				break;
 		}
 		return page;
+	}
+	
+	/**
+	 * 指定のURLからページオブジェクトを作成する。
+	 * 
+	 * @param url URL文字列
+	 * @return ページオブジェクト
+	 * @throws BrowzingException ページクラスの生成に失敗した場合
+	 */
+	protected Page ceatePage(String url) throws BrowzingException {
+		return new Page(url);
 	}
 }
