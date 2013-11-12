@@ -4,15 +4,15 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 import static org.junit.Assert.*;
 
 import java.util.List;
-import java.util.Map;
 
 import jp.co.dk.browzer.download.DownloadJudge;
 import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.html.element.A;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.html.element.Image;
+import jp.co.dk.browzer.html.element.Link;
+import jp.co.dk.browzer.html.element.Script;
 import jp.co.dk.document.Element;
-import jp.co.dk.document.ElementName;
 import jp.co.dk.document.html.HtmlDocument;
 import jp.co.dk.document.html.HtmlElement;
 import jp.co.dk.document.html.constant.HtmlElementName;
@@ -20,7 +20,6 @@ import jp.co.dk.document.html.element.form.Text;
 import jp.co.dk.test.template.RandomSelectRule;
 
 import mockit.Expectations;
-import mockit.Mocked;
 
 import org.junit.Test;
 
@@ -78,7 +77,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 	
 	@Test
 	public void move() {
-		
+		// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝アンカー＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 		// 遷移先にnullを指定した場合、例外が送出されることを確認。
 		try {
 			Browzer browzer = getBrowzer();
@@ -158,6 +157,122 @@ public class TestBrowser extends TestBrowzerFoundation {
 			assertEquals(e.getMessageObj(), ERROR_REACHED_TO_THE_MAXIMUM_LEVEL);
 		}
 		
+		// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝リンク＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+		// リンク要素に遷移する
+		// 遷移先にnullを指定した場合、例外が送出されることを確認。
+		try {
+			Browzer browzer = super.getBrowzer();
+			Link link = null;
+			browzer.move(link);
+			fail();
+		} catch (BrowzingException e) {
+			if (e.getMessageObj() != ERROR_SPECIFIED_ANCHOR_IS_NOT_SET) fail(e);
+		}
+		
+		// リンク要素に遷移する
+		// 異なるページオブジェクトにあるURLを指定した場合、例外が発生すること。
+		try {
+			String url1 = getRandomUrl();
+			Browzer browzer1 = super.getBrowzer(url1);
+			Browzer browzer2 = super.getBrowzer(url1);
+			HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
+			HtmlDocument document2 = (HtmlDocument)browzer2.getPage().getDocument();
+			List<Element> linkList1 = document1.getElement(HtmlElementName.LINK);
+			Element randomElement = super.getRandomElement(linkList1);
+			browzer2.move((Link)randomElement);
+			fail();
+		} catch (BrowzingException e) {
+			if (e.getMessageObj() != ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) ;
+		}
+		
+		// リンク要素に遷移する
+		// 遷移先が指定されていなかった（空文字）場合、例外を送出すること。
+		try {
+			Browzer browzer1 = super.getBrowzer();
+			HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
+			List<Element> linkList1 = document1.getElement(HtmlElementName.LINK);
+			final Link link = (Link) super.getRandomElement(linkList1);
+			new Expectations(link) {{
+				link.getHref();
+                returns("");
+	        }};
+	        browzer1.move(link);
+			fail();
+		}catch (BrowzingException e) {
+			if (e.getMessageObj() != ERROR_ANCHOR_HAS_NOT_URL) fail(e);
+		}
+		
+		// リンク要素に遷移する
+		// 引数に指定された値が不正でない場合、正常に遷移できること。（例外が発生しないこと）
+		try {
+			Browzer browzer1 = super.getBrowzer();
+			HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
+			List<Element> linkList1 = document1.getElement(HtmlElementName.LINK);
+			Link link = (Link) super.getRandomElement(linkList1);
+	        Page linkPage = browzer1.move(link);
+		}catch (BrowzingException e) {
+			fail(e);
+		}
+		
+		
+		// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝スクリプト＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+		// スクリプト要素に遷移する
+		// 遷移先にnullを指定した場合、例外が送出されることを確認。
+		try {
+			Browzer browzer = super.getBrowzer();
+			Script script = null;
+			browzer.move(script);
+			fail();
+		} catch (BrowzingException e) {
+			if (e.getMessageObj() != ERROR_SPECIFIED_ANCHOR_IS_NOT_SET) fail(e);
+		}
+		
+		// スクリプト要素に遷移する
+		// 異なるページオブジェクトにあるURLを指定した場合、例外が発生すること。
+		try {
+			String url1 = getRandomUrl();
+			Browzer browzer1 = super.getBrowzer(url1);
+			Browzer browzer2 = super.getBrowzer(url1);
+			HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
+			HtmlDocument document2 = (HtmlDocument)browzer2.getPage().getDocument();
+			List<Element> scriptList1 = document1.getElement(HtmlElementName.SCRIPT);
+			Element randomElement = super.getRandomElement(scriptList1);
+			browzer2.move((Script)randomElement);
+			fail();
+		} catch (BrowzingException e) {
+			if (e.getMessageObj() != ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) ;
+		}
+		
+		// スクリプト要素に遷移する
+		// 遷移先が指定されていなかった（空文字）場合、例外を送出すること。
+		try {
+			Browzer browzer1 = super.getBrowzer();
+			HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
+			List<Element> scriptList1 = document1.getElement(HtmlElementName.SCRIPT);
+			final Script script = (Script) super.getRandomElement(scriptList1);
+			new Expectations(script) {{
+				script.getSrc();
+                returns("");
+	        }};
+	        browzer1.move(script);
+			fail();
+		}catch (BrowzingException e) {
+			if (e.getMessageObj() != ERROR_ANCHOR_HAS_NOT_URL) fail(e);
+		}
+		
+		// スクリプト要素に遷移する
+		// 引数に指定された値が不正でない場合、正常に遷移できること。（例外が発生しないこと）
+		try {
+			Browzer browzer1 = super.getBrowzer();
+			HtmlDocument document1 = (HtmlDocument)browzer1.getPage().getDocument();
+			List<Element> scriptList1 = document1.getElement(HtmlElementName.SCRIPT);
+			Script script = (Script) super.getRandomElement(scriptList1);
+	        Page scriptPage = browzer1.move(script);
+		}catch (BrowzingException e) {
+			fail(e);
+		}
+		
+		// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝イメージ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 		// イメージ要素に遷移する
 		// 遷移先にnullを指定した場合、例外が送出されることを確認。
 		try {
@@ -214,7 +329,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 			fail(e);
 		}
 		
-		
+		// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝FORM＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 		// FORM要素に遷移する
 		// 遷移先にnullを指定した場合、例外が送出されることを確認。
 		try {

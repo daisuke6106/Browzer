@@ -2,165 +2,189 @@ Starting audit...
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:0: Missing package-info.java file.
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:8:1: 同一パッケージからのインポートは冗長です - jp.co.dk.browzer.Page。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:9:1: 同一パッケージからのインポートは冗長です - jp.co.dk.browzer.PageRedirectHandler。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:15: '.*' 形式のインポートの使用は避けるべきです - jp.co.dk.browzer.message.BrowzingMessage.*。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:17: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:19: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:21: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:22: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:29: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:34: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:39: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:39:1: File contains tab characters (this is the first instance).
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:40: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:41:31: 変数 'pageManager' は private とし、アクセッサメソッドを持つべきです。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:42: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:43: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:44:39: 変数 'pageRedirectHandler' は private とし、アクセッサメソッドを持つべきです。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:45: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:46: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:49: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:53:24: Parameter url should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:53:43: BrowzingException のクラス情報が取得できません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:56: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:57: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:60: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:65: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:65:24: Parameter url should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:65:36: Parameter pageRedirectHandler should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:65:56: 'pageRedirectHandler' がフィールドを隠しています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:65:84: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:17: '.*' 形式のインポートの使用は避けるべきです - jp.co.dk.browzer.message.BrowzingMessage.*。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:19: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:21: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:23: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:24: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:31: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:36: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:41: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:41:1: File contains tab characters (this is the first instance).
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:42: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:43:31: 変数 'pageManager' は private とし、アクセッサメソッドを持つべきです。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:44: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:45: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:46:39: 変数 'pageRedirectHandler' は private とし、アクセッサメソッドを持つべきです。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:47: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:48: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:51: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:55:24: Parameter url should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:55:43: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:58: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:59: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:62: Line has trailing spaces.
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:67: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:69: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:70: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:73: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:78:24: Parameter url should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:78:36: Parameter maxNestLevel should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:78:61: BrowzingException のクラス情報が取得できません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:81: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:82: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:85: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:91: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:91:24: Parameter url should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:91:36: Parameter pageRedirectHandler should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:91:56: 'pageRedirectHandler' がフィールドを隠しています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:91:77: Parameter maxNestLevel should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:91:102: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:67:24: Parameter url should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:67:36: Parameter pageRedirectHandler should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:67:56: 'pageRedirectHandler' がフィールドを隠しています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:67:84: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:69: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:71: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:72: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:75: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:80:24: Parameter url should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:80:36: Parameter maxNestLevel should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:80:61: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:83: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:84: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:87: Line has trailing spaces.
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:93: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:95: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:96: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:104: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:109:9: メソッド 'move' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:109:26: Parameter anchor should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:109:43: BrowzingException のクラス情報が取得できません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:110: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:110: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:111: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:111: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:93:24: Parameter url should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:93:36: Parameter pageRedirectHandler should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:93:56: 'pageRedirectHandler' がフィールドを隠しています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:93:77: Parameter maxNestLevel should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:93:102: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:95: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:97: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:98: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:106: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:111:9: メソッド 'move' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:111:26: Parameter anchor should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:111:43: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:112: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:112: 行が 80 文字を超えています。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:113: 'if' 文では '{}' を使用しなければなりません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:113: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:117: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:118: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:126: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:131:9: メソッド 'move' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:131:26: Parameter image should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:131:46: BrowzingException のクラス情報が取得できません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:132: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:132: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:133: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:133: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:115: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:115: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:119: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:120: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:128: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:133:9: メソッド 'move' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:133:26: Parameter image should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:133:46: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:134: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:134: 行が 80 文字を超えています。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:135: 'if' 文では '{}' を使用しなければなりません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:135: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:139: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:140: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:148: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:153:9: メソッド 'move' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:153:26: Parameter form should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:153:44: BrowzingException のクラス情報が取得できません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:154: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:154: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:155: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:155: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:159: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:160: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:137: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:137: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:141: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:142: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:150: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:155:9: メソッド 'move' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:155:26: Parameter link should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:155:44: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:156: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:156: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:157: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:157: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:159: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:159: 行が 80 文字を超えています。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:163: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:165:12: 'BrowzingException' に対する使用されない @throws タグです。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:167:9: メソッド 'back' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:171: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:172: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:176: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:177: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:180:9: メソッド 'getAnchor' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:180:43: BrowzingException のクラス情報が取得できません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:182: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:184: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:184: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:184:74: 'cast' の後にホワイトスペースがありません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:188: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:189: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:192: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:196:9: メソッド 'getForm' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:196:44: BrowzingException のクラス情報が取得できません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:198: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:164: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:172: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:177:9: メソッド 'move' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:177:26: Parameter script should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:177:48: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:178: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:178: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:179: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:179: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:181: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:181: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:185: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:186: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:194: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:199:9: メソッド 'move' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:199:26: Parameter form should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:199:44: BrowzingException のクラス情報が取得できません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:200: 'if' 文では '{}' を使用しなければなりません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:200: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:200:76: 'cast' の後にホワイトスペースがありません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:204: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:205: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:208: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:211:9: メソッド 'getPage' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:214: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:215: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:218: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:221:9: メソッド 'ableMoveNextPage' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:224: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:225: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:233: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:238:9: メソッド 'save' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:238:26: Parameter path should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:238:44: 'BrowzingException' には @throws タグが必要です。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:238:44: BrowzingException のクラス情報が取得できません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:241: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:242: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:201: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:201: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:205: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:206: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:209: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:211:12: 'BrowzingException' に対する使用されない @throws タグです。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:213:9: メソッド 'back' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:217: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:218: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:222: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:223: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:226:9: メソッド 'getAnchor' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:226:43: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:228: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:230: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:230: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:230:74: 'cast' の後にホワイトスペースがありません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:234: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:235: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:238: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:242:9: メソッド 'getForm' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:242:44: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:244: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:246: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:246: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:246:76: 'cast' の後にホワイトスペースがありません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:250: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:255:9: メソッド 'save' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:255:26: Parameter path should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:255:37: Parameter fileName should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:255:44: 'fileName' には @param タグが必要です。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:255:61: 'BrowzingException' には @throws タグが必要です。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:255:61: BrowzingException のクラス情報が取得できません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:258: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:259: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:268: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:273: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:273:9: メソッド 'save' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:273:29: Parameter path should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:273:40: Parameter downloadJudge should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:273:54: 'downloadJudge' には @param タグが必要です。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:273:76: 'BrowzingException' には @throws タグが必要です。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:273:76: BrowzingException のクラス情報が取得できません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:274: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:274:94: '{' の前にホワイトスペースがありません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:281: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:282: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:284: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:289:9: メソッド 'ceatePage' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:289:34: Parameter url should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:289:53: BrowzingException のクラス情報が取得できません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:292: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:293: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:295: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:300: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:300:9: メソッド 'createPageManager' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:300:49: Parameter page should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:300:60: Parameter handler should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:303: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:304: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:306: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:312: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:312:9: メソッド 'createPageManager' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:312:49: Parameter page should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:312:60: Parameter handler should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:312:89: Parameter maxNestLevel should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:251: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:254: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:257:9: メソッド 'getPage' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:260: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:261: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:264: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:267:9: メソッド 'ableMoveNextPage' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:270: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:271: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:279: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:284:9: メソッド 'save' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:284:26: Parameter path should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:284:44: 'BrowzingException' には @throws タグが必要です。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:284:44: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:287: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:288: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:296: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:301:9: メソッド 'save' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:301:26: Parameter path should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:301:37: Parameter fileName should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:301:44: 'fileName' には @param タグが必要です。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:301:61: 'BrowzingException' には @throws タグが必要です。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:301:61: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:304: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:305: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:314: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:319: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:319:9: メソッド 'save' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:319:29: Parameter path should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:319:40: Parameter downloadJudge should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:319:54: 'downloadJudge' には @param タグが必要です。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:319:76: 'BrowzingException' には @throws タグが必要です。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:319:76: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:320: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:320:94: '{' の前にホワイトスペースがありません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:327: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:328: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:330: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:335:9: メソッド 'ceatePage' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:335:34: Parameter url should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:335:53: BrowzingException のクラス情報が取得できません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:338: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:339: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:341: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:346: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:346:9: メソッド 'createPageManager' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:346:49: Parameter page should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:346:60: Parameter handler should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:349: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:350: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:352: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:358: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:358:9: メソッド 'createPageManager' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:358:49: Parameter page should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:358:60: Parameter handler should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/Browzer.java:358:89: Parameter maxNestLevel should be final.
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:12: '.*' 形式のインポートの使用は避けるべきです - jp.co.dk.browzer.message.BrowzingMessage.*。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:14: 最初の一文はピリオドで終わらなければなりません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:16: Line has trailing spaces.
@@ -1032,26 +1056,31 @@ Starting audit...
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/exception/BrowzingException.java:123:70: Parameter throwable should be final.
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/exception/BrowzingException.java:123:90: '{' の前にホワイトスペースがありません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:0: Missing package-info.java file.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:9: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:11: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:15: 行が 80 文字を超えています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:16: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:16:1: File contains tab characters (this is the first instance).
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:17:9: Javadoc コメントがありません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:11: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:13: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:17: 行が 80 文字を超えています。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:18: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:18:1: File contains tab characters (this is the first instance).
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:19:9: Javadoc コメントがありません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:19:35: Parameter page should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:19:40: 'page' がフィールドを隠しています。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:22: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:23:9: メソッド 'createAnchor' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:24:34: Parameter htmlElement should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:27: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:28:9: メソッド 'createImage' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:29:37: Parameter htmlElement should be final.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:32: Line has trailing spaces.
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:33:9: Javadoc コメントがありません。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:33:9: メソッド 'createForm' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:33:35: Parameter htmlElement should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:20: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:21:9: Javadoc コメントがありません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:21:35: Parameter page should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:21:40: 'page' がフィールドを隠しています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:24: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:25:9: メソッド 'createAnchor' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:26:34: Parameter htmlElement should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:29: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:30:9: メソッド 'createImage' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:31:37: Parameter htmlElement should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:34: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:35:9: メソッド 'createLink' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:36:35: Parameter htmlElement should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:39: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:40:9: メソッド 'createScript' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:41:39: Parameter htmlElement should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:44: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:45:9: メソッド 'createForm' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:46:35: Parameter htmlElement should be final.
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/A.java:0: Missing package-info.java file.
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/A.java:9: 最初の一文はピリオドで終わらなければなりません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/A.java:11: Line has trailing spaces.
@@ -1132,6 +1161,52 @@ Starting audit...
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Image.java:51: 最初の一文はピリオドで終わらなければなりません。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Image.java:53: Line has trailing spaces.
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Image.java:56:9: メソッド 'getHost' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:9: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:11: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:16: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:16:1: File contains tab characters (this is the first instance).
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:17:9: Javadoc コメントがありません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:18: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:19: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:21: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:23: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:27:21: Parameter element should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:27:42: Parameter page should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:27:47: 'page' がフィールドを隠しています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:31: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:32:9: メソッド 'getHref' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:35: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:41: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:42: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:44: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:47:9: メソッド 'getPage' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:50: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:51: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:53: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Link.java:56:9: メソッド 'getHost' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:9: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:11: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:16: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:16:1: File contains tab characters (this is the first instance).
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:17:9: Javadoc コメントがありません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:18: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:19: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:21: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:23: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:27:23: Parameter element should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:27:44: Parameter page should be final.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:27:49: 'page' がフィールドを隠しています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:31: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:32:9: メソッド 'getSrc' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:35: 行が 80 文字を超えています。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:41: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:42: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:44: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:47:9: メソッド 'getPage' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:50: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:51: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:53: Line has trailing spaces.
+/home/dk/projects/Browzer/src/jp/co/dk/browzer/html/element/Script.java:56:9: メソッド 'getHost' は拡張するように設計されていません - abstract か final か空である必要があります。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/html/selector/PatternMatchAnchorSelector.java:0: Missing package-info.java file.
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/html/selector/PatternMatchAnchorSelector.java:13: '.*' 形式のインポートの使用は避けるべきです - jp.co.dk.browzer.message.BrowzingMessage.*。
 /home/dk/projects/Browzer/src/jp/co/dk/browzer/html/selector/PatternMatchAnchorSelector.java:15: Javadoc コメントがありません。

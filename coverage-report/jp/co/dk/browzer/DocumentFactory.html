@@ -46,7 +46,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>22</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private Page <span class='instance covered' title='Reads: 23 Writes: 26'>page</span>;</pre></td>
+      <td><pre class='prettyprint'>	private Page <span class='instance covered' title='Reads: 33 Writes: 35'>page</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -59,15 +59,15 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>30</td><td class='count'>26</td>
+      <td class='line'>30</td><td class='count'>35</td>
       <td><pre class='prettyprint covered' id='l30s0'>	public DocumentFactory(Page page) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>31</td><td class='count'>26</td>
+      <td class='line'>31</td><td class='count'>35</td>
       <td><pre class='prettyprint covered' id='l31s0'>		this.page = page;</pre></td>
     </tr>
     <tr>
-      <td class='line'>32</td><td class='count'>26</td>
+      <td class='line'>32</td><td class='count'>35</td>
       <td><pre class='prettyprint covered' id='l32s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -173,21 +173,21 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>26</td>
+      <td></td><td class='count'>35</td>
       <td class='paths'>
         <span style='cursor:default; background-color:#40bf00' onclick='hidePath()'>Path coverage: 3/4</span>
         <span class='uncovered' onclick="showPath(this,'l68s0 l68s1')">A: 0</span>
-        <span class='covered' onclick="showPath(this,'l68s0 l69s0 l71s0')">B: 23</span>
-        <span class='covered' onclick="showPath(this,'l68s0 l69s0 l73s0')">C: 2</span>
+        <span class='covered' onclick="showPath(this,'l68s0 l69s0 l71s0')">B: 33</span>
+        <span class='covered' onclick="showPath(this,'l68s0 l69s0 l73s0')">C: 1</span>
         <span class='covered' onclick="showPath(this,'l68s0 l69s0 l75s0')">D: 1</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>68</td><td class='count'>26</td>
-      <td><pre class='prettyprint jmp'>			<span id='l68s0' title='Executions: 26' class='covered'>if (contentsType == null)</span> <span id='l68s1' title='Executions: 0' class='uncovered'>throw new BrowzingException(ERROR_NON_SUPPORTED_EXTENSION);</span></pre></td>
+      <td class='line'>68</td><td class='count'>35</td>
+      <td><pre class='prettyprint jmp'>			<span id='l68s0' title='Executions: 35' class='covered'>if (contentsType == null)</span> <span id='l68s1' title='Executions: 0' class='uncovered'>throw new BrowzingException(ERROR_NON_SUPPORTED_EXTENSION);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>69</td><td class='count'>52</td>
+      <td class='line'>69</td><td class='count'>70</td>
       <td><pre class='prettyprint covered' id='l69s0'>			switch (contentsType) {</pre></td>
     </tr>
     <tr>
@@ -195,7 +195,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>				case TEXT_HTML:</pre></td>
     </tr>
     <tr>
-      <td class='line'>71</td><td class='count'>23</td>
+      <td class='line'>71</td><td class='count'>33</td>
       <td><pre class='prettyprint covered' id='l71s0'>					return new jp.co.dk.document.html.HtmlDocument(inputStream, new HtmlElementFactory(this.page));</pre></td>
     </tr>
     <tr>
@@ -203,7 +203,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>				case TEXT_XML:</pre></td>
     </tr>
     <tr>
-      <td class='line'>73</td><td class='count'>2</td>
+      <td class='line'>73</td><td class='count'>1</td>
       <td><pre class='prettyprint covered' id='l73s0'>					return new jp.co.dk.document.xml.XmlDocument(inputStream);</pre></td>
     </tr>
     <tr>

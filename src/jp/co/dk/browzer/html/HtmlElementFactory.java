@@ -4,6 +4,8 @@ import jp.co.dk.browzer.Page;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.html.element.Image;
 import jp.co.dk.browzer.html.element.A;
+import jp.co.dk.browzer.html.element.Link;
+import jp.co.dk.browzer.html.element.Script;
 import jp.co.dk.document.html.HtmlElement;
 
 /**
@@ -30,6 +32,17 @@ public class HtmlElementFactory extends jp.co.dk.document.html.HtmlElementFactor
 		return new Image(htmlElement, this.page);
 	}
 	
+	@Override
+	protected Link createLink(HtmlElement htmlElement) {
+		return new Link(htmlElement, this.page);
+	}
+	
+	@Override
+	protected Script createScript(HtmlElement htmlElement) {
+		return new Script(htmlElement, this.page);
+	}
+	
+	@Override
 	protected Form createForm(HtmlElement htmlElement) {
 		return new Form(htmlElement, this.page);
 	}

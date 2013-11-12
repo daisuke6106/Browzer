@@ -41,7 +41,7 @@ import jp.co.dk.document.html.HtmlElement;
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>17</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private Page <span class='instance uncovered' title='Reads: 47 Writes: 2876'>page</span>;</pre></td>
+      <td><pre class='prettyprint'>	private Page <span class='instance uncovered' title='Reads: 62 Writes: 14686'>page</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -60,15 +60,15 @@ import jp.co.dk.document.html.HtmlElement;
       <td><pre class='prettyprint'>	public A(HtmlElement element, Page page) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>28</td><td class='count'>2876</td>
+      <td class='line'>28</td><td class='count'>14686</td>
       <td><pre class='prettyprint covered' id='l28s0'>		super(element);</pre></td>
     </tr>
     <tr>
-      <td class='line'>29</td><td class='count'>2876</td>
+      <td class='line'>29</td><td class='count'>14686</td>
       <td><pre class='prettyprint covered' id='l29s0'>		this.page = page;</pre></td>
     </tr>
     <tr>
-      <td class='line'>30</td><td class='count'>2876</td>
+      <td class='line'>30</td><td class='count'>14686</td>
       <td><pre class='prettyprint covered' id='l30s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -85,20 +85,20 @@ import jp.co.dk.document.html.HtmlElement;
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>35</td><td class='count'>34</td>
+      <td class='line'>35</td><td class='count'>44</td>
       <td><pre class='prettyprint covered' id='l35s0'>			URL url = new URL(this.page.getURLObject(),  super.getHref());</pre></td>
     </tr>
     <tr>
-      <td class='line'>36</td><td class='count'>33</td>
+      <td class='line'>36</td><td class='count'>44</td>
       <td><pre class='prettyprint covered' id='l36s0'>			return url.toString();</pre></td>
     </tr>
     <tr>
-      <td class='line'>37</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l37s0'>		} catch (MalformedURLException e) {</pre></td>
+      <td class='line'>37</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l37s0'>		} catch (MalformedURLException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>38</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l38s0'>			return super.getHref();</pre></td>
+      <td class='line'>38</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l38s0'>			return super.getHref();</pre></td>
     </tr>
     <tr>
       <td class='line'>39</td><td>&nbsp;</td>
@@ -122,7 +122,7 @@ import jp.co.dk.document.html.HtmlElement;
       <td><pre class='prettyprint'>	public Page getPage() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>48</td><td class='count'>13</td>
+      <td class='line'>48</td><td class='count'>18</td>
       <td><pre class='prettyprint covered' id='l48s0'>		return this.page;</pre></td>
     </tr>
     <tr>
