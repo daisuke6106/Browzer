@@ -66,7 +66,7 @@ public class Browzer {
 	 */
 	public Browzer(String url, PageRedirectHandler pageRedirectHandler) throws BrowzingException {
 		this.pageRedirectHandler = pageRedirectHandler;
-		this.pageManager         = this.createPageManager(this.ceatePage(url), pageRedirectHandler);
+		this.pageManager         = this.createPageManager(url, pageRedirectHandler);
 	}
 	
 	/**
@@ -92,7 +92,7 @@ public class Browzer {
 	 */
 	public Browzer(String url, PageRedirectHandler pageRedirectHandler, int maxNestLevel) throws BrowzingException {
 		this.pageRedirectHandler = pageRedirectHandler;
-		this.pageManager         = this.createPageManager(this.ceatePage(url), pageRedirectHandler, maxNestLevel);
+		this.pageManager         = this.createPageManager(url, pageRedirectHandler, maxNestLevel);
 	}
 	
 	/**
@@ -326,25 +326,15 @@ public class Browzer {
 	}
 	
 	/**
-	 * 指定のURLからページオブジェクトを作成する。
-	 * 
-	 * @param url URL文字列
-	 * @return ページオブジェクト
-	 * @throws BrowzingException ページクラスの生成に失敗した場合
-	 */
-	protected Page ceatePage(String url) throws BrowzingException {
-		return new Page(url);
-	}
-	
-	/**
 	 * 指定のページオブジェクト、ページリダイレクトハンドラからページマネージャを作成する。
 	 * 
 	 * @param page ページオブジェクト
 	 * @param handler ページリダイレクトハンドラ
 	 * @return ページマネージャオブジェクト
+	 * @throws BrowzingException ページクラスの生成に失敗した場合
 	 */
-	protected PageManager createPageManager(Page page, PageRedirectHandler handler) {
-		return new PageManager(page, handler);
+	protected PageManager createPageManager(String url, PageRedirectHandler handler) throws BrowzingException {
+		return new PageManager(url, handler);
 	}
 	
 	/**
@@ -354,8 +344,9 @@ public class Browzer {
 	 * @param handler ページリダイレクトハンドラ
 	 * @param maxNestLevel 最大遷移数
 	 * @return ページマネージャオブジェクト
+	 * @throws BrowzingException ページクラスの生成に失敗した場合
 	 */
-	protected PageManager createPageManager(Page page, PageRedirectHandler handler, int maxNestLevel) {
-		return new PageManager(page, handler, maxNestLevel);
+	protected PageManager createPageManager(String url, PageRedirectHandler handler, int maxNestLevel) throws BrowzingException {
+		return new PageManager(url, handler, maxNestLevel);
 	}
 }

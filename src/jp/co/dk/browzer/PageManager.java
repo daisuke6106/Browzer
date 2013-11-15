@@ -38,11 +38,12 @@ public class PageManager implements XmlConvertable{
 	 * コンストラクタ<p/>
 	 * 指定のページを元に本ページ管理マネージャーを生成します。
 	 * 
-	 * @param page ページオブジェクト
+	 * @param url URL文字列
 	 * @param pageRedirectHandler ページリダイレクト制御オブジェクト
+	 * @throws BrowzingException ページクラスの生成に失敗した場合
 	 */
-	public PageManager(Page page, PageRedirectHandler pageRedirectHandler) {
-		this.page                = page;
+	public PageManager(String url, PageRedirectHandler pageRedirectHandler) throws BrowzingException {
+		this.page                = this.createPage(url);
 		this.pageRedirectHandler = pageRedirectHandler;
 		this.childPageList       = new ArrayList<PageManager>();
 	}
@@ -51,12 +52,13 @@ public class PageManager implements XmlConvertable{
 	 * コンストラクタ<p/>
 	 * 指定のページ、ページ遷移上限数を元に本ページ管理マネージャーを生成します。
 	 * 
-	 * @param page ページオブジェクト
+	 * @param url URL文字列
 	 * @param pageRedirectHandler ページリダイレクト制御オブジェクト
 	 * @param maxNestLevel ページ遷移上限数
+	 * @throws BrowzingException ページクラスの生成に失敗した場合 
 	 */
-	public PageManager(Page page, PageRedirectHandler pageRedirectHandler, int maxNestLevel) {
-		this.page                = page;
+	public PageManager(String url, PageRedirectHandler pageRedirectHandler, int maxNestLevel) throws BrowzingException {
+		this.page                = this.createPage(url);
 		this.pageRedirectHandler = pageRedirectHandler;
 		this.maxNestLevel        = maxNestLevel;
 		this.childPageList       = new ArrayList<PageManager>();
