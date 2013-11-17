@@ -174,6 +174,13 @@ public class PageManager implements XmlConvertable{
 	}
 	
 	/**
+	 * このページから遷移したページオブジェクトを空に設定します。
+	 */
+	public void removeChild() {
+		this.childPageList = new ArrayList<PageManager>();
+	}
+	
+	/**
 	 * このページマネージャクラスを生成するページマネージャインスタンス生成メソッドです。<p/>
 	 * このページマネージャにてmoveが実行される際には遷移元、遷移先のページ情報を元に本メソッドが実施され遷移先のページマネージャクラスが作成されます。<br/>
 	 * 本クラスを継承する場合、必ず実装してください。<br/>
