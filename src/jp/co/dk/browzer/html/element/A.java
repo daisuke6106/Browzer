@@ -2,6 +2,7 @@ package jp.co.dk.browzer.html.element;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 
 import jp.co.dk.browzer.Page;
 import jp.co.dk.document.html.HtmlElement;
@@ -62,4 +63,31 @@ public class A extends jp.co.dk.document.html.element.A {
 		}
 	}
 	
+	
+	public double samelevel() {
+		String url1 = this.page.getURL();
+		String url2 = this.getHref();
+		char[] chararray1 = url1.toCharArray();
+		char[] chararray2 = url2.toCharArray();
+		int cost = 0;
+		int d[][] = new int[chararray1.length+1][chararray2.length+1];
+		for (int i=0; i<chararray1.length; i++) d[i][0]=i;
+		for (int i=0; i<chararray2.length; i++) d[0][i]=i;
+		for (int i1=1; i1<=chararray1.length; i1++) {
+			for (int i2=1; i2<=chararray2.length; i2++) {
+				if (chararray1[i1] == chararray2[i2]) {
+					cost = 0;
+				} else {
+					cost = 1;
+				}
+				int add = d[i1-1][i2  ]+1; // 文字の挿入
+				int del = d[i1  ][i2-1]+1; // 文字の削除
+				int rep = d[i1-1][i2-1]+1+cost; // 文字の置換
+				int[] sort = {add, del, rep};
+				Arrays.sort(sort);
+				d[i1][i2] = sort[0];
+			}
+		}
+		return d[chararray1.length+1][chararray2.length+1];
+	}
 }
