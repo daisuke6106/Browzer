@@ -21,6 +21,8 @@
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.html.element.Image;
 import jp.co.dk.browzer.html.element.A;
+import jp.co.dk.browzer.html.element.Link;
+import jp.co.dk.browzer.html.element.Script;
 import jp.co.dk.document.html.HtmlElement;
 </div><span>import ...</span></pre></td>
     </tr>
@@ -35,76 +37,114 @@ import jp.co.dk.document.html.HtmlElement;
  */</div><span>/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>15</td><td>&nbsp;</td>
+      <td class='line'>17</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>public class HtmlElementFactory extends jp.co.dk.document.html.HtmlElementFactory {</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>17</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private Page <span class='instance covered' title='Reads: 14689 Writes: 33'>page</span>;</pre></td>
+      <td class='line'>19</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private Page <span class='instance covered' title='Reads: 2294 Writes: 23'>page</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>19</td><td class='count'>33</td>
-      <td><pre class='prettyprint covered' id='l19s0'>	public HtmlElementFactory(Page page) {</pre></td>
+      <td class='line'>21</td><td class='count'>23</td>
+      <td><pre class='prettyprint covered' id='l21s0'>	public HtmlElementFactory(Page page) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>20</td><td class='count'>33</td>
-      <td><pre class='prettyprint covered' id='l20s0'>		this.page = page;</pre></td>
+      <td class='line'>22</td><td class='count'>23</td>
+      <td><pre class='prettyprint covered' id='l22s0'>		this.page = page;</pre></td>
     </tr>
     <tr>
-      <td class='line'>21</td><td class='count'>33</td>
-      <td><pre class='prettyprint covered' id='l21s0'>	}</pre></td>
+      <td class='line'>23</td><td class='count'>23</td>
+      <td><pre class='prettyprint covered' id='l23s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>23</td><td>&nbsp;</td>
+      <td class='line'>25</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	@Override</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>24</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected A createAnchor(HtmlElement htmlElement) {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>25</td><td class='count'>14686</td>
-      <td><pre class='prettyprint covered' id='l25s0'>		return new A(htmlElement, this.page);</pre></td>
     </tr>
     <tr>
       <td class='line'>26</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected A createAnchor(HtmlElement htmlElement) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>27</td><td class='count'>2288</td>
+      <td><pre class='prettyprint covered' id='l27s0'>		return new A(htmlElement, this.page);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>28</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>28</td><td>&nbsp;</td>
+      <td class='line'>30</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	@Override</pre></td>
     </tr>
     <tr>
-      <td class='line'>29</td><td>&nbsp;</td>
+      <td class='line'>31</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	protected Image createImage(HtmlElement htmlElement) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>30</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l30s0'>		return new Image(htmlElement, this.page);</pre></td>
+      <td class='line'>32</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l32s0'>		return new Image(htmlElement, this.page);</pre></td>
     </tr>
     <tr>
-      <td class='line'>31</td><td>&nbsp;</td>
+      <td class='line'>33</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>33</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected Form createForm(HtmlElement htmlElement) {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>34</td><td class='count'>3</td>
-      <td><pre class='prettyprint covered' id='l34s0'>		return new Form(htmlElement, this.page);</pre></td>
-    </tr>
-    <tr>
       <td class='line'>35</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	}</pre></td>
+      <td><pre class='prettyprint'>	@Override</pre></td>
     </tr>
     <tr>
       <td class='line'>36</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected Link createLink(HtmlElement htmlElement) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>37</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l37s0'>		return new Link(htmlElement, this.page);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>38</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>40</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	@Override</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>41</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected Script createScript(HtmlElement htmlElement) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>42</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l42s0'>		return new Script(htmlElement, this.page);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>43</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>45</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	@Override</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>46</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected Form createForm(HtmlElement htmlElement) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>47</td><td class='count'>6</td>
+      <td><pre class='prettyprint covered' id='l47s0'>		return new Form(htmlElement, this.page);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>48</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>49</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>}</pre></td>
     </tr>
   </table>

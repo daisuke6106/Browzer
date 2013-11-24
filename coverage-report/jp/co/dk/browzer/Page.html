@@ -76,110 +76,56 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>52</td><td>&nbsp;</td>
-      <td><pre class='comment'>	/** URL文字列 */</pre></td>
+      <td><pre class='comment'>	/** URLオブジェクト */</pre></td>
     </tr>
     <tr>
       <td class='line'>53</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected String <span class='instance uncovered' title='Reads: 0 Writes: 44'>url</span>;</pre></td>
+      <td><pre class='prettyprint'>	protected Url <span class='instance covered' title='Reads: 114 Writes: 61'>url</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>55</td><td>&nbsp;</td>
-      <td><pre class='comment'>	/** URL文字列を元に作成されたURLオブジェクト */</pre></td>
+      <td><pre class='comment'>	/** リクエストヘッダ */</pre></td>
     </tr>
     <tr>
       <td class='line'>56</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected URL <span class='instance covered' title='Reads: 306 Writes: 43'>urlObj</span>;</pre></td>
+      <td><pre class='prettyprint'>	protected RequestHeader <span class='instance uncovered' title='Reads: 0 Writes: 61'>requestHeader</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>58</td><td>&nbsp;</td>
-      <td><pre class='comment'>	/** プロトコル名 */</pre></td>
+      <td><pre class='comment'>	/** レスポンスヘッダ */</pre></td>
     </tr>
     <tr>
       <td class='line'>59</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected String <span class='instance uncovered' title='Reads: 0 Writes: 43'>protocol</span>;</pre></td>
+      <td><pre class='prettyprint'>	protected ResponseHeader <span class='instance covered' title='Reads: 48 Writes: 61'>responseHeader</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>61</td><td>&nbsp;</td>
-      <td><pre class='comment'>	/** ホスト名 */</pre></td>
+      <td><pre class='comment'>	/** ページデータ */</pre></td>
     </tr>
     <tr>
       <td class='line'>62</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected String <span class='instance uncovered' title='Reads: 0 Writes: 43'>host</span>;</pre></td>
+      <td><pre class='prettyprint'>	protected ByteDump <span class='instance covered' title='Reads: 62 Writes: 31'>byteDump</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>64</td><td>&nbsp;</td>
-      <td><pre class='comment'>	/** パス文字列 */</pre></td>
+      <td><pre class='comment'>	/** ページのドキュメントオブジェクト */</pre></td>
     </tr>
     <tr>
       <td class='line'>65</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected String <span class='instance uncovered' title='Reads: 0 Writes: 43'>path</span>;</pre></td>
+      <td><pre class='prettyprint'>	protected jp.co.dk.<span class='instance covered' title='Reads: 70 Writes: 31'>document</span>.File document;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>67</td><td>&nbsp;</td>
-      <td><pre class='comment'>	/** パス一覧 */</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>68</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected List&lt;String> <span class='instance uncovered' title='Reads: 16 Writes: 43'>pathList</span>;</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'>70</td><td>&nbsp;</td>
-      <td><pre class='comment'>	/** パラメータ一覧 */</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>71</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected Map&lt;String, String> <span class='instance uncovered' title='Reads: 0 Writes: 43'>parameter</span>;</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'>73</td><td>&nbsp;</td>
-      <td><pre class='comment'>	/** リクエストヘッダ */</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>74</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected RequestHeader <span class='instance uncovered' title='Reads: 0 Writes: 43'>requestHeader</span>;</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'>76</td><td>&nbsp;</td>
-      <td><pre class='comment'>	/** レスポンスヘッダ */</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>77</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected ResponseHeader <span class='instance covered' title='Reads: 49 Writes: 43'>responseHeader</span>;</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'>79</td><td>&nbsp;</td>
-      <td><pre class='comment'>	/** ページデータ */</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>80</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected ByteDump <span class='instance covered' title='Reads: 70 Writes: 35'>byteDump</span>;</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'>82</td><td>&nbsp;</td>
-      <td><pre class='comment'>	/** ページのドキュメントオブジェクト */</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>83</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected jp.co.dk.<span class='instance covered' title='Reads: 88 Writes: 35'>document</span>.File document;</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'>85</td><td>&nbsp;</td>
       <td><pre class='comment'>	/** URLコネクション */</pre></td>
     </tr>
     <tr>
-      <td class='line'>86</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected URLConnection <span class='instance covered' title='Reads: 35 Writes: 43'>connection</span>;</pre></td>
+      <td class='line'>68</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected URLConnection <span class='instance covered' title='Reads: 34 Writes: 61'>connection</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -193,16 +139,16 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>95</td><td>&nbsp;</td>
+      <td class='line'>77</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public Page(String url) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>96</td><td class='count'>46</td>
-      <td><pre class='prettyprint covered' id='l96s0'>		this(url, new HashMap&lt;String,String>());</pre></td>
+      <td class='line'>78</td><td class='count'>60</td>
+      <td><pre class='prettyprint covered' id='l78s0'>		this(url, new HashMap&lt;String,String>());</pre></td>
     </tr>
     <tr>
-      <td class='line'>97</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l97s0'>	}</pre></td>
+      <td class='line'>79</td><td class='count'>58</td>
+      <td><pre class='prettyprint covered' id='l79s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -215,118 +161,93 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 * @param requestHeader リクエストヘッダ
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */    <tr>
-      <td></td><td class='count'>45</td>
+      <td></td><td class='count'>59</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#40bf00' onclick='hidePath()'>Path coverage: 3/4</span>
-        <span class='covered' onclick="showPath(this,'l107s0 l108s0 l108s2')">A: 1</span>
-        <span class='covered' onclick="showPath(this,'l107s0 l108s0 l108s1 l108s2')">B: 1</span>
-        <span class='covered' onclick="showPath(this,'l107s0 l108s0 l108s1 l109s0 l110s0 l130s0 l133s0')">C: 43</span>
-        <span class='uncovered' onclick="showPath(this,'l107s0 l108s0 l108s1 l109s0 l109s1 l110s0 l130s0 l133s0')">D: 0</span>
+        <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 2/4</span>
+        <span class='covered' onclick="showPath(this,'l89s0 l90s0 l90s2')">A: 1</span>
+        <span class='uncovered' onclick="showPath(this,'l89s0 l90s0 l90s1 l90s2')">B: 0</span>
+        <span class='covered' onclick="showPath(this,'l89s0 l90s0 l90s1 l91s0 l92s0 l105s0 l108s0')">C: 58</span>
+        <span class='uncovered' onclick="showPath(this,'l89s0 l90s0 l90s1 l91s0 l91s1 l92s0 l105s0 l108s0')">D: 0</span>
       </td>
     </tr>
 </div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>107</td><td class='count'>46</td>
-      <td><pre class='prettyprint covered' id='l107s0'>	public Page(String url, Map&lt;String, String> requestHeader ) throws BrowzingException {</pre></td>
+      <td class='line'>89</td><td class='count'>60</td>
+      <td><pre class='prettyprint covered' id='l89s0'>	public Page(String url, Map&lt;String, String> requestHeader ) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>108</td><td class='count'>46</td>
-      <td><pre class='prettyprint jmp'>		<span id='l108s0' title='Executions: 46' class='covered'>if (url == null</span> || <span id='l108s1' title='Executions: 45' class='covered'>url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);</span></pre></td>
+      <td class='line'>90</td><td class='count'>60</td>
+      <td><pre class='prettyprint jmp'>		<span id='l90s0' title='Executions: 60' class='covered'>if (url == null</span> || <span id='l90s1' title='Executions: 59' class='covered'>url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>109</td><td class='count'>44</td>
-      <td><pre class='prettyprint jmp'>		<span id='l109s0' title='Executions: 44' class='covered'>if (requestHeader == null)</span> <span id='l109s1' title='Executions: 0' class='uncovered'>requestHeader = new HashMap&lt;String, String>();</span> </pre></td>
+      <td class='line'>91</td><td class='count'>59</td>
+      <td><pre class='prettyprint jmp'>		<span id='l91s0' title='Executions: 59' class='covered'>if (requestHeader == null)</span> <span id='l91s1' title='Executions: 0' class='uncovered'>requestHeader = new HashMap&lt;String, String>();</span> </pre></td>
     </tr>
     <tr>
-      <td class='line'>110</td><td class='count'>44</td>
-      <td><pre class='prettyprint covered' id='l110s0'>		this.url        = url;</pre></td>
+      <td class='line'>92</td><td class='count'>59</td>
+      <td><pre class='prettyprint covered' id='l92s0'>		this.url = this.createUrl(url);</pre></td>
     </tr>
     <tr>
-      <td class='line'>111</td><td class='count'>44</td>
-      <td><pre class='prettyprint covered' id='l111s0'>		this.urlObj     = this.createURL(url);</pre></td>
+      <td class='line'>93</td><td class='count'>58</td>
+      <td><pre class='prettyprint covered' id='l93s0'>		URLConnection connection = this.createURLConnection(this.url.getUrlObject(), HtmlRequestMethodName.GET);</pre></td>
     </tr>
     <tr>
-      <td class='line'>112</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l112s0'>		this.protocol   = this.getProtocol(this.urlObj);</pre></td>
+      <td class='line'>94</td><td class='count'>58</td>
+      <td><pre class='prettyprint covered' id='l94s0'>		Map&lt;String, String> requestHeaderByProperty = this.getRequestHeaderByPorperty();</pre></td>
     </tr>
     <tr>
-      <td class='line'>113</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l113s0'>		this.host       = this.getHost(this.urlObj);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>114</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l114s0'>		this.path       = this.getPath(this.urlObj);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>115</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l115s0'>		this.pathList   = this.getPathList(this.urlObj);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>116</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l116s0'>		this.parameter  = this.getParameter(this.urlObj);</pre></td>
+      <td class='line'>95</td><td class='count'>58</td>
+      <td><pre class='prettyprint covered' id='l95s0'>		requestHeaderByProperty.putAll(requestHeader);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>118</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l118s0'>		URLConnection connection = this.createURLConnection(this.urlObj, HtmlRequestMethodName.GET);</pre></td>
+      <td class='line'>97</td><td class='count'>58</td>
+      <td><pre class='prettyprint covered' id='l97s0'>		this.requestHeader = this.createRequestHeader(requestHeaderByProperty);</pre></td>
     </tr>
     <tr>
-      <td class='line'>119</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l119s0'>		Map&lt;String, String> requestHeaderByProperty = this.getRequestHeaderByPorperty();</pre></td>
+      <td class='line'>98</td><td class='count'>58</td>
+      <td><pre class='prettyprint covered' id='l98s0'>		this.setRequestProperty(connection, requestHeaderByProperty);</pre></td>
     </tr>
     <tr>
-      <td class='line'>120</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l120s0'>		requestHeaderByProperty.putAll(requestHeader);</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'>122</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l122s0'>		this.requestHeader = this.createRequestHeader(requestHeaderByProperty);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>123</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l123s0'>		this.setRequestProperty(connection, requestHeaderByProperty);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>124</td><td>&nbsp;</td>
+      <td class='line'>99</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>125</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l125s0'>			connection.connect();</pre></td>
+      <td class='line'>100</td><td class='count'>58</td>
+      <td><pre class='prettyprint covered' id='l100s0'>			connection.connect();</pre></td>
     </tr>
     <tr>
-      <td class='line'>126</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l126s0'>			this.connection = connection;</pre></td>
+      <td class='line'>101</td><td class='count'>58</td>
+      <td><pre class='prettyprint covered' id='l101s0'>			this.connection = connection;</pre></td>
     </tr>
     <tr>
-      <td class='line'>127</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l127s0'>		} catch (IOException e) {</pre></td>
+      <td class='line'>102</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l102s0'>		} catch (IOException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>128</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l128s0'>			throw new BrowzingException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, urlObj.toString(), e );</pre></td>
+      <td class='line'>103</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l103s0'>			throw new BrowzingException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, this.url.toString(), e );</pre></td>
     </tr>
     <tr>
-      <td class='line'>129</td><td>&nbsp;</td>
+      <td class='line'>104</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>130</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l130s0'>		Map&lt;String, List&lt;String>> responseHeader = connection.getHeaderFields();</pre></td>
+      <td class='line'>105</td><td class='count'>58</td>
+      <td><pre class='prettyprint covered' id='l105s0'>		Map&lt;String, List&lt;String>> responseHeader = connection.getHeaderFields();</pre></td>
     </tr>
     <tr>
-      <td class='line'>131</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l131s0'>		this.responseHeader = this.createResponseHeader(responseHeader);</pre></td>
+      <td class='line'>106</td><td class='count'>58</td>
+      <td><pre class='prettyprint covered' id='l106s0'>		this.responseHeader = this.createResponseHeader(responseHeader);</pre></td>
     </tr>
     <tr>
-      <td class='line'>132</td><td>&nbsp;</td>
+      <td class='line'>107</td><td>&nbsp;</td>
       <td><pre class='comment'>		// this.byteDump       = this.getByteDump(connection);</pre></td>
     </tr>
     <tr>
-      <td class='line'>133</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l133s0'>	}</pre></td>
+      <td class='line'>108</td><td class='count'>58</td>
+      <td><pre class='prettyprint covered' id='l108s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -344,64 +265,40 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td></td><td class='count'>0</td>
       <td class='paths'>
         <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/3</span>
-        <span class='uncovered' onclick="showPath(this,'l145s0 l146s0 l146s2')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l145s0 l146s0 l146s1 l146s2')">B: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l145s0 l146s0 l146s1 l147s0 l157s0')">C: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l120s0 l121s0 l121s2')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l120s0 l121s0 l121s1 l121s2')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l120s0 l121s0 l121s1 l122s0 l126s0')">C: 0</span>
       </td>
     </tr>
 </div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>145</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l145s0'>	protected Page(String url, Map&lt;String,String> requestHeader, Map&lt;String, List&lt;String>> responseHeader, ByteDump data) throws BrowzingException {</pre></td>
+      <td class='line'>120</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l120s0'>	protected Page(String url, Map&lt;String,String> requestHeader, Map&lt;String, List&lt;String>> responseHeader, ByteDump data) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>146</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l146s0' title='Executions: 0' class='uncovered'>if (url == null</span> || <span id='l146s1' title='Executions: 0' class='uncovered'>url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);</span></pre></td>
+      <td class='line'>121</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>		<span id='l121s0' title='Executions: 0' class='uncovered'>if (url == null</span> || <span id='l121s1' title='Executions: 0' class='uncovered'>url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>147</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l147s0'>		this.url            = url;</pre></td>
+      <td class='line'>122</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l122s0'>		this.url            = this.createUrl(url);</pre></td>
     </tr>
     <tr>
-      <td class='line'>148</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l148s0'>		this.urlObj         = this.createURL(url);</pre></td>
+      <td class='line'>123</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l123s0'>		this.requestHeader  = this.createRequestHeader(requestHeader);</pre></td>
     </tr>
     <tr>
-      <td class='line'>149</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l149s0'>		this.protocol       = this.getProtocol(this.urlObj);</pre></td>
+      <td class='line'>124</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l124s0'>		this.responseHeader = this.createResponseHeader(responseHeader);</pre></td>
     </tr>
     <tr>
-      <td class='line'>150</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l150s0'>		this.host           = this.getHost(this.urlObj);</pre></td>
+      <td class='line'>125</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l125s0'>		this.byteDump       = data;</pre></td>
     </tr>
     <tr>
-      <td class='line'>151</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l151s0'>		this.path           = this.getPath(this.urlObj);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>152</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l152s0'>		this.pathList       = this.getPathList(this.urlObj);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>153</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l153s0'>		this.parameter      = this.getParameter(this.urlObj);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>154</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l154s0'>		this.requestHeader  = this.createRequestHeader(requestHeader);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>155</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l155s0'>		this.responseHeader = this.createResponseHeader(responseHeader);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>156</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l156s0'>		this.byteDump       = data;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>157</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l157s0'>	}</pre></td>
+      <td class='line'>126</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l126s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -414,125 +311,103 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 * @param requestProperty リクエストヘッダマップ
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */    <tr>
-      <td></td><td class='count'>0</td>
+      <td></td><td class='count'>4</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/3</span>
-        <span class='uncovered' onclick="showPath(this,'l167s0 l168s0 l168s1')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l167s0 l168s0 l170s0 l174s0 l181s0 l182s0 l192s0 l195s0')">B: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l167s0 l168s0 l170s0 l174s0 l181s0 l181s1 l182s0 l192s0 l195s0')">C: 0</span>
+        <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 3/3</span>
+        <span class='covered' onclick="showPath(this,'l136s0 l137s0 l137s1')">A: 1</span>
+        <span class='covered' onclick="showPath(this,'l136s0 l137s0 l139s0 l143s0 l144s0 l154s0 l157s0')">B: 2</span>
+        <span class='covered' onclick="showPath(this,'l136s0 l137s0 l139s0 l143s0 l143s1 l144s0 l154s0 l157s0')">C: 1</span>
       </td>
     </tr>
 </div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>167</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l167s0'>	protected Page(Form form, Map&lt;String, String> requestProperty) throws BrowzingException {</pre></td>
+      <td class='line'>136</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered' id='l136s0'>	protected Page(Form form, Map&lt;String, String> requestProperty) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>168</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l168s0' title='Executions: 0' class='uncovered'>if (form == null)</span> <span id='l168s1' title='Executions: 0' class='uncovered'>throw new BrowzingException(ERROR_FORM_IS_NOT_SPECIFIED);</span></pre></td>
+      <td class='line'>137</td><td class='count'>5</td>
+      <td><pre class='prettyprint jmp'>		<span id='l137s0' title='Executions: 5' class='covered'>if (form == null)</span> <span id='l137s1' title='Executions: 1' class='covered'>throw new BrowzingException(ERROR_FORM_IS_NOT_SPECIFIED);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>169</td><td>&nbsp;</td>
+      <td class='line'>138</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>170</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l170s0'>			this.urlObj = form.getAction().getURL();</pre></td>
+      <td class='line'>139</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l139s0'>			this.url = this.createUrl(form.getAction().getURL().toString());</pre></td>
     </tr>
     <tr>
-      <td class='line'>171</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l171s0'>		} catch (HtmlDocumentException e) {</pre></td>
+      <td class='line'>140</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l140s0'>		} catch (HtmlDocumentException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>172</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l172s0'>			throw new BrowzingException(ERROR_AN_INVALID_URL_WAS_SPECIFIED, e);</pre></td>
+      <td class='line'>141</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l141s0'>			throw new BrowzingException(ERROR_AN_INVALID_URL_WAS_SPECIFIED, e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>173</td><td>&nbsp;</td>
+      <td class='line'>142</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>174</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l174s0'>		this.url  = urlObj.toString();</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'>176</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l176s0'>		this.protocol   = this.getProtocol(this.urlObj);</pre></td>
+      <td class='line'>143</td><td class='count'>3</td>
+      <td><pre class='prettyprint jmp'>		<span id='l143s0' title='Executions: 3' class='covered'>if (requestProperty == null)</span> <span id='l143s1' title='Executions: 1' class='covered'>requestProperty = new HashMap&lt;String, String>();</span> </pre></td>
     </tr>
     <tr>
-      <td class='line'>177</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l177s0'>		this.host       = this.getHost(this.urlObj);</pre></td>
+      <td class='line'>144</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l144s0'>		this.requestHeader = this.createRequestHeader(requestProperty);</pre></td>
     </tr>
     <tr>
-      <td class='line'>178</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l178s0'>		this.path       = this.getPath(this.urlObj);</pre></td>
+      <td class='line'>145</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l145s0'>		URLConnection connection = this.createURLConnection(this.url.getUrlObject(), form.getMethod());</pre></td>
     </tr>
     <tr>
-      <td class='line'>179</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l179s0'>		this.pathList   = this.getPathList(this.urlObj);</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'>181</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l181s0' title='Executions: 0' class='uncovered'>if (requestProperty == null)</span> <span id='l181s1' title='Executions: 0' class='uncovered'>requestProperty = new HashMap&lt;String, String>();</span> </pre></td>
+      <td class='line'>146</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l146s0'>		this.connection = this.setRequestProperty(connection, requestProperty);</pre></td>
     </tr>
     <tr>
-      <td class='line'>182</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l182s0'>		this.requestHeader = this.createRequestHeader(requestProperty);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>183</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l183s0'>		URLConnection connection = this.createURLConnection(this.urlObj, form.getMethod());</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>184</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l184s0'>		this.connection = this.setRequestProperty(connection, requestProperty);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>185</td><td>&nbsp;</td>
+      <td class='line'>147</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>186</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l186s0'>			BufferedWriter outputStream = new BufferedWriter(new OutputStreamWriter(this.connection.getOutputStream()));</pre></td>
+      <td class='line'>148</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l148s0'>			BufferedWriter outputStream = new BufferedWriter(new OutputStreamWriter(this.connection.getOutputStream()));</pre></td>
     </tr>
     <tr>
-      <td class='line'>187</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l187s0'>			outputStream.write(form.createMessage());</pre></td>
+      <td class='line'>149</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l149s0'>			outputStream.write(form.createMessage());</pre></td>
     </tr>
     <tr>
-      <td class='line'>188</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l188s0'>			outputStream.close();</pre></td>
+      <td class='line'>150</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l150s0'>			outputStream.close();</pre></td>
     </tr>
     <tr>
-      <td class='line'>189</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l189s0'>		} catch (IOException e) {</pre></td>
+      <td class='line'>151</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l151s0'>		} catch (IOException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>190</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l190s0'>			throw new BrowzingException(ERROR_FAILED_TO_SEND_MESSAGE, new String[]{this.url, form.getMethod().getMethod()}, e);</pre></td>
+      <td class='line'>152</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l152s0'>			throw new BrowzingException(ERROR_FAILED_TO_SEND_MESSAGE, new String[]{this.url.getURL(), form.getMethod().getMethod()}, e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>191</td><td>&nbsp;</td>
+      <td class='line'>153</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>192</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l192s0'>		Map&lt;String, List&lt;String>> responseHeader = connection.getHeaderFields();</pre></td>
+      <td class='line'>154</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l154s0'>		Map&lt;String, List&lt;String>> responseHeader = connection.getHeaderFields();</pre></td>
     </tr>
     <tr>
-      <td class='line'>193</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l193s0'>		this.responseHeader = this.createResponseHeader(responseHeader);</pre></td>
+      <td class='line'>155</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l155s0'>		this.responseHeader = this.createResponseHeader(responseHeader);</pre></td>
     </tr>
     <tr>
-      <td class='line'>194</td><td>&nbsp;</td>
+      <td class='line'>156</td><td>&nbsp;</td>
       <td><pre class='comment'>		// this.byteDump       = this.getByteDump(connection);</pre></td>
     </tr>
     <tr>
-      <td class='line'>195</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l195s0'>	}</pre></td>
+      <td class='line'>157</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l157s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -551,41 +426,41 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>209</td><td>&nbsp;</td>
+      <td class='line'>171</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	Page move (jp.co.dk.browzer.html.element.A anchor) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
+      <td></td><td class='count'>4</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/4</span>
-        <span class='uncovered' onclick="showPath(this,'l210s0 l210s1')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l210s0 l211s0 l211s1')">B: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l210s0 l211s0 l212s0 l213s0 l213s1')">C: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l210s0 l211s0 l212s0 l213s0 l214s0')">D: 0</span>
+        <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 4/4</span>
+        <span class='covered' onclick="showPath(this,'l172s0 l172s1')">A: 1</span>
+        <span class='covered' onclick="showPath(this,'l172s0 l173s0 l173s1')">B: 1</span>
+        <span class='covered' onclick="showPath(this,'l172s0 l173s0 l174s0 l175s0 l175s1')">C: 1</span>
+        <span class='covered' onclick="showPath(this,'l172s0 l173s0 l174s0 l175s0 l176s0')">D: 1</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>210</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l210s0' title='Executions: 0' class='uncovered'>if (anchor == null)</span> <span id='l210s1' title='Executions: 0' class='uncovered'>throw new BrowzingException(ERROR_SPECIFIED_ANCHOR_IS_NOT_SET);</span></pre></td>
+      <td class='line'>172</td><td class='count'>4</td>
+      <td><pre class='prettyprint jmp'>		<span id='l172s0' title='Executions: 4' class='covered'>if (anchor == null)</span> <span id='l172s1' title='Executions: 1' class='covered'>throw new BrowzingException(ERROR_SPECIFIED_ANCHOR_IS_NOT_SET);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>211</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l211s0' title='Executions: 0' class='uncovered'>if (!this.equals(anchor.getPage()))throw new BrowzingException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);</span></pre></td>
+      <td class='line'>173</td><td class='count'>3</td>
+      <td><pre class='prettyprint jmp'>		<span id='l173s0' title='Executions: 3' class='covered'>if (!this.equals(anchor.getPage()))throw new BrowzingException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>212</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l212s0'>		String url = anchor.getHref();</pre></td>
+      <td class='line'>174</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered' id='l174s0'>		String url = anchor.getHref();</pre></td>
     </tr>
     <tr>
-      <td class='line'>213</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l213s0' title='Executions: 0' class='uncovered'>if (url.equals("")) throw new BrowzingException(ERROR_ANCHOR_HAS_NOT_URL);</span></pre></td>
+      <td class='line'>175</td><td class='count'>2</td>
+      <td><pre class='prettyprint jmp'>		<span id='l175s0' title='Executions: 2' class='covered'>if (url.equals("")) throw new BrowzingException(ERROR_ANCHOR_HAS_NOT_URL);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>214</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l214s0'>		return new Page(url);</pre></td>
+      <td class='line'>176</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l176s0'>		return new Page(url);</pre></td>
     </tr>
     <tr>
-      <td class='line'>215</td><td>&nbsp;</td>
+      <td class='line'>177</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -607,15 +482,15 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>231</td><td>&nbsp;</td>
+      <td class='line'>193</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	Page move(jp.co.dk.browzer.html.element.Form form) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>232</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l232s0'>		return this.move(form, new HashMap&lt;String, String>());</pre></td>
+      <td class='line'>194</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l194s0'>		return this.move(form, new HashMap&lt;String, String>());</pre></td>
     </tr>
     <tr>
-      <td class='line'>233</td><td>&nbsp;</td>
+      <td class='line'>195</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -653,53 +528,53 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>265</td><td>&nbsp;</td>
+      <td class='line'>227</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	Page move(jp.co.dk.browzer.html.element.Form form, Map&lt;String, String> requestHeader) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
+      <td></td><td class='count'>4</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/4</span>
-        <span class='uncovered' onclick="showPath(this,'l266s0 l266s1')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l266s0 l267s0 l267s1')">B: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l266s0 l267s0 l268s0 l269s0 l273s0')">C: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l266s0 l267s0 l268s0 l268s1 l269s0 l273s0')">D: 0</span>
+        <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 4/4</span>
+        <span class='covered' onclick="showPath(this,'l228s0 l228s1')">A: 1</span>
+        <span class='covered' onclick="showPath(this,'l228s0 l229s0 l229s1')">B: 1</span>
+        <span class='covered' onclick="showPath(this,'l228s0 l229s0 l230s0 l231s0 l235s0')">C: 1</span>
+        <span class='covered' onclick="showPath(this,'l228s0 l229s0 l230s0 l230s1 l231s0 l235s0')">D: 1</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>266</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l266s0' title='Executions: 0' class='uncovered'>if (form == null)</span> <span id='l266s1' title='Executions: 0' class='uncovered'>throw new BrowzingException(ERROR_SPECIFIED_FORM_IS_NOT_SET);</span></pre></td>
+      <td class='line'>228</td><td class='count'>4</td>
+      <td><pre class='prettyprint jmp'>		<span id='l228s0' title='Executions: 4' class='covered'>if (form == null)</span> <span id='l228s1' title='Executions: 1' class='covered'>throw new BrowzingException(ERROR_SPECIFIED_FORM_IS_NOT_SET);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>267</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l267s0' title='Executions: 0' class='uncovered'>if (!this.equals(form.getPage())) throw new BrowzingException(ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);</span></pre></td>
+      <td class='line'>229</td><td class='count'>3</td>
+      <td><pre class='prettyprint jmp'>		<span id='l229s0' title='Executions: 3' class='covered'>if (!this.equals(form.getPage())) throw new BrowzingException(ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>268</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l268s0' title='Executions: 0' class='uncovered'>if (requestHeader == null)</span> <span id='l268s1' title='Executions: 0' class='uncovered'>requestHeader = new HashMap&lt;String, String>();</span></pre></td>
+      <td class='line'>230</td><td class='count'>2</td>
+      <td><pre class='prettyprint jmp'>		<span id='l230s0' title='Executions: 2' class='covered'>if (requestHeader == null)</span> <span id='l230s1' title='Executions: 1' class='covered'>requestHeader = new HashMap&lt;String, String>();</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>269</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l269s0'>		Map&lt;String, String> defaultRequestHeader  = this.getRequestHeaderByPorperty();</pre></td>
+      <td class='line'>231</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered' id='l231s0'>		Map&lt;String, String> defaultRequestHeader  = this.getRequestHeaderByPorperty();</pre></td>
     </tr>
     <tr>
-      <td class='line'>270</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l270s0'>		Map&lt;String, String> cookieRequestHeader   = this.getCookies();</pre></td>
+      <td class='line'>232</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered' id='l232s0'>		Map&lt;String, String> cookieRequestHeader   = this.getCookies();</pre></td>
     </tr>
     <tr>
-      <td class='line'>271</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l271s0'>		defaultRequestHeader.putAll(cookieRequestHeader);</pre></td>
+      <td class='line'>233</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered' id='l233s0'>		defaultRequestHeader.putAll(cookieRequestHeader);</pre></td>
     </tr>
     <tr>
-      <td class='line'>272</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l272s0'>		defaultRequestHeader.putAll(requestHeader);</pre></td>
+      <td class='line'>234</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered' id='l234s0'>		defaultRequestHeader.putAll(requestHeader);</pre></td>
     </tr>
     <tr>
-      <td class='line'>273</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l273s0'>		return new Page(form, defaultRequestHeader);</pre></td>
+      <td class='line'>235</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered' id='l235s0'>		return new Page(form, defaultRequestHeader);</pre></td>
     </tr>
     <tr>
-      <td class='line'>274</td><td>&nbsp;</td>
+      <td class='line'>236</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -715,15 +590,15 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>284</td><td>&nbsp;</td>
+      <td class='line'>246</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public String getHost() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>285</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l285s0'>		return this.host;</pre></td>
+      <td class='line'>247</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered' id='l247s0'>		return this.url.getHost();</pre></td>
     </tr>
     <tr>
-      <td class='line'>286</td><td>&nbsp;</td>
+      <td class='line'>248</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -737,15 +612,15 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>294</td><td>&nbsp;</td>
+      <td class='line'>256</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public String getURL() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>295</td><td class='count'>2</td>
-      <td><pre class='prettyprint covered' id='l295s0'>		return this.urlObj.toString();</pre></td>
+      <td class='line'>257</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l257s0'>		return this.url.toString();</pre></td>
     </tr>
     <tr>
-      <td class='line'>296</td><td>&nbsp;</td>
+      <td class='line'>258</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -758,15 +633,15 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>303</td><td>&nbsp;</td>
+      <td class='line'>265</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public URL getURLObject() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>304</td><td class='count'>44</td>
-      <td><pre class='prettyprint covered' id='l304s0'>		return this.urlObj;</pre></td>
+      <td class='line'>266</td><td class='count'>8</td>
+      <td><pre class='prettyprint covered' id='l266s0'>		return this.url.getUrlObject();</pre></td>
     </tr>
     <tr>
-      <td class='line'>305</td><td>&nbsp;</td>
+      <td class='line'>267</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -782,27 +657,27 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>315</td><td>&nbsp;</td>
+      <td class='line'>277</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public jp.co.dk.document.File getDocument() throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>44</td>
+      <td></td><td class='count'>35</td>
       <td class='paths'>
         <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 2/2</span>
-        <span class='covered' onclick="showPath(this,'l316s0 l316s1')">A: 9</span>
-        <span class='covered' onclick="showPath(this,'l316s0 l317s0')">B: 35</span>
+        <span class='covered' onclick="showPath(this,'l278s0 l278s1')">A: 4</span>
+        <span class='covered' onclick="showPath(this,'l278s0 l279s0')">B: 31</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>316</td><td class='count'>44</td>
-      <td><pre class='prettyprint jmp'>		<span id='l316s0' title='Executions: 44' class='covered'>if (this.document != null)</span> <span id='l316s1' title='Executions: 9' class='covered'>return this.document;</span></pre></td>
+      <td class='line'>278</td><td class='count'>35</td>
+      <td><pre class='prettyprint jmp'>		<span id='l278s0' title='Executions: 35' class='covered'>if (this.document != null)</span> <span id='l278s1' title='Executions: 4' class='covered'>return this.document;</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>317</td><td class='count'>35</td>
-      <td><pre class='prettyprint covered' id='l317s0'>		return this.getDocument(new DocumentFactory(this));</pre></td>
+      <td class='line'>279</td><td class='count'>31</td>
+      <td><pre class='prettyprint covered' id='l279s0'>		return this.getDocument(new DocumentFactory(this));</pre></td>
     </tr>
     <tr>
-      <td class='line'>318</td><td>&nbsp;</td>
+      <td class='line'>280</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -824,59 +699,59 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>334</td><td>&nbsp;</td>
+      <td class='line'>296</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public jp.co.dk.document.File getDocument(DocumentFactory documentFactory) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>35</td>
+      <td></td><td class='count'>31</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 1/2</span>
-        <span class='covered' onclick="showPath(this,'l335s0 l337s0 l338s0 l339s0')">A: 35</span>
-        <span class='uncovered' onclick="showPath(this,'l335s0 l337s0 l341s0 l343s0')">B: 0</span>
+        <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 2/2</span>
+        <span class='covered' onclick="showPath(this,'l297s0 l299s0 l300s0 l301s0')">A: 27</span>
+        <span class='covered' onclick="showPath(this,'l297s0 l299s0 l303s0 l305s0')">B: 4</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>335</td><td class='count'>35</td>
-      <td><pre class='prettyprint covered' id='l335s0'>		InputStream inputStream = this.getData().getStream();</pre></td>
+      <td class='line'>297</td><td class='count'>31</td>
+      <td><pre class='prettyprint covered' id='l297s0'>		InputStream inputStream = this.getData().getStream();</pre></td>
     </tr>
     <tr>
-      <td class='line'>336</td><td class='count'>35</td>
-      <td><pre class='prettyprint covered' id='l336s0'>		ContentsType contentsType = this.responseHeader.getContentsType();</pre></td>
+      <td class='line'>298</td><td class='count'>31</td>
+      <td><pre class='prettyprint covered' id='l298s0'>		ContentsType contentsType = this.responseHeader.getContentsType();</pre></td>
     </tr>
     <tr>
-      <td class='line'>337</td><td class='count'>35</td>
-      <td><pre class='prettyprint jmp'>		<span id='l337s0' title='Executions: 35' class='covered'>if (contentsType != null)</span> <span id='l337s1' title='Executions: 35' class='covered'>{</span></pre></td>
+      <td class='line'>299</td><td class='count'>31</td>
+      <td><pre class='prettyprint jmp'>		<span id='l299s0' title='Executions: 31' class='covered'>if (contentsType != null)</span> <span id='l299s1' title='Executions: 27' class='covered'>{</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>338</td><td class='count'>35</td>
-      <td><pre class='prettyprint covered' id='l338s0'>			this.document = documentFactory.create(contentsType, inputStream);</pre></td>
+      <td class='line'>300</td><td class='count'>27</td>
+      <td><pre class='prettyprint covered' id='l300s0'>			this.document = documentFactory.create(contentsType, inputStream);</pre></td>
     </tr>
     <tr>
-      <td class='line'>339</td><td class='count'>35</td>
-      <td><pre class='prettyprint covered' id='l339s0'>			return this.document;</pre></td>
+      <td class='line'>301</td><td class='count'>27</td>
+      <td><pre class='prettyprint covered' id='l301s0'>			return this.document;</pre></td>
     </tr>
     <tr>
-      <td class='line'>340</td><td>&nbsp;</td>
+      <td class='line'>302</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		} else {</pre></td>
     </tr>
     <tr>
-      <td class='line'>341</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l341s0'>			BrowzingExtension extension = this.getExtension(this.path);</pre></td>
+      <td class='line'>303</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l303s0'>			BrowzingExtension extension = this.getExtension(this.getFileName());</pre></td>
     </tr>
     <tr>
-      <td class='line'>342</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l342s0'>			this.document = documentFactory.create(extension, inputStream);</pre></td>
+      <td class='line'>304</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l304s0'>			this.document = documentFactory.create(extension, inputStream);</pre></td>
     </tr>
     <tr>
-      <td class='line'>343</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l343s0'>			return this.document;</pre></td>
+      <td class='line'>305</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l305s0'>			return this.document;</pre></td>
     </tr>
     <tr>
-      <td class='line'>344</td><td>&nbsp;</td>
+      <td class='line'>306</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>345</td><td>&nbsp;</td>
+      <td class='line'>307</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -890,15 +765,15 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>353</td><td>&nbsp;</td>
+      <td class='line'>315</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public Map&lt;String, String> getParameter() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>354</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l354s0'>		return new HashMap&lt;String,String>(this.parameter);</pre></td>
+      <td class='line'>316</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l316s0'>		return this.url.getParameter();</pre></td>
     </tr>
     <tr>
-      <td class='line'>355</td><td>&nbsp;</td>
+      <td class='line'>317</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -914,51 +789,55 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>365</td><td>&nbsp;</td>
+      <td class='line'>327</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public String getPath() {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
+      <td></td><td class='count'>7</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/2</span>
-        <span class='uncovered' onclick="showPath(this,'l366s0 l366s1')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l366s0 l367s0 l369s0 l373s0')">B: 0</span>
+        <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 2/2</span>
+        <span class='covered' onclick="showPath(this,'l328s0 l329s0 l329s1')">A: 2</span>
+        <span class='covered' onclick="showPath(this,'l328s0 l329s0 l330s0 l332s0 l336s0')">B: 5</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>366</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l366s0' title='Executions: 0' class='uncovered'>if (this.pathList.size() == 0) return "";</span></pre></td>
+      <td class='line'>328</td><td class='count'>7</td>
+      <td><pre class='prettyprint covered' id='l328s0'>		List&lt;String> pathList = this.url.getPathList();</pre></td>
     </tr>
     <tr>
-      <td class='line'>367</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l367s0'>		String fileName = this.getFileName();</pre></td>
+      <td class='line'>329</td><td class='count'>7</td>
+      <td><pre class='prettyprint jmp'>		<span id='l329s0' title='Executions: 7' class='covered'>if (pathList.size() == 0) return "";</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>368</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l368s0'>		StringBuilder sb = new StringBuilder();</pre></td>
+      <td class='line'>330</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered' id='l330s0'>		String fileName = this.getFileName();</pre></td>
     </tr>
     <tr>
-      <td class='line'>369</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l369s0'>		for (String path : this.pathList) {</pre></td>
+      <td class='line'>331</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered' id='l331s0'>		StringBuilder sb = new StringBuilder();</pre></td>
     </tr>
     <tr>
-      <td class='line'>370</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>			<span id='l370s0' title='Executions: 0' class='uncovered'>if (fileName.equals(path)) break;</span> </pre></td>
+      <td class='line'>332</td><td class='count'>18</td>
+      <td><pre class='prettyprint covered' id='l332s0'>		for (String path : pathList) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>371</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l371s0'>			sb.append(path).append('/');</pre></td>
+      <td class='line'>333</td><td class='count'>11</td>
+      <td><pre class='prettyprint jmp'>			<span id='l333s0' title='Executions: 11' class='covered'>if (fileName.equals(path)) break;</span> </pre></td>
     </tr>
     <tr>
-      <td class='line'>372</td><td>&nbsp;</td>
+      <td class='line'>334</td><td class='count'>8</td>
+      <td><pre class='prettyprint covered' id='l334s0'>			sb.append(path).append('/');</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>335</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>373</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l373s0'>		return sb.toString();</pre></td>
+      <td class='line'>336</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered' id='l336s0'>		return sb.toString();</pre></td>
     </tr>
     <tr>
-      <td class='line'>374</td><td>&nbsp;</td>
+      <td class='line'>337</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -974,15 +853,15 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>384</td><td>&nbsp;</td>
+      <td class='line'>347</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public List&lt;String> getPathList() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>385</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l385s0'>		return new ArrayList&lt;String>(this.pathList);</pre></td>
+      <td class='line'>348</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l348s0'>		return this.url.getPathList();</pre></td>
     </tr>
     <tr>
-      <td class='line'>386</td><td>&nbsp;</td>
+      <td class='line'>349</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1000,49 +879,53 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>398</td><td>&nbsp;</td>
+      <td class='line'>361</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public String getFileName() {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>4</td>
+      <td></td><td class='count'>25</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 2/4</span>
-        <span class='uncovered' onclick="showPath(this,'l399s0 l399s2')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l399s0 l399s1 l399s2')">B: 0</span>
-        <span class='covered' onclick="showPath(this,'l399s0 l399s1 l400s0 l401s0 l402s0')">C: 1</span>
-        <span class='covered' onclick="showPath(this,'l399s0 l399s1 l400s0 l401s0 l404s0')">D: 3</span>
+        <span style='cursor:default; background-color:#40bf00' onclick='hidePath()'>Path coverage: 3/4</span>
+        <span class='uncovered' onclick="showPath(this,'l362s0 l363s0 l363s2')">A: 0</span>
+        <span class='covered' onclick="showPath(this,'l362s0 l363s0 l363s1 l363s2')">B: 4</span>
+        <span class='covered' onclick="showPath(this,'l362s0 l363s0 l363s1 l364s0 l365s0 l366s0')">C: 6</span>
+        <span class='covered' onclick="showPath(this,'l362s0 l363s0 l363s1 l364s0 l365s0 l368s0')">D: 15</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>399</td><td class='count'>4</td>
-      <td><pre class='prettyprint jmp'>		<span id='l399s0' title='Executions: 4' class='covered'>if (pathList == null</span> || <span id='l399s1' title='Executions: 4' class='covered'>pathList.size() == 0) return this.defaultFileName(responseHeader);</span></pre></td>
+      <td class='line'>362</td><td class='count'>25</td>
+      <td><pre class='prettyprint covered' id='l362s0'>		List&lt;String> pathList = this.url.getPathList();</pre></td>
     </tr>
     <tr>
-      <td class='line'>400</td><td class='count'>4</td>
-      <td><pre class='prettyprint covered' id='l400s0'>		String lastPath = pathList.get(pathList.size()-1);</pre></td>
+      <td class='line'>363</td><td class='count'>25</td>
+      <td><pre class='prettyprint jmp'>		<span id='l363s0' title='Executions: 25' class='covered'>if (pathList == null</span> || <span id='l363s1' title='Executions: 25' class='covered'>pathList.size() == 0) return this.defaultFileName(responseHeader);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>401</td><td class='count'>4</td>
-      <td><pre class='prettyprint jmp'>		<span id='l401s0' title='Executions: 4' class='covered'>if (lastPath.lastIndexOf('.') == -1)</span> <span id='l401s1' title='Executions: 1' class='covered'>{</span></pre></td>
+      <td class='line'>364</td><td class='count'>21</td>
+      <td><pre class='prettyprint covered' id='l364s0'>		String lastPath = pathList.get(pathList.size()-1);</pre></td>
     </tr>
     <tr>
-      <td class='line'>402</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l402s0'>			return this.defaultFileName(responseHeader);</pre></td>
+      <td class='line'>365</td><td class='count'>21</td>
+      <td><pre class='prettyprint jmp'>		<span id='l365s0' title='Executions: 21' class='covered'>if (lastPath.lastIndexOf('.') == -1)</span> <span id='l365s1' title='Executions: 6' class='covered'>{</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>403</td><td>&nbsp;</td>
+      <td class='line'>366</td><td class='count'>6</td>
+      <td><pre class='prettyprint covered' id='l366s0'>			return this.defaultFileName(responseHeader);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>367</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		} else {</pre></td>
     </tr>
     <tr>
-      <td class='line'>404</td><td class='count'>3</td>
-      <td><pre class='prettyprint covered' id='l404s0'>			return lastPath;</pre></td>
+      <td class='line'>368</td><td class='count'>15</td>
+      <td><pre class='prettyprint covered' id='l368s0'>			return lastPath;</pre></td>
     </tr>
     <tr>
-      <td class='line'>405</td><td>&nbsp;</td>
+      <td class='line'>369</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>406</td><td>&nbsp;</td>
+      <td class='line'>370</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1061,35 +944,35 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>419</td><td>&nbsp;</td>
+      <td class='line'>383</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public String getExtension() {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
+      <td></td><td class='count'>4</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/2</span>
-        <span class='uncovered' onclick="showPath(this,'l420s0 l422s0 l422s1')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l420s0 l422s0 l423s0')">B: 0</span>
+        <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 1/2</span>
+        <span class='uncovered' onclick="showPath(this,'l384s0 l386s0 l386s1')">A: 0</span>
+        <span class='covered' onclick="showPath(this,'l384s0 l386s0 l387s0')">B: 4</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>420</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l420s0'>		String fileName = this.getFileName();</pre></td>
+      <td class='line'>384</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l384s0'>		String fileName = this.getFileName();</pre></td>
     </tr>
     <tr>
-      <td class='line'>421</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l421s0'>		int extentionIndex = fileName.lastIndexOf(".");</pre></td>
+      <td class='line'>385</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l385s0'>		int extentionIndex = fileName.lastIndexOf(".");</pre></td>
     </tr>
     <tr>
-      <td class='line'>422</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l422s0' title='Executions: 0' class='uncovered'>if (extentionIndex == -1)</span> <span id='l422s1' title='Executions: 0' class='uncovered'>return "";</span></pre></td>
+      <td class='line'>386</td><td class='count'>4</td>
+      <td><pre class='prettyprint jmp'>		<span id='l386s0' title='Executions: 4' class='covered'>if (extentionIndex == -1)</span> <span id='l386s1' title='Executions: 0' class='uncovered'>return "";</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>423</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l423s0'>		return fileName.substring(extentionIndex + 1);</pre></td>
+      <td class='line'>387</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l387s0'>		return fileName.substring(extentionIndex + 1);</pre></td>
     </tr>
     <tr>
-      <td class='line'>424</td><td>&nbsp;</td>
+      <td class='line'>388</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1102,15 +985,15 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>431</td><td>&nbsp;</td>
+      <td class='line'>395</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public String getProtocol() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>432</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l432s0'>		return this.protocol;</pre></td>
+      <td class='line'>396</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l396s0'>		return this.url.getProtocol();</pre></td>
     </tr>
     <tr>
-      <td class='line'>433</td><td>&nbsp;</td>
+      <td class='line'>397</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1126,55 +1009,55 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>443</td><td>&nbsp;</td>
+      <td class='line'>407</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public List&lt;A> getAnchor() throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>19</td>
+      <td></td><td class='count'>7</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 1/2</span>
-        <span class='uncovered' onclick="showPath(this,'l444s0 l445s0 l445s1')">A: 0</span>
-        <span class='covered' onclick="showPath(this,'l444s0 l445s0 l446s0 l449s0 l452s0')">B: 19</span>
+        <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 2/2</span>
+        <span class='covered' onclick="showPath(this,'l408s0 l409s0 l409s1')">A: 2</span>
+        <span class='covered' onclick="showPath(this,'l408s0 l409s0 l410s0 l413s0 l416s0')">B: 5</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>444</td><td class='count'>19</td>
-      <td><pre class='prettyprint covered' id='l444s0'>		jp.co.dk.document.File document = this.getDocument();</pre></td>
+      <td class='line'>408</td><td class='count'>7</td>
+      <td><pre class='prettyprint covered' id='l408s0'>		jp.co.dk.document.File document = this.getDocument();</pre></td>
     </tr>
     <tr>
-      <td class='line'>445</td><td class='count'>19</td>
-      <td><pre class='prettyprint jmp'>		<span id='l445s0' title='Executions: 19' class='covered'>if (!(document instanceof HtmlDocument)) throw new BrowzingException(ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML);</span> </pre></td>
+      <td class='line'>409</td><td class='count'>7</td>
+      <td><pre class='prettyprint jmp'>		<span id='l409s0' title='Executions: 7' class='covered'>if (!(document instanceof HtmlDocument)) throw new BrowzingException(ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML);</span> </pre></td>
     </tr>
     <tr>
-      <td class='line'>446</td><td class='count'>19</td>
-      <td><pre class='prettyprint covered' id='l446s0'>		HtmlDocument htmlDocument = (HtmlDocument)document;</pre></td>
+      <td class='line'>410</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered' id='l410s0'>		HtmlDocument htmlDocument = (HtmlDocument)document;</pre></td>
     </tr>
     <tr>
-      <td class='line'>447</td><td class='count'>19</td>
-      <td><pre class='prettyprint covered' id='l447s0'>		List&lt;Element> elementList = htmlDocument.getElement(HtmlElementName.A);</pre></td>
+      <td class='line'>411</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered' id='l411s0'>		List&lt;Element> elementList = htmlDocument.getElement(HtmlElementName.A);</pre></td>
     </tr>
     <tr>
-      <td class='line'>448</td><td class='count'>19</td>
-      <td><pre class='prettyprint covered' id='l448s0'>		List&lt;A> anchorList = new ArrayList&lt;A>();</pre></td>
+      <td class='line'>412</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered' id='l412s0'>		List&lt;A> anchorList = new ArrayList&lt;A>();</pre></td>
     </tr>
     <tr>
-      <td class='line'>449</td><td class='count'>14724</td>
-      <td><pre class='prettyprint covered' id='l449s0'>		for (Element element : elementList){</pre></td>
+      <td class='line'>413</td><td class='count'>2298</td>
+      <td><pre class='prettyprint covered' id='l413s0'>		for (Element element : elementList){</pre></td>
     </tr>
     <tr>
-      <td class='line'>450</td><td class='count'>14686</td>
-      <td><pre class='prettyprint jmp'>			<span id='l450s0' title='Executions: 14686' class='covered'>if (element instanceof A)</span> <span id='l450s1' title='Executions: 14686' class='covered'>anchorList.add((A)element);</span></pre></td>
+      <td class='line'>414</td><td class='count'>2288</td>
+      <td><pre class='prettyprint jmp'>			<span id='l414s0' title='Executions: 2288' class='covered'>if (element instanceof A)</span> <span id='l414s1' title='Executions: 2288' class='covered'>anchorList.add((A)element);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>451</td><td>&nbsp;</td>
+      <td class='line'>415</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>452</td><td class='count'>19</td>
-      <td><pre class='prettyprint covered' id='l452s0'>		return anchorList;</pre></td>
+      <td class='line'>416</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered' id='l416s0'>		return anchorList;</pre></td>
     </tr>
     <tr>
-      <td class='line'>453</td><td>&nbsp;</td>
+      <td class='line'>417</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1190,55 +1073,55 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>463</td><td>&nbsp;</td>
+      <td class='line'>427</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public List&lt;Form> getForm() throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>1</td>
+      <td></td><td class='count'>3</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 1/2</span>
-        <span class='uncovered' onclick="showPath(this,'l464s0 l465s0 l465s1')">A: 0</span>
-        <span class='covered' onclick="showPath(this,'l464s0 l465s0 l466s0 l469s0 l472s0')">B: 1</span>
+        <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 2/2</span>
+        <span class='covered' onclick="showPath(this,'l428s0 l429s0 l429s1')">A: 2</span>
+        <span class='covered' onclick="showPath(this,'l428s0 l429s0 l430s0 l433s0 l436s0')">B: 1</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>464</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l464s0'>		jp.co.dk.document.File document = this.getDocument();</pre></td>
+      <td class='line'>428</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l428s0'>		jp.co.dk.document.File document = this.getDocument();</pre></td>
     </tr>
     <tr>
-      <td class='line'>465</td><td class='count'>1</td>
-      <td><pre class='prettyprint jmp'>		<span id='l465s0' title='Executions: 1' class='covered'>if (!(document instanceof HtmlDocument)) throw new BrowzingException(ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML);</span> </pre></td>
+      <td class='line'>429</td><td class='count'>3</td>
+      <td><pre class='prettyprint jmp'>		<span id='l429s0' title='Executions: 3' class='covered'>if (!(document instanceof HtmlDocument)) throw new BrowzingException(ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML);</span> </pre></td>
     </tr>
     <tr>
-      <td class='line'>466</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l466s0'>		HtmlDocument htmlDocument = (HtmlDocument)document;</pre></td>
+      <td class='line'>430</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l430s0'>		HtmlDocument htmlDocument = (HtmlDocument)document;</pre></td>
     </tr>
     <tr>
-      <td class='line'>467</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l467s0'>		List&lt;Element> elementList = htmlDocument.getElement(HtmlElementName.FORM);</pre></td>
+      <td class='line'>431</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l431s0'>		List&lt;Element> elementList = htmlDocument.getElement(HtmlElementName.FORM);</pre></td>
     </tr>
     <tr>
-      <td class='line'>468</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l468s0'>		List&lt;Form> formList = new ArrayList&lt;Form>();</pre></td>
+      <td class='line'>432</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l432s0'>		List&lt;Form> formList = new ArrayList&lt;Form>();</pre></td>
     </tr>
     <tr>
-      <td class='line'>469</td><td class='count'>5</td>
-      <td><pre class='prettyprint covered' id='l469s0'>		for (Element element : elementList){</pre></td>
+      <td class='line'>433</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l433s0'>		for (Element element : elementList){</pre></td>
     </tr>
     <tr>
-      <td class='line'>470</td><td class='count'>3</td>
-      <td><pre class='prettyprint jmp'>			<span id='l470s0' title='Executions: 3' class='covered'>if (element instanceof Form)</span> <span id='l470s1' title='Executions: 3' class='covered'>formList.add((Form)element);</span></pre></td>
+      <td class='line'>434</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>			<span id='l434s0' title='Executions: 1' class='covered'>if (element instanceof Form)</span> <span id='l434s1' title='Executions: 1' class='covered'>formList.add((Form)element);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>471</td><td>&nbsp;</td>
+      <td class='line'>435</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>472</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l472s0'>		return formList;</pre></td>
+      <td class='line'>436</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l436s0'>		return formList;</pre></td>
     </tr>
     <tr>
-      <td class='line'>473</td><td>&nbsp;</td>
+      <td class='line'>437</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1253,15 +1136,15 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>482</td><td>&nbsp;</td>
+      <td class='line'>446</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public long getSize() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>483</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l483s0'>		return this.responseHeader.getContentLength();</pre></td>
+      <td class='line'>447</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l447s0'>		return this.responseHeader.getContentLength();</pre></td>
     </tr>
     <tr>
-      <td class='line'>484</td><td>&nbsp;</td>
+      <td class='line'>448</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1278,27 +1161,27 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>495</td><td>&nbsp;</td>
+      <td class='line'>459</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public ByteDump getData() throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>35</td>
+      <td></td><td class='count'>31</td>
       <td class='paths'>
         <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 1/2</span>
-        <span class='uncovered' onclick="showPath(this,'l496s0 l497s0')">A: 0</span>
-        <span class='covered' onclick="showPath(this,'l496s0 l496s1 l497s0')">B: 35</span>
+        <span class='uncovered' onclick="showPath(this,'l460s0 l461s0')">A: 0</span>
+        <span class='covered' onclick="showPath(this,'l460s0 l460s1 l461s0')">B: 31</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>496</td><td class='count'>35</td>
-      <td><pre class='prettyprint jmp'>		<span id='l496s0' title='Executions: 35' class='covered'>if (this.byteDump == null)</span> <span id='l496s1' title='Executions: 35' class='covered'>this.byteDump = this.getByteDump(this.connection);</span> </pre></td>
+      <td class='line'>460</td><td class='count'>31</td>
+      <td><pre class='prettyprint jmp'>		<span id='l460s0' title='Executions: 31' class='covered'>if (this.byteDump == null)</span> <span id='l460s1' title='Executions: 31' class='covered'>this.byteDump = this.getByteDump(this.connection);</span> </pre></td>
     </tr>
     <tr>
-      <td class='line'>497</td><td class='count'>35</td>
-      <td><pre class='prettyprint covered' id='l497s0'>		return this.byteDump;</pre></td>
+      <td class='line'>461</td><td class='count'>31</td>
+      <td><pre class='prettyprint covered' id='l461s0'>		return this.byteDump;</pre></td>
     </tr>
     <tr>
-      <td class='line'>498</td><td>&nbsp;</td>
+      <td class='line'>462</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1311,15 +1194,15 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>505</td><td>&nbsp;</td>
+      <td class='line'>469</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public RequestHeader getRequestHeader() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>506</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l506s0'>		return this.requestHeader;</pre></td>
+      <td class='line'>470</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l470s0'>		return this.requestHeader;</pre></td>
     </tr>
     <tr>
-      <td class='line'>507</td><td>&nbsp;</td>
+      <td class='line'>471</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1332,15 +1215,15 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>514</td><td>&nbsp;</td>
+      <td class='line'>478</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public ResponseHeader getResponseHeader() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>515</td><td class='count'>13</td>
-      <td><pre class='prettyprint covered' id='l515s0'>		return this.responseHeader;</pre></td>
+      <td class='line'>479</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l479s0'>		return this.responseHeader;</pre></td>
     </tr>
     <tr>
-      <td class='line'>516</td><td>&nbsp;</td>
+      <td class='line'>480</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1360,31 +1243,31 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>530</td><td>&nbsp;</td>
+      <td class='line'>494</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public File save(File path) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>531</td><td>&nbsp;</td>
+      <td class='line'>495</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>532</td><td class='count'>4</td>
-      <td><pre class='prettyprint covered' id='l532s0'>			return this.getDocument().save(path, this.getFileName());</pre></td>
+      <td class='line'>496</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l496s0'>			return this.getDocument().save(path, this.getFileName());</pre></td>
     </tr>
     <tr>
-      <td class='line'>533</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l533s0'>		} catch (DocumentException e) {</pre></td>
+      <td class='line'>497</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l497s0'>		} catch (DocumentException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>534</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l534s0'>			throw new BrowzingException(ERROR_FAILED_TO_DOWNLOAD, url, e);</pre></td>
+      <td class='line'>498</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l498s0'>			throw new BrowzingException(ERROR_FAILED_TO_DOWNLOAD, this.url.getURL(), e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>535</td><td>&nbsp;</td>
+      <td class='line'>499</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>536</td><td>&nbsp;</td>
+      <td class='line'>500</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1404,31 +1287,53 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>550</td><td>&nbsp;</td>
+      <td class='line'>514</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public File save(File path, String fileName) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>551</td><td>&nbsp;</td>
+      <td class='line'>515</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>552</td><td class='count'>4</td>
-      <td><pre class='prettyprint covered' id='l552s0'>			return this.getDocument().save(path, fileName);</pre></td>
+      <td class='line'>516</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l516s0'>			return this.getDocument().save(path, fileName);</pre></td>
     </tr>
     <tr>
-      <td class='line'>553</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l553s0'>		} catch (DocumentException e) {</pre></td>
+      <td class='line'>517</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l517s0'>		} catch (DocumentException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>554</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l554s0'>			throw new BrowzingException(ERROR_FAILED_TO_DOWNLOAD, url, e);</pre></td>
+      <td class='line'>518</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l518s0'>			throw new BrowzingException(ERROR_FAILED_TO_DOWNLOAD, this.url.getURL(), e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>555</td><td>&nbsp;</td>
+      <td class='line'>519</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>556</td><td>&nbsp;</td>
+      <td class='line'>520</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * 指定のURLの文字列を元にUrlオブジェクトを生成し、返却します。
+	 * @param url URL文字列
+	 * @return Urlオブジェクト
+	 * @throws BrowzingException URL文字列がnullまたは、空文字だった場合
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>528</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected Url createUrl(String url) throws BrowzingException {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>529</td><td class='count'>62</td>
+      <td><pre class='prettyprint covered' id='l529s0'>		return new Url(url);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>530</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1443,60 +1348,60 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>565</td><td>&nbsp;</td>
+      <td class='line'>539</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	protected void download(File path) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>566</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l566s0'>		StringBuilder pathStr = new StringBuilder(path.getAbsolutePath()).append('/').append(this.host).append('/').append(this.getPath());</pre></td>
+      <td class='line'>540</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l540s0'>		StringBuilder pathStr = new StringBuilder(path.getAbsolutePath()).append('/').append(this.url.getHost()).append('/').append(this.getPath());</pre></td>
     </tr>
     <tr>
-      <td class='line'>567</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l567s0'>		File downloadPath = new File(pathStr.toString());</pre></td>
+      <td class='line'>541</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l541s0'>		File downloadPath = new File(pathStr.toString());</pre></td>
     </tr>
     <tr>
-      <td class='line'>568</td><td>&nbsp;</td>
+      <td class='line'>542</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>569</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l569s0'>			downloadPath.mkdirs();</pre></td>
+      <td class='line'>543</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l543s0'>			downloadPath.mkdirs();</pre></td>
     </tr>
     <tr>
-      <td class='line'>570</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l570s0'>		} catch (SecurityException e) {</pre></td>
+      <td class='line'>544</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l544s0'>		} catch (SecurityException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>571</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l571s0'>			throw new BrowzingException(ERROR_COULD_NOT_CREATE_DOWNLOAD_DIRECTORY, pathStr.toString(), e);</pre></td>
+      <td class='line'>545</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l545s0'>			throw new BrowzingException(ERROR_COULD_NOT_CREATE_DOWNLOAD_DIRECTORY, pathStr.toString(), e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>572</td><td>&nbsp;</td>
+      <td class='line'>546</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>573</td><td>&nbsp;</td>
+      <td class='line'>547</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>574</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l574s0'>			this.getDocument().save(downloadPath, this.getFileName());</pre></td>
+      <td class='line'>548</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l548s0'>			this.getDocument().save(downloadPath, this.getFileName());</pre></td>
     </tr>
     <tr>
-      <td class='line'>575</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l575s0'>		} catch (DocumentException e) {</pre></td>
+      <td class='line'>549</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l549s0'>		} catch (DocumentException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>576</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l576s0'>			throw new BrowzingException(ERROR_FAILED_TO_DOWNLOAD, url, e);</pre></td>
+      <td class='line'>550</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l550s0'>			throw new BrowzingException(ERROR_FAILED_TO_DOWNLOAD, this.url.getURL(), e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>577</td><td>&nbsp;</td>
+      <td class='line'>551</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>578</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l578s0'>	}</pre></td>
+      <td class='line'>552</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l552s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -1510,78 +1415,31 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>587</td><td>&nbsp;</td>
+      <td class='line'>561</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public String completionURL(String url) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>588</td><td>&nbsp;</td>
+      <td class='line'>562</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>589</td><td class='count'>2</td>
-      <td><pre class='prettyprint covered' id='l589s0'>			return new URL(this.urlObj, url).toString();</pre></td>
+      <td class='line'>563</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l563s0'>			return new URL(this.url.getUrlObject(), url).toString();</pre></td>
     </tr>
     <tr>
-      <td class='line'>590</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l590s0'>		} catch (MalformedURLException e) {</pre></td>
+      <td class='line'>564</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l564s0'>		} catch (MalformedURLException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>591</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l591s0'>			throw new BrowzingException(ERROR_COMPRETION_URL, new String[]{this.url, url}, e);</pre></td>
+      <td class='line'>565</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l565s0'>			throw new BrowzingException(ERROR_COMPRETION_URL, new String[]{this.url.getURL(), url}, e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>592</td><td>&nbsp;</td>
+      <td class='line'>566</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>593</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	}</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'></td><td>&nbsp;</td>
-      <td class='comment' onclick='showHideLines(this)'><div>	/**
-	 * 指定のURL文字列からURLオブジェクトを生成します。&lt;p>
-	 * 
-	 * @param url URL文字列
-	 * @return URLオブジェクト
-	 * @throws BrowzingException 指定されたURL文字列に指定されたプロトコルが未知である場合
-	 */</div><span>	/*...*/</span></td>
-    </tr>
-    <tr>
-      <td class='line'>602</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected URL createURL(String url) throws BrowzingException{</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>603</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>		URL urlObj;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>604</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>		try {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>605</td><td class='count'>44</td>
-      <td><pre class='prettyprint covered' id='l605s0'>			urlObj = new URL(url);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>606</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l606s0'>		} catch (MalformedURLException e1) {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>607</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l607s0'>			throw new BrowzingException( ERROR_PROTOCOL_OF_THE_URL_SPECIFIED_IS_UNKNOWN, url, e1 );</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>608</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>		}</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>609</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l609s0'>		return urlObj;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>610</td><td>&nbsp;</td>
+      <td class='line'>567</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1597,55 +1455,55 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>620</td><td>&nbsp;</td>
+      <td class='line'>577</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	protected HttpURLConnection createURLConnection(URL urlObj, HtmlRequestMethodName method) throws BrowzingException{</pre></td>
     </tr>
     <tr>
-      <td class='line'>621</td><td>&nbsp;</td>
+      <td class='line'>578</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		HttpURLConnection urlConnection;</pre></td>
     </tr>
     <tr>
-      <td class='line'>622</td><td>&nbsp;</td>
+      <td class='line'>579</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>623</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l623s0'>			urlConnection = (HttpURLConnection)urlObj.openConnection();</pre></td>
+      <td class='line'>580</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l580s0'>			urlConnection = (HttpURLConnection)urlObj.openConnection();</pre></td>
     </tr>
     <tr>
-      <td class='line'>624</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l624s0'>			urlConnection.setRequestMethod(method.getMethod());</pre></td>
+      <td class='line'>581</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l581s0'>			urlConnection.setRequestMethod(method.getMethod());</pre></td>
     </tr>
     <tr>
-      <td class='line'>625</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l625s0'>			urlConnection.setDoOutput(true);</pre></td>
+      <td class='line'>582</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l582s0'>			urlConnection.setDoOutput(true);</pre></td>
     </tr>
     <tr>
-      <td class='line'>626</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l626s0'>			urlConnection.setDoInput(true);</pre></td>
+      <td class='line'>583</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l583s0'>			urlConnection.setDoInput(true);</pre></td>
     </tr>
     <tr>
-      <td class='line'>627</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l627s0'>			urlConnection.setFollowRedirects(false);</pre></td>
+      <td class='line'>584</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l584s0'>			urlConnection.setFollowRedirects(false);</pre></td>
     </tr>
     <tr>
-      <td class='line'>628</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l628s0'>		} catch (IOException e) {</pre></td>
+      <td class='line'>585</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l585s0'>		} catch (IOException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>629</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l629s0'>			throw new BrowzingException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, urlObj.toString(), e );</pre></td>
+      <td class='line'>586</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l586s0'>			throw new BrowzingException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, urlObj.toString(), e );</pre></td>
     </tr>
     <tr>
-      <td class='line'>630</td><td>&nbsp;</td>
+      <td class='line'>587</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>631</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l631s0'>		return urlConnection;</pre></td>
+      <td class='line'>588</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l588s0'>		return urlConnection;</pre></td>
     </tr>
     <tr>
-      <td class='line'>632</td><td>&nbsp;</td>
+      <td class='line'>589</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1660,39 +1518,39 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>642</td><td>&nbsp;</td>
+      <td class='line'>599</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	protected InputStream getUrlInputStream( URLConnection connection ) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>643</td><td>&nbsp;</td>
+      <td class='line'>600</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		InputStream inputStream;</pre></td>
     </tr>
     <tr>
-      <td class='line'>644</td><td>&nbsp;</td>
+      <td class='line'>601</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>645</td><td class='count'>35</td>
-      <td><pre class='prettyprint covered' id='l645s0'>			inputStream = connection.getInputStream();</pre></td>
+      <td class='line'>602</td><td class='count'>31</td>
+      <td><pre class='prettyprint covered' id='l602s0'>			inputStream = connection.getInputStream();</pre></td>
     </tr>
     <tr>
-      <td class='line'>646</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l646s0'>		} catch (IOException e) {</pre></td>
+      <td class='line'>603</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l603s0'>		} catch (IOException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>647</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l647s0'>			throw new BrowzingException(ERROR_IO_ERROR_WAS_OCCURRED_WHILE_CREATING_THE_INPUT_STREAM ,e);</pre></td>
+      <td class='line'>604</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l604s0'>			throw new BrowzingException(ERROR_IO_ERROR_WAS_OCCURRED_WHILE_CREATING_THE_INPUT_STREAM ,e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>648</td><td>&nbsp;</td>
+      <td class='line'>605</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>649</td><td class='count'>35</td>
-      <td><pre class='prettyprint covered' id='l649s0'>		return inputStream;</pre></td>
+      <td class='line'>606</td><td class='count'>31</td>
+      <td><pre class='prettyprint covered' id='l606s0'>		return inputStream;</pre></td>
     </tr>
     <tr>
-      <td class='line'>650</td><td>&nbsp;</td>
+      <td class='line'>607</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1707,244 +1565,71 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>659</td><td>&nbsp;</td>
+      <td class='line'>616</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	protected BrowzingExtension getExtension(String path) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>660</td><td>&nbsp;</td>
+      <td class='line'>617</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		String urlExtension;</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
+      <td></td><td class='count'>1</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/2</span>
-        <span class='uncovered' onclick="showPath(this,'l661s0 l662s0 l665s0 l667s0 l667s1 l672s0')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l661s0 l662s0 l663s0 l667s0 l667s1 l672s0')">B: 0</span>
+        <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 1/2</span>
+        <span class='covered' onclick="showPath(this,'l618s0 l619s0 l622s0 l624s0 l624s1 l629s0')">A: 1</span>
+        <span class='uncovered' onclick="showPath(this,'l618s0 l619s0 l620s0 l624s0 l624s1 l629s0')">B: 0</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>661</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l661s0'>		int index = path.lastIndexOf('.');</pre></td>
+      <td class='line'>618</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l618s0'>		int index = path.lastIndexOf('.');</pre></td>
     </tr>
     <tr>
-      <td class='line'>662</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l662s0' title='Executions: 0' class='uncovered'>if (index == -1 )</span> <span id='l662s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+      <td class='line'>619</td><td class='count'>4</td>
+      <td><pre class='prettyprint jmp'>		<span id='l619s0' title='Executions: 4' class='covered'>if (index == -1 )</span> <span id='l619s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>663</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l663s0'>			urlExtension = "";</pre></td>
+      <td class='line'>620</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l620s0'>			urlExtension = "";</pre></td>
     </tr>
     <tr>
-      <td class='line'>664</td><td>&nbsp;</td>
+      <td class='line'>621</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		} else {</pre></td>
     </tr>
     <tr>
-      <td class='line'>665</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l665s0'>			urlExtension = path.substring(index+1);</pre></td>
+      <td class='line'>622</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l622s0'>			urlExtension = path.substring(index+1);</pre></td>
     </tr>
     <tr>
-      <td class='line'>666</td><td>&nbsp;</td>
+      <td class='line'>623</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>667</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l667s0'>		for (BrowzingExtension extension : BrowzingExtension.values()) {</pre></td>
+      <td class='line'>624</td><td class='count'>7</td>
+      <td><pre class='prettyprint covered' id='l624s0'>		for (BrowzingExtension extension : BrowzingExtension.values()) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>668</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>			<span id='l668s0' title='Executions: 0' class='uncovered'>if (extension.hasExtension(urlExtension)) {</span></pre></td>
+      <td class='line'>625</td><td class='count'>6</td>
+      <td><pre class='prettyprint jmp'>			<span id='l625s0' title='Executions: 6' class='covered'>if (extension.hasExtension(urlExtension)) {</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>669</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l669s0'>				return extension;</pre></td>
+      <td class='line'>626</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l626s0'>				return extension;</pre></td>
     </tr>
     <tr>
-      <td class='line'>670</td><td>&nbsp;</td>
+      <td class='line'>627</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>			}</pre></td>
     </tr>
     <tr>
-      <td class='line'>671</td><td>&nbsp;</td>
+      <td class='line'>628</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>672</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l672s0'>		return null;</pre></td>
+      <td class='line'>629</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l629s0'>		return null;</pre></td>
     </tr>
     <tr>
-      <td class='line'>673</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	}</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'></td><td>&nbsp;</td>
-      <td class='comment' onclick='showHideLines(this)'><div>	/**
-	 * 指定のURLに設定されているパラメータ部を取得し、マップ形式に整形し、返却します。&lt;p>
-	 * 指定のURLにパラメータが設定されていなかった場合は空のマップを返却します。
-	 * 
-	 * @param url URLオブジェクト
-	 * @return パラメータマップ
-	 */</div><span>	/*...*/</span></td>
-    </tr>
-    <tr>
-      <td class='line'>682</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected Map&lt;String, String> getParameter(URL url) {</pre></td>
-    </tr>
-    <tr>
-      <td></td><td class='count'>43</td>
-      <td class='paths'>
-        <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 1/2</span>
-        <span class='covered' onclick="showPath(this,'l683s0 l685s0 l686s0')">A: 43</span>
-        <span class='uncovered' onclick="showPath(this,'l683s0 l685s0 l688s0 l689s1 l699s0')">B: 0</span>
-      </td>
-    </tr>
-    <tr>
-      <td class='line'>683</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l683s0'>		Map&lt;String, String> parameters = new HashMap&lt;String, String>();</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>684</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l684s0'>		String query = url.getQuery();</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>685</td><td class='count'>43</td>
-      <td><pre class='prettyprint jmp'>		<span id='l685s0' title='Executions: 43' class='covered'>if (query == null)</span> <span id='l685s1' title='Executions: 43' class='covered'>{</span></pre></td>
-    </tr>
-    <tr>
-      <td class='line'>686</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l686s0'>			return parameters;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>687</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>		}</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>688</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l688s0'>		String[] queries = query.split("&");</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>689</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l689s0'>		for (String param : queries) {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>690</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l690s0'>			String[] val = param.split("=");</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>691</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>			<span id='l691s0' title='Executions: 0' class='uncovered'>if (val.length == 1)</span> <span id='l691s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
-    </tr>
-    <tr>
-      <td class='line'>692</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l692s0'>				parameters.put(val[0], "");</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>693</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>			<span id='l693s0' title='Executions: 0' class='uncovered'>}</span> else <span id='l693s1' title='Executions: 0' class='uncovered'>if (val.length == 2)</span> </pre></td>
-    </tr>
-    <tr>
-      <td class='line'>694</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l694s0'>				parameters.put(val[0], val[1]);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>695</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>			} else {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>696</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>				continue;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>697</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>			}</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>698</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>		}</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>699</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l699s0'>		return parameters;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>700</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	}</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'></td><td>&nbsp;</td>
-      <td class='comment' onclick='showHideLines(this)'><div>	/**
-	 * 指定のURLオブジェクトからパス部分を取り出し、各パス名をリストにして返却します。&lt;p>
-	 * 
-	 * 例：&lt;br/>
-	 * /path1/path2/path3/file.html&lt;br/>
-	 * &lt;br/>
-	 * の場合、&lt;br/>
-	 * [path1],[path2],[path3],[file.html]&lt;br/>
-	 * のリストを返却します。
-	 * 
-	 * @param urlObj URLオブジェクト
-	 * @return パスリスト
-	 */</div><span>	/*...*/</span></td>
-    </tr>
-    <tr>
-      <td class='line'>715</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected List&lt;String> getPathList(URL urlObj) {</pre></td>
-    </tr>
-    <tr>
-      <td></td><td class='count'>0</td>
-      <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/3</span>
-        <span class='uncovered' onclick="showPath(this,'l716s0 l720s0 l719s1 l726s0')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l716s0 l720s0 l720s1 l723s0 l719s1 l726s0')">B: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l716s0 l720s0 l720s1 l721s0 l719s1 l726s0')">C: 0</span>
-      </td>
-    </tr>
-    <tr>
-      <td class='line'>716</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l716s0'>		String path = urlObj.getPath();</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>717</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l717s0'>		List&lt;String> list = new ArrayList&lt;String>();</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>718</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l718s0'>		String[] pathElements = path.split("/");</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>719</td><td class='count'>165</td>
-      <td><pre class='prettyprint covered' id='l719s0'>		for (String pathElement : pathElements) {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>720</td><td class='count'>122</td>
-      <td><pre class='prettyprint jmp'>			<span id='l720s0' title='Executions: 122' class='covered'>if (pathElement == null</span> || <span id='l720s1' title='Executions: 122' class='covered'>pathElement.equals("")) {</span></pre></td>
-    </tr>
-    <tr>
-      <td class='line'>721</td><td class='count'>39</td>
-      <td><pre class='prettyprint covered' id='l721s0'>				continue;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>722</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>			} else {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>723</td><td class='count'>83</td>
-      <td><pre class='prettyprint covered' id='l723s0'>				list.add(pathElement);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>724</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>			}</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>725</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>		}</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>726</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l726s0'>		return list;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>727</td><td>&nbsp;</td>
+      <td class='line'>630</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1960,48 +1645,48 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>737</td><td>&nbsp;</td>
+      <td class='line'>640</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	protected URLConnection setRequestProperty(URLConnection connection ,Map&lt;String,String> requestMap) {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>43</td>
+      <td></td><td class='count'>61</td>
       <td class='paths'>
         <span style='cursor:default; background-color:#aa5500' onclick='hidePath()'>Path coverage: 1/3</span>
-        <span class='uncovered' onclick="showPath(this,'l738s0 l739s0')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l738s0 l738s1 l739s0')">B: 0</span>
-        <span class='covered' onclick="showPath(this,'l738s0 l738s1 l741s0 l741s1 l744s0')">C: 43</span>
+        <span class='uncovered' onclick="showPath(this,'l641s0 l642s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l641s0 l641s1 l642s0')">B: 0</span>
+        <span class='covered' onclick="showPath(this,'l641s0 l641s1 l644s0 l644s1 l647s0')">C: 61</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>738</td><td class='count'>43</td>
-      <td><pre class='prettyprint jmp'>		<span id='l738s0' title='Executions: 43' class='covered'>if ( connection == null</span> || <span id='l738s1' title='Executions: 43' class='covered'>requestMap == null)</span> <span id='l738s2' title='Executions: 0' class='uncovered'>{</span></pre></td>
+      <td class='line'>641</td><td class='count'>61</td>
+      <td><pre class='prettyprint jmp'>		<span id='l641s0' title='Executions: 61' class='covered'>if ( connection == null</span> || <span id='l641s1' title='Executions: 61' class='covered'>requestMap == null)</span> <span id='l641s2' title='Executions: 0' class='uncovered'>{</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>739</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l739s0'>			return connection;</pre></td>
+      <td class='line'>642</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l642s0'>			return connection;</pre></td>
     </tr>
     <tr>
-      <td class='line'>740</td><td>&nbsp;</td>
+      <td class='line'>643</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>741</td><td class='count'>86</td>
-      <td><pre class='prettyprint covered' id='l741s0'>		for (String key : requestMap.keySet()) {</pre></td>
+      <td class='line'>644</td><td class='count'>122</td>
+      <td><pre class='prettyprint covered' id='l644s0'>		for (String key : requestMap.keySet()) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>742</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l742s0'>			connection.setRequestProperty(key, requestMap.get(key));</pre></td>
+      <td class='line'>645</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l645s0'>			connection.setRequestProperty(key, requestMap.get(key));</pre></td>
     </tr>
     <tr>
-      <td class='line'>743</td><td>&nbsp;</td>
+      <td class='line'>646</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>744</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l744s0'>		return connection;</pre></td>
+      <td class='line'>647</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l647s0'>		return connection;</pre></td>
     </tr>
     <tr>
-      <td class='line'>745</td><td>&nbsp;</td>
+      <td class='line'>648</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -2014,23 +1699,27 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>752</td><td>&nbsp;</td>
+      <td class='line'>655</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	protected boolean hasTrailingSlash() { </pre></td>
     </tr>
     <tr>
       <td></td><td class='count'>0</td>
       <td class='paths'>
         <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/2</span>
-        <span class='uncovered' onclick="showPath(this,'l753s0 l753s1')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l753s0 l753s2')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l656s0 l657s0 l657s1')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l656s0 l657s0 l657s2')">B: 0</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>753</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l753s0' title='Executions: 0' class='uncovered'>return this.path.indexOf('/') == this.path.length();</span></pre></td>
+      <td class='line'>656</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l656s0'>		String path=this.getPath();</pre></td>
     </tr>
     <tr>
-      <td class='line'>754</td><td>&nbsp;</td>
+      <td class='line'>657</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>		<span id='l657s0' title='Executions: 0' class='uncovered'>return path.indexOf('/') == path.length();</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>658</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -2044,47 +1733,47 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>762</td><td>&nbsp;</td>
+      <td class='line'>666</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	protected Map&lt;String, String> getRequestHeaderByPorperty() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>763</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l763s0'>		Map&lt;String, String> map = new HashMap&lt;String, String>();</pre></td>
+      <td class='line'>667</td><td class='count'>60</td>
+      <td><pre class='prettyprint covered' id='l667s0'>		Map&lt;String, String> map = new HashMap&lt;String, String>();</pre></td>
     </tr>
     <tr>
-      <td class='line'>764</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l764s0'>		java.util.List&lt;Property> requestHeader = BrowzerProperty.REQUEST_HEADER.getPropertyList();</pre></td>
+      <td class='line'>668</td><td class='count'>60</td>
+      <td><pre class='prettyprint covered' id='l668s0'>		java.util.List&lt;Property> requestHeader = BrowzerProperty.REQUEST_HEADER.getPropertyList();</pre></td>
     </tr>
     <tr>
-      <td class='line'>765</td><td class='count'>86</td>
-      <td><pre class='prettyprint covered' id='l765s0'>		for (Property property : requestHeader) {</pre></td>
+      <td class='line'>669</td><td class='count'>120</td>
+      <td><pre class='prettyprint covered' id='l669s0'>		for (Property property : requestHeader) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>766</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l766s0'>			String[] list = property.getStringArray();</pre></td>
+      <td class='line'>670</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l670s0'>			String[] list = property.getStringArray();</pre></td>
     </tr>
     <tr>
-      <td class='line'>767</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l767s0'>			StringBuilder sb = new StringBuilder();</pre></td>
+      <td class='line'>671</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l671s0'>			StringBuilder sb = new StringBuilder();</pre></td>
     </tr>
     <tr>
-      <td class='line'>768</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>			<span id='l768s0' title='Executions: 0' class='uncovered'>for (String value</span> : <span id='l768s1' title='Executions: 0' class='uncovered'>list)</span></pre></td>
+      <td class='line'>672</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>			<span id='l672s0' title='Executions: 0' class='uncovered'>for (String value</span> : <span id='l672s1' title='Executions: 0' class='uncovered'>list)</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>769</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l769s0'>			map.put(property.getKey(), sb.toString().substring(0, sb.length()-1));</pre></td>
+      <td class='line'>673</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l673s0'>			map.put(property.getKey(), sb.toString().substring(0, sb.length()-1));</pre></td>
     </tr>
     <tr>
-      <td class='line'>770</td><td>&nbsp;</td>
+      <td class='line'>674</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>771</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l771s0'>		return map;</pre></td>
+      <td class='line'>675</td><td class='count'>60</td>
+      <td><pre class='prettyprint covered' id='l675s0'>		return map;</pre></td>
     </tr>
     <tr>
-      <td class='line'>772</td><td>&nbsp;</td>
+      <td class='line'>676</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -2098,48 +1787,48 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>780</td><td>&nbsp;</td>
+      <td class='line'>684</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	protected Map&lt;String, String> getCookies() {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
+      <td></td><td class='count'>2</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/3</span>
-        <span class='uncovered' onclick="showPath(this,'l781s0 l783s0 l783s2')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l781s0 l783s0 l783s1 l783s2')">B: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l781s0 l783s0 l783s1 l784s0 l785s0 l787s0')">C: 0</span>
+        <span style='cursor:default; background-color:#aa5500' onclick='hidePath()'>Path coverage: 1/3</span>
+        <span class='uncovered' onclick="showPath(this,'l685s0 l687s0 l687s2')">A: 0</span>
+        <span class='covered' onclick="showPath(this,'l685s0 l687s0 l687s1 l687s2')">B: 2</span>
+        <span class='uncovered' onclick="showPath(this,'l685s0 l687s0 l687s1 l688s0 l689s0 l691s0')">C: 0</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>781</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l781s0'>		Map&lt;String, String> map = new HashMap&lt;String, String>();</pre></td>
+      <td class='line'>685</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered' id='l685s0'>		Map&lt;String, String> map = new HashMap&lt;String, String>();</pre></td>
     </tr>
     <tr>
-      <td class='line'>782</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l782s0'>		List&lt;String> coolies = this.responseHeader.getHeader(HeaderField.SET_COOKIE);</pre></td>
+      <td class='line'>686</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered' id='l686s0'>		List&lt;String> coolies = this.responseHeader.getHeader(HeaderField.SET_COOKIE);</pre></td>
     </tr>
     <tr>
-      <td class='line'>783</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l783s0' title='Executions: 0' class='uncovered'>if (coolies == null</span> || <span id='l783s1' title='Executions: 0' class='uncovered'>coolies.size() == 0) return map;</span></pre></td>
+      <td class='line'>687</td><td class='count'>2</td>
+      <td><pre class='prettyprint jmp'>		<span id='l687s0' title='Executions: 2' class='covered'>if (coolies == null</span> || <span id='l687s1' title='Executions: 2' class='covered'>coolies.size() == 0) return map;</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>784</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l784s0'>		StringBuilder sb = new StringBuilder();</pre></td>
+      <td class='line'>688</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l688s0'>		StringBuilder sb = new StringBuilder();</pre></td>
     </tr>
     <tr>
-      <td class='line'>785</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l785s0' title='Executions: 0' class='uncovered'>for (String cookie</span> : <span id='l785s1' title='Executions: 0' class='uncovered'>coolies)</span> </pre></td>
+      <td class='line'>689</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>		<span id='l689s0' title='Executions: 0' class='uncovered'>for (String cookie</span> : <span id='l689s1' title='Executions: 0' class='uncovered'>coolies)</span> </pre></td>
     </tr>
     <tr>
-      <td class='line'>786</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l786s0'>		map.put(HeaderField.COOKIE.getHeaderField(), sb.substring(0, sb.length()-1));</pre></td>
+      <td class='line'>690</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l690s0'>		map.put(HeaderField.COOKIE.getHeaderField(), sb.substring(0, sb.length()-1));</pre></td>
     </tr>
     <tr>
-      <td class='line'>787</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l787s0'>		return map;</pre></td>
+      <td class='line'>691</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l691s0'>		return map;</pre></td>
     </tr>
     <tr>
-      <td class='line'>788</td><td>&nbsp;</td>
+      <td class='line'>692</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -2160,47 +1849,47 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>803</td><td>&nbsp;</td>
+      <td class='line'>707</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	protected String defaultFileName(ResponseHeader responseHeader) {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>1</td>
+      <td></td><td class='count'>10</td>
       <td class='paths'>
         <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 1/2</span>
-        <span class='uncovered' onclick="showPath(this,'l804s0 l806s0 l810s0')">A: 0</span>
-        <span class='covered' onclick="showPath(this,'l804s0 l806s0 l807s0 l810s0')">B: 1</span>
+        <span class='uncovered' onclick="showPath(this,'l708s0 l710s0 l714s0')">A: 0</span>
+        <span class='covered' onclick="showPath(this,'l708s0 l710s0 l711s0 l714s0')">B: 10</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>804</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l804s0'>		StringBuilder sb = new StringBuilder("default");</pre></td>
+      <td class='line'>708</td><td class='count'>10</td>
+      <td><pre class='prettyprint covered' id='l708s0'>		StringBuilder sb = new StringBuilder("default");</pre></td>
     </tr>
     <tr>
-      <td class='line'>805</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l805s0'>		ContentsType contentType = responseHeader.getContentsType();</pre></td>
+      <td class='line'>709</td><td class='count'>10</td>
+      <td><pre class='prettyprint covered' id='l709s0'>		ContentsType contentType = responseHeader.getContentsType();</pre></td>
     </tr>
     <tr>
-      <td class='line'>806</td><td class='count'>1</td>
-      <td><pre class='prettyprint jmp'>		<span id='l806s0' title='Executions: 1' class='covered'>if (contentType != null)</span> <span id='l806s1' title='Executions: 1' class='covered'>{</span></pre></td>
+      <td class='line'>710</td><td class='count'>10</td>
+      <td><pre class='prettyprint jmp'>		<span id='l710s0' title='Executions: 10' class='covered'>if (contentType != null)</span> <span id='l710s1' title='Executions: 10' class='covered'>{</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>807</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l807s0'>			String extension = contentType.getDefaultExtension();</pre></td>
+      <td class='line'>711</td><td class='count'>10</td>
+      <td><pre class='prettyprint covered' id='l711s0'>			String extension = contentType.getDefaultExtension();</pre></td>
     </tr>
     <tr>
-      <td class='line'>808</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l808s0'>			sb.append('.').append(extension);</pre></td>
+      <td class='line'>712</td><td class='count'>10</td>
+      <td><pre class='prettyprint covered' id='l712s0'>			sb.append('.').append(extension);</pre></td>
     </tr>
     <tr>
-      <td class='line'>809</td><td>&nbsp;</td>
+      <td class='line'>713</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>810</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l810s0'>		return sb.toString();</pre></td>
+      <td class='line'>714</td><td class='count'>10</td>
+      <td><pre class='prettyprint covered' id='l714s0'>		return sb.toString();</pre></td>
     </tr>
     <tr>
-      <td class='line'>811</td><td>&nbsp;</td>
+      <td class='line'>715</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -2216,97 +1905,31 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>821</td><td>&nbsp;</td>
+      <td class='line'>725</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	protected ByteDump getByteDump(URLConnection connection) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>822</td><td>&nbsp;</td>
+      <td class='line'>726</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>823</td><td class='count'>35</td>
-      <td><pre class='prettyprint covered' id='l823s0'>			return new ByteDump(this.getUrlInputStream(connection));</pre></td>
+      <td class='line'>727</td><td class='count'>31</td>
+      <td><pre class='prettyprint covered' id='l727s0'>			return new ByteDump(this.getUrlInputStream(connection));</pre></td>
     </tr>
     <tr>
-      <td class='line'>824</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l824s0'>		} catch (DocumentException e) {</pre></td>
+      <td class='line'>728</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l728s0'>		} catch (DocumentException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>825</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l825s0'>			throw new BrowzingException(ERROR_READ_PROCESS_FAILED, this.url, e);</pre></td>
+      <td class='line'>729</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l729s0'>			throw new BrowzingException(ERROR_READ_PROCESS_FAILED, this.url.getURL(), e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>826</td><td>&nbsp;</td>
+      <td class='line'>730</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>827</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	}</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'></td><td>&nbsp;</td>
-      <td class='comment' onclick='showHideLines(this)'><div>	/**
-	 * URLオブジェクトからプロトコルを取得します。
-	 * 
-	 * @param urlObject URLオブジェクト
-	 * @return プロトコル名
-	 */</div><span>	/*...*/</span></td>
-    </tr>
-    <tr>
-      <td class='line'>835</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected String getProtocol(URL urlObject) {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>836</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l836s0'>		return urlObject.getProtocol();</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>837</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	}</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'></td><td>&nbsp;</td>
-      <td class='comment' onclick='showHideLines(this)'><div>	/**
-	 * URLオブジェクトからホスト名を取得します。
-	 * 
-	 * @param urlObject URLオブジェクト
-	 * @return ホスト名
-	 */</div><span>	/*...*/</span></td>
-    </tr>
-    <tr>
-      <td class='line'>845</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected String getHost(URL urlObject) {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>846</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l846s0'>		return urlObject.getHost();</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>847</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	}</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'></td><td>&nbsp;</td>
-      <td class='comment' onclick='showHideLines(this)'><div>	/**
-	 * URLオブジェクトからパスを表す文字列を取得します。
-	 * 
-	 * @param urlObject URLオブジェクト
-	 * @return パスを表す文字列
-	 */</div><span>	/*...*/</span></td>
-    </tr>
-    <tr>
-      <td class='line'>855</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected String getPath(URL urlObject) {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>856</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l856s0'>		return urlObject.getPath();</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>857</td><td>&nbsp;</td>
+      <td class='line'>731</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -2321,15 +1944,15 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>866</td><td>&nbsp;</td>
+      <td class='line'>740</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	protected RequestHeader createRequestHeader(Map&lt;String, String> requestHeader) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>867</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l867s0'>		return new RequestHeader(requestHeader);</pre></td>
+      <td class='line'>741</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l741s0'>		return new RequestHeader(requestHeader);</pre></td>
     </tr>
     <tr>
-      <td class='line'>868</td><td>&nbsp;</td>
+      <td class='line'>742</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -2344,89 +1967,89 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>877</td><td>&nbsp;</td>
+      <td class='line'>751</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	protected ResponseHeader createResponseHeader(Map&lt;String, List&lt;String>> responseHeader) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>878</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l878s0'>		return new ResponseHeader(responseHeader);</pre></td>
+      <td class='line'>752</td><td class='count'>61</td>
+      <td><pre class='prettyprint covered' id='l752s0'>		return new ResponseHeader(responseHeader);</pre></td>
     </tr>
     <tr>
-      <td class='line'>879</td><td>&nbsp;</td>
+      <td class='line'>753</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>881</td><td>&nbsp;</td>
+      <td class='line'>755</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	@Override</pre></td>
     </tr>
     <tr>
-      <td class='line'>882</td><td>&nbsp;</td>
+      <td class='line'>756</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public String toString() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>883</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l883s0'>		return this.url;</pre></td>
+      <td class='line'>757</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l757s0'>		return this.url.toString();</pre></td>
     </tr>
     <tr>
-      <td class='line'>884</td><td>&nbsp;</td>
+      <td class='line'>758</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>886</td><td>&nbsp;</td>
+      <td class='line'>760</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	@Override</pre></td>
     </tr>
     <tr>
-      <td class='line'>887</td><td>&nbsp;</td>
+      <td class='line'>761</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public jp.co.dk.xml.Element convert() throws jp.co.dk.xml.exception.XmlDocumentException {</pre></td>
     </tr>
     <tr>
       <td></td><td class='count'>0</td>
       <td class='paths'>
         <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/2</span>
-        <span class='uncovered' onclick="showPath(this,'l888s0 l894s0 l895s0')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l888s0 l894s0 l894s1 l895s0')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l762s0 l768s0 l769s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l762s0 l768s0 l768s1 l769s0')">B: 0</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>888</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l888s0'>		jp.co.dk.xml.Element xmlElement = new jp.co.dk.xml.Element("page");</pre></td>
+      <td class='line'>762</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l762s0'>		jp.co.dk.xml.Element xmlElement = new jp.co.dk.xml.Element("page");</pre></td>
     </tr>
     <tr>
-      <td class='line'>889</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l889s0'>		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("url",this.url));</pre></td>
+      <td class='line'>763</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l763s0'>		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("url",this.url.getURL()));</pre></td>
     </tr>
     <tr>
-      <td class='line'>890</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l890s0'>		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("protocol",this.protocol));</pre></td>
+      <td class='line'>764</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l764s0'>		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("protocol",this.url.getProtocol()));</pre></td>
     </tr>
     <tr>
-      <td class='line'>891</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l891s0'>		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("host",this.host));</pre></td>
+      <td class='line'>765</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l765s0'>		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("host",this.url.getHost()));</pre></td>
     </tr>
     <tr>
-      <td class='line'>892</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l892s0'>		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("path",this.path));</pre></td>
+      <td class='line'>766</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l766s0'>		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("path",this.getPath()));</pre></td>
     </tr>
     <tr>
-      <td class='line'>893</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l893s0'>		long size = this.getSize();</pre></td>
+      <td class='line'>767</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l767s0'>		long size = this.getSize();</pre></td>
     </tr>
     <tr>
-      <td class='line'>894</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l894s0' title='Executions: 0' class='uncovered'>if (size != -1)</span> <span id='l894s1' title='Executions: 0' class='uncovered'>xmlElement.addAttribute(new jp.co.dk.xml.Attribute("size", Long.toString(size)));</span> </pre></td>
+      <td class='line'>768</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>		<span id='l768s0' title='Executions: 0' class='uncovered'>if (size != -1)</span> <span id='l768s1' title='Executions: 0' class='uncovered'>xmlElement.addAttribute(new jp.co.dk.xml.Attribute("size", Long.toString(size)));</span> </pre></td>
     </tr>
     <tr>
-      <td class='line'>895</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l895s0'>		return xmlElement;</pre></td>
+      <td class='line'>769</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l769s0'>		return xmlElement;</pre></td>
     </tr>
     <tr>
-      <td class='line'>896</td><td>&nbsp;</td>
+      <td class='line'>770</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr>
-      <td class='line'>897</td><td>&nbsp;</td>
+      <td class='line'>771</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>}</pre></td>
     </tr>
   </table>

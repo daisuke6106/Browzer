@@ -18,7 +18,6 @@ public class TestBrowzerFoundation extends TestCaseTemplate {
 		urlList.add("http://ja.wikipedia.org/wiki/HyperText_Markup_Language");
 		urlList.add("http://michaelsan.livedoor.biz/archives/51798684.html");
 		urlList.add("http://www.watch2chan.com/archives/32013869.html");
-		urlList.add("http://burusoku-vip.com/archives/1694841.html");
 		urlList.add("http://burusoku-vip.com/archives/1694675.html");
 		urlList.add("http://kazetaka.com/archives/52044363.html");
 		urlList.add("http://www.a-kabe.com/aria/");

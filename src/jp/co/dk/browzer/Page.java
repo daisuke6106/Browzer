@@ -49,26 +49,8 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
  */
 public class Page implements XmlConvertable{
 	
-	/** URL文字列 */
-	protected String url;
-	
-	/** URL文字列を元に作成されたURLオブジェクト */
-	protected URL urlObj;
-	
-	/** プロトコル名 */
-	protected String protocol;
-	
-	/** ホスト名 */
-	protected String host;
-	
-	/** パス文字列 */
-	protected String path;
-	
-	/** パス一覧 */
-	protected List<String> pathList;
-	
-	/** パラメータ一覧 */
-	protected Map<String, String> parameter;
+	/** URLオブジェクト */
+	protected Url url;
 	
 	/** リクエストヘッダ */
 	protected RequestHeader requestHeader;
@@ -107,15 +89,8 @@ public class Page implements XmlConvertable{
 	public Page(String url, Map<String, String> requestHeader ) throws BrowzingException {
 		if (url == null || url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);
 		if (requestHeader == null) requestHeader = new HashMap<String, String>(); 
-		this.url        = url;
-		this.urlObj     = this.createURL(url);
-		this.protocol   = this.getProtocol(this.urlObj);
-		this.host       = this.getHost(this.urlObj);
-		this.path       = this.getPath(this.urlObj);
-		this.pathList   = this.getPathList(this.urlObj);
-		this.parameter  = this.getParameter(this.urlObj);
-		
-		URLConnection connection = this.createURLConnection(this.urlObj, HtmlRequestMethodName.GET);
+		this.url = this.createUrl(url);
+		URLConnection connection = this.createURLConnection(this.url.getUrlObject(), HtmlRequestMethodName.GET);
 		Map<String, String> requestHeaderByProperty = this.getRequestHeaderByPorperty();
 		requestHeaderByProperty.putAll(requestHeader);
 		
@@ -125,7 +100,7 @@ public class Page implements XmlConvertable{
 			connection.connect();
 			this.connection = connection;
 		} catch (IOException e) {
-			throw new BrowzingException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, urlObj.toString(), e );
+			throw new BrowzingException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, this.url.toString(), e );
 		}
 		Map<String, List<String>> responseHeader = connection.getHeaderFields();
 		this.responseHeader = this.createResponseHeader(responseHeader);
@@ -144,13 +119,7 @@ public class Page implements XmlConvertable{
 	 */
 	protected Page(String url, Map<String,String> requestHeader, Map<String, List<String>> responseHeader, ByteDump data) throws BrowzingException {
 		if (url == null || url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);
-		this.url            = url;
-		this.urlObj         = this.createURL(url);
-		this.protocol       = this.getProtocol(this.urlObj);
-		this.host           = this.getHost(this.urlObj);
-		this.path           = this.getPath(this.urlObj);
-		this.pathList       = this.getPathList(this.urlObj);
-		this.parameter      = this.getParameter(this.urlObj);
+		this.url            = this.createUrl(url);
 		this.requestHeader  = this.createRequestHeader(requestHeader);
 		this.responseHeader = this.createResponseHeader(responseHeader);
 		this.byteDump       = data;
@@ -167,27 +136,20 @@ public class Page implements XmlConvertable{
 	protected Page(Form form, Map<String, String> requestProperty) throws BrowzingException {
 		if (form == null) throw new BrowzingException(ERROR_FORM_IS_NOT_SPECIFIED);
 		try {
-			this.urlObj = form.getAction().getURL();
+			this.url = this.createUrl(form.getAction().getURL().toString());
 		} catch (HtmlDocumentException e) {
 			throw new BrowzingException(ERROR_AN_INVALID_URL_WAS_SPECIFIED, e);
 		}
-		this.url  = urlObj.toString();
-		
-		this.protocol   = this.getProtocol(this.urlObj);
-		this.host       = this.getHost(this.urlObj);
-		this.path       = this.getPath(this.urlObj);
-		this.pathList   = this.getPathList(this.urlObj);
-		
 		if (requestProperty == null) requestProperty = new HashMap<String, String>(); 
 		this.requestHeader = this.createRequestHeader(requestProperty);
-		URLConnection connection = this.createURLConnection(this.urlObj, form.getMethod());
+		URLConnection connection = this.createURLConnection(this.url.getUrlObject(), form.getMethod());
 		this.connection = this.setRequestProperty(connection, requestProperty);
 		try {
 			BufferedWriter outputStream = new BufferedWriter(new OutputStreamWriter(this.connection.getOutputStream()));
 			outputStream.write(form.createMessage());
 			outputStream.close();
 		} catch (IOException e) {
-			throw new BrowzingException(ERROR_FAILED_TO_SEND_MESSAGE, new String[]{this.url, form.getMethod().getMethod()}, e);
+			throw new BrowzingException(ERROR_FAILED_TO_SEND_MESSAGE, new String[]{this.url.getURL(), form.getMethod().getMethod()}, e);
 		}
 		Map<String, List<String>> responseHeader = connection.getHeaderFields();
 		this.responseHeader = this.createResponseHeader(responseHeader);
@@ -282,7 +244,7 @@ public class Page implements XmlConvertable{
 	 * @return URL文字列
 	 */
 	public String getHost() {
-		return this.host;
+		return this.url.getHost();
 	}
 	
 	/**
@@ -292,7 +254,7 @@ public class Page implements XmlConvertable{
 	 * @return URL文字列
 	 */
 	public String getURL() {
-		return this.urlObj.toString();
+		return this.url.toString();
 	}
 	
 	/**
@@ -301,7 +263,7 @@ public class Page implements XmlConvertable{
 	 * @return URL文字列
 	 */
 	public URL getURLObject() {
-		return this.urlObj;
+		return this.url.getUrlObject();
 	}
 	
 	/**
@@ -338,7 +300,7 @@ public class Page implements XmlConvertable{
 			this.document = documentFactory.create(contentsType, inputStream);
 			return this.document;
 		} else {
-			BrowzingExtension extension = this.getExtension(this.path);
+			BrowzingExtension extension = this.getExtension(this.getFileName());
 			this.document = documentFactory.create(extension, inputStream);
 			return this.document;
 		}
@@ -351,7 +313,7 @@ public class Page implements XmlConvertable{
 	 * @return パラメータのマップ
 	 */
 	public Map<String, String> getParameter() {
-		return new HashMap<String,String>(this.parameter);
+		return this.url.getParameter();
 	}
 	
 	/**
@@ -363,10 +325,11 @@ public class Page implements XmlConvertable{
 	 * @return パス文字列
 	 */
 	public String getPath() {
-		if (this.pathList.size() == 0) return "";
+		List<String> pathList = this.url.getPathList();
+		if (pathList.size() == 0) return "";
 		String fileName = this.getFileName();
 		StringBuilder sb = new StringBuilder();
-		for (String path : this.pathList) {
+		for (String path : pathList) {
 			if (fileName.equals(path)) break; 
 			sb.append(path).append('/');
 		}
@@ -382,7 +345,7 @@ public class Page implements XmlConvertable{
 	 * 
 	 */
 	public List<String> getPathList() {
-		return new ArrayList<String>(this.pathList);
+		return this.url.getPathList();
 	}
 	
 	/**
@@ -396,6 +359,7 @@ public class Page implements XmlConvertable{
 	 * @return ファイル名
 	 */
 	public String getFileName() {
+		List<String> pathList = this.url.getPathList();
 		if (pathList == null || pathList.size() == 0) return this.defaultFileName(responseHeader);
 		String lastPath = pathList.get(pathList.size()-1);
 		if (lastPath.lastIndexOf('.') == -1) {
@@ -429,7 +393,7 @@ public class Page implements XmlConvertable{
 	 * @return プロトコルを表す文字列
 	 */
 	public String getProtocol() {
-		return this.protocol;
+		return this.url.getProtocol();
 	}
 	
 	/**
@@ -531,7 +495,7 @@ public class Page implements XmlConvertable{
 		try {
 			return this.getDocument().save(path, this.getFileName());
 		} catch (DocumentException e) {
-			throw new BrowzingException(ERROR_FAILED_TO_DOWNLOAD, url, e);
+			throw new BrowzingException(ERROR_FAILED_TO_DOWNLOAD, this.url.getURL(), e);
 		}
 	}
 	
@@ -551,8 +515,18 @@ public class Page implements XmlConvertable{
 		try {
 			return this.getDocument().save(path, fileName);
 		} catch (DocumentException e) {
-			throw new BrowzingException(ERROR_FAILED_TO_DOWNLOAD, url, e);
+			throw new BrowzingException(ERROR_FAILED_TO_DOWNLOAD, this.url.getURL(), e);
 		}
+	}
+	
+	/**
+	 * 指定のURLの文字列を元にUrlオブジェクトを生成し、返却します。
+	 * @param url URL文字列
+	 * @return Urlオブジェクト
+	 * @throws BrowzingException URL文字列がnullまたは、空文字だった場合
+	 */
+	protected Url createUrl(String url) throws BrowzingException {
+		return new Url(url);
 	}
 	
 	/**
@@ -563,7 +537,7 @@ public class Page implements XmlConvertable{
 	 * @throws ダウンロードに失敗した場合
 	 */
 	protected void download(File path) throws BrowzingException {
-		StringBuilder pathStr = new StringBuilder(path.getAbsolutePath()).append('/').append(this.host).append('/').append(this.getPath());
+		StringBuilder pathStr = new StringBuilder(path.getAbsolutePath()).append('/').append(this.url.getHost()).append('/').append(this.getPath());
 		File downloadPath = new File(pathStr.toString());
 		try {
 			downloadPath.mkdirs();
@@ -573,7 +547,7 @@ public class Page implements XmlConvertable{
 		try {
 			this.getDocument().save(downloadPath, this.getFileName());
 		} catch (DocumentException e) {
-			throw new BrowzingException(ERROR_FAILED_TO_DOWNLOAD, url, e);
+			throw new BrowzingException(ERROR_FAILED_TO_DOWNLOAD, this.url.getURL(), e);
 		}
 	}
 	
@@ -586,27 +560,10 @@ public class Page implements XmlConvertable{
 	 */
 	public String completionURL(String url) throws BrowzingException {
 		try {
-			return new URL(this.urlObj, url).toString();
+			return new URL(this.url.getUrlObject(), url).toString();
 		} catch (MalformedURLException e) {
-			throw new BrowzingException(ERROR_COMPRETION_URL, new String[]{this.url, url}, e);
+			throw new BrowzingException(ERROR_COMPRETION_URL, new String[]{this.url.getURL(), url}, e);
 		}
-	}
-	
-	/**
-	 * 指定のURL文字列からURLオブジェクトを生成します。<p>
-	 * 
-	 * @param url URL文字列
-	 * @return URLオブジェクト
-	 * @throws BrowzingException 指定されたURL文字列に指定されたプロトコルが未知である場合
-	 */
-	protected URL createURL(String url) throws BrowzingException{
-		URL urlObj;
-		try {
-			urlObj = new URL(url);
-		} catch (MalformedURLException e1) {
-			throw new BrowzingException( ERROR_PROTOCOL_OF_THE_URL_SPECIFIED_IS_UNKNOWN, url, e1 );
-		}
-		return urlObj;
 	}
 	
 	/**
@@ -673,60 +630,6 @@ public class Page implements XmlConvertable{
 	}
 	
 	/**
-	 * 指定のURLに設定されているパラメータ部を取得し、マップ形式に整形し、返却します。<p>
-	 * 指定のURLにパラメータが設定されていなかった場合は空のマップを返却します。
-	 * 
-	 * @param url URLオブジェクト
-	 * @return パラメータマップ
-	 */
-	protected Map<String, String> getParameter(URL url) {
-		Map<String, String> parameters = new HashMap<String, String>();
-		String query = url.getQuery();
-		if (query == null) {
-			return parameters;
-		}
-		String[] queries = query.split("&");
-		for (String param : queries) {
-			String[] val = param.split("=");
-			if (val.length == 1) {
-				parameters.put(val[0], "");
-			} else if (val.length == 2) {
-				parameters.put(val[0], val[1]);
-			} else {
-				continue;
-			}
-		}
-		return parameters;
-	}
-	
-	/**
-	 * 指定のURLオブジェクトからパス部分を取り出し、各パス名をリストにして返却します。<p>
-	 * 
-	 * 例：<br/>
-	 * /path1/path2/path3/file.html<br/>
-	 * <br/>
-	 * の場合、<br/>
-	 * [path1],[path2],[path3],[file.html]<br/>
-	 * のリストを返却します。
-	 * 
-	 * @param urlObj URLオブジェクト
-	 * @return パスリスト
-	 */
-	protected List<String> getPathList(URL urlObj) {
-		String path = urlObj.getPath();
-		List<String> list = new ArrayList<String>();
-		String[] pathElements = path.split("/");
-		for (String pathElement : pathElements) {
-			if (pathElement == null || pathElement.equals("")) {
-				continue;
-			} else {
-				list.add(pathElement);
-			}
-		}
-		return list;
-	}
-	
-	/**
 	 * 指定のURLコネクションへ指定のリクエストヘッダマップに設定されているリクエストヘッダを設定します。<p>
 	 * リクエストヘッダが未指定の場合はそのまま返却します。
 	 * 
@@ -750,7 +653,8 @@ public class Page implements XmlConvertable{
 	 * @return 判定結果（true=スラッシュあり、false=スラッシュなし）
 	 */
 	protected boolean hasTrailingSlash() { 
-		return this.path.indexOf('/') == this.path.length();
+		String path=this.getPath();
+		return path.indexOf('/') == path.length();
 	}
 	
 	/**
@@ -822,38 +726,8 @@ public class Page implements XmlConvertable{
 		try {
 			return new ByteDump(this.getUrlInputStream(connection));
 		} catch (DocumentException e) {
-			throw new BrowzingException(ERROR_READ_PROCESS_FAILED, this.url, e);
+			throw new BrowzingException(ERROR_READ_PROCESS_FAILED, this.url.getURL(), e);
 		}
-	}
-	
-	/**
-	 * URLオブジェクトからプロトコルを取得します。
-	 * 
-	 * @param urlObject URLオブジェクト
-	 * @return プロトコル名
-	 */
-	protected String getProtocol(URL urlObject) {
-		return urlObject.getProtocol();
-	}
-	
-	/**
-	 * URLオブジェクトからホスト名を取得します。
-	 * 
-	 * @param urlObject URLオブジェクト
-	 * @return ホスト名
-	 */
-	protected String getHost(URL urlObject) {
-		return urlObject.getHost();
-	}
-	
-	/**
-	 * URLオブジェクトからパスを表す文字列を取得します。
-	 * 
-	 * @param urlObject URLオブジェクト
-	 * @return パスを表す文字列
-	 */
-	protected String getPath(URL urlObject) {
-		return urlObject.getPath();
 	}
 	
 	/**
@@ -880,16 +754,16 @@ public class Page implements XmlConvertable{
 	
 	@Override
 	public String toString() {
-		return this.url;
+		return this.url.toString();
 	}
 
 	@Override
 	public jp.co.dk.xml.Element convert() throws jp.co.dk.xml.exception.XmlDocumentException {
 		jp.co.dk.xml.Element xmlElement = new jp.co.dk.xml.Element("page");
-		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("url",this.url));
-		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("protocol",this.protocol));
-		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("host",this.host));
-		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("path",this.path));
+		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("url",this.url.getURL()));
+		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("protocol",this.url.getProtocol()));
+		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("host",this.url.getHost()));
+		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("path",this.getPath()));
 		long size = this.getSize();
 		if (size != -1) xmlElement.addAttribute(new jp.co.dk.xml.Attribute("size", Long.toString(size))); 
 		return xmlElement;

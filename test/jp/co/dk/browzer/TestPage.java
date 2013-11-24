@@ -299,7 +299,7 @@ public class TestPage extends TestBrowzerFoundation {
 		// 通常にURLからドキュメンとオブジェクトを取得した場合、かつ、拡張子が存在する場合、
 		// ドキュメントファクトリが正常に呼び出されること。
 		try {
-			Page page4 = new Page("http://docs.oracle.com/javase/jp/6/api/java/net/URL.html");
+			Page page4 = new Page("http://docs.oracle.com/javase/jp/6/api/java/io/Serializable.html");
 			final ResponseHeader header = page4.getResponseHeader();
 			new Expectations(header) {
 				{
