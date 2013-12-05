@@ -12,7 +12,7 @@ import jp.co.dk.document.html.HtmlElement;
  * @version 1.0
  * @author D.Kanno
  */
-public class Link extends jp.co.dk.document.html.element.Link {
+public class Link extends jp.co.dk.document.html.element.Link implements MovableElement{
 	
 	private Page page;
 	

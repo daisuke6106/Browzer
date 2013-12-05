@@ -11,9 +11,7 @@ import jp.co.dk.browzer.download.DownloadJudge;
 import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.html.element.A;
 import jp.co.dk.browzer.html.element.Form;
-import jp.co.dk.browzer.html.element.Image;
-import jp.co.dk.browzer.html.element.Link;
-import jp.co.dk.browzer.html.element.Script;
+import jp.co.dk.browzer.html.element.MovableElement;
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
 /**
@@ -97,7 +95,7 @@ public class Browzer {
 	
 	/**
 	 * ページ遷移実行<p/>
-	 * 指定されたアンカーに設定されているURLへページ遷移を実行します。<br/>
+	 * 指定された遷移可能な要素に設定されているURLへページ遷移を実行します。<br/>
 	 * <br/>
 	 * 以下の状態の場合、例外を送出します。<br/>
 	 * ・遷移先アンカーが設定されていなかった場合<br/>
@@ -108,76 +106,10 @@ public class Browzer {
 	 * @return ページオブジェクト
 	 * @throws BrowzingException 遷移に失敗した場合
 	 */
-	public Page move(A anchor) throws BrowzingException {
-		if (anchor == null) throw new BrowzingException(ERROR_SPECIFIED_ANCHOR_IS_NOT_SET);
-		if (!this.pageManager.getPage().equals(anchor.getPage()))throw new BrowzingException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
-		String url = anchor.getHref();
-		if (url.equals("")) throw new BrowzingException(ERROR_ANCHOR_HAS_NOT_URL);
-		this.pageManager = this.pageManager.move(url);
-		return this.pageManager.getPage();
-	}
-	
-	/**
-	 * ページ遷移実行<p/>
-	 * 指定されたイメージに設定されている画像へページ遷移を実行します。<br/>
-	 * <br/>
-	 * 以下の状態の場合、例外を送出します。<br/>
-	 * ・遷移先イメージが設定されていなかった場合<br/>
-	 * ・遷移先イメージが現在アクティブになっているページから取得したものでない場合<br/>
-	 * ・遷移先イメージに遷移先URLが設定されていなかった場合(srcが設定されていなかった場合)<br/>
-	 * 
-	 * @param image イメージタグ
-	 * @return ページオブジェクト
-	 * @throws BrowzingException 遷移に失敗した場合
-	 */
-	public Page move(Image image) throws BrowzingException {
-		if (image == null) throw new BrowzingException(ERROR_SPECIFIED_ANCHOR_IS_NOT_SET);
-		if (!this.pageManager.getPage().equals(image.getPage()))throw new BrowzingException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
-		String url = image.getSrc();
-		if (url.equals("")) throw new BrowzingException(ERROR_ANCHOR_HAS_NOT_URL);
-		this.pageManager = this.pageManager.move(url);
-		return this.pageManager.getPage();
-	}
-	
-	/**
-	 * ページ遷移実行<p/>
-	 * 指定されたリンクに設定されているページへページ遷移を実行します。<br/>
-	 * <br/>
-	 * 以下の状態の場合、例外を送出します。<br/>
-	 * ・遷移先イメージが設定されていなかった場合<br/>
-	 * ・遷移先イメージが現在アクティブになっているページから取得したものでない場合<br/>
-	 * ・遷移先イメージに遷移先URLが設定されていなかった場合(hrefが設定されていなかった場合)<br/>
-	 * 
-	 * @param link リンクタグ
-	 * @return ページオブジェクト
-	 * @throws BrowzingException 遷移に失敗した場合
-	 */
-	public Page move(Link link) throws BrowzingException {
-		if (link == null) throw new BrowzingException(ERROR_SPECIFIED_ANCHOR_IS_NOT_SET);
-		if (!this.pageManager.getPage().equals(link.getPage()))throw new BrowzingException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
-		String url = link.getHref();
-		if (url.equals("")) throw new BrowzingException(ERROR_ANCHOR_HAS_NOT_URL);
-		this.pageManager = this.pageManager.move(url);
-		return this.pageManager.getPage();
-	}
-	
-	/**
-	 * ページ遷移実行<p/>
-	 * 指定されたリンクに設定されているスクリプトへページ遷移を実行します。<br/>
-	 * <br/>
-	 * 以下の状態の場合、例外を送出します。<br/>
-	 * ・遷移先イメージが設定されていなかった場合<br/>
-	 * ・遷移先イメージが現在アクティブになっているページから取得したものでない場合<br/>
-	 * ・遷移先イメージに遷移先URLが設定されていなかった場合(srcが設定されていなかった場合)<br/>
-	 * 
-	 * @param script スクリプトタグ
-	 * @return ページオブジェクト
-	 * @throws BrowzingException 遷移に失敗した場合
-	 */
-	public Page move(Script script) throws BrowzingException {
-		if (script == null) throw new BrowzingException(ERROR_SPECIFIED_ANCHOR_IS_NOT_SET);
-		if (!this.pageManager.getPage().equals(script.getPage()))throw new BrowzingException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
-		String url = script.getSrc();
+	public Page move(MovableElement movable) throws BrowzingException {
+		if (movable == null) throw new BrowzingException(ERROR_SPECIFIED_ANCHOR_IS_NOT_SET);
+		if (!this.pageManager.getPage().equals(movable.getPage()))throw new BrowzingException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
+		String url = movable.getUrl();
 		if (url.equals("")) throw new BrowzingException(ERROR_ANCHOR_HAS_NOT_URL);
 		this.pageManager = this.pageManager.move(url);
 		return this.pageManager.getPage();

@@ -69,20 +69,9 @@ class BrowzerForTest extends Browzer{
 	}
 	
 	@Override
-	public Page move(A anchor) throws BrowzingException {
-		System.out.println("\tmove to [" + anchor + "]");
-		return super.move(anchor);
-	}
-	
-	@Override
 	public Page move(Form form) throws BrowzingException {
 		System.out.println("\tmove to [" + form + "]");
 		return super.move(form);
 	}
 	
-	@Override
-	public Page move(Image image) throws BrowzingException {
-		System.out.println("\tmove to [" + image + "]");
-		return super.move(image);
-	}
 }

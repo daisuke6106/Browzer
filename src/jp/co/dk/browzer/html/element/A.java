@@ -13,7 +13,7 @@ import jp.co.dk.document.html.HtmlElement;
  * @version 1.0
  * @author D.Kanno
  */
-public class A extends jp.co.dk.document.html.element.A {
+public class A extends jp.co.dk.document.html.element.A implements MovableElement{
 	
 	private Page page;
 	

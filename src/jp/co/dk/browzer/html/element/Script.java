@@ -12,7 +12,7 @@ import jp.co.dk.document.html.HtmlElement;
  * @version 1.0
  * @author D.Kanno
  */
-public class Script extends jp.co.dk.document.html.element.Script {
+public class Script extends jp.co.dk.document.html.element.Script implements MovableElement{
 	
 	private Page page;
 	
@@ -39,11 +39,7 @@ public class Script extends jp.co.dk.document.html.element.Script {
 		}
 	}
 	
-	/**
-	 * 本アンカーの取得元であるページを取得します。
-	 * 
-	 * @return ページ
-	 */
+	@Override
 	public Page getPage() {
 		return this.page;
 	}
