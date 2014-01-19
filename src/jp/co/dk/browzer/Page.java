@@ -67,15 +67,32 @@ public class Page implements XmlConvertable{
 	/** URLコネクション */
 	protected URLConnection connection;
 	
+	/** ページイベントハンドラ */
+	List<PageEventHandler> eventHandler = new ArrayList<PageEventHandler>();
+	
 	/**
 	 * コンストラクタ<p>
-	 * 指定のURL文字列からページのインスタンスを生成する。
+	 * 指定のURL文字列からページのインスタンスを生成する。<br/>
+	 * ページの情報はインスタンス生成時に読み込みます。<br/>
 	 * 
 	 * @param url URLを表す文字列
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
 	public Page(String url) throws BrowzingException {
 		this(url, new HashMap<String,String>(), true);
+	}
+	
+	/**
+	 * コンストラクタ<p/>
+	 * 指定のURL文字列と、リクエストヘッダ、データ読み込みフラグを元にページのインスタンスを生成する。<br/>
+	 * ページの情報はインスタンス生成時に読み込みます。<br/>
+	 * 
+	 * @param url URLを表す文字列
+	 * @param requestHeader リクエストヘッダ
+	 * @throws BrowzingException ページインスタンス生成に失敗した場合
+	 */
+	public Page(String url, Map<String, String> requestHeader) throws BrowzingException {
+		this(url, requestHeader, true);
 	}
 	
 	/**
@@ -127,6 +144,19 @@ public class Page implements XmlConvertable{
 		this.requestHeader  = this.createRequestHeader(requestHeader);
 		this.responseHeader = this.createResponseHeader(responseHeader);
 		this.byteDump       = data;
+	}
+	
+	/**
+	 * コンストラクタ<p>
+	 * 指定のFORM要素からページのインスタンスを生成します。<br/>
+	 * ページの情報はインスタンス生成時に読み込みます。<br/>
+	 * 
+	 * @param form FORM要素
+	 * @param requestProperty リクエストヘッダマップ
+	 * @throws BrowzingException ページインスタンス生成に失敗した場合
+	 */
+	protected Page(Form form, Map<String, String> requestProperty) throws BrowzingException {
+		this(form, requestProperty, true);
 	}
 	
 	/**
@@ -591,6 +621,7 @@ public class Page implements XmlConvertable{
 	 * @throws BrowzingException URLが参照するリモートオブジェクトへの接続時に入出力例外が発生した場合
 	 */
 	protected HttpURLConnection createURLConnection(URL urlObj, HtmlRequestMethodName method) throws BrowzingException{
+		for (PageEventHandler handler : this.eventHandler) handler.beforeOpenConnection(urlObj, method);
 		HttpURLConnection urlConnection;
 		try {
 			urlConnection = (HttpURLConnection)urlObj.openConnection();
@@ -601,6 +632,7 @@ public class Page implements XmlConvertable{
 		} catch (IOException e) {
 			throw new BrowzingException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, urlObj.toString(), e );
 		}
+		for (PageEventHandler handler : this.eventHandler) handler.afterOpenConnection();
 		return urlConnection;
 	}
 	
@@ -739,11 +771,15 @@ public class Page implements XmlConvertable{
 	 * @throws BrowzingException 読み込みにて例外が発生した場合
 	 */
 	protected ByteDump getByteDump(URLConnection connection) throws BrowzingException {
+		for (PageEventHandler handler : this.eventHandler) handler.beforeGetData();
 		try {
-			return new ByteDump(this.getUrlInputStream(connection));
+			ByteDump data = new ByteDump(this.getUrlInputStream(connection));
+			for (PageEventHandler handler : this.eventHandler) handler.afterGetData();
+			return data;
 		} catch (DocumentException e) {
 			throw new BrowzingException(ERROR_READ_PROCESS_FAILED, this.url.getURL(), e);
 		}
+		
 	}
 	
 	/**
@@ -796,10 +832,34 @@ public class Page implements XmlConvertable{
 interface PageEventHandler {
 	
 	/**
-	 * 指定のURLに接続する前に実行される接続前クラスです。
-	 * 
-	 * @param url 接続先URL
-	 * @param requestHeader リクエストヘッダ
+	 * コネクション生成前に呼び出されるイベント
+	 * @param urlObj 接続先URL
+	 * @param method 接続時メソッド
 	 */
-	public void start(Url url, RequestHeader requestHeader);
+	void beforeOpenConnection(URL urlObj, HtmlRequestMethodName method);
+	
+	/**
+	 * コネクション生成終了後に呼び出されるイベント
+	 */
+	void afterOpenConnection();
+	
+	/**
+	 * 接続先のデータを取得する際に実行されるイベント
+	 */
+	void beforeGetData();
+	
+	/**
+	 * 接続先のデータを取得した後に実行されるイベント
+	 */
+	void afterGetData();
+	
+	/**
+	 * 接続先のデータをドキュメントクラスのオブジェクトに変換する際に実行されるイベント
+	 */
+	void beforeCreateDocument();
+	
+	/**
+	 * 接続先のデータをドキュメントクラスのオブジェクトに変換した後に実行されるイベント
+	 */
+	void afterCreateDocument();
 }
