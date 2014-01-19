@@ -281,4 +281,9 @@ public class Browzer {
 	protected PageManager createPageManager(String url, PageRedirectHandler handler, int maxNestLevel) throws BrowzingException {
 		return new PageManager(url, handler, maxNestLevel);
 	}
+	
+	@Override
+	public String toString() {
+		return this.pageManager.toString();
+	}
 }

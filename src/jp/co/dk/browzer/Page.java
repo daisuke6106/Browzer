@@ -75,18 +75,22 @@ public class Page implements XmlConvertable{
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
 	public Page(String url) throws BrowzingException {
-		this(url, new HashMap<String,String>());
+		this(url, new HashMap<String,String>(), true);
 	}
 	
 	/**
 	 * コンストラクタ<p/>
-	 * 指定のURL文字列と、リクエストヘッダを元にページのインスタンスを生成する。
+	 * 指定のURL文字列と、リクエストヘッダ、データ読み込みフラグを元にページのインスタンスを生成する。<br/>
+	 * <br/>
+	 * データ読み込みフラグにtrueが設定されていた場合、このインスタンスが生成された際にページ情報を取得しメモリ上に保持します。<br/>
+	 * falseの場合、getDataメソッドが呼ばれるまでページ情報の取得は行いません。<br/>
 	 * 
 	 * @param url URLを表す文字列
 	 * @param requestHeader リクエストヘッダ
+	 * @param readDataFlg データ読み込みフラグ
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
-	public Page(String url, Map<String, String> requestHeader ) throws BrowzingException {
+	public Page(String url, Map<String, String> requestHeader, boolean readDataFlg) throws BrowzingException {
 		if (url == null || url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);
 		if (requestHeader == null) requestHeader = new HashMap<String, String>(); 
 		this.url = this.createUrl(url);
@@ -104,7 +108,7 @@ public class Page implements XmlConvertable{
 		}
 		Map<String, List<String>> responseHeader = connection.getHeaderFields();
 		this.responseHeader = this.createResponseHeader(responseHeader);
-		// this.byteDump       = this.getByteDump(connection);
+		if (readDataFlg) this.byteDump = this.getByteDump(connection);
 	}
 	
 	/**
@@ -127,13 +131,17 @@ public class Page implements XmlConvertable{
 	
 	/**
 	 * コンストラクタ<p>
-	 * 指定のFORM要素からページのインスタンスを生成します。
+	 * 指定のFORM要素からページのインスタンスを生成します。<br/>
+	 * <br/>
+	 * データ読み込みフラグにtrueが設定されていた場合、このインスタンスが生成された際にページ情報を取得しメモリ上に保持します。<br/>
+	 * falseの場合、getDataメソッドが呼ばれるまでページ情報の取得は行いません。
 	 * 
 	 * @param form FORM要素
 	 * @param requestProperty リクエストヘッダマップ
+	 * @param readDataFlg データ読み込みフラグ
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
-	protected Page(Form form, Map<String, String> requestProperty) throws BrowzingException {
+	protected Page(Form form, Map<String, String> requestProperty, boolean readDataFlg) throws BrowzingException {
 		if (form == null) throw new BrowzingException(ERROR_FORM_IS_NOT_SPECIFIED);
 		try {
 			this.url = this.createUrl(form.getAction().getURL().toString());
@@ -153,7 +161,7 @@ public class Page implements XmlConvertable{
 		}
 		Map<String, List<String>> responseHeader = connection.getHeaderFields();
 		this.responseHeader = this.createResponseHeader(responseHeader);
-		// this.byteDump       = this.getByteDump(connection);
+		if (readDataFlg) this.byteDump = this.getByteDump(connection);
 	}
 	
 	/**
@@ -232,7 +240,7 @@ public class Page implements XmlConvertable{
 		Map<String, String> cookieRequestHeader   = this.getCookies();
 		defaultRequestHeader.putAll(cookieRequestHeader);
 		defaultRequestHeader.putAll(requestHeader);
-		return new Page(form, defaultRequestHeader);
+		return new Page(form, defaultRequestHeader, true);
 	}
 	
 	/**
@@ -713,7 +721,7 @@ public class Page implements XmlConvertable{
 	 * @return ファイル名
 	 */
 	protected String defaultFileName(ResponseHeader responseHeader) {
-		StringBuilder sb = new StringBuilder("default");
+		StringBuilder sb = new StringBuilder("index");
 		ContentsType contentType = responseHeader.getContentsType();
 		if (contentType != null) {
 			String extension = contentType.getDefaultExtension();
@@ -776,4 +784,22 @@ public class Page implements XmlConvertable{
 		if (size != -1) xmlElement.addAttribute(new jp.co.dk.xml.Attribute("size", Long.toString(size))); 
 		return xmlElement;
 	}
+}
+
+
+/**
+ * PageEventHandlerは単一のページにおける各イベント発生した際の、アクションを定義するクラスです。<p/>
+ * 
+ * @version 1.0
+ * @author D.Kanno
+ */
+interface PageEventHandler {
+	
+	/**
+	 * 指定のURLに接続する前に実行される接続前クラスです。
+	 * 
+	 * @param url 接続先URL
+	 * @param requestHeader リクエストヘッダ
+	 */
+	public void start(Url url, RequestHeader requestHeader);
 }

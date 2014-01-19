@@ -18,21 +18,21 @@ import jp.co.dk.xml.XmlConvertable;
 public class PageManager implements XmlConvertable{
 	
 	/** 親ページ管理オブジェクト */
-	private PageManager parentPage;
+	protected PageManager parentPage;
 	
 	/** 現在のページのオブジェクト */
-	private Page page;
+	protected Page page;
 	
-	private PageRedirectHandler pageRedirectHandler;
+	protected PageRedirectHandler pageRedirectHandler;
 	
 	/** この画面に属する小画面のページオブジェクト一覧 */
-	private List<PageManager> childPageList;
+	protected List<PageManager> childPageList;
 	
 	/** 現在のネストレベル */
-	private int nestLevel = 0;
+	protected int nestLevel = 0;
 	
 	/** 最大ネストレベル */
-	private int maxNestLevel = -1;
+	protected int maxNestLevel = -1;
 	
 	/**
 	 * コンストラクタ<p/>
@@ -130,6 +130,22 @@ public class PageManager implements XmlConvertable{
 	}
 	
 	/**
+	 * このページの遷移元である親ページを取得します。
+	 * 
+	 * @return 親ページオブジェクト
+	 */
+	public Page getParentPage() {
+		return this.parentPage.getPage();
+	}
+	
+	/**
+	 * このページの遷移元である親ページを削除します。
+	 */
+	public void removeParent() {
+		this.parentPage = null;
+	}
+	
+	/**
 	 * 現在アクティブになっているページを返却します。
 	 * 
 	 * @return ページオブジェクト
@@ -174,6 +190,19 @@ public class PageManager implements XmlConvertable{
 	}
 	
 	/**
+	 * このページの遷移先である子ページの一覧を取得します。
+	 * 
+	 * @return 親ページオブジェクト
+	 */
+	public List<Page> getChildPages() {
+		List<Page> childPagesList = new ArrayList<Page>();
+		for (PageManager pagemanager : this.childPageList) {
+			childPagesList.add(pagemanager.getPage());
+		}
+		return childPagesList;
+	}
+	
+	/**
 	 * このページから遷移したページオブジェクトを空に設定します。
 	 */
 	public void removeChild() {
@@ -201,5 +230,50 @@ public class PageManager implements XmlConvertable{
 	 */
 	protected PageManager createPageManager(PageManager pageManager, Page page, PageRedirectHandler pageRedirectHandler, int nextLevel, int maxNestLevel) {
 		return new PageManager(pageManager, page, pageRedirectHandler, nextLevel, maxNestLevel);
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		boolean[] islasted= {};
+		String newline = System.getProperty("line.separator");
+		this.toStringUrl(sb, islasted, newline);
+		return sb.toString();
+	}
+	
+	private void toStringUrl(StringBuilder stringBuilder, boolean[] islasts, String newline) {
+		for (int i=0; i<islasts.length-1; i++) {
+			if (islasts[i]) {
+				stringBuilder.append("  ");
+			} else {
+				stringBuilder.append('│');
+			}
+		}
+		if (islasts.length != 0) {
+			if (islasts[islasts.length-1]) {
+				stringBuilder.append('└');
+			} else {
+				stringBuilder.append('├');
+			}
+		}
+		stringBuilder.append("URL=[").append(this.page.getURL().toString()).append("]:");
+		stringBuilder.append("REQUEST_HEADER=[").append(this.page.getRequestHeader().toString()).append("]:");
+		stringBuilder.append("RESPONCE_HEADER=[").append(this.page.getResponseHeader().toString()).append("]:");
+		String fileName  = this.page.getFileName();
+		String extension = this.page.getExtension();
+		long  filesize       = this.page.getSize();
+		stringBuilder.append("FILE=[").append("filename=").append(fileName).append(", extension=").append(extension).append(", size=").append(filesize).append("]");
+		stringBuilder.append(newline);
+		for (int i=0, size = this.childPageList.size(); i<size ;i++) {
+			boolean[] newIslasts = new boolean[islasts.length+1];
+			for (int k=0; k<islasts.length; k++) newIslasts[k] = islasts[k];
+			if (i==size-1) {
+				newIslasts[newIslasts.length-1] = true;
+				
+			} else {
+				newIslasts[newIslasts.length-1] = false;
+			}
+			this.childPageList.get(i).toStringUrl(stringBuilder, newIslasts, newline);
+		}
 	}
 }

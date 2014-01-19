@@ -39,4 +39,9 @@ public class RequestHeader implements Serializable{
 	public Map<String, String> getHeaderMap() {
 		return new HashMap<String, String>(this.headerMap);
 	}
+	
+	@Override
+	public String toString() {
+		return this.headerMap.toString();
+	}
 }

@@ -116,9 +116,14 @@ public class TestBrowser extends TestBrowzerFoundation {
 		// URLオブジェクトを指定した場合、正常に遷移できること。
 		try {
 			Browzer browzer1 = getBrowzer();
-			A anchor = super.getRandomElement(browzer1.getAnchor());
-			browzer1.move(anchor);
-			Page page = browzer1.getPage();
+			A anchor1 = super.getRandomElement(browzer1.getAnchor());
+			browzer1.move(anchor1);
+			A anchor2 = super.getRandomElement(browzer1.getAnchor());
+			browzer1.move(anchor2);
+			A anchor3 = super.getRandomElement(browzer1.getAnchor());
+			browzer1.move(anchor3);
+			System.out.println(browzer1.pageManager.parentPage.parentPage.toString());
+			
 		} catch (BrowzingException e) {
 			fail(e);
 		}
