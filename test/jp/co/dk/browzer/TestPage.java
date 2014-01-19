@@ -380,10 +380,10 @@ public class TestPage extends TestBrowzerFoundation {
 	@Test
 	public void getFileName() throws BrowzingException {
 		assertEquals(new Page("http://www.kanzaki.com/docs/sw/http-header.html").getFileName(), "http-header.html");
-		assertEquals(new Page("http://gigazine.net/").getFileName(), "default.html");
-		assertEquals(new Page("http://gigazine.net").getFileName(), "default.html");
-		assertEquals(new Page("http://d.hatena.ne.jp/teraliso/20081202/").getFileName(), "default.html");
-		assertEquals(new Page("http://d.hatena.ne.jp/teraliso/20081202").getFileName(), "default.html");
+		assertEquals(new Page("http://gigazine.net/").getFileName(), "index.html");
+		assertEquals(new Page("http://gigazine.net").getFileName(), "index.html");
+		assertEquals(new Page("http://d.hatena.ne.jp/teraliso/20081202/").getFileName(), "index.html");
+		assertEquals(new Page("http://d.hatena.ne.jp/teraliso/20081202").getFileName(), "index.html");
 	}
 	
 	@Test
@@ -452,9 +452,9 @@ public class TestPage extends TestBrowzerFoundation {
 		
 		// 正常なHTMLのページの場合、正常に処理が完了すること
 		try {
-			Page page = super.createPage("http://www.google.co.jp");
+			Page page = super.createPage("http://www.htmq.com/html/form.shtml");
 			List<jp.co.dk.document.html.element.Form> formList = page.getForm();
-			if (formList.size() == 0) fail();
+			assertEquals(formList.size(), 3);
 		} catch (BrowzingException e) {
 			fail(e);
 		}

@@ -23,6 +23,7 @@ public class PageManager implements XmlConvertable{
 	/** 現在のページのオブジェクト */
 	protected Page page;
 	
+	/** ページリダイレクトハンドラ */
 	protected PageRedirectHandler pageRedirectHandler;
 	
 	/** この画面に属する小画面のページオブジェクト一覧 */
