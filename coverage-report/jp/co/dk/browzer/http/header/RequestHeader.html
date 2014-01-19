@@ -50,7 +50,7 @@ import jp.co.dk.browzer.exception.BrowzingException;
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>20</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private Map&lt;String, String> <span class='instance uncovered' title='Reads: 0 Writes: 61'>headerMap</span>;</pre></td>
+      <td><pre class='prettyprint'>	private Map&lt;String, String> <span class='instance uncovered' title='Reads: 3 Writes: 39'>headerMap</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -65,15 +65,15 @@ import jp.co.dk.browzer.exception.BrowzingException;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>30</td><td class='count'>61</td>
+      <td class='line'>30</td><td class='count'>39</td>
       <td><pre class='prettyprint covered' id='l30s0'>	public RequestHeader(Map&lt;String, String> requestHeader) throws BrowzingException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>31</td><td class='count'>61</td>
+      <td class='line'>31</td><td class='count'>39</td>
       <td><pre class='prettyprint covered' id='l31s0'>		this.headerMap = new HashMap&lt;String, String>(requestHeader);</pre></td>
     </tr>
     <tr>
-      <td class='line'>32</td><td class='count'>61</td>
+      <td class='line'>32</td><td class='count'>39</td>
       <td><pre class='prettyprint covered' id='l32s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -97,8 +97,25 @@ import jp.co.dk.browzer.exception.BrowzingException;
       <td class='line'>41</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>42</td><td>&nbsp;</td>
+      <td class='line'>43</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	@Override</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>44</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public String toString() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>45</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l45s0'>		return this.headerMap.toString();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>46</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>47</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>}</pre></td>
     </tr>
   </table>

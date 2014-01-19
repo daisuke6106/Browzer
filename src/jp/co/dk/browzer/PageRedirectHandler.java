@@ -26,6 +26,19 @@ import jp.co.dk.document.html.element.Meta;
  */
 public class PageRedirectHandler {
 	
+	/** イベントハンドラ */
+	List<PageEventHandler> eventHandler;
+	
+	/**
+	 * コンストラクタ<p/>
+	 * 指定のイベントハンドラ一覧を元にページリダイレクトハンドラを生成します。
+	 * 
+	 * @param eventHandler イベントハンドラ一覧
+	 */
+	PageRedirectHandler(List<PageEventHandler> eventHandler) {
+		this.eventHandler = eventHandler;
+	}
+	
 	/**
 	 * ページへの接続時、ヘッダ情報やページ内容を解析し、新しいページへのリダイレクトを行う。<p/>
 	 * <br/>
@@ -76,6 +89,8 @@ public class PageRedirectHandler {
 	 * @throws BrowzingException 遷移に失敗した場合
 	 */
 	protected Page redirectBy_INFOMATIONAL(ResponseHeader header, Page page) throws BrowzingException {
+		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);
+		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
 		return page;
 	}
 	
@@ -92,6 +107,7 @@ public class PageRedirectHandler {
 	 * @throws BrowzingException 遷移に失敗した場合
 	 */
 	protected Page redirectBy_SUCCESS(ResponseHeader header, Page page) throws BrowzingException {
+		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);
 		File file = page.getDocument();
 		if (file instanceof HtmlDocument) {
 			HtmlDocument htmlDocument = (HtmlDocument)file;
@@ -113,8 +129,10 @@ public class PageRedirectHandler {
 					}
 				}
 			}
+			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
 			return page;
 		} else {
+			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
 			return page;
 		}
 	}
@@ -131,9 +149,12 @@ public class PageRedirectHandler {
 	 * @throws BrowzingException 遷移に失敗した場合
 	 */
 	protected Page redirectBy_REDIRECTION(ResponseHeader header, Page page) throws BrowzingException {
+		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);
 		String location = header.getLocation();
 		if (location == null || location.equals("")) throw new BrowzingException(ERROR_REDIRECT_LOCATION_NOT_FOUND); 
-		return this.ceatePage(page.completionURL(location));
+		Page nextPage = this.ceatePage(page.completionURL(location));
+		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
+		return nextPage;
 	}
 	
 	/**
@@ -147,6 +168,7 @@ public class PageRedirectHandler {
 	 * @throws BrowzingException 遷移に失敗した場合
 	 */
 	protected Page redirectBy_CLIENT_ERROR(ResponseHeader header, Page page) throws BrowzingException {
+		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);
 		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();
 		if (httpStatusCode == HttpStatusCode.STATUS_401) {
 			BufferedReader reader = new BufferedReader( new InputStreamReader(System.in));
@@ -164,7 +186,7 @@ public class PageRedirectHandler {
 			
 			System.out.print(INFO_USER.getMessage());
 		}
-		
+		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
 		throw new BrowzingException(ERROR_HTTP_STATUS_CODE_IS_SENT_BACK_FROM_SERVER_HAS_RETURNED_NON_NORMAL, 
 				new String[]{ httpStatusCode.getCode(), httpStatusCode.getMessage().getMessage(), page.getURL()});
 		
@@ -180,7 +202,9 @@ public class PageRedirectHandler {
 	 * @throws BrowzingException 遷移に失敗した場合
 	 */
 	protected Page redirectBy_SERVER_ERROR(ResponseHeader header, Page page) throws BrowzingException {
+		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);
 		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();
+		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
 		throw new BrowzingException(ERROR_HTTP_STATUS_CODE_IS_SENT_BACK_FROM_SERVER_HAS_RETURNED_NON_NORMAL, 
 				new String[]{ httpStatusCode.getCode(), httpStatusCode.getMessage().getMessage(), page.getURL()});
 		

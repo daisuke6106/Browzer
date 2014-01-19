@@ -59,6 +59,9 @@ public class Page implements XmlConvertable{
 	/** レスポンスヘッダ */
 	protected ResponseHeader responseHeader;
 	
+	/** リードデータフラグ */
+	protected boolean readDataFlg;
+	
 	/** ページデータ */
 	protected ByteDump byteDump;
 	
@@ -80,7 +83,7 @@ public class Page implements XmlConvertable{
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
 	public Page(String url) throws BrowzingException {
-		this(url, new HashMap<String,String>(), true);
+		this(url, new HashMap<String,String>(), true, new ArrayList<PageEventHandler>());
 	}
 	
 	/**
@@ -93,7 +96,7 @@ public class Page implements XmlConvertable{
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
 	public Page(String url, Map<String, String> requestHeader) throws BrowzingException {
-		this(url, requestHeader, true);
+		this(url, requestHeader, true, new ArrayList<PageEventHandler>());
 	}
 	
 	/**
@@ -108,15 +111,16 @@ public class Page implements XmlConvertable{
 	 * @param readDataFlg データ読み込みフラグ
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
-	public Page(String url, Map<String, String> requestHeader, boolean readDataFlg) throws BrowzingException {
+	public Page(String url, Map<String, String> requestHeader, boolean readDataFlg, List<PageEventHandler> pageEventHandlerList) throws BrowzingException {
 		if (url == null || url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);
 		if (requestHeader == null) requestHeader = new HashMap<String, String>(); 
-		this.url = this.createUrl(url);
-		this.eventHandler = this.getPageEventHandler();
+		this.url                 = this.createUrl(url);
+		this.readDataFlg         = readDataFlg;
+		this.eventHandler        = pageEventHandlerList;
 		URLConnection connection = this.createURLConnection(this.url.getUrlObject(), HtmlRequestMethodName.GET);
+		
 		Map<String, String> requestHeaderByProperty = this.getRequestHeaderByPorperty();
 		requestHeaderByProperty.putAll(requestHeader);
-		
 		this.requestHeader = this.createRequestHeader(requestHeaderByProperty);
 		this.setRequestProperty(connection, requestHeaderByProperty);
 		try {
@@ -140,13 +144,13 @@ public class Page implements XmlConvertable{
 	 * @param data           ページデータ
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
-	protected Page(String url, Map<String,String> requestHeader, Map<String, List<String>> responseHeader, ByteDump data) throws BrowzingException {
+	protected Page(String url, Map<String,String> requestHeader, Map<String, List<String>> responseHeader, ByteDump data, List<PageEventHandler> pageEventHandlerList) throws BrowzingException {
 		if (url == null || url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);
 		this.url            = this.createUrl(url);
 		this.requestHeader  = this.createRequestHeader(requestHeader);
 		this.responseHeader = this.createResponseHeader(responseHeader);
 		this.byteDump       = data;
-		this.eventHandler   = this.getPageEventHandler();
+		this.eventHandler   = pageEventHandlerList;
 	}
 	
 	/**
@@ -158,8 +162,8 @@ public class Page implements XmlConvertable{
 	 * @param requestProperty リクエストヘッダマップ
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
-	protected Page(Form form, Map<String, String> requestProperty) throws BrowzingException {
-		this(form, requestProperty, true);
+	protected Page(Form form, Map<String, String> requestProperty, List<PageEventHandler> pageEventHandlerList) throws BrowzingException {
+		this(form, requestProperty, true, pageEventHandlerList);
 	}
 	
 	/**
@@ -174,16 +178,17 @@ public class Page implements XmlConvertable{
 	 * @param readDataFlg データ読み込みフラグ
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
-	protected Page(Form form, Map<String, String> requestProperty, boolean readDataFlg) throws BrowzingException {
+	protected Page(Form form, Map<String, String> requestProperty, boolean readDataFlg, List<PageEventHandler> pageEventHandlerList) throws BrowzingException {
 		if (form == null) throw new BrowzingException(ERROR_FORM_IS_NOT_SPECIFIED);
 		try {
 			this.url = this.createUrl(form.getAction().getURL().toString());
 		} catch (HtmlDocumentException e) {
 			throw new BrowzingException(ERROR_AN_INVALID_URL_WAS_SPECIFIED, e);
 		}
-		this.eventHandler   = this.getPageEventHandler();
+		this.readDataFlg    = readDataFlg;
+		this.eventHandler   = pageEventHandlerList;
 		if (requestProperty == null) requestProperty = new HashMap<String, String>(); 
-		this.requestHeader = this.createRequestHeader(requestProperty);
+		this.requestHeader  = this.createRequestHeader(requestProperty);
 		URLConnection connection = this.createURLConnection(this.url.getUrlObject(), form.getMethod());
 		this.connection = this.setRequestProperty(connection, requestProperty);
 		try {
@@ -215,7 +220,7 @@ public class Page implements XmlConvertable{
 		if (!this.equals(anchor.getPage()))throw new BrowzingException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
 		String url = anchor.getHref();
 		if (url.equals("")) throw new BrowzingException(ERROR_ANCHOR_HAS_NOT_URL);
-		return new Page(url);
+		return new Page(url ,this.requestHeader.getHeaderMap(), this.readDataFlg, this.eventHandler);
 	}
 	
 	/**
@@ -274,7 +279,7 @@ public class Page implements XmlConvertable{
 		Map<String, String> cookieRequestHeader   = this.getCookies();
 		defaultRequestHeader.putAll(cookieRequestHeader);
 		defaultRequestHeader.putAll(requestHeader);
-		return new Page(form, defaultRequestHeader, true);
+		return new Page(form, defaultRequestHeader, this.readDataFlg, this.eventHandler);
 	}
 	
 	/**
@@ -327,9 +332,15 @@ public class Page implements XmlConvertable{
 	public jp.co.dk.document.File getDocument() throws BrowzingException {
 		for (PageEventHandler handler : this.eventHandler) handler.beforeCreateDocument(this);
 		if (this.document != null) return this.document;
-		jp.co.dk.document.File document = this.getDocument(new DocumentFactory(this));
-		for (PageEventHandler handler : this.eventHandler) handler.afterCreateDocument(this);
-		return document;
+		try {
+			jp.co.dk.document.File document = this.getDocument(new DocumentFactory(this));
+			return document;
+		} catch (BrowzingException e) {
+			for (PageEventHandler handler : this.eventHandler) handler.errorCreateDocument(e);
+			throw e;
+		}finally {
+			for (PageEventHandler handler : this.eventHandler) handler.afterCreateDocument(this);
+		}
 	}
 	
 	/**
@@ -637,9 +648,12 @@ public class Page implements XmlConvertable{
 			urlConnection.setDoInput(true);
 			urlConnection.setFollowRedirects(false);
 		} catch (IOException e) {
-			throw new BrowzingException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, urlObj.toString(), e );
+			BrowzingException browzingException = new BrowzingException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, urlObj.toString(), e );
+			for (PageEventHandler handler : this.eventHandler) handler.errorOpenConnection(browzingException);
+			throw browzingException;
+		} finally {
+			for (PageEventHandler handler : this.eventHandler) handler.afterOpenConnection();
 		}
-		for (PageEventHandler handler : this.eventHandler) handler.afterOpenConnection();
 		return urlConnection;
 	}
 	
@@ -781,10 +795,13 @@ public class Page implements XmlConvertable{
 		for (PageEventHandler handler : this.eventHandler) handler.beforeGetData(this);
 		try {
 			ByteDump data = new ByteDump(this.getUrlInputStream(connection));
-			for (PageEventHandler handler : this.eventHandler) handler.afterGetData(this);
 			return data;
 		} catch (DocumentException e) {
-			throw new BrowzingException(ERROR_READ_PROCESS_FAILED, this.url.getURL(), e);
+			BrowzingException browzingException = new BrowzingException(ERROR_READ_PROCESS_FAILED, this.url.getURL(), e);
+			for (PageEventHandler handler : this.eventHandler) handler.errorGetData(browzingException);
+			throw browzingException;
+		} finally {
+			for (PageEventHandler handler : this.eventHandler) handler.afterGetData(this);
 		}
 		
 	}
@@ -809,16 +826,6 @@ public class Page implements XmlConvertable{
 	 */
 	protected ResponseHeader createResponseHeader(Map<String, List<String>> responseHeader) throws BrowzingException {
 		return new ResponseHeader(responseHeader);
-	}
-	
-	/**
-	 * ページイベントハンドラを取得します。
-	 * @return ページイベントハンドラ一覧
-	 */
-	protected List<PageEventHandler> getPageEventHandler() {
-		List<PageEventHandler> list = new ArrayList<PageEventHandler>();
-		list.add(new PrintPageEventHandler());
-		return list;
 	}
 	
 	@Override

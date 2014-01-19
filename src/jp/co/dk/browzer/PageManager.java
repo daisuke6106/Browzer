@@ -26,6 +26,9 @@ public class PageManager implements XmlConvertable{
 	/** ページリダイレクトハンドラ */
 	protected PageRedirectHandler pageRedirectHandler;
 	
+	/** ページイベントハンドラ一覧 */
+	protected List<PageEventHandler> pageEventHandlerList;
+	
 	/** この画面に属する小画面のページオブジェクト一覧 */
 	protected List<PageManager> childPageList;
 	
@@ -40,13 +43,15 @@ public class PageManager implements XmlConvertable{
 	 * 指定のページを元に本ページ管理マネージャーを生成します。
 	 * 
 	 * @param url URL文字列
-	 * @param pageRedirectHandler ページリダイレクト制御オブジェクト
+	 * @param pageRedirectHandler  ページリダイレクト制御オブジェクト
+	 * @param pageEventHandlerList ページイベントハンドラ一覧
 	 * @throws BrowzingException ページクラスの生成に失敗した場合
 	 */
-	public PageManager(String url, PageRedirectHandler pageRedirectHandler) throws BrowzingException {
-		this.page                = this.createPage(url);
-		this.pageRedirectHandler = pageRedirectHandler;
-		this.childPageList       = new ArrayList<PageManager>();
+	public PageManager(String url, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList) throws BrowzingException {
+		this.pageRedirectHandler  = pageRedirectHandler;
+		this.pageEventHandlerList = pageEventHandlerList;
+		this.page                 = this.createPage(url);
+		this.childPageList        = new ArrayList<PageManager>();
 	}
 	
 	/**
@@ -55,31 +60,37 @@ public class PageManager implements XmlConvertable{
 	 * 
 	 * @param url URL文字列
 	 * @param pageRedirectHandler ページリダイレクト制御オブジェクト
+	 * @param pageEventHandlerList ページイベントハンドラ一覧
 	 * @param maxNestLevel ページ遷移上限数
 	 * @throws BrowzingException ページクラスの生成に失敗した場合 
 	 */
-	public PageManager(String url, PageRedirectHandler pageRedirectHandler, int maxNestLevel) throws BrowzingException {
-		this.page                = this.createPage(url);
-		this.pageRedirectHandler = pageRedirectHandler;
-		this.maxNestLevel        = maxNestLevel;
-		this.childPageList       = new ArrayList<PageManager>();
+	public PageManager(String url, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int maxNestLevel) throws BrowzingException {
+		this.pageRedirectHandler  = pageRedirectHandler;
+		this.pageEventHandlerList = pageEventHandlerList;
+		this.page                 = this.createPage(url);
+		this.maxNestLevel         = maxNestLevel;
+		this.childPageList        = new ArrayList<PageManager>();
 	}
 	
 	/**
 	 * コンストラクタ<p/>
 	 * 指定のページ、現在のページ遷移数、ページ遷移上限数を元に本ページ管理マネージャーを生成します。
 	 * 
-	 * @param page ページオブジェクト
-	 * @param nestLevel 現在のページ遷移数
-	 * @param maxNestLevel ページ遷移上限数
+	 * @param parentPage           遷移元ページのページマネージャ
+	 * @param page                 遷移先のページオブジェクト
+	 * @param pageRedirectHandler  ページリダイレクト制御オブジェクト
+	 * @param pageEventHandlerList ページイベントハンドラ一覧
+	 * @param nestLevel            現在のページ遷移数
+	 * @param maxNestLevel         ページ遷移上限数
 	 */
-	protected PageManager(PageManager parentPage, Page page,  PageRedirectHandler pageRedirectHandler, int nestLevel, int maxNestLevel) {
-		this.parentPage          = parentPage;
-		this.page                = page;
-		this.pageRedirectHandler = pageRedirectHandler;
-		this.nestLevel           = nestLevel;
-		this.maxNestLevel        = maxNestLevel;
-		this.childPageList       = new ArrayList<PageManager>();
+	protected PageManager(PageManager parentPage, Page page, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {
+		this.parentPage           = parentPage;
+		this.page                 = page;
+		this.pageRedirectHandler  = pageRedirectHandler;
+		this.pageEventHandlerList = pageEventHandlerList;
+		this.nestLevel            = nestLevel;
+		this.maxNestLevel         = maxNestLevel;
+		this.childPageList        = new ArrayList<PageManager>();
 	}
 	
 	/**
@@ -95,7 +106,7 @@ public class PageManager implements XmlConvertable{
 		if ( !(this.maxNestLevel<0) && this.maxNestLevel < nextLevel) throw new BrowzingException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));
 		Page nextPage = this.createPage(url);
 		nextPage = pageRedirectHandler.redirect(nextPage);
-		PageManager childPageManager = this.createPageManager(this, nextPage, this.pageRedirectHandler, nextLevel, this.maxNestLevel);
+		PageManager childPageManager = this.createPageManager(this, nextPage, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);
 		this.childPageList.add(childPageManager);
 		return childPageManager;
 	}
@@ -113,7 +124,7 @@ public class PageManager implements XmlConvertable{
 		if ( !(this.maxNestLevel<0) && this.maxNestLevel < nextLevel) throw new BrowzingException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));
 		Page nextPage = this.page.move(form);
 		nextPage = pageRedirectHandler.redirect(nextPage);
-		PageManager childPageManager = this.createPageManager(this, nextPage, this.pageRedirectHandler, nextLevel, this.maxNestLevel);
+		PageManager childPageManager = this.createPageManager(this, nextPage, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);
 		this.childPageList.add(childPageManager);
 		return childPageManager;
 	}
@@ -188,7 +199,10 @@ public class PageManager implements XmlConvertable{
 	 * @throws BrowzingException ページクラスの生成に失敗した場合
 	 */
 	public Page createPage(String url) throws BrowzingException {
-		return new Page(url);
+		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.beforeMove(this, url);
+		Page nextPage = new Page(url);
+		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.afterMove();
+		return nextPage;
 	}
 	
 	/**
@@ -223,15 +237,16 @@ public class PageManager implements XmlConvertable{
 	 * }<br/>
 	 * </code>
 	 * 
-	 * @param pageManager         遷移元ページのページマネージャ
-	 * @param page                遷移先のページオブジェクト
-	 * @param pageRedirectHandler ページリダイレクトハンドラ
-	 * @param nextLevel           次ページのページ遷移数
-	 * @param maxNestLevel        ページ遷移上限数
+	 * @param pageManager          遷移元ページのページマネージャ
+	 * @param page                 遷移先のページオブジェクト
+	 * @param pageRedirectHandler  ページリダイレクトハンドラ
+	 * @param pageEventHandlerList ページイベントハンドラ一覧
+	 * @param nextLevel            次ページのページ遷移数
+	 * @param maxNestLevel         ページ遷移上限数
 	 * @return ページマネージャ
 	 */
-	protected PageManager createPageManager(PageManager pageManager, Page page, PageRedirectHandler pageRedirectHandler, int nextLevel, int maxNestLevel) {
-		return new PageManager(pageManager, page, pageRedirectHandler, nextLevel, maxNestLevel);
+	protected PageManager createPageManager(PageManager pageManager, Page page, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int nextLevel, int maxNestLevel) {
+		return new PageManager(pageManager, page, pageRedirectHandler, pageEventHandlerList, nextLevel, maxNestLevel);
 	}
 	
 	@Override

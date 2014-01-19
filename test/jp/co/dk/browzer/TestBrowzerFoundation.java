@@ -60,17 +60,17 @@ class BrowzerForTest extends Browzer{
 
 	public BrowzerForTest(String url) throws BrowzingException {
 		super(url);
-		System.out.println("Create Browzer at [" + url + "]");
+		// System.out.println("Create Browzer at [" + url + "]");
 	}
 	
 	public BrowzerForTest(String url, int nestLebel) throws BrowzingException {
 		super(url,nestLebel);
-		System.out.println("Create Browzer at [" + url + "]");
+		// System.out.println("Create Browzer at [" + url + "]");
 	}
 	
 	@Override
 	public Page move(Form form) throws BrowzingException {
-		System.out.println("\tmove to [" + form + "]");
+		// System.out.println("\tmove to [" + form + "]");
 		return super.move(form);
 	}
 	

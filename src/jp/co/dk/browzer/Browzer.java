@@ -8,6 +8,7 @@ import java.util.List;
 import jp.co.dk.browzer.Page;
 import jp.co.dk.browzer.PageRedirectHandler;
 import jp.co.dk.browzer.download.DownloadJudge;
+import jp.co.dk.browzer.event.PrintPageEventHandler;
 import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.html.element.A;
 import jp.co.dk.browzer.html.element.Form;
@@ -43,6 +44,9 @@ public class Browzer {
 	/** ページリダイレクト制御オブジェクト */
 	protected PageRedirectHandler pageRedirectHandler;
 	
+	/** ページイベントハンドラ一覧 */
+	protected List<PageEventHandler> pageEventHandlerList;
+	
 	/**
 	 * コンストラクタ<p/>
 	 * 指定のURLを元にブラウザを生成します。
@@ -51,20 +55,9 @@ public class Browzer {
 	 * @throws BrowzingException ページの表示に失敗した場合
 	 */
 	public Browzer(String url) throws BrowzingException {
-		this(url, new PageRedirectHandler());
-	}
-	
-	/**
-	 * コンストラクタ<p/>
-	 * 指定のURLを元にブラウザを生成します。
-	 * 
-	 * @param url URL文字列
-	 * @param pageRedirectHandler ページリダイレクト制御オブジェクト
-	 * @throws BrowzingException ページの表示に失敗した場合
-	 */
-	public Browzer(String url, PageRedirectHandler pageRedirectHandler) throws BrowzingException {
-		this.pageRedirectHandler = pageRedirectHandler;
-		this.pageManager         = this.createPageManager(url, pageRedirectHandler);
+		this.pageEventHandlerList = this.getPageEventHandler();
+		this.pageRedirectHandler  = this.createPageRedirectHandler(this.pageEventHandlerList);
+		this.pageManager          = this.createPageManager(url, pageRedirectHandler);
 	}
 	
 	/**
@@ -72,25 +65,14 @@ public class Browzer {
 	 * 指定のURL,指定の最大ネスト数を元にブラウザを生成します。<br/>
 	 * 
 	 * @param url URL文字列
+	 * @param pageRedirectHandler ページリダイレクト制御オブジェクト
 	 * @param maxNestLevel 最大ネスト数
 	 * @throws BrowzingException ページの表示に失敗した場合
 	 */
 	public Browzer(String url, int maxNestLevel) throws BrowzingException {
-		this(url, new PageRedirectHandler(), maxNestLevel);
-	}
-	
-	/**
-	 * コンストラクタ<p/>
-	 * 指定のURL,指定の最大ネスト数を元にブラウザを生成します。<br/>
-	 * 
-	 * @param url URL文字列
-	 * @param pageRedirectHandler ページリダイレクト制御オブジェクト
-	 * @param maxNestLevel 最大ネスト数
-	 * @throws BrowzingException ページの表示に失敗した場合
-	 */
-	public Browzer(String url, PageRedirectHandler pageRedirectHandler, int maxNestLevel) throws BrowzingException {
-		this.pageRedirectHandler = pageRedirectHandler;
-		this.pageManager         = this.createPageManager(url, pageRedirectHandler, maxNestLevel);
+		this.pageEventHandlerList = this.getPageEventHandler();
+		this.pageRedirectHandler  = this.createPageRedirectHandler(this.pageEventHandlerList);
+		this.pageManager          = this.createPageManager(url, pageRedirectHandler, maxNestLevel);
 	}
 	
 	/**
@@ -266,7 +248,7 @@ public class Browzer {
 	 * @throws BrowzingException ページクラスの生成に失敗した場合
 	 */
 	protected PageManager createPageManager(String url, PageRedirectHandler handler) throws BrowzingException {
-		return new PageManager(url, handler);
+		return new PageManager(url, handler, this.pageEventHandlerList);
 	}
 	
 	/**
@@ -279,7 +261,26 @@ public class Browzer {
 	 * @throws BrowzingException ページクラスの生成に失敗した場合
 	 */
 	protected PageManager createPageManager(String url, PageRedirectHandler handler, int maxNestLevel) throws BrowzingException {
-		return new PageManager(url, handler, maxNestLevel);
+		return new PageManager(url, handler, this.pageEventHandlerList, maxNestLevel);
+	}
+	
+	/**
+	 * ページリダイレクトハンドラを生成する。
+	 * @param pageEventHandlerList ページイベントハンドラ一覧
+	 * @return ページリダイレクトハンドラ
+	 */
+	protected PageRedirectHandler createPageRedirectHandler(List<PageEventHandler> pageEventHandlerList) {
+		return new PageRedirectHandler(pageEventHandlerList);
+	}
+	
+	/**
+	 * ページイベントハンドラを取得します。
+	 * @return ページイベントハンドラ一覧
+	 */
+	protected List<PageEventHandler> getPageEventHandler() {
+		List<PageEventHandler> list = new ArrayList<PageEventHandler>();
+		list.add(new PrintPageEventHandler());
+		return list;
 	}
 	
 	@Override

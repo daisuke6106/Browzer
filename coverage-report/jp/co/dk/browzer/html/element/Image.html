@@ -36,12 +36,12 @@ import jp.co.dk.document.html.HtmlElement;
     </tr>
     <tr>
       <td class='line'>15</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>public class Image extends jp.co.dk.document.html.element.Image {</pre></td>
+      <td><pre class='prettyprint'>public class Image extends jp.co.dk.document.html.element.Image implements MovableElement{</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>17</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private Page <span class='instance uncovered' title='Reads: 0 Writes: 0'>page</span>;</pre></td>
+      <td><pre class='prettyprint'>	private Page <span class='instance uncovered' title='Reads: 4 Writes: 100'>page</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -60,16 +60,16 @@ import jp.co.dk.document.html.HtmlElement;
       <td><pre class='prettyprint'>	public Image(HtmlElement element, Page page) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>28</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l28s0'>		super(element);</pre></td>
+      <td class='line'>28</td><td class='count'>100</td>
+      <td><pre class='prettyprint covered' id='l28s0'>		super(element);</pre></td>
     </tr>
     <tr>
-      <td class='line'>29</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l29s0'>		this.page = page;</pre></td>
+      <td class='line'>29</td><td class='count'>100</td>
+      <td><pre class='prettyprint covered' id='l29s0'>		this.page = page;</pre></td>
     </tr>
     <tr>
-      <td class='line'>30</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l30s0'>	}</pre></td>
+      <td class='line'>30</td><td class='count'>100</td>
+      <td><pre class='prettyprint covered' id='l30s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -85,12 +85,12 @@ import jp.co.dk.document.html.HtmlElement;
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>35</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l35s0'>			URL url = new URL(this.page.getURLObject(),  super.getSrc());</pre></td>
+      <td class='line'>35</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l35s0'>			URL url = new URL(this.page.getURLObject(),  super.getSrc());</pre></td>
     </tr>
     <tr>
-      <td class='line'>36</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l36s0'>			return url.toString();</pre></td>
+      <td class='line'>36</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l36s0'>			return url.toString();</pre></td>
     </tr>
     <tr>
       <td class='line'>37</td><td class='count'>0</td>
@@ -122,8 +122,8 @@ import jp.co.dk.document.html.HtmlElement;
       <td><pre class='prettyprint'>	public Page getPage() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>48</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l48s0'>		return this.page;</pre></td>
+      <td class='line'>48</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l48s0'>		return this.page;</pre></td>
     </tr>
     <tr>
       <td class='line'>49</td><td>&nbsp;</td>
