@@ -143,6 +143,7 @@ public class PageManager implements XmlConvertable{
 	 */
 	public void removeParent() {
 		this.parentPage = null;
+		this.nestLevel = 0;
 	}
 	
 	/**
