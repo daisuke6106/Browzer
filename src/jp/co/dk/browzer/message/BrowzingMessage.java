@@ -28,7 +28,7 @@ public class BrowzingMessage extends AbstractMessage {
 	/** URLが参照するリモートオブジェクトへの接続時に入出力例外が発生しました。URL=[{0}] */
 	public static final BrowzingMessage ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL = new BrowzingMessage("E003");
 	
-	/** 入力ストリームの作成中に入出力エラーが発生しました。 */
+	/** 入力ストリームの作成中に入出力エラーが発生しました。URL=[{0}] */
 	public static final BrowzingMessage ERROR_IO_ERROR_WAS_OCCURRED_WHILE_CREATING_THE_INPUT_STREAM = new BrowzingMessage("E004");
 	
 	/** HTMLの解析に失敗しました。*/

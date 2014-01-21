@@ -101,6 +101,20 @@ public class Page implements XmlConvertable{
 	
 	/**
 	 * コンストラクタ<p/>
+	 * 指定のURL文字 列と、リクエストヘッダ、データ読み込みフラグを元にページのインスタンスを生成する。<br/>
+	 * ページの情報はインスタンス生成時に読み込みます。<br/>
+	 * 
+	 * @param url URLを表す文字列
+	 * @param requestHeader リクエストヘッダ
+	 * @param readDataFlg データ読み込みフラグ
+	 * @throws BrowzingException ページインスタンス生成に失敗した場合
+	 */
+	public Page(String url, Map<String, String> requestHeader, boolean readDataFlg) throws BrowzingException {
+		this(url, requestHeader, readDataFlg, new ArrayList<PageEventHandler>());
+	}
+	
+	/**
+	 * コンストラクタ<p/>
 	 * 指定のURL文字列と、リクエストヘッダ、データ読み込みフラグを元にページのインスタンスを生成する。<br/>
 	 * <br/>
 	 * データ読み込みフラグにtrueが設定されていた場合、このインスタンスが生成された際にページ情報を取得しメモリ上に保持します。<br/>
@@ -136,21 +150,14 @@ public class Page implements XmlConvertable{
 	
 	/**
 	 * コンストラクタ<p>
-	 * 指定のURL文字列、通信した際のヘッダ、ページデータといった過去に通信した際に取得したデータからページのインスタンスを生成する。
+	 * 指定のFORM要素からページのインスタンスを生成します。<br/>
+	 * ページの情報はインスタンス生成時に読み込みます。<br/>
 	 * 
-	 * @param url            URLを表す文字列
-	 * @param requestHeader  リクエストヘッダ
-	 * @param responseHeader レスポンスヘッダ
-	 * @param data           ページデータ
+	 * @param form FORM要素
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
-	protected Page(String url, Map<String,String> requestHeader, Map<String, List<String>> responseHeader, ByteDump data, List<PageEventHandler> pageEventHandlerList) throws BrowzingException {
-		if (url == null || url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);
-		this.url            = this.createUrl(url);
-		this.requestHeader  = this.createRequestHeader(requestHeader);
-		this.responseHeader = this.createResponseHeader(responseHeader);
-		this.byteDump       = data;
-		this.eventHandler   = pageEventHandlerList;
+	protected Page(Form form) throws BrowzingException {
+		this(form, new HashMap<String, String>(), true, new ArrayList<PageEventHandler>());
 	}
 	
 	/**
@@ -162,8 +169,22 @@ public class Page implements XmlConvertable{
 	 * @param requestProperty リクエストヘッダマップ
 	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
-	protected Page(Form form, Map<String, String> requestProperty, List<PageEventHandler> pageEventHandlerList) throws BrowzingException {
-		this(form, requestProperty, true, pageEventHandlerList);
+	protected Page(Form form, Map<String, String> requestProperty) throws BrowzingException {
+		this(form, requestProperty, true, new ArrayList<PageEventHandler>());
+	}
+	
+	/**
+	 * コンストラクタ<p>
+	 * 指定のFORM要素からページのインスタンスを生成します。<br/>
+	 * ページの情報はインスタンス生成時に読み込みます。<br/>
+	 * 
+	 * @param form FORM要素
+	 * @param requestProperty リクエストヘッダマップ
+	 * @param readDataFlg データ読み込みフラグ
+	 * @throws BrowzingException ページインスタンス生成に失敗した場合
+	 */
+	protected Page(Form form, Map<String, String> requestProperty, boolean readDataFlg) throws BrowzingException {
+		this(form, requestProperty, readDataFlg, new ArrayList<PageEventHandler>());
 	}
 	
 	/**
@@ -204,41 +225,22 @@ public class Page implements XmlConvertable{
 	}
 	
 	/**
-	 * ページ遷移実施<p/>
-	 * 指定されたアンカーを元にページ遷移を実行、新たなページオブジェクトを生成し、返却します。<br/>
-	 * 以下の状態の場合、例外を送出します。<br/>
-	 * ・遷移先アンカーが設定されていなかった場合<br/>
-	 * ・遷移先アンカーの取得元が異なる場合（ページ1のアンカーを取得し、ページ2にてページ1のアンカーを使用してmoveした場合など）<br/>
-	 * ・遷移先アンカーに遷移先URLが設定されていなかった場合(hrefが設定されていなかった場合)<br/>
+	 * コンストラクタ<p>
+	 * 指定のURL文字列、通信した際のヘッダ、ページデータといった過去に通信した際に取得したデータからページのインスタンスを生成する。
 	 * 
-	 * @param anchor 遷移先アンカー
-	 * @return 遷移先のページオブジェクト
-	 * @throws BrowzingException 遷移に失敗した場合
+	 * @param url            URLを表す文字列
+	 * @param requestHeader  リクエストヘッダ
+	 * @param responseHeader レスポンスヘッダ
+	 * @param data           ページデータ
+	 * @throws BrowzingException ページインスタンス生成に失敗した場合
 	 */
-	Page move (jp.co.dk.browzer.html.element.A anchor) throws BrowzingException {
-		if (anchor == null) throw new BrowzingException(ERROR_SPECIFIED_ANCHOR_IS_NOT_SET);
-		if (!this.equals(anchor.getPage()))throw new BrowzingException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
-		String url = anchor.getHref();
-		if (url.equals("")) throw new BrowzingException(ERROR_ANCHOR_HAS_NOT_URL);
-		return new Page(url ,this.requestHeader.getHeaderMap(), this.readDataFlg, this.eventHandler);
-	}
-	
-	/**
-	 * ページ遷移実施<p/>
-	 * 指定されたFORMを元にページ遷移を実行、新たなページオブジェクトを生成し、返却します。<br/>
-	 * 以下の状態の場合、例外を送出します。<br/>
-	 * ・遷移先FORMが設定されていなかった場合<br/>
-	 * ・遷移先FORMの取得元が異なる場合（ページ1のFORMを取得し、ページ2にてページ1のformを使用してmoveした場合など）<br/>
-	 * ・遷移先FORMに遷移先URLが設定されていなかった場合(actionが設定されていなかった場合)<br/>
-	 * <br/>
-	 * リクエストヘッダはプロパティに設定された{@link jp.co.dk.browzer.property.BrowzerProperty.REQUEST_HEADER}の値がデフォルトとして設定されます。<br/>
-	 * <br/>
-	 * @param form 遷移先FORM
-	 * @return 遷移先のページオブジェクト
-	 * @throws BrowzingException 遷移に失敗した場合
-	 */
-	Page move(jp.co.dk.browzer.html.element.Form form) throws BrowzingException {
-		return this.move(form, new HashMap<String, String>());
+	protected Page(String url, Map<String,String> requestHeader, Map<String, List<String>> responseHeader, ByteDump data, List<PageEventHandler> pageEventHandlerList) throws BrowzingException {
+		if (url == null || url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);
+		this.url            = this.createUrl(url);
+		this.requestHeader  = this.createRequestHeader(requestHeader);
+		this.responseHeader = this.createResponseHeader(responseHeader);
+		this.byteDump       = data;
+		this.eventHandler   = pageEventHandlerList;
 	}
 	
 	/**
@@ -670,7 +672,7 @@ public class Page implements XmlConvertable{
 		try {
 			inputStream = connection.getInputStream();
 		} catch (IOException e) {
-			throw new BrowzingException(ERROR_IO_ERROR_WAS_OCCURRED_WHILE_CREATING_THE_INPUT_STREAM ,e);
+			throw new BrowzingException(ERROR_IO_ERROR_WAS_OCCURRED_WHILE_CREATING_THE_INPUT_STREAM, this.url.toString() ,e);
 		}
 		return inputStream;
 	}

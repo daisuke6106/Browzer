@@ -21,7 +21,7 @@ public class PrintPageEventHandler implements PageEventHandler{
 	public void beforeRedirect(ResponseHeader header, Page page) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("[start]");
-		sb.append(":seq0:redirect:").append(header.toString());
+		sb.append(":redirect:").append(header.toString());
 		this.print(sb.toString());
 	}
 
@@ -29,7 +29,7 @@ public class PrintPageEventHandler implements PageEventHandler{
 	public void afterRedirect() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("[ fin ]");
-		sb.append(":seq0:redirect:");
+		sb.append(":redirect:");
 		this.print(sb.toString());
 	}
 	
@@ -39,9 +39,9 @@ public class PrintPageEventHandler implements PageEventHandler{
 		StringBuilder sb = new StringBuilder();
 		sb.append("  [start]");
 		if (pageManager.getPage() != null) { 
-			sb.append(":seq0:move:BEFORE_URL=[").append(pageManager.getPage().toString()).append("],");
+			sb.append(":move:BEFORE_URL=[").append(pageManager.getPage().toString()).append("],");
 		} else {
-			sb.append(":seq0:move:BEFORE_URL=[non],");
+			sb.append(":move:BEFORE_URL=[non],");
 		}
 		sb.append("NEXT_URL=[").append(url).append(']');
 		this.print(sb.toString());
@@ -51,7 +51,7 @@ public class PrintPageEventHandler implements PageEventHandler{
 	public void afterMove() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("  [start]");
-		sb.append(":seq0:move:");
+		sb.append(":move:");
 		this.print(sb.toString());
 	}
 	
@@ -61,7 +61,7 @@ public class PrintPageEventHandler implements PageEventHandler{
 		this.openConnectionTime = getDate();
 		StringBuilder sb = new StringBuilder();
 		sb.append("    [start]");
-		sb.append(":seq1:openconnection:");
+		sb.append(":openconnection:");
 		sb.append("URL=[").append(urlObj.toString()).append("],");
 		sb.append("METHOD=[").append(method.toString()).append("]");
 		this.print(sb.toString());
@@ -78,7 +78,7 @@ public class PrintPageEventHandler implements PageEventHandler{
 		long time = now - this.openConnectionTime;
 		StringBuilder sb = new StringBuilder();
 		sb.append("    [ fin ]");
-		sb.append(":seq1:openconnection:");
+		sb.append(":openconnection:");
 		sb.append("TIME=[").append(time).append("]");
 		this.print(sb.toString());
 	}
@@ -88,7 +88,7 @@ public class PrintPageEventHandler implements PageEventHandler{
 		this.getDateTime = getDate();
 		StringBuilder sb = new StringBuilder();
 		sb.append("    [start]");
-		sb.append(":seq2:readdate      :");
+		sb.append(":readdate      :");
 		this.print(sb.toString());
 	}
 	
@@ -103,7 +103,7 @@ public class PrintPageEventHandler implements PageEventHandler{
 		long time = now - this.getDateTime;
 		StringBuilder sb = new StringBuilder();
 		sb.append("    [ fin ]");
-		sb.append(":seq2:readdate      :");
+		sb.append(":readdate      :");
 		sb.append("TIME=[").append(time).append("]");
 		this.print(sb.toString());
 	}
@@ -113,7 +113,7 @@ public class PrintPageEventHandler implements PageEventHandler{
 		this.createDocuemntTime = getDate();
 		StringBuilder sb = new StringBuilder();
 		sb.append("    [start]");
-		sb.append(":seq3:createdocument:");
+		sb.append(":createdocument:");
 		this.print(sb.toString());
 	}
 	
@@ -128,7 +128,7 @@ public class PrintPageEventHandler implements PageEventHandler{
 		long time = now - this.createDocuemntTime;
 		StringBuilder sb = new StringBuilder();
 		sb.append("    [ fin ]");
-		sb.append(":seq3:createdocument:");
+		sb.append(":createdocument:");
 		sb.append("TIME=[").append(time).append("]");
 		this.print(sb.toString());
 	}

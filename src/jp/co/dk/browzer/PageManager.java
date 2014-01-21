@@ -3,6 +3,7 @@ package jp.co.dk.browzer;
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import jp.co.dk.browzer.exception.BrowzingException;
@@ -122,7 +123,7 @@ public class PageManager implements XmlConvertable{
 	PageManager move(Form form) throws BrowzingException {
 		int nextLevel = this.nestLevel+1;
 		if ( !(this.maxNestLevel<0) && this.maxNestLevel < nextLevel) throw new BrowzingException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));
-		Page nextPage = this.page.move(form);
+		Page nextPage = this.createPage(form);
 		nextPage = pageRedirectHandler.redirect(nextPage);
 		PageManager childPageManager = this.createPageManager(this, nextPage, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);
 		this.childPageList.add(childPageManager);
@@ -159,6 +160,26 @@ public class PageManager implements XmlConvertable{
 	}
 	
 	/**
+	 * このページの遷移先である子ページの一覧を取得します。
+	 * 
+	 * @return 親ページオブジェクト
+	 */
+	public List<Page> getChildPages() {
+		List<Page> childPagesList = new ArrayList<Page>();
+		for (PageManager pagemanager : this.childPageList) {
+			childPagesList.add(pagemanager.getPage());
+		}
+		return childPagesList;
+	}
+	
+	/**
+	 * このページから遷移したページオブジェクトを空に設定します。
+	 */
+	public void removeChild() {
+		this.childPageList = new ArrayList<PageManager>();
+	}
+	
+	/**
 	 * 現在アクティブになっているページを返却します。
 	 * 
 	 * @return ページオブジェクト
@@ -181,15 +202,6 @@ public class PageManager implements XmlConvertable{
 			return true;
 		}
 	}
-
-	@Override
-	public jp.co.dk.xml.Element convert() throws jp.co.dk.xml.exception.XmlDocumentException {
-		jp.co.dk.xml.Element xmlElement = this.page.convert();
-		for (PageManager pageManager : this.childPageList) {
-			xmlElement.appendChild(pageManager);
-		}
-		return xmlElement;
-	}
 	
 	/**
 	 * 指定のURLからページオブジェクトを作成する。
@@ -200,29 +212,23 @@ public class PageManager implements XmlConvertable{
 	 */
 	public Page createPage(String url) throws BrowzingException {
 		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.beforeMove(this, url);
-		Page nextPage = new Page(url);
+		Page nextPage = new Page(url, new HashMap<String, String>(), false, this.pageEventHandlerList);
 		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.afterMove();
 		return nextPage;
 	}
 	
 	/**
-	 * このページの遷移先である子ページの一覧を取得します。
+	 * 指定のFORMからページオブジェクトを作成する。
 	 * 
-	 * @return 親ページオブジェクト
+	 * @param form Formオブジェクト
+	 * @return ページオブジェクト
+	 * @throws BrowzingException ページクラスの生成に失敗した場合
 	 */
-	public List<Page> getChildPages() {
-		List<Page> childPagesList = new ArrayList<Page>();
-		for (PageManager pagemanager : this.childPageList) {
-			childPagesList.add(pagemanager.getPage());
-		}
-		return childPagesList;
-	}
-	
-	/**
-	 * このページから遷移したページオブジェクトを空に設定します。
-	 */
-	public void removeChild() {
-		this.childPageList = new ArrayList<PageManager>();
+	public Page createPage(Form form) throws BrowzingException {
+		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.beforeMove(this, form.getPage().toString());
+		Page nextPage = new Page(form, new HashMap<String, String>(), false, this.pageEventHandlerList);
+		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.afterMove();
+		return nextPage;
 	}
 	
 	/**
@@ -250,6 +256,15 @@ public class PageManager implements XmlConvertable{
 	}
 	
 	@Override
+	public jp.co.dk.xml.Element convert() throws jp.co.dk.xml.exception.XmlDocumentException {
+		jp.co.dk.xml.Element xmlElement = this.page.convert();
+		for (PageManager pageManager : this.childPageList) {
+			xmlElement.appendChild(pageManager);
+		}
+		return xmlElement;
+	}
+	
+	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		boolean[] islasted= {};
@@ -274,8 +289,6 @@ public class PageManager implements XmlConvertable{
 			}
 		}
 		stringBuilder.append("URL=[").append(this.page.getURL().toString()).append("]:");
-		stringBuilder.append("REQUEST_HEADER=[").append(this.page.getRequestHeader().toString()).append("]:");
-		stringBuilder.append("RESPONCE_HEADER=[").append(this.page.getResponseHeader().toString()).append("]:");
 		String fileName  = this.page.getFileName();
 		String extension = this.page.getExtension();
 		long  filesize       = this.page.getSize();
