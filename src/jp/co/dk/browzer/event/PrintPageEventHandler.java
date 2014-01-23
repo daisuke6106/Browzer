@@ -20,17 +20,17 @@ public class PrintPageEventHandler implements PageEventHandler{
 	@Override
 	public void beforeRedirect(ResponseHeader header, Page page) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("[start]");
-		sb.append(":redirect:").append(header.toString());
-		this.print(sb.toString());
+//		sb.append("[start]");
+//		sb.append(":redirect:").append(header.toString());
+//		this.print(sb.toString());
 	}
 
 	@Override
 	public void afterRedirect() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("[ fin ]");
-		sb.append(":redirect:");
-		this.print(sb.toString());
+//		sb.append("[ fin ]");
+//		sb.append(":redirect:");
+//		this.print(sb.toString());
 	}
 	
 	// ==================================================[PageManagerクラス関連イベント]==================================================
@@ -39,20 +39,22 @@ public class PrintPageEventHandler implements PageEventHandler{
 		StringBuilder sb = new StringBuilder();
 		sb.append("  [start]");
 		if (pageManager.getPage() != null) { 
-			sb.append(":move:BEFORE_URL=[").append(pageManager.getPage().toString()).append("],");
+			sb.append(":move:BEFORE_URL=[").append(pageManager.getPage().toString()).append("]\r\n");
+			sb.append("NEXT_URL=[").append(url).append(']');
+			this.print(pageManager.toString());
 		} else {
-			sb.append(":move:BEFORE_URL=[non],");
+			sb.append(":move:BEFORE_URL=[non]\r\n");
+			sb.append("NEXT_URL=[").append(url).append(']');
+			this.print(sb.toString());
 		}
-		sb.append("NEXT_URL=[").append(url).append(']');
-		this.print(sb.toString());
 	}
 
 	@Override
 	public void afterMove() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("  [start]");
-		sb.append(":move:");
-		this.print(sb.toString());
+//		sb.append("  [start]");
+//		sb.append(":move:");
+//		this.print(sb.toString());
 	}
 	
 	// ==================================================[Pageクラス関連イベント]==================================================
@@ -60,11 +62,11 @@ public class PrintPageEventHandler implements PageEventHandler{
 	public void beforeOpenConnection(Url urlObj, HtmlRequestMethodName method) {
 		this.openConnectionTime = getDate();
 		StringBuilder sb = new StringBuilder();
-		sb.append("    [start]");
-		sb.append(":openconnection:");
-		sb.append("URL=[").append(urlObj.toString()).append("],");
-		sb.append("METHOD=[").append(method.toString()).append("]");
-		this.print(sb.toString());
+//		sb.append("    [start]");
+//		sb.append(":openconnection:");
+//		sb.append("URL=[").append(urlObj.toString()).append("],");
+//		sb.append("METHOD=[").append(method.toString()).append("]");
+//		this.print(sb.toString());
 	}
 	
 	@Override
@@ -77,19 +79,19 @@ public class PrintPageEventHandler implements PageEventHandler{
 		long now = getDate();
 		long time = now - this.openConnectionTime;
 		StringBuilder sb = new StringBuilder();
-		sb.append("    [ fin ]");
-		sb.append(":openconnection:");
-		sb.append("TIME=[").append(time).append("]");
-		this.print(sb.toString());
+//		sb.append("    [ fin ]");
+//		sb.append(":openconnection:");
+//		sb.append("TIME=[").append(time).append("]");
+//		this.print(sb.toString());
 	}
 
 	@Override
 	public void beforeGetData(Page page) {
 		this.getDateTime = getDate();
 		StringBuilder sb = new StringBuilder();
-		sb.append("    [start]");
-		sb.append(":readdate      :");
-		this.print(sb.toString());
+//		sb.append("    [start]");
+//		sb.append(":readdate      :");
+//		this.print(sb.toString());
 	}
 	
 	@Override
@@ -102,19 +104,19 @@ public class PrintPageEventHandler implements PageEventHandler{
 		long now = getDate();
 		long time = now - this.getDateTime;
 		StringBuilder sb = new StringBuilder();
-		sb.append("    [ fin ]");
-		sb.append(":readdate      :");
-		sb.append("TIME=[").append(time).append("]");
-		this.print(sb.toString());
+//		sb.append("    [ fin ]");
+//		sb.append(":readdate      :");
+//		sb.append("TIME=[").append(time).append("]");
+//		this.print(sb.toString());
 	}
 
 	@Override
 	public void beforeCreateDocument(Page page) {
 		this.createDocuemntTime = getDate();
 		StringBuilder sb = new StringBuilder();
-		sb.append("    [start]");
-		sb.append(":createdocument:");
-		this.print(sb.toString());
+//		sb.append("    [start]");
+//		sb.append(":createdocument:");
+//		this.print(sb.toString());
 	}
 	
 	@Override
@@ -127,10 +129,10 @@ public class PrintPageEventHandler implements PageEventHandler{
 		long now = getDate();
 		long time = now - this.createDocuemntTime;
 		StringBuilder sb = new StringBuilder();
-		sb.append("    [ fin ]");
-		sb.append(":createdocument:");
-		sb.append("TIME=[").append(time).append("]");
-		this.print(sb.toString());
+//		sb.append("    [ fin ]");
+//		sb.append(":createdocument:");
+//		sb.append("TIME=[").append(time).append("]");
+//		this.print(sb.toString());
 	}
 	
 	/**

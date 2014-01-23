@@ -24,6 +24,9 @@ public class PageManager implements XmlConvertable{
 	/** 現在のページのオブジェクト */
 	protected Page page;
 	
+	/** ページ接続エラー */
+	protected BrowzingException error;
+	
 	/** ページリダイレクトハンドラ */
 	protected PageRedirectHandler pageRedirectHandler;
 	
@@ -95,6 +98,46 @@ public class PageManager implements XmlConvertable{
 	}
 	
 	/**
+	 * コンストラクタ<p/>
+	 * @param parentPage           遷移元ページのページマネージャ
+	 * @param error                ページインスタンスの生成に失敗した際に発生した例外
+	 * @param pageRedirectHandler  ページリダイレクト制御オブジェクト
+	 * @param pageEventHandlerList ページイベントハンドラ一覧
+	 * @param nestLevel            現在のページ遷移数
+	 * @param maxNestLevel         ページ遷移上限数
+	 */
+	protected PageManager(PageManager parentPage, BrowzingException error, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {
+		this.parentPage           = parentPage;
+		this.error                = error;
+		this.pageRedirectHandler  = pageRedirectHandler;
+		this.pageEventHandlerList = pageEventHandlerList;
+		this.nestLevel            = nestLevel;
+		this.maxNestLevel         = maxNestLevel;
+		this.childPageList        = new ArrayList<PageManager>();
+	}
+	
+	/**
+	 * コンストラクタ<p/>
+	 * @param parentPage           遷移元ページのページマネージャ
+	 * @param page                 遷移先のページオブジェクト
+	 * @param error                リダイレクトに失敗した際に発生した例外
+	 * @param pageRedirectHandler  ページリダイレクト制御オブジェクト
+	 * @param pageEventHandlerList ページイベントハンドラ一覧
+	 * @param nestLevel            現在のページ遷移数
+	 * @param maxNestLevel         ページ遷移上限数
+	 */
+	protected PageManager(PageManager parentPage, Page page, BrowzingException error, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {
+		this.parentPage           = parentPage;
+		this.page                 = page;
+		this.error                = error;
+		this.pageRedirectHandler  = pageRedirectHandler;
+		this.pageEventHandlerList = pageEventHandlerList;
+		this.nestLevel            = nestLevel;
+		this.maxNestLevel         = maxNestLevel;
+		this.childPageList        = new ArrayList<PageManager>();
+	}
+	
+	/**
 	 * 遷移先ページ追加<p/>
 	 * ページオブジェクトを元に子要素としてページを追加します。
 	 * 
@@ -105,8 +148,21 @@ public class PageManager implements XmlConvertable{
 	PageManager move(String url) throws BrowzingException {
 		int nextLevel = this.nestLevel+1;
 		if ( !(this.maxNestLevel<0) && this.maxNestLevel < nextLevel) throw new BrowzingException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));
-		Page nextPage = this.createPage(url);
-		nextPage = pageRedirectHandler.redirect(nextPage);
+		Page nextPage;
+		try {
+			nextPage = this.createPage(url);
+		} catch (BrowzingException e) {
+			PageManager errorPageManager = this.createPageManager(this, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);
+			this.childPageList.add(errorPageManager);
+			return this;
+		}
+		try {
+			nextPage = pageRedirectHandler.redirect(nextPage);
+		} catch (BrowzingException e) {
+			PageManager errorPageManager = this.createPageManager(this, nextPage, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);
+			this.childPageList.add(errorPageManager);
+			return this;
+		}
 		PageManager childPageManager = this.createPageManager(this, nextPage, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);
 		this.childPageList.add(childPageManager);
 		return childPageManager;
@@ -123,8 +179,21 @@ public class PageManager implements XmlConvertable{
 	PageManager move(Form form) throws BrowzingException {
 		int nextLevel = this.nestLevel+1;
 		if ( !(this.maxNestLevel<0) && this.maxNestLevel < nextLevel) throw new BrowzingException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));
-		Page nextPage = this.createPage(form);
-		nextPage = pageRedirectHandler.redirect(nextPage);
+		Page nextPage;
+		try {
+			nextPage = this.createPage(form);
+		} catch (BrowzingException e) {
+			PageManager errorPageManager = this.createPageManager(this, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);
+			this.childPageList.add(errorPageManager);
+			return this;
+		}
+		try {
+			nextPage = pageRedirectHandler.redirect(nextPage);
+		} catch (BrowzingException e) {
+			PageManager errorPageManager = this.createPageManager(this, nextPage, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);
+			this.childPageList.add(errorPageManager);
+			return this;
+		}
 		PageManager childPageManager = this.createPageManager(this, nextPage, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);
 		this.childPageList.add(childPageManager);
 		return childPageManager;
@@ -203,6 +272,16 @@ public class PageManager implements XmlConvertable{
 		}
 	}
 	
+	public PageStatus getPageStatus() {
+		if (this.page != null && this.error == null) {
+			return PageStatus.SUCCESS;
+		} else if (this.page != null && this.error != null) {
+			return PageStatus.ERROR_REDIRECT;
+		} else {
+			return PageStatus.ERROR_ACCESS;
+		}
+	}
+	
 	/**
 	 * 指定のURLからページオブジェクトを作成する。
 	 * 
@@ -210,7 +289,7 @@ public class PageManager implements XmlConvertable{
 	 * @return ページオブジェクト
 	 * @throws BrowzingException ページクラスの生成に失敗した場合
 	 */
-	public Page createPage(String url) throws BrowzingException {
+	protected Page createPage(String url) throws BrowzingException {
 		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.beforeMove(this, url);
 		Page nextPage = new Page(url, new HashMap<String, String>(), false, this.pageEventHandlerList);
 		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.afterMove();
@@ -224,7 +303,7 @@ public class PageManager implements XmlConvertable{
 	 * @return ページオブジェクト
 	 * @throws BrowzingException ページクラスの生成に失敗した場合
 	 */
-	public Page createPage(Form form) throws BrowzingException {
+	protected Page createPage(Form form) throws BrowzingException {
 		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.beforeMove(this, form.getPage().toString());
 		Page nextPage = new Page(form, new HashMap<String, String>(), false, this.pageEventHandlerList);
 		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.afterMove();
@@ -253,6 +332,54 @@ public class PageManager implements XmlConvertable{
 	 */
 	protected PageManager createPageManager(PageManager pageManager, Page page, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int nextLevel, int maxNestLevel) {
 		return new PageManager(pageManager, page, pageRedirectHandler, pageEventHandlerList, nextLevel, maxNestLevel);
+	}
+	
+	/**
+	 * このページマネージャクラスを生成するページマネージャインスタンス生成メソッドです。<p/>
+	 * このページマネージャにてmoveが実行される際には遷移元、遷移先のページ情報を元に本メソッドが実施され遷移先のページマネージャクラスが作成されます。<br/>
+	 * 本クラスを継承する場合、必ず実装してください。<br/>
+	 * 呼び出し方法は以下の通りです。<br/>
+	 * <code>
+	 * [@]Override<br/>
+	 * protected PageManager createPageManager(PageManager pageManager, Page page, PageRedirectHandler pageRedirectHandler, int nextLevel, int maxNestLevel) {<br/>
+	 *     return new 継承したクラス名(pageManager, page, pageRedirectHandler, nextLevel, maxNestLevel);<br/>
+	 * }<br/>
+	 * </code>
+	 * @param parentPage           遷移元ページのページマネージャ
+	 * @param error                ページインスタンスの生成に失敗した際に発生した例外
+	 * @param pageRedirectHandler  ページリダイレクト制御オブジェクト
+	 * @param pageEventHandlerList ページイベントハンドラ一覧
+	 * @param nestLevel            現在のページ遷移数
+	 * @param maxNestLevel         ページ遷移上限数
+	 * @return ページマネージャ
+	 */
+	protected PageManager createPageManager(PageManager parentPage, BrowzingException error, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {
+		return new PageManager(parentPage, error, pageRedirectHandler, pageEventHandlerList, nestLevel, maxNestLevel);
+	}
+	
+	/**
+	 * このページマネージャクラスを生成するページマネージャインスタンス生成メソッドです。<p/>
+	 * このページマネージャにてmoveが実行される際には遷移元、遷移先のページ情報を元に本メソッドが実施され遷移先のページマネージャクラスが作成されます。<br/>
+	 * 本クラスを継承する場合、必ず実装してください。<br/>
+	 * 呼び出し方法は以下の通りです。<br/>
+	 * <code>
+	 * [@]Override<br/>
+	 * protected PageManager createPageManager(PageManager pageManager, Page page, PageRedirectHandler pageRedirectHandler, int nextLevel, int maxNestLevel) {<br/>
+	 *     return new 継承したクラス名(pageManager, page, pageRedirectHandler, nextLevel, maxNestLevel);<br/>
+	 * }<br/>
+	 * </code>
+	 * 
+	 * @param parentPage           遷移元ページのページマネージャ
+	 * @param page                 遷移先のページオブジェクト
+	 * @param error                リダイレクトに失敗した際に発生した例外
+	 * @param pageRedirectHandler  ページリダイレクト制御オブジェクト
+	 * @param pageEventHandlerList ページイベントハンドラ一覧
+	 * @param nestLevel            現在のページ遷移数
+	 * @param maxNestLevel         ページ遷移上限数
+	 * @return ページマネージャ
+	 */
+	protected PageManager createPageManager(PageManager parentPage, Page page, BrowzingException error, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {
+		return new PageManager(parentPage, page, error, pageRedirectHandler, pageEventHandlerList, nestLevel, maxNestLevel);
 	}
 	
 	@Override
@@ -288,10 +415,10 @@ public class PageManager implements XmlConvertable{
 				stringBuilder.append('├');
 			}
 		}
-		stringBuilder.append("URL=[").append(this.page.getURL().toString()).append("]:");
+		stringBuilder.append(this.getPageStatus()).append(":URL=[").append(this.page.getURL().toString()).append("]:");
 		String fileName  = this.page.getFileName();
 		String extension = this.page.getExtension();
-		long  filesize       = this.page.getSize();
+		long  filesize   = this.page.getSize();
 		stringBuilder.append("FILE=[").append("filename=").append(fileName).append(", extension=").append(extension).append(", size=").append(filesize).append("]");
 		stringBuilder.append(newline);
 		for (int i=0, size = this.childPageList.size(); i<size ;i++) {
@@ -306,4 +433,30 @@ public class PageManager implements XmlConvertable{
 			this.childPageList.get(i).toStringUrl(stringBuilder, newIslasts, newline);
 		}
 	}
+}
+
+/**
+ * 
+ * @version 1.0
+ * @author D.Kanno
+ */
+enum PageStatus {
+	
+	/**
+	 * 正常<p/>
+	 * 指定のURLに正常にアクセスできた場合
+	 */
+	SUCCESS,
+	
+	/**
+	 * アクセスエラー<p/>
+	 * 指定のURLのサーバが存在しない等、サーバ接続自体行えなかった場合
+	 */
+	ERROR_ACCESS,
+	
+	/**
+	 * リダイレクトエラー<p/>
+	 * 指定のURLにアクセスした結果、HTTPステータスコードにて異常が発生した場合
+	 */
+	ERROR_REDIRECT
 }

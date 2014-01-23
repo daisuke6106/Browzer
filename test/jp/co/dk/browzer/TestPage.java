@@ -29,9 +29,9 @@ public class TestPage extends TestBrowzerFoundation {
 	@Test
 	public void constructor() throws BrowzingException {
 		// 引数にnullを設定した場合、例外が送出されること。
-		Page page = null ;
 		try {
-			page = new Page(null);
+			String nullString = null;
+			Page page = new Page(nullString);
 			fail();
 		} catch (BrowzingException e) {
 			assertEquals(e.getMessageObj(), jp.co.dk.browzer.message.BrowzingMessage.ERROR_URL_IS_NOT_SET);
@@ -39,7 +39,7 @@ public class TestPage extends TestBrowzerFoundation {
 		
 		// 引数に不正な文字列を設定した場合、例外が送出されること。
 		try {
-			page = new Page("aaa");
+			Page page = new Page("aaa");
 			fail();
 		} catch (BrowzingException e) {
 			success(e);
@@ -47,20 +47,20 @@ public class TestPage extends TestBrowzerFoundation {
 		
 		// 引数に存在するURLを設定された場合、正常にインスタンスが生成できること。
 		try {
-			page = new Page("https://www.google.com");
+			Page page = new Page("https://www.google.com");
 		} catch (BrowzingException e) {
 			fail(e);
 		}
 		// 引数に存在するURLを設定された場合、正常にインスタンスが生成できること。(パラメータあり)
 		try {
-			page = new Page("http://www.google.co.jp/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CCUQFjAA&url=http%3A%2F%2Ftest.jp%2F&ei=if9NULqAIanBiQf1uIHACg&usg=AFQjCNFAiQ33DWa0llvM8UoNTY_aKUckbg&sig2=VmamtFiwcu4ABy2tGn5hfQ");
+			Page page = new Page("http://www.google.co.jp/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CCUQFjAA&url=http%3A%2F%2Ftest.jp%2F&ei=if9NULqAIanBiQf1uIHACg&usg=AFQjCNFAiQ33DWa0llvM8UoNTY_aKUckbg&sig2=VmamtFiwcu4ABy2tGn5hfQ");
 		} catch (BrowzingException e) {
 			fail(e);
 		}
 		
 		// FORM指定して遷移する際に、URLの作成に失敗した場合、指定の例外が出力されること。
 		try {
-			page = new Page("http://www.tohoho-web.com/html/form.htm");
+			Page page = new Page("http://www.tohoho-web.com/html/form.htm");
 			HtmlDocument document1 = (HtmlDocument)page.getDocument();
 			List<Element> formList1 = document1.getElement(HtmlElementName.FORM);
 			final Form formElement = (Form)formList1.get(0);
@@ -91,7 +91,7 @@ public class TestPage extends TestBrowzerFoundation {
 		
 		// FORM指定して遷移する際に、引数のリクエストヘッダマップにnullが設定された場合でも正常に遷移できること。
 		try {
-			page = new Page("http://www.tohoho-web.com/html/form.htm");
+			Page page = new Page("http://www.tohoho-web.com/html/form.htm");
 			HtmlDocument document1 = (HtmlDocument)page.getDocument();
 			List<Element> formList1 = document1.getElement(HtmlElementName.FORM);
 			final Form formElement = (Form)formList1.get(0);
@@ -106,118 +106,6 @@ public class TestPage extends TestBrowzerFoundation {
 		}
 	}
 	
-	@Test
-	public void move() throws BrowzingException {
-		// ２つのページのインスタンスを生成する。
-		Page page1 = super.createPage("http://ja.wikipedia.org/wiki/HyperText_Markup_Language");
-		Page page2 = super.createPage("http://ja.wikipedia.org/wiki/HTML5");
-		List<A> elementPage1 = page1.getAnchor();
-		List<A> elementPage2 = page2.getAnchor();
-		
-		// movePageメソッドにnullを設定した場合、例外を送出すること。
-		try {
-			jp.co.dk.browzer.html.element.A nullAnchor = null;
-			page1.move(nullAnchor);
-			fail();
-		} catch (BrowzingException e) {
-			if (e.getMessageObj() != ERROR_SPECIFIED_ANCHOR_IS_NOT_SET) fail(e);
-		}
-		
-		// movePageメソッドに異なるページのアンカーオブジェクトを設定した場合、例外が送出されること。
-		try {
-			page1.move((jp.co.dk.browzer.html.element.A)elementPage2.get(0));
-			fail();
-		} catch (BrowzingException e) {
-			if (e.getMessageObj() != ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) fail(e);
-		}
-		
-		// movePageメソッドにHrefが記載されていないアンカーオブジェクトを設定した場合、例外が送出されること。
-		try {
-			final jp.co.dk.browzer.html.element.A anchor = (jp.co.dk.browzer.html.element.A)super.getRandomElement(page1.getAnchor());
-			new Expectations(anchor) {{
-				anchor.getHref();
-                returns("");
-	        }};
-			Page newPage = page1.move(anchor);
-			fail();
-		} catch (BrowzingException e) {
-			if(e.getMessageObj() != ERROR_ANCHOR_HAS_NOT_URL) fail(e);
-		}
-		
-		// movePageメソッドに正常なアンカーオブジェクトを設定した場合、遷移できること。
-		try {
-			jp.co.dk.browzer.html.element.A anchor = (jp.co.dk.browzer.html.element.A)super.getRandomElement(page1.getAnchor());
-			Page newPage = page1.move(anchor);
-			assertEquals(newPage.getURL(), anchor.getHref());
-		} catch (BrowzingException e) {
-			fail(e);
-		}
-		
-		// 送信用FORMにnullの状態で遷移を行おうとした場合、例外が送出されること。
-		Page page3 = super.createPage("http://www.tohoho-web.com/html/form.htm");
-		try {
-			jp.co.dk.browzer.html.element.Form nullForm = null;
-			page3.move(nullForm);
-			fail();
-		} catch (BrowzingException e) {
-			if (e.getMessageObj() != ERROR_SPECIFIED_FORM_IS_NOT_SET) fail(e);
-		}
-		
-		// 送信先FORMに異なるページのFORMオブジェクトが指定された場合、例外が送出されること。
-		try {
-			HtmlDocument htmlDocument = (HtmlDocument)page3.getDocument();
-			List<Element> form = htmlDocument.getElement(HtmlElementName.FORM);
-			Form formElement = (Form)form.get(0);
-			List<HtmlElement> formList = formElement.getFormElementList();
-			Text txt1 = (Text)formList.get(0);
-			Text txt2 = (Text)formList.get(1);
-			txt1.setValue("test");
-			txt2.setValue("value");
-			Page page4 = super.createPage("http://www.tohoho-web.com/html/form.htm");
-			page4.move(formElement);
-			fail();
-		} catch (BrowzingException e) {
-			if (e.getMessageObj() != ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) fail(e);
-		}
-		
-		// FORMに値を設定して遷移した場合、正常に遷移できること。
-		// また、送信したパラメータに設定した値が設定されていること。
-		try {
-			HtmlDocument htmlDocument = (HtmlDocument)page3.getDocument();
-			List<Element> form = htmlDocument.getElement(HtmlElementName.FORM);
-			Form formElement = (Form)form.get(0);
-			List<HtmlElement> formList = formElement.getFormElementList();
-			Text txt1 = (Text)formList.get(0);
-			Text txt2 = (Text)formList.get(1);
-			txt1.setValue("test");
-			txt2.setValue("value");
-			Page page5 = page3.move(formElement);
-			HtmlDocument htmlDocument1 = (HtmlDocument)page5.getDocument();
-			assertHasString(htmlDocument1.toString(), "NAME = test");
-			assertHasString(htmlDocument1.toString(), "ADDR = value");
-		} catch (BrowzingException e) {
-			fail(e);
-		}
-		
-		// FORMに値を設定して遷移した場合、正常に遷移できること。
-		// また、送信したパラメータに設定した値が設定されていること。
-		try {
-			HtmlDocument htmlDocument = (HtmlDocument)page3.getDocument();
-			List<Element> form = htmlDocument.getElement(HtmlElementName.FORM);
-			Form formElement = (Form)form.get(0);
-			List<HtmlElement> formList = formElement.getFormElementList();
-			Text txt1 = (Text)formList.get(0);
-			Text txt2 = (Text)formList.get(1);
-			txt1.setValue("test");
-			txt2.setValue("value");
-			Page page5 = page3.move(formElement, null);
-			HtmlDocument htmlDocument1 = (HtmlDocument)page5.getDocument();
-			assertHasString(htmlDocument1.toString(), "NAME = test");
-			assertHasString(htmlDocument1.toString(), "ADDR = value");
-		} catch (BrowzingException e) {
-			fail(e);
-		}
-	}
 	
 	@Test
 	public void getHost() throws BrowzingException {
