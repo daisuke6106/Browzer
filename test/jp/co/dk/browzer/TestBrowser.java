@@ -76,7 +76,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 	}
 	
 	@Test
-	public void move() {
+	public void move_anchor() {
 		// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝アンカー＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 		// 遷移先にnullを指定した場合、例外が送出されることを確認。
 		try {
@@ -160,7 +160,10 @@ public class TestBrowser extends TestBrowzerFoundation {
 		} catch (BrowzingException e) {
 			assertEquals(e.getMessageObj(), ERROR_REACHED_TO_THE_MAXIMUM_LEVEL);
 		}
-		
+	}
+	
+	@Test
+	public void move_link() {
 		// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝リンク＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 		// リンク要素に遷移する
 		// 遷移先にnullを指定した場合、例外が送出されることを確認。
@@ -217,8 +220,10 @@ public class TestBrowser extends TestBrowzerFoundation {
 		}catch (BrowzingException e) {
 			fail(e);
 		}
-		
-		
+	}
+	
+	@Test
+	public void move_script() {
 		// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝スクリプト＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 		// スクリプト要素に遷移する
 		// 遷移先にnullを指定した場合、例外が送出されることを確認。
@@ -275,7 +280,10 @@ public class TestBrowser extends TestBrowzerFoundation {
 		}catch (BrowzingException e) {
 			fail(e);
 		}
-		
+	}
+	
+	@Test
+	public void move_image() {
 		// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝イメージ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 		// イメージ要素に遷移する
 		// 遷移先にnullを指定した場合、例外が送出されることを確認。
@@ -332,7 +340,10 @@ public class TestBrowser extends TestBrowzerFoundation {
 		}catch (BrowzingException e) {
 			fail(e);
 		}
-		
+	}
+	
+	@Test
+	public void move_form() {
 		// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝FORM＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 		// FORM要素に遷移する
 		// 遷移先にnullを指定した場合、例外が送出されることを確認。

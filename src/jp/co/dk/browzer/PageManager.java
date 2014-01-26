@@ -393,14 +393,17 @@ public class PageManager implements XmlConvertable{
 	
 	@Override
 	public String toString() {
+		PageManager pageManager;
+		for (pageManager = this; pageManager.parentPage != null; pageManager = pageManager.parentPage);
 		StringBuilder sb = new StringBuilder();
 		boolean[] islasted= {};
 		String newline = System.getProperty("line.separator");
-		this.toStringUrl(sb, islasted, newline);
+		Page activePage = this.getPage();
+		this.toStringUrl(sb, islasted, newline, activePage);
 		return sb.toString();
 	}
 	
-	private void toStringUrl(StringBuilder stringBuilder, boolean[] islasts, String newline) {
+	private void toStringUrl(StringBuilder stringBuilder, boolean[] islasts, String newline, Page activePage) {
 		for (int i=0; i<islasts.length-1; i++) {
 			if (islasts[i]) {
 				stringBuilder.append("  ");
@@ -415,11 +418,7 @@ public class PageManager implements XmlConvertable{
 				stringBuilder.append('├');
 			}
 		}
-		stringBuilder.append(this.getPageStatus()).append(":URL=[").append(this.page.getURL().toString()).append("]:");
-		String fileName  = this.page.getFileName();
-		String extension = this.page.getExtension();
-		long  filesize   = this.page.getSize();
-		stringBuilder.append("FILE=[").append("filename=").append(fileName).append(", extension=").append(extension).append(", size=").append(filesize).append("]");
+		stringBuilder.append(this.pageInfomationToString(this, activePage));
 		stringBuilder.append(newline);
 		for (int i=0, size = this.childPageList.size(); i<size ;i++) {
 			boolean[] newIslasts = new boolean[islasts.length+1];
@@ -430,8 +429,19 @@ public class PageManager implements XmlConvertable{
 			} else {
 				newIslasts[newIslasts.length-1] = false;
 			}
-			this.childPageList.get(i).toStringUrl(stringBuilder, newIslasts, newline);
+			this.childPageList.get(i).toStringUrl(stringBuilder, newIslasts, newline, activePage);
 		}
+	}
+	
+	protected String pageInfomationToString(PageManager activePageManager, Page activePage) {
+		StringBuilder sb = new StringBuilder();
+		Page thisPage  = activePageManager.getPage();
+		if (activePage == thisPage) sb.append(""); 
+		sb.append(activePageManager.getPageStatus()).append(":URL=[").append(thisPage.getURL().toString()).append("]:");
+		String fileName  = thisPage.getFileName();
+		String extension = thisPage.getExtension();
+		sb.append("FILE=[").append("filename=").append(fileName).append(", extension=").append(extension).append("]");
+		return sb.toString();
 	}
 }
 

@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 
 import jp.co.dk.browzer.contents.BrowzingExtension;
-import jp.co.dk.browzer.event.PrintPageEventHandler;
 import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.http.header.ContentsType;
 import jp.co.dk.browzer.http.header.RequestHeader;
@@ -332,11 +331,11 @@ public class Page implements XmlConvertable{
 	 * @throws BrowzingException ドキュメントオブジェクトの生成に失敗した場合
 	 */
 	public jp.co.dk.document.File getDocument() throws BrowzingException {
-		for (PageEventHandler handler : this.eventHandler) handler.beforeCreateDocument(this);
 		if (this.document != null) return this.document;
+		for (PageEventHandler handler : this.eventHandler) handler.beforeCreateDocument(this);
 		try {
-			jp.co.dk.document.File document = this.getDocument(new DocumentFactory(this));
-			return document;
+			this.document = this.getDocument(new DocumentFactory(this));
+			return this.document;
 		} catch (BrowzingException e) {
 			for (PageEventHandler handler : this.eventHandler) handler.errorCreateDocument(e);
 			throw e;

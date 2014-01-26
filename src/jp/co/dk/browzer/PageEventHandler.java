@@ -1,6 +1,8 @@
 package jp.co.dk.browzer;
 
 import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.html.element.Form;
+import jp.co.dk.browzer.html.element.MovableElement;
 import jp.co.dk.browzer.http.header.ResponseHeader;
 import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 
@@ -11,6 +13,52 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
  * @author D.Kanno
  */
 public interface PageEventHandler {
+	// ==================================================[Browzerクラス関連イベント]==================================================
+	
+	/**
+	 * ブラウザがページ遷移する際に実行されるイベント
+	 * @param browzer 遷移前のブラウザ
+	 * @param movable  アンカータグ等の遷移先要素オブジェクト
+	 */
+	public void beforeMove(Browzer browzer, MovableElement movable);
+	
+	/**
+	 * ブラウザがページ遷移する際に実行されるイベント
+	 * @param browzer          遷移前のブラウザ
+	 * @param movable           アンカータグ等の遷移先要素オブジェクト
+	 * @param browzingException 生成された例外オブジェクト
+	 */
+	public void moveError(Browzer browzer, MovableElement movable, BrowzingException browzingException);
+	
+	/**
+	 * ブラウザがページ遷移した後に実行されるイベント
+	 * @param browzer 遷移後のブラウザ
+	 * @param movable  アンカータグ等の遷移先要素オブジェクト
+	 */
+	public void afterMove(Browzer browzer, MovableElement movable);
+	
+	/**
+	 * ブラウザがページ遷移する際に実行されるイベント
+	 * @param browzer 遷移前のブラウザ
+	 * @param form     FORM遷移先要素オブジェクト
+	 */
+	public void beforeMove(Browzer browzer, Form form);
+	
+	/**
+	 * ブラウザがページ遷移する際に実行されるイベント
+	 * @param browzer          遷移前のブラウザ
+	 * @param form              FORM遷移先要素オブジェクト
+	 * @param browzingException 生成された例外オブジェクト
+	 */
+	public void moveError(Browzer browzer, Form form, BrowzingException browzingException);
+	
+	/**
+	 * ブラウザがページ遷移した後に実行されるイベント
+	 * @param browzer 遷移後のブラウザ
+	 * @param form     FORM遷移先要素オブジェクト
+	 */
+	public void afterMove(Browzer browzer, Form form);
+	
 	// ==================================================[PageRedirectHandlerクラス関連イベント]==================================================
 	/**
 	 * リダイレクトハンドラが実施される前に実行されるイベント
@@ -21,8 +69,6 @@ public interface PageEventHandler {
 	
 	/**
 	 * リダイレクトハンドラが実施された後に実行されるイベント
-	 * @param header ページのレスポンスヘッダ
-	 * @param page   ページオブジェクト
 	 */
 	void afterRedirect();
 	

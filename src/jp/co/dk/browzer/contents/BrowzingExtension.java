@@ -28,7 +28,7 @@ public enum BrowzingExtension {
 	 * @return 拡張子文字列
 	 */
 	public String[] getExtension() {
-		return this.extension;
+		return this.extension.clone();
 	}
 	
 	/**

@@ -13,7 +13,7 @@ import jp.co.dk.property.exception.PropertyException;
  */
 public class BrowzerProperty extends AbstractProperty {
 	
-	public static BrowzerProperty REQUEST_HEADER = new BrowzerProperty("header.request.");
+	public static final BrowzerProperty REQUEST_HEADER = new BrowzerProperty("header.request.");
 	
 	/**
 	 * コンストラクタ<p>

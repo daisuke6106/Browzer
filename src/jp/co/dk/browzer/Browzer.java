@@ -65,7 +65,6 @@ public class Browzer {
 	 * 指定のURL,指定の最大ネスト数を元にブラウザを生成します。<br/>
 	 * 
 	 * @param url URL文字列
-	 * @param pageRedirectHandler ページリダイレクト制御オブジェクト
 	 * @param maxNestLevel 最大ネスト数
 	 * @throws BrowzingException ページの表示に失敗した場合
 	 */
@@ -84,17 +83,25 @@ public class Browzer {
 	 * ・遷移先アンカーが現在アクティブになっているページから取得したものでない場合<br/>
 	 * ・遷移先アンカーに遷移先URLが設定されていなかった場合(hrefが設定されていなかった場合)<br/>
 	 * 
-	 * @param anchor 遷移先アンカー
+	 * @param movable 遷移先要素
 	 * @return ページオブジェクト
 	 * @throws BrowzingException 遷移に失敗した場合
 	 */
 	public Page move(MovableElement movable) throws BrowzingException {
-		if (movable == null) throw new BrowzingException(ERROR_SPECIFIED_ANCHOR_IS_NOT_SET);
-		if (!this.pageManager.getPage().equals(movable.getPage()))throw new BrowzingException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
-		String url = movable.getUrl();
-		if (url.equals("")) throw new BrowzingException(ERROR_ANCHOR_HAS_NOT_URL);
-		this.pageManager = this.pageManager.move(url);
-		return this.pageManager.getPage();
+		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.beforeMove(this, movable);
+		try {
+			if (movable == null) throw new BrowzingException(ERROR_SPECIFIED_ANCHOR_IS_NOT_SET);
+			if (!this.pageManager.getPage().equals(movable.getPage()))throw new BrowzingException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
+			String url = movable.getUrl();
+			if (url.equals("")) throw new BrowzingException(ERROR_ANCHOR_HAS_NOT_URL);
+			this.pageManager = this.pageManager.move(url);
+			return this.pageManager.getPage();
+		} catch (BrowzingException e ) {
+			for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.moveError(this, movable, e);
+			throw e;
+		} finally {
+			for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.afterMove(this, movable);
+		}
 	}
 	
 	/**
@@ -111,10 +118,18 @@ public class Browzer {
 	 * @throws BrowzingException 遷移に失敗した場合
 	 */
 	public Page move(Form form) throws BrowzingException {
-		if (form == null) throw new BrowzingException(ERROR_SPECIFIED_FORM_IS_NOT_SET);
-		if (!this.pageManager.getPage().equals(form.getPage()))throw new BrowzingException(ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
-		this.pageManager = this.pageManager.move(form);
-		return this.pageManager.getPage();
+		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.beforeMove(this, form);
+		try {
+			if (form == null) throw new BrowzingException(ERROR_SPECIFIED_FORM_IS_NOT_SET);
+			if (!this.pageManager.getPage().equals(form.getPage()))throw new BrowzingException(ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
+			this.pageManager = this.pageManager.move(form);
+			return this.pageManager.getPage();
+		} catch (BrowzingException e ) {
+			for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.moveError(this, form, e);
+			throw e;
+		}finally {
+			for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.afterMove(this, form);
+		}
 	}
 	
 	/**
@@ -240,9 +255,9 @@ public class Browzer {
 	}
 	
 	/**
-	 * 指定のページオブジェクト、ページリダイレクトハンドラからページマネージャを作成する。
+	 * 指定のURL、ページリダイレクトハンドラからページマネージャを作成する。
 	 * 
-	 * @param page ページオブジェクト
+	 * @param url URL
 	 * @param handler ページリダイレクトハンドラ
 	 * @return ページマネージャオブジェクト
 	 * @throws BrowzingException ページクラスの生成に失敗した場合
@@ -252,9 +267,9 @@ public class Browzer {
 	}
 	
 	/**
-	 * 指定のページオブジェクト、ページリダイレクトハンドラ、最大遷移数からページマネージャを作成する。
+	 * 指定のURL、ページリダイレクトハンドラ、最大遷移数からページマネージャを作成する。
 	 * 
-	 * @param page ページオブジェクト
+	 * @param url URL
 	 * @param handler ページリダイレクトハンドラ
 	 * @param maxNestLevel 最大遷移数
 	 * @return ページマネージャオブジェクト
