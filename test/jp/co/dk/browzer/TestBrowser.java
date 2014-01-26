@@ -122,7 +122,6 @@ public class TestBrowser extends TestBrowzerFoundation {
 			browzer1.move(anchor2);
 			A anchor3 = super.getRandomElement(browzer1.getAnchor());
 			browzer1.move(anchor3);
-			System.out.println(browzer1.pageManager.parentPage.parentPage.toString());
 			
 		} catch (BrowzingException e) {
 			fail(e);

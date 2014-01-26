@@ -14,7 +14,7 @@ public class TestForm extends TestBrowzerFoundation {
 
 	@Test
 	public void getAction() throws BrowzingException {
-		Browzer browzer = super.getBrowzer("http://www.google.co.jp");
+		Browzer browzer = super.getBrowzer("http://www.tohoho-web.com/html/form.htm");
 		List<Form> formList = browzer.getForm();
 		Form form = formList.get(0);
 		

@@ -1,58 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<BugCollection version="2.0.2" sequence="0" timestamp="1386256277720" analysisTimestamp="1386256277781" release="">
+<BugCollection version="2.0.2" sequence="0" timestamp="1390616380653" analysisTimestamp="1390616380686" release="">
   <Project projectName="">
-    <Jar>/home/dk/projects/Browzer/browzer.jar</Jar>
-    <AuxClasspathEntry>/home/dk/projects/Browzer/lib/dk_xml_all.jar</AuxClasspathEntry>
-    <AuxClasspathEntry>/home/dk/projects/Browzer/lib/document_all.jar</AuxClasspathEntry>
-    <AuxClasspathEntry>/home/dk/projects/Browzer/lib/message_all.jar</AuxClasspathEntry>
-    <AuxClasspathEntry>/home/dk/projects/Browzer/lib/property_all.jar</AuxClasspathEntry>
-    <AuxClasspathEntry>/home/dk/projects/Browzer/lib/test/jmockit-coverage.jar</AuxClasspathEntry>
-    <AuxClasspathEntry>/home/dk/projects/Browzer/lib/test/jmockit.jar</AuxClasspathEntry>
-    <AuxClasspathEntry>/home/dk/projects/Browzer/lib/test/testtemplate_all.jar</AuxClasspathEntry>
-    <SrcDir>/home/dk/projects/Browzer/src</SrcDir>
+    <Jar>/Users/dk/projects/Browzer/browzer.jar</Jar>
+    <AuxClasspathEntry>/Users/dk/projects/Browzer/lib/dk_xml_all.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/dk/projects/Browzer/lib/document_all.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/dk/projects/Browzer/lib/message_all.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/dk/projects/Browzer/lib/property_all.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/dk/projects/Browzer/lib/test/jmockit-coverage.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/dk/projects/Browzer/lib/test/jmockit.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/dk/projects/Browzer/lib/test/testtemplate_all.jar</AuxClasspathEntry>
+    <SrcDir>/Users/dk/projects/Browzer/src</SrcDir>
   </Project>
-  <BugInstance type="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" priority="2" abbrev="UrF" category="STYLE">
-    <Class classname="jp.co.dk.browzer.Browzer">
-      <SourceLine classname="jp.co.dk.browzer.Browzer" start="54" end="282" sourcefile="Browzer.java" sourcepath="jp/co/dk/browzer/Browzer.java"/>
-    </Class>
-    <Field classname="jp.co.dk.browzer.Browzer" name="pageRedirectHandler" signature="Ljp/co/dk/browzer/PageRedirectHandler;" isStatic="false">
-      <SourceLine classname="jp.co.dk.browzer.Browzer" sourcefile="Browzer.java" sourcepath="jp/co/dk/browzer/Browzer.java"/>
-    </Field>
-    <SourceLine classname="jp.co.dk.browzer.Browzer" start="66" end="66" startBytecode="6" endBytecode="6" sourcefile="Browzer.java" sourcepath="jp/co/dk/browzer/Browzer.java"/>
-  </BugInstance>
   <BugInstance type="DM_DEFAULT_ENCODING" priority="1" abbrev="Dm" category="I18N">
     <Class classname="jp.co.dk.browzer.Page">
-      <SourceLine classname="jp.co.dk.browzer.Page" start="78" end="777" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
+      <SourceLine classname="jp.co.dk.browzer.Page" start="75" end="847" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
     </Class>
-    <Method classname="jp.co.dk.browzer.Page" name="&lt;init&gt;" signature="(Ljp/co/dk/document/html/element/Form;Ljava/util/Map;)V" isStatic="false">
-      <SourceLine classname="jp.co.dk.browzer.Page" start="136" end="157" startBytecode="0" endBytecode="476" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
+    <Method classname="jp.co.dk.browzer.Page" name="&lt;init&gt;" signature="(Ljp/co/dk/document/html/element/Form;Ljava/util/Map;ZLjava/util/List;)V" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.Page" start="202" end="225" startBytecode="0" endBytecode="577" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
     </Method>
     <Method classname="java.io.OutputStreamWriter" name="&lt;init&gt;" signature="(Ljava/io/OutputStream;)V" isStatic="false" role="METHOD_CALLED">
       <SourceLine classname="java.io.OutputStreamWriter" start="109" end="115" startBytecode="0" endBytecode="108" sourcefile="OutputStreamWriter.java" sourcepath="java/io/OutputStreamWriter.java"/>
     </Method>
-    <SourceLine classname="jp.co.dk.browzer.Page" start="148" end="148" startBytecode="115" endBytecode="115" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
+    <SourceLine classname="jp.co.dk.browzer.Page" start="216" end="216" startBytecode="141" endBytecode="141" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
   </BugInstance>
   <BugInstance type="WMI_WRONG_MAP_ITERATOR" priority="2" abbrev="WMI" category="PERFORMANCE">
     <Class classname="jp.co.dk.browzer.Page">
-      <SourceLine classname="jp.co.dk.browzer.Page" start="78" end="777" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
+      <SourceLine classname="jp.co.dk.browzer.Page" start="75" end="847" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
     </Class>
     <Method classname="jp.co.dk.browzer.Page" name="setRequestProperty" signature="(Ljava/net/URLConnection;Ljava/util/Map;)Ljava/net/URLConnection;" isStatic="false">
-      <SourceLine classname="jp.co.dk.browzer.Page" start="649" end="655" startBytecode="0" endBytecode="202" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
+      <SourceLine classname="jp.co.dk.browzer.Page" start="712" end="718" startBytecode="0" endBytecode="202" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
     </Method>
-    <SourceLine classname="jp.co.dk.browzer.Page" start="653" end="653" startBytecode="48" endBytecode="48" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
+    <SourceLine classname="jp.co.dk.browzer.Page" start="716" end="716" startBytecode="48" endBytecode="48" sourcefile="Page.java" sourcepath="jp/co/dk/browzer/Page.java"/>
   </BugInstance>
   <BugInstance type="DM_DEFAULT_ENCODING" priority="1" abbrev="Dm" category="I18N">
     <Class classname="jp.co.dk.browzer.PageRedirectHandler">
-      <SourceLine classname="jp.co.dk.browzer.PageRedirectHandler" start="27" end="197" sourcefile="PageRedirectHandler.java" sourcepath="jp/co/dk/browzer/PageRedirectHandler.java"/>
+      <SourceLine classname="jp.co.dk.browzer.PageRedirectHandler" start="38" end="221" sourcefile="PageRedirectHandler.java" sourcepath="jp/co/dk/browzer/PageRedirectHandler.java"/>
     </Class>
     <Method classname="jp.co.dk.browzer.PageRedirectHandler" name="redirectBy_CLIENT_ERROR" signature="(Ljp/co/dk/browzer/http/header/ResponseHeader;Ljp/co/dk/browzer/Page;)Ljp/co/dk/browzer/Page;" isStatic="false">
-      <SourceLine classname="jp.co.dk.browzer.PageRedirectHandler" start="150" end="168" startBytecode="0" endBytecode="327" sourcefile="PageRedirectHandler.java" sourcepath="jp/co/dk/browzer/PageRedirectHandler.java"/>
+      <SourceLine classname="jp.co.dk.browzer.PageRedirectHandler" start="171" end="190" startBytecode="0" endBytecode="478" sourcefile="PageRedirectHandler.java" sourcepath="jp/co/dk/browzer/PageRedirectHandler.java"/>
     </Method>
     <Method classname="java.io.InputStreamReader" name="&lt;init&gt;" signature="(Ljava/io/InputStream;)V" isStatic="false" role="METHOD_CALLED">
       <SourceLine classname="java.io.InputStreamReader" start="72" end="79" startBytecode="0" endBytecode="108" sourcefile="InputStreamReader.java" sourcepath="java/io/InputStreamReader.java"/>
     </Method>
-    <SourceLine classname="jp.co.dk.browzer.PageRedirectHandler" start="152" end="152" startBytecode="26" endBytecode="26" sourcefile="PageRedirectHandler.java" sourcepath="jp/co/dk/browzer/PageRedirectHandler.java"/>
+    <SourceLine classname="jp.co.dk.browzer.PageRedirectHandler" start="174" end="174" startBytecode="68" endBytecode="68" sourcefile="PageRedirectHandler.java" sourcepath="jp/co/dk/browzer/PageRedirectHandler.java"/>
   </BugInstance>
   <BugInstance type="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" priority="2" abbrev="UrF" category="STYLE">
     <Class classname="jp.co.dk.browzer.Url">
@@ -74,6 +65,159 @@
       <SourceLine classname="jp.co.dk.browzer.contents.BrowzingExtension" sourcefile="BrowzingExtension.java" sourcepath="jp/co/dk/browzer/contents/BrowzingExtension.java"/>
     </Field>
     <SourceLine classname="jp.co.dk.browzer.contents.BrowzingExtension" start="31" end="31" startBytecode="4" endBytecode="4" sourcefile="BrowzingExtension.java" sourcepath="jp/co/dk/browzer/contents/BrowzingExtension.java"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="1" abbrev="DLS" category="STYLE">
+    <Class classname="jp.co.dk.browzer.event.PrintPageEventHandler">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="13" end="152" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.event.PrintPageEventHandler" name="afterCreateDocument" signature="(Ljp/co/dk/browzer/Page;)V" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="129" end="136" startBytecode="0" endBytecode="12" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Method>
+    <LocalVariable name="sb" register="6" pc="22" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="131" end="131" startBytecode="20" endBytecode="20" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="sb"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.DEAD_OBJECT_STORE" value="true"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="1" abbrev="DLS" category="STYLE">
+    <Class classname="jp.co.dk.browzer.event.PrintPageEventHandler">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="13" end="152" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.event.PrintPageEventHandler" name="afterGetData" signature="(Ljp/co/dk/browzer/Page;)V" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="104" end="111" startBytecode="0" endBytecode="12" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Method>
+    <LocalVariable name="sb" register="6" pc="22" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="106" end="106" startBytecode="20" endBytecode="20" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="sb"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.DEAD_OBJECT_STORE" value="true"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="1" abbrev="DLS" category="STYLE">
+    <Class classname="jp.co.dk.browzer.event.PrintPageEventHandler">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="13" end="152" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.event.PrintPageEventHandler" name="afterMove" signature="()V" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="54" end="58" startBytecode="0" endBytecode="4" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Method>
+    <LocalVariable name="sb" register="1" pc="8" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="54" end="54" startBytecode="7" endBytecode="7" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="sb"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.DEAD_OBJECT_STORE" value="true"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="1" abbrev="DLS" category="STYLE">
+    <Class classname="jp.co.dk.browzer.event.PrintPageEventHandler">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="13" end="152" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.event.PrintPageEventHandler" name="afterOpenConnection" signature="()V" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="79" end="86" startBytecode="0" endBytecode="12" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Method>
+    <LocalVariable name="sb" register="5" pc="21" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="81" end="81" startBytecode="19" endBytecode="19" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="sb"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.DEAD_OBJECT_STORE" value="true"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="1" abbrev="DLS" category="STYLE">
+    <Class classname="jp.co.dk.browzer.event.PrintPageEventHandler">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="13" end="152" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.event.PrintPageEventHandler" name="afterRedirect" signature="()V" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="30" end="34" startBytecode="0" endBytecode="4" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Method>
+    <LocalVariable name="sb" register="1" pc="8" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="30" end="30" startBytecode="7" endBytecode="7" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="sb"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.DEAD_OBJECT_STORE" value="true"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="1" abbrev="DLS" category="STYLE">
+    <Class classname="jp.co.dk.browzer.event.PrintPageEventHandler">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="13" end="152" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.event.PrintPageEventHandler" name="beforeCreateDocument" signature="(Ljp/co/dk/browzer/Page;)V" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="115" end="120" startBytecode="0" endBytecode="8" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Method>
+    <LocalVariable name="sb" register="2" pc="16" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="116" end="116" startBytecode="15" endBytecode="15" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="sb"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.DEAD_OBJECT_STORE" value="true"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="1" abbrev="DLS" category="STYLE">
+    <Class classname="jp.co.dk.browzer.event.PrintPageEventHandler">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="13" end="152" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.event.PrintPageEventHandler" name="beforeGetData" signature="(Ljp/co/dk/browzer/Page;)V" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="90" end="95" startBytecode="0" endBytecode="8" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Method>
+    <LocalVariable name="sb" register="2" pc="16" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="91" end="91" startBytecode="15" endBytecode="15" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="sb"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.DEAD_OBJECT_STORE" value="true"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="1" abbrev="DLS" category="STYLE">
+    <Class classname="jp.co.dk.browzer.event.PrintPageEventHandler">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="13" end="152" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.event.PrintPageEventHandler" name="beforeOpenConnection" signature="(Ljp/co/dk/browzer/Url;Ljp/co/dk/document/html/constant/HtmlRequestMethodName;)V" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="63" end="70" startBytecode="0" endBytecode="8" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Method>
+    <LocalVariable name="sb" register="3" pc="16" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="64" end="64" startBytecode="15" endBytecode="15" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="sb"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.DEAD_OBJECT_STORE" value="true"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="1" abbrev="DLS" category="STYLE">
+    <Class classname="jp.co.dk.browzer.event.PrintPageEventHandler">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="13" end="152" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.event.PrintPageEventHandler" name="beforeRedirect" signature="(Ljp/co/dk/browzer/http/header/ResponseHeader;Ljp/co/dk/browzer/Page;)V" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="22" end="26" startBytecode="0" endBytecode="4" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Method>
+    <LocalVariable name="sb" register="3" pc="8" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="22" end="22" startBytecode="7" endBytecode="7" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="sb"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.DEAD_OBJECT_STORE" value="true"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="2" abbrev="DLS" category="STYLE">
+    <Class classname="jp.co.dk.browzer.event.PrintPageEventHandler">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="13" end="152" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.event.PrintPageEventHandler" name="afterCreateDocument" signature="(Ljp/co/dk/browzer/Page;)V" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="129" end="136" startBytecode="0" endBytecode="12" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Method>
+    <LocalVariable name="time" register="4" pc="13" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="130" end="130" startBytecode="11" endBytecode="11" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="time"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.NO_LOADS" value="true"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="2" abbrev="DLS" category="STYLE">
+    <Class classname="jp.co.dk.browzer.event.PrintPageEventHandler">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="13" end="152" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.event.PrintPageEventHandler" name="afterGetData" signature="(Ljp/co/dk/browzer/Page;)V" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="104" end="111" startBytecode="0" endBytecode="12" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Method>
+    <LocalVariable name="time" register="4" pc="13" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="105" end="105" startBytecode="11" endBytecode="11" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="time"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.NO_LOADS" value="true"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="2" abbrev="DLS" category="STYLE">
+    <Class classname="jp.co.dk.browzer.event.PrintPageEventHandler">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="13" end="152" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Class>
+    <Method classname="jp.co.dk.browzer.event.PrintPageEventHandler" name="afterOpenConnection" signature="()V" isStatic="false">
+      <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="79" end="86" startBytecode="0" endBytecode="12" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    </Method>
+    <LocalVariable name="time" register="3" pc="12" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="jp.co.dk.browzer.event.PrintPageEventHandler" start="80" end="80" startBytecode="11" endBytecode="11" sourcefile="PrintPageEventHandler.java" sourcepath="jp/co/dk/browzer/event/PrintPageEventHandler.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="time"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.NO_LOADS" value="true"/>
   </BugInstance>
   <BugInstance type="NM_SAME_SIMPLE_NAME_AS_SUPERCLASS" priority="1" abbrev="Nm" category="BAD_PRACTICE">
     <Class classname="jp.co.dk.browzer.html.HtmlElementFactory">
@@ -196,10 +340,10 @@
     </Method>
     <LocalVariable name="host" register="2" pc="8" role="LOCAL_VARIABLE_NAMED"/>
     <SourceLine classname="jp.co.dk.browzer.html.selector.PatternMatchAnchorSelector" start="30" end="30" startBytecode="7" endBytecode="7" sourcefile="PatternMatchAnchorSelector.java" sourcepath="jp/co/dk/browzer/html/selector/PatternMatchAnchorSelector.java"/>
-    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.BASE_VALUE" value="true"/>
     <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
-    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.NO_LOADS" value="true"/>
     <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="host"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.BASE_VALUE" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.NO_LOADS" value="true"/>
   </BugInstance>
   <BugInstance type="BC_UNCONFIRMED_CAST" priority="2" abbrev="BC" category="STYLE">
     <Class classname="jp.co.dk.browzer.html.selector.PatternMatchImgSelector">
@@ -279,15 +423,17 @@
     <SourceLine classname="jp.co.dk.browzer.property.BrowzerProperty" start="16" end="16" startBytecode="9" endBytecode="9" sourcefile="BrowzerProperty.java" sourcepath="jp/co/dk/browzer/property/BrowzerProperty.java"/>
   </BugInstance>
   <Errors errors="0" missingClasses="0"></Errors>
-  <FindBugsSummary timestamp="Fri, 6 Dec 2013 00:11:17 +0900" total_classes="34" referenced_classes="173" total_bugs="26" total_size="2585" num_packages="12" vm_version="22.0-b10" cpu_seconds="27.96" clock_seconds="21.97" peak_mbytes="161.75" alloc_mbytes="780.50" gc_seconds="0.28" priority_2="15" priority_1="11">
-    <PackageStats package="jp.co.dk.browzer" total_bugs="5" total_types="8" total_size="546" priority_2="3" priority_1="2">
-      <ClassStats class="jp.co.dk.browzer.Browzer" sourceFile="Browzer.java" interface="false" size="65" bugs="1" priority_2="1"/>
+  <FindBugsSummary timestamp="Sat, 25 Jan 2014 11:19:40 +0900" total_classes="37" referenced_classes="176" total_bugs="37" total_size="2837" num_packages="13" vm_version="23.3-b01" cpu_seconds="37.19" clock_seconds="13.27" peak_mbytes="221.56" alloc_mbytes="1077.38" gc_seconds="0.16" priority_2="17" priority_1="20">
+    <PackageStats package="jp.co.dk.browzer" total_bugs="4" total_types="10" total_size="729" priority_2="2" priority_1="2">
+      <ClassStats class="jp.co.dk.browzer.Browzer" sourceFile="Browzer.java" interface="false" size="70" bugs="0"/>
       <ClassStats class="jp.co.dk.browzer.DocumentFactory" sourceFile="DocumentFactory.java" interface="false" size="22" bugs="0"/>
       <ClassStats class="jp.co.dk.browzer.DocumentFactory$1" sourceFile="DocumentFactory.java" interface="false" size="6" bugs="0"/>
-      <ClassStats class="jp.co.dk.browzer.Page" sourceFile="Page.java" interface="false" size="255" bugs="2" priority_2="1" priority_1="1"/>
-      <ClassStats class="jp.co.dk.browzer.PageManager" sourceFile="PageManager.java" interface="false" size="70" bugs="0"/>
-      <ClassStats class="jp.co.dk.browzer.PageRedirectHandler" sourceFile="PageRedirectHandler.java" interface="false" size="57" bugs="1" priority_1="1"/>
+      <ClassStats class="jp.co.dk.browzer.Page" sourceFile="Page.java" interface="false" size="287" bugs="2" priority_2="1" priority_1="1"/>
+      <ClassStats class="jp.co.dk.browzer.PageEventHandler" sourceFile="PageEventHandler.java" interface="true" size="14" bugs="0"/>
+      <ClassStats class="jp.co.dk.browzer.PageManager" sourceFile="PageManager.java" interface="false" size="175" bugs="0"/>
+      <ClassStats class="jp.co.dk.browzer.PageRedirectHandler" sourceFile="PageRedirectHandler.java" interface="false" size="71" bugs="1" priority_1="1"/>
       <ClassStats class="jp.co.dk.browzer.PageRedirectHandler$1" sourceFile="PageRedirectHandler.java" interface="false" size="4" bugs="0"/>
+      <ClassStats class="jp.co.dk.browzer.PageStatus" sourceFile="PageManager.java" interface="false" size="13" bugs="0"/>
       <ClassStats class="jp.co.dk.browzer.Url" sourceFile="Url.java" interface="false" size="67" bugs="1" priority_2="1"/>
     </PackageStats>
     <PackageStats package="jp.co.dk.browzer.contents" total_bugs="1" total_types="1" total_size="22" priority_2="1">
@@ -295,6 +441,9 @@
     </PackageStats>
     <PackageStats package="jp.co.dk.browzer.download" total_bugs="0" total_types="1" total_size="2">
       <ClassStats class="jp.co.dk.browzer.download.DownloadJudge" sourceFile="DownloadJudge.java" interface="true" size="2" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="jp.co.dk.browzer.event" total_bugs="12" total_types="1" total_size="67" priority_2="3" priority_1="9">
+      <ClassStats class="jp.co.dk.browzer.event.PrintPageEventHandler" sourceFile="PrintPageEventHandler.java" interface="false" size="67" bugs="12" priority_2="3" priority_1="9"/>
     </PackageStats>
     <PackageStats package="jp.co.dk.browzer.exception" total_bugs="0" total_types="1" total_size="26">
       <ClassStats class="jp.co.dk.browzer.exception.BrowzingException" sourceFile="BrowzingException.java" interface="false" size="26" bugs="0"/>
@@ -317,12 +466,12 @@
       <ClassStats class="jp.co.dk.browzer.html.selector.RedirectMetaSelector" sourceFile="RedirectMetaSelector.java" interface="false" size="12" bugs="1" priority_2="1"/>
       <ClassStats class="jp.co.dk.browzer.html.selector.SameHostAnchorSelector" sourceFile="SameHostAnchorSelector.java" interface="false" size="16" bugs="1" priority_2="1"/>
     </PackageStats>
-    <PackageStats package="jp.co.dk.browzer.http.header" total_bugs="1" total_types="6" total_size="1451" priority_1="1">
+    <PackageStats package="jp.co.dk.browzer.http.header" total_bugs="1" total_types="6" total_size="1453" priority_1="1">
       <ClassStats class="jp.co.dk.browzer.http.header.CharSet" sourceFile="CharSet.java" interface="false" size="29" bugs="0"/>
       <ClassStats class="jp.co.dk.browzer.http.header.ContentsType" sourceFile="ContentsType.java" interface="false" size="1213" bugs="0"/>
       <ClassStats class="jp.co.dk.browzer.http.header.HeaderField" sourceFile="HeaderField.java" interface="false" size="119" bugs="0"/>
       <ClassStats class="jp.co.dk.browzer.http.header.HeaderFieldType" sourceFile="HeaderField.java" interface="false" size="15" bugs="0"/>
-      <ClassStats class="jp.co.dk.browzer.http.header.RequestHeader" sourceFile="RequestHeader.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="jp.co.dk.browzer.http.header.RequestHeader" sourceFile="RequestHeader.java" interface="false" size="11" bugs="0"/>
       <ClassStats class="jp.co.dk.browzer.http.header.ResponseHeader" sourceFile="ResponseHeader.java" interface="false" size="66" bugs="1" priority_1="1"/>
     </PackageStats>
     <PackageStats package="jp.co.dk.browzer.http.header.record" total_bugs="0" total_types="3" total_size="152">
@@ -337,29 +486,26 @@
       <ClassStats class="jp.co.dk.browzer.property.BrowzerProperty" sourceFile="BrowzerProperty.java" interface="false" size="7" bugs="1" priority_1="1"/>
     </PackageStats>
     <FindBugsProfile>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="2951" invocations="856" avgMicrosecondsPerInvocation="3448" maxMicrosecondsPerInvocation="113557" standardDeviationMircosecondsPerInvocation="9538"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="1796" invocations="173" avgMicrosecondsPerInvocation="10382" maxMicrosecondsPerInvocation="156155" standardDeviationMircosecondsPerInvocation="23074"/>
-      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="1576" invocations="208" avgMicrosecondsPerInvocation="7580" maxMicrosecondsPerInvocation="948159" standardDeviationMircosecondsPerInvocation="66027"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="1122" invocations="213" avgMicrosecondsPerInvocation="5270" maxMicrosecondsPerInvocation="699644" standardDeviationMircosecondsPerInvocation="47837"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="913" invocations="173" avgMicrosecondsPerInvocation="5279" maxMicrosecondsPerInvocation="174235" standardDeviationMircosecondsPerInvocation="16110"/>
-      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="661" invocations="617" avgMicrosecondsPerInvocation="1071" maxMicrosecondsPerInvocation="32405" standardDeviationMircosecondsPerInvocation="3075"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="637" invocations="214" avgMicrosecondsPerInvocation="2977" maxMicrosecondsPerInvocation="45362" standardDeviationMircosecondsPerInvocation="6305"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="474" invocations="173" avgMicrosecondsPerInvocation="2741" maxMicrosecondsPerInvocation="36633" standardDeviationMircosecondsPerInvocation="5551"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="471" invocations="234" avgMicrosecondsPerInvocation="2015" maxMicrosecondsPerInvocation="38681" standardDeviationMircosecondsPerInvocation="4597"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="436" invocations="235" avgMicrosecondsPerInvocation="1855" maxMicrosecondsPerInvocation="79291" standardDeviationMircosecondsPerInvocation="6284"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="412" invocations="173" avgMicrosecondsPerInvocation="2387" maxMicrosecondsPerInvocation="33903" standardDeviationMircosecondsPerInvocation="5582"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.impl.ZipCodeBaseFactory" totalMilliseconds="361" invocations="21" avgMicrosecondsPerInvocation="17222" maxMicrosecondsPerInvocation="344873" standardDeviationMircosecondsPerInvocation="73276"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="347" invocations="215" avgMicrosecondsPerInvocation="1615" maxMicrosecondsPerInvocation="35346" standardDeviationMircosecondsPerInvocation="4046"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="346" invocations="181" avgMicrosecondsPerInvocation="1912" maxMicrosecondsPerInvocation="39679" standardDeviationMircosecondsPerInvocation="4738"/>
-      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="333" invocations="803" avgMicrosecondsPerInvocation="414" maxMicrosecondsPerInvocation="16666" standardDeviationMircosecondsPerInvocation="1350"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.UnreadFields" totalMilliseconds="332" invocations="34" avgMicrosecondsPerInvocation="9771" maxMicrosecondsPerInvocation="266401" standardDeviationMircosecondsPerInvocation="44900"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="302" invocations="173" avgMicrosecondsPerInvocation="1746" maxMicrosecondsPerInvocation="23960" standardDeviationMircosecondsPerInvocation="3763"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="275" invocations="227" avgMicrosecondsPerInvocation="1213" maxMicrosecondsPerInvocation="45086" standardDeviationMircosecondsPerInvocation="3940"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="262" invocations="859" avgMicrosecondsPerInvocation="305" maxMicrosecondsPerInvocation="14775" standardDeviationMircosecondsPerInvocation="1165"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="248" invocations="173" avgMicrosecondsPerInvocation="1435" maxMicrosecondsPerInvocation="40621" standardDeviationMircosecondsPerInvocation="4546"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.EqualsOperandShouldHaveClassCompatibleWithThis" totalMilliseconds="218" invocations="173" avgMicrosecondsPerInvocation="1261" maxMicrosecondsPerInvocation="29434" standardDeviationMircosecondsPerInvocation="3692"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="211" invocations="218" avgMicrosecondsPerInvocation="970" maxMicrosecondsPerInvocation="125129" standardDeviationMircosecondsPerInvocation="8540"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.InfiniteLoop" totalMilliseconds="199" invocations="34" avgMicrosecondsPerInvocation="5877" maxMicrosecondsPerInvocation="159833" standardDeviationMircosecondsPerInvocation="27096"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="1310" invocations="176" avgMicrosecondsPerInvocation="7448" maxMicrosecondsPerInvocation="101542" standardDeviationMircosecondsPerInvocation="14527"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="1183" invocations="863" avgMicrosecondsPerInvocation="1370" maxMicrosecondsPerInvocation="51669" standardDeviationMircosecondsPerInvocation="3659"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="882" invocations="249" avgMicrosecondsPerInvocation="3544" maxMicrosecondsPerInvocation="519346" standardDeviationMircosecondsPerInvocation="32941"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="816" invocations="244" avgMicrosecondsPerInvocation="3345" maxMicrosecondsPerInvocation="318904" standardDeviationMircosecondsPerInvocation="21230"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="554" invocations="176" avgMicrosecondsPerInvocation="3151" maxMicrosecondsPerInvocation="41206" standardDeviationMircosecondsPerInvocation="6257"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="475" invocations="273" avgMicrosecondsPerInvocation="1741" maxMicrosecondsPerInvocation="53879" standardDeviationMircosecondsPerInvocation="4240"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="473" invocations="663" avgMicrosecondsPerInvocation="714" maxMicrosecondsPerInvocation="26429" standardDeviationMircosecondsPerInvocation="1489"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="460" invocations="274" avgMicrosecondsPerInvocation="1681" maxMicrosecondsPerInvocation="67298" standardDeviationMircosecondsPerInvocation="4846"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="435" invocations="250" avgMicrosecondsPerInvocation="1741" maxMicrosecondsPerInvocation="49973" standardDeviationMircosecondsPerInvocation="4010"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="341" invocations="176" avgMicrosecondsPerInvocation="1937" maxMicrosecondsPerInvocation="18897" standardDeviationMircosecondsPerInvocation="3487"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="293" invocations="251" avgMicrosecondsPerInvocation="1169" maxMicrosecondsPerInvocation="22476" standardDeviationMircosecondsPerInvocation="2341"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="261" invocations="216" avgMicrosecondsPerInvocation="1210" maxMicrosecondsPerInvocation="20320" standardDeviationMircosecondsPerInvocation="2498"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="259" invocations="176" avgMicrosecondsPerInvocation="1475" maxMicrosecondsPerInvocation="24834" standardDeviationMircosecondsPerInvocation="3369"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="244" invocations="176" avgMicrosecondsPerInvocation="1390" maxMicrosecondsPerInvocation="50537" standardDeviationMircosecondsPerInvocation="4383"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="233" invocations="176" avgMicrosecondsPerInvocation="1329" maxMicrosecondsPerInvocation="38074" standardDeviationMircosecondsPerInvocation="3541"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.impl.ZipCodeBaseFactory" totalMilliseconds="214" invocations="34" avgMicrosecondsPerInvocation="6300" maxMicrosecondsPerInvocation="207968" standardDeviationMircosecondsPerInvocation="35106"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="203" invocations="267" avgMicrosecondsPerInvocation="763" maxMicrosecondsPerInvocation="147237" standardDeviationMircosecondsPerInvocation="8986"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="182" invocations="231" avgMicrosecondsPerInvocation="789" maxMicrosecondsPerInvocation="29346" standardDeviationMircosecondsPerInvocation="2262"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="158" invocations="809" avgMicrosecondsPerInvocation="195" maxMicrosecondsPerInvocation="6899" standardDeviationMircosecondsPerInvocation="446"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.EqualsOperandShouldHaveClassCompatibleWithThis" totalMilliseconds="152" invocations="176" avgMicrosecondsPerInvocation="865" maxMicrosecondsPerInvocation="14489" standardDeviationMircosecondsPerInvocation="1747"/>
     </FindBugsProfile>
   </FindBugsSummary>
   <ClassFeatures></ClassFeatures>
