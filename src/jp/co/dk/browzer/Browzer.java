@@ -160,6 +160,42 @@ public class Browzer {
 		}
 		return returnAnchorList;
 	}
+
+	/**
+	 * 現在アクティブなページのURLとドメインが同一のアンカー一覧を取得します。<p/>
+	 * 現在アクティブなページに存在するすべてのアンカータグを取り出し、このページと同じドメインのURLのみ抽出し返却します。<br/>
+	 * 現在アクティブなページと同じドメインのアンカータグが存在しなかった場合、空のリストを返却します。<br/>
+	 * このページがHTMLでない場合、例外を送出します。
+	 * 
+	 * @return 同じドメインのアンカー一覧 
+	 * @throws BrowzingException このページがHTMLでない場合 
+	 */
+	public List<A> getAnchorSameDomain() throws BrowzingException {
+		List<A> returnAnchorList = new ArrayList<A>();
+		List<jp.co.dk.document.html.element.A> anchorList = this.pageManager.getPage().getAnchorSameDomain();
+		for (jp.co.dk.document.html.element.A anchor : anchorList) {
+			if (anchor instanceof A) returnAnchorList.add((A)anchor);
+		}
+		return returnAnchorList;
+	}
+	
+	/**
+	 * 現在アクティブなページのURLとドメインとパスが同一のアンカー一覧を取得します。<p/>
+	 * 現在アクティブなページに存在するすべてのアンカータグを取り出し、このページと同じドメインとパスのURLのみ抽出し返却します。<br/>
+	 * 現在アクティブなページと同じドメインとパスのアンカータグが存在しなかった場合、空のリストを返却します。<br/>
+	 * このページがHTMLでない場合、例外を送出します。
+	 * 
+	 * @return 同じドメインとパスのアンカー一覧 
+	 * @throws BrowzingException このページがHTMLでない場合 
+	 */
+	public List<A> getAnchorSamePath() throws BrowzingException {
+		List<A> returnAnchorList = new ArrayList<A>();
+		List<jp.co.dk.document.html.element.A> anchorList = this.pageManager.getPage().getAnchorSamePath();
+		for (jp.co.dk.document.html.element.A anchor : anchorList) {
+			if (anchor instanceof A) returnAnchorList.add((A)anchor);
+		}
+		return returnAnchorList;
+	}
 	
 	/**
 	 * フォーム一覧を取得します。

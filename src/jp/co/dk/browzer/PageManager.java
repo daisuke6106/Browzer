@@ -395,11 +395,14 @@ public class PageManager implements XmlConvertable{
 	public String toString() {
 		PageManager pageManager;
 		for (pageManager = this; pageManager.parentPage != null; pageManager = pageManager.parentPage);
-		StringBuilder sb = new StringBuilder();
+		
 		boolean[] islasted= {};
+		
 		String newline = System.getProperty("line.separator");
 		Page activePage = this.getPage();
-		this.toStringUrl(sb, islasted, newline, activePage);
+		
+		StringBuilder sb = new StringBuilder();
+		pageManager.toStringUrl(sb, islasted, newline, activePage);
 		return sb.toString();
 	}
 	
@@ -436,7 +439,7 @@ public class PageManager implements XmlConvertable{
 	protected String pageInfomationToString(PageManager activePageManager, Page activePage) {
 		StringBuilder sb = new StringBuilder();
 		Page thisPage  = activePageManager.getPage();
-		if (activePage == thisPage) sb.append(""); 
+		if (activePage == thisPage) sb.append("[[[active]]]"); 
 		sb.append(activePageManager.getPageStatus()).append(":URL=[").append(thisPage.getURL().toString()).append("]:");
 		String fileName  = thisPage.getFileName();
 		String extension = thisPage.getExtension();

@@ -482,6 +482,58 @@ public class Page implements XmlConvertable{
 	}
 	
 	/**
+	 * このページのURLとドメインが同一のアンカー一覧を取得します。<p/>
+	 * このページに存在するすべてのアンカータグを取り出し、このページと同じドメインのURLのみ抽出し返却します。<br/>
+	 * このページと同じドメインのアンカータグが存在しなかった場合、空のリストを返却します。<br/>
+	 * このページがHTMLでない場合、例外を送出します。
+	 * 
+	 * @return 同じドメインのアンカー一覧 
+	 * @throws BrowzingException このページがHTMLでない場合 
+	 */
+	public List<A> getAnchorSameDomain() throws BrowzingException {
+		List<A> allAnchorList        = this.getAnchor();
+		List<A> sameDomainAnchorList = new ArrayList<A>();
+		String  thisPageDmain        = this.url.getHost();
+		for (A anchor : allAnchorList) {
+			try {
+				Url url = new Url(anchor.getUrl());
+				String anchorsDomain = url.getHost();
+				if (thisPageDmain.equals(anchorsDomain)) sameDomainAnchorList.add(anchor);
+			} catch (BrowzingException e) {
+				continue;
+			}
+		}
+		return sameDomainAnchorList;
+	}
+	
+	/**
+	 * このページのURLとドメインとパスが同一のアンカー一覧を取得します。<p/>
+	 * このページに存在するすべてのアンカータグを取り出し、このページと同じドメインとパスのURLのみ抽出し返却します。<br/>
+	 * このページと同じドメインとパスのアンカータグが存在しなかった場合、空のリストを返却します。<br/>
+	 * このページがHTMLでない場合、例外を送出します。
+	 * 
+	 * @return 同じドメインとパスのアンカー一覧 
+	 * @throws BrowzingException このページがHTMLでない場合 
+	 */
+	public List<A> getAnchorSamePath() throws BrowzingException {
+		List<A>      allAnchorList        = this.getAnchor();
+		List<A>      sameDomainAnchorList = new ArrayList<A>();
+		String       thisPageDmain        = this.url.getHost();
+		List<String> thisPagePathList     = this.url.getPathList();
+		for (A anchor : allAnchorList) {
+			try {
+				Url url = new Url(anchor.getUrl());
+				String anchorsDomain         = url.getHost();
+				List<String> anchorsPathList = url.getPathList();
+				if (thisPageDmain.equals(anchorsDomain) && thisPagePathList.equals(anchorsPathList)) sameDomainAnchorList.add(anchor);
+			} catch (BrowzingException e) {
+				continue;
+			}
+		}
+		return sameDomainAnchorList;
+	}
+	
+	/**
 	 * フォーム一覧を取得します。<p/>
 	 * このページに存在するすべてのフォームタグを取得します。<br/>
 	 * このページがHTMLでない場合、例外を送出します。
