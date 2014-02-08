@@ -8,7 +8,8 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 import jp.co.dk.browzer.Page;
-import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.exception.PageRedirectException;
+import jp.co.dk.browzer.exception.PageRedirectException;
 import jp.co.dk.browzer.http.header.ResponseHeader;
 import jp.co.dk.browzer.http.header.record.HttpStatusCode;
 import jp.co.dk.document.Element;
@@ -47,14 +48,14 @@ public class PageRedirectHandler {
 	 * 1XX…情報返却として、そのままのページオブジェクトを返却します。<br/>
 	 * 2XX…正常に通信成功として、そのままのページオブジェクトを返却します。<br/>
 	 * 3XX…リダイレクトが実施され、リダイレクト先のページを返却します。<br/>
-	 * 4XX…クライアントエラーとして BrowzingException を throw します。<br/>
-	 * 5XX…サーバエラーとして BrowzingException を throw します。<br/>
+	 * 4XX…クライアントエラーとして PageRedirectException を throw します。<br/>
+	 * 5XX…サーバエラーとして PageRedirectException を throw します。<br/>
 	 * 
 	 * @param page 遷移元ページ
 	 * @return 遷移先ページ
-	 * @throws BrowzingException 遷移に失敗した場合
+	 * @throws PageRedirectException 遷移に失敗した場合
 	 */
-	Page redirect(Page page) throws BrowzingException {
+	Page redirect(Page page) throws PageRedirectException {
 		ResponseHeader header = page.getResponseHeader();
 		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();
 		switch(httpStatusCode.getStatusType()) {
@@ -86,9 +87,9 @@ public class PageRedirectHandler {
 	 * @param header ページのレスポンスヘッダ
 	 * @param page   ページオブジェクト
 	 * @return ページオブジェクト
-	 * @throws BrowzingException 遷移に失敗した場合
+	 * @throws PageRedirectException 遷移に失敗した場合
 	 */
-	protected Page redirectBy_INFOMATIONAL(ResponseHeader header, Page page) throws BrowzingException {
+	protected Page redirectBy_INFOMATIONAL(ResponseHeader header, Page page) throws PageRedirectException {
 		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);
 		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
 		return page;
@@ -104,9 +105,9 @@ public class PageRedirectHandler {
 	 * @param header ページのレスポンスヘッダ
 	 * @param page   ページオブジェクト
 	 * @return ページオブジェクト
-	 * @throws BrowzingException 遷移に失敗した場合
+	 * @throws PageRedirectException 遷移に失敗した場合
 	 */
-	protected Page redirectBy_SUCCESS(ResponseHeader header, Page page) throws BrowzingException {
+	protected Page redirectBy_SUCCESS(ResponseHeader header, Page page) throws PageRedirectException {
 		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);
 		File file = page.getDocument();
 		if (file instanceof HtmlDocument) {
@@ -122,7 +123,7 @@ public class PageRedirectHandler {
 						try {
 							Thread.sleep(sleepType * 1000);
 						} catch (InterruptedException e) {
-							throw new BrowzingException(ERROR_THREAD_STOP, e); 
+							throw new PageRedirectException(ERROR_THREAD_STOP, e); 
 						}
 						String url = meta.getAttribute("url");
 						return this.ceatePage(page.completionURL(url));
@@ -146,12 +147,12 @@ public class PageRedirectHandler {
 	 * @param header ページのレスポンスヘッダ
 	 * @param page   ページオブジェクト
 	 * @return ページオブジェクト
-	 * @throws BrowzingException 遷移に失敗した場合
+	 * @throws PageRedirectException 遷移に失敗した場合
 	 */
-	protected Page redirectBy_REDIRECTION(ResponseHeader header, Page page) throws BrowzingException {
+	protected Page redirectBy_REDIRECTION(ResponseHeader header, Page page) throws PageRedirectException {
 		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);
 		String location = header.getLocation();
-		if (location == null || location.equals("")) throw new BrowzingException(ERROR_REDIRECT_LOCATION_NOT_FOUND); 
+		if (location == null || location.equals("")) throw new PageRedirectException(ERROR_REDIRECT_LOCATION_NOT_FOUND); 
 		Page nextPage = this.ceatePage(page.completionURL(location));
 		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
 		return nextPage;
@@ -159,15 +160,15 @@ public class PageRedirectHandler {
 	
 	/**
 	 * HTTPサーバより返却されたHTTPステータスコードが「4XX」を返却した場合の制御を定義するメソッドです。<br/>
-	 * クライアントエラーとして BrowzingException を throw します。<br/>
+	 * クライアントエラーとして PageRedirectException を throw します。<br/>
 	 * 「401」が返却された場合、アクセス認証を行います。（未実装）
 	 * 
 	 * @param header ページのレスポンスヘッダ
 	 * @param page   ページオブジェクト
 	 * @return ページオブジェクト
-	 * @throws BrowzingException 遷移に失敗した場合
+	 * @throws PageRedirectException 遷移に失敗した場合
 	 */
-	protected Page redirectBy_CLIENT_ERROR(ResponseHeader header, Page page) throws BrowzingException {
+	protected Page redirectBy_CLIENT_ERROR(ResponseHeader header, Page page) throws PageRedirectException {
 		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);
 		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();
 		if (httpStatusCode == HttpStatusCode.STATUS_401) {
@@ -181,31 +182,31 @@ public class PageRedirectHandler {
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				// throw new BrowzingException(e);
+				// throw new PageRedirectException(e);
 			}
 			
 			System.out.print(INFO_USER.getMessage());
 		}
 		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
-		throw new BrowzingException(ERROR_HTTP_STATUS_CODE_IS_SENT_BACK_FROM_SERVER_HAS_RETURNED_NON_NORMAL, 
+		throw new PageRedirectException(ERROR_HTTP_STATUS_CODE_IS_SENT_BACK_FROM_SERVER_HAS_RETURNED_NON_NORMAL, 
 				new String[]{ httpStatusCode.getCode(), httpStatusCode.getMessage().getMessage(), page.getURL()});
 		
 	}
 	
 	/**
 	 * HTTPサーバより返却されたHTTPステータスコードが「5XX」を返却した場合の制御を定義するメソッドです。<br/>
-	 * サーバエラーとして BrowzingException を throw します。<br/>
+	 * サーバエラーとして PageRedirectException を throw します。<br/>
 	 * 
 	 * @param header ページのレスポンスヘッダ
 	 * @param page   ページオブジェクト
 	 * @return ページオブジェクト
-	 * @throws BrowzingException 遷移に失敗した場合
+	 * @throws PageRedirectException 遷移に失敗した場合
 	 */
-	protected Page redirectBy_SERVER_ERROR(ResponseHeader header, Page page) throws BrowzingException {
+	protected Page redirectBy_SERVER_ERROR(ResponseHeader header, Page page) throws PageRedirectException {
 		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);
 		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();
 		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
-		throw new BrowzingException(ERROR_HTTP_STATUS_CODE_IS_SENT_BACK_FROM_SERVER_HAS_RETURNED_NON_NORMAL, 
+		throw new PageRedirectException(ERROR_HTTP_STATUS_CODE_IS_SENT_BACK_FROM_SERVER_HAS_RETURNED_NON_NORMAL, 
 				new String[]{ httpStatusCode.getCode(), httpStatusCode.getMessage().getMessage(), page.getURL()});
 		
 	}
@@ -215,9 +216,9 @@ public class PageRedirectHandler {
 	 * 
 	 * @param url URL文字列
 	 * @return ページオブジェクト
-	 * @throws BrowzingException ページクラスの生成に失敗した場合
+	 * @throws PageRedirectException ページクラスの生成に失敗した場合
 	 */
-	protected Page ceatePage(String url) throws BrowzingException {
+	protected Page ceatePage(String url) throws PageRedirectException {
 		return new Page(url);
 	}
 }

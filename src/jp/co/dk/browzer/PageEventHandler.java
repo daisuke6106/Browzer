@@ -1,6 +1,7 @@
 package jp.co.dk.browzer;
 
 import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.exception.PageAccessException;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.html.element.MovableElement;
 import jp.co.dk.browzer.http.header.ResponseHeader;
@@ -95,9 +96,9 @@ public interface PageEventHandler {
 	
 	/**
 	 * コネクション生成中にエラーが発生した場合、呼び出されるイベント
-	 * @param browzingException 生成された例外オブジェクト
+	 * @param pageAccessException 生成された例外オブジェクト
 	 */
-	void errorOpenConnection(BrowzingException browzingException);
+	void errorOpenConnection(PageAccessException pageAccessException);
 	
 	/**
 	 * コネクション生成終了後に呼び出されるイベント

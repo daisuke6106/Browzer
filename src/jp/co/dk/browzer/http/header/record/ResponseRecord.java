@@ -6,6 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.exception.PageHeaderImproperException;
 import jp.co.dk.browzer.message.BrowzingMessage;
 
 /**
@@ -36,10 +37,10 @@ public class ResponseRecord {
 	 * @param headerMap
 	 * @throws BrowzingException
 	 */
-	public ResponseRecord(Map<String, List<String>> headerMap) throws BrowzingException {
+	public ResponseRecord(Map<String, List<String>> headerMap) throws PageHeaderImproperException {
 		List<String> responseRecordList = headerMap.get(null);
 		if (responseRecordList == null || responseRecordList.size() != 1) {
-			throw new BrowzingException(BrowzingMessage.ERROR_RECORD_RESPONSE_COULD_NOT_BE_OBTAINED);
+			throw new PageHeaderImproperException(BrowzingMessage.ERROR_RECORD_RESPONSE_COULD_NOT_BE_OBTAINED);
 		}
 		this.responseRecord = responseRecordList.get(0);
 		Matcher matcher = pattern.matcher(this.responseRecord);
@@ -48,7 +49,7 @@ public class ResponseRecord {
 			this.httpStatusCodeStr = matcher.group(2);
 			this.responsePhrase = matcher.group(3);
 		} else {
-			throw new BrowzingException(BrowzingMessage.ERROR_RECORD_RESPONSE_IS_NOT_A_PRESCRIBED_FORMAT, this.responseRecord);
+			throw new PageHeaderImproperException(BrowzingMessage.ERROR_RECORD_RESPONSE_IS_NOT_A_PRESCRIBED_FORMAT, this.responseRecord);
 		}
 		
 		for (HttpStatusCode httpStatusCode : HttpStatusCode.values()) {
@@ -58,7 +59,7 @@ public class ResponseRecord {
 		}
 		
 		if (this.httpStatusCode == null) {
-			throw new BrowzingException(BrowzingMessage.ERROR_HTTP_STATUS_CODE_IS_NOT_SPECIFIED_IN_THE_CODE_VALUE, this.httpStatusCodeStr);
+			throw new PageHeaderImproperException(BrowzingMessage.ERROR_HTTP_STATUS_CODE_IS_NOT_SPECIFIED_IN_THE_CODE_VALUE, this.httpStatusCodeStr);
 		}
 	}
 	

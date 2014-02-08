@@ -15,7 +15,9 @@ import java.util.List;
 import java.util.Map;
 
 import jp.co.dk.browzer.contents.BrowzingExtension;
-import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.exception.PageAccessException;
+import jp.co.dk.browzer.exception.PageHeaderImproperException;
+import jp.co.dk.browzer.exception.PageIllegalArgumentException;
 import jp.co.dk.browzer.http.header.ContentsType;
 import jp.co.dk.browzer.http.header.RequestHeader;
 import jp.co.dk.browzer.http.header.ResponseHeader;
@@ -79,9 +81,10 @@ public class Page implements XmlConvertable{
 	 * ページの情報はインスタンス生成時に読み込みます。<br/>
 	 * 
 	 * @param url URLを表す文字列
-	 * @throws BrowzingException ページインスタンス生成に失敗した場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 */
-	public Page(String url) throws BrowzingException {
+	public Page(String url) throws PageAccessException, PageIllegalArgumentException {
 		this(url, new HashMap<String,String>(), true, new ArrayList<PageEventHandler>());
 	}
 	
@@ -92,9 +95,10 @@ public class Page implements XmlConvertable{
 	 * 
 	 * @param url URLを表す文字列
 	 * @param requestHeader リクエストヘッダ
-	 * @throws BrowzingException ページインスタンス生成に失敗した場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 */
-	public Page(String url, Map<String, String> requestHeader) throws BrowzingException {
+	public Page(String url, Map<String, String> requestHeader) throws PageAccessException, PageIllegalArgumentException {
 		this(url, requestHeader, true, new ArrayList<PageEventHandler>());
 	}
 	
@@ -106,9 +110,10 @@ public class Page implements XmlConvertable{
 	 * @param url URLを表す文字列
 	 * @param requestHeader リクエストヘッダ
 	 * @param readDataFlg データ読み込みフラグ
-	 * @throws BrowzingException ページインスタンス生成に失敗した場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 */
-	public Page(String url, Map<String, String> requestHeader, boolean readDataFlg) throws BrowzingException {
+	public Page(String url, Map<String, String> requestHeader, boolean readDataFlg) throws PageAccessException, PageIllegalArgumentException {
 		this(url, requestHeader, readDataFlg, new ArrayList<PageEventHandler>());
 	}
 	
@@ -122,10 +127,11 @@ public class Page implements XmlConvertable{
 	 * @param url URLを表す文字列
 	 * @param requestHeader リクエストヘッダ
 	 * @param readDataFlg データ読み込みフラグ
-	 * @throws BrowzingException ページインスタンス生成に失敗した場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 */
-	public Page(String url, Map<String, String> requestHeader, boolean readDataFlg, List<PageEventHandler> pageEventHandlerList) throws BrowzingException {
-		if (url == null || url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);
+	public Page(String url, Map<String, String> requestHeader, boolean readDataFlg, List<PageEventHandler> pageEventHandlerList) throws PageAccessException, PageIllegalArgumentException {
+		if (url == null || url.equals("")) throw new PageIllegalArgumentException(ERROR_URL_IS_NOT_SET);
 		if (requestHeader == null) requestHeader = new HashMap<String, String>(); 
 		this.url                 = this.createUrl(url);
 		this.readDataFlg         = readDataFlg;
@@ -134,16 +140,24 @@ public class Page implements XmlConvertable{
 		
 		Map<String, String> requestHeaderByProperty = this.getRequestHeaderByPorperty();
 		requestHeaderByProperty.putAll(requestHeader);
-		this.requestHeader = this.createRequestHeader(requestHeaderByProperty);
+		try {
+			this.requestHeader = this.createRequestHeader(requestHeaderByProperty);
+		} catch (PageHeaderImproperException e) {
+			throw new PageIllegalArgumentException(ERROR_REQUEST_HEADER_IS_INVALID, e);
+		}
 		this.setRequestProperty(connection, requestHeaderByProperty);
 		try {
 			connection.connect();
 			this.connection = connection;
 		} catch (IOException e) {
-			throw new BrowzingException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, this.url.toString(), e );
+			throw new PageAccessException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, this.url.toString(), e );
 		}
 		Map<String, List<String>> responseHeader = connection.getHeaderFields();
-		this.responseHeader = this.createResponseHeader(responseHeader);
+		try {
+			this.responseHeader = this.createResponseHeader(responseHeader);
+		} catch (PageHeaderImproperException e) {
+			throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_INVALID, e);
+		}
 		if (readDataFlg) this.byteDump = this.getByteDump(connection);
 	}
 	
@@ -153,9 +167,10 @@ public class Page implements XmlConvertable{
 	 * ページの情報はインスタンス生成時に読み込みます。<br/>
 	 * 
 	 * @param form FORM要素
-	 * @throws BrowzingException ページインスタンス生成に失敗した場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 */
-	protected Page(Form form) throws BrowzingException {
+	protected Page(Form form) throws PageAccessException, PageIllegalArgumentException {
 		this(form, new HashMap<String, String>(), true, new ArrayList<PageEventHandler>());
 	}
 	
@@ -166,9 +181,10 @@ public class Page implements XmlConvertable{
 	 * 
 	 * @param form FORM要素
 	 * @param requestProperty リクエストヘッダマップ
-	 * @throws BrowzingException ページインスタンス生成に失敗した場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 */
-	protected Page(Form form, Map<String, String> requestProperty) throws BrowzingException {
+	protected Page(Form form, Map<String, String> requestProperty) throws PageAccessException, PageIllegalArgumentException {
 		this(form, requestProperty, true, new ArrayList<PageEventHandler>());
 	}
 	
@@ -180,9 +196,10 @@ public class Page implements XmlConvertable{
 	 * @param form FORM要素
 	 * @param requestProperty リクエストヘッダマップ
 	 * @param readDataFlg データ読み込みフラグ
-	 * @throws BrowzingException ページインスタンス生成に失敗した場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 */
-	protected Page(Form form, Map<String, String> requestProperty, boolean readDataFlg) throws BrowzingException {
+	protected Page(Form form, Map<String, String> requestProperty, boolean readDataFlg) throws PageAccessException, PageIllegalArgumentException {
 		this(form, requestProperty, readDataFlg, new ArrayList<PageEventHandler>());
 	}
 	
@@ -196,19 +213,24 @@ public class Page implements XmlConvertable{
 	 * @param form FORM要素
 	 * @param requestProperty リクエストヘッダマップ
 	 * @param readDataFlg データ読み込みフラグ
-	 * @throws BrowzingException ページインスタンス生成に失敗した場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 */
-	protected Page(Form form, Map<String, String> requestProperty, boolean readDataFlg, List<PageEventHandler> pageEventHandlerList) throws BrowzingException {
-		if (form == null) throw new BrowzingException(ERROR_FORM_IS_NOT_SPECIFIED);
+	protected Page(Form form, Map<String, String> requestProperty, boolean readDataFlg, List<PageEventHandler> pageEventHandlerList) throws PageAccessException, PageIllegalArgumentException {
+		if (form == null) throw new PageIllegalArgumentException(ERROR_FORM_IS_NOT_SPECIFIED);
 		try {
 			this.url = this.createUrl(form.getAction().getURL().toString());
 		} catch (HtmlDocumentException e) {
-			throw new BrowzingException(ERROR_AN_INVALID_URL_WAS_SPECIFIED, e);
+			throw new PageIllegalArgumentException(ERROR_AN_INVALID_URL_WAS_SPECIFIED, e);
 		}
 		this.readDataFlg    = readDataFlg;
 		this.eventHandler   = pageEventHandlerList;
 		if (requestProperty == null) requestProperty = new HashMap<String, String>(); 
-		this.requestHeader  = this.createRequestHeader(requestProperty);
+		try {
+			this.requestHeader = this.createRequestHeader(requestProperty);
+		} catch (PageHeaderImproperException e) {
+			throw new PageIllegalArgumentException(ERROR_REQUEST_HEADER_IS_INVALID, e);
+		}
 		URLConnection connection = this.createURLConnection(this.url.getUrlObject(), form.getMethod());
 		this.connection = this.setRequestProperty(connection, requestProperty);
 		try {
@@ -216,10 +238,14 @@ public class Page implements XmlConvertable{
 			outputStream.write(form.createMessage());
 			outputStream.close();
 		} catch (IOException e) {
-			throw new BrowzingException(ERROR_FAILED_TO_SEND_MESSAGE, new String[]{this.url.getURL(), form.getMethod().getMethod()}, e);
+			throw new PageAccessException(ERROR_FAILED_TO_SEND_MESSAGE, new String[]{this.url.getURL(), form.getMethod().getMethod()}, e);
 		}
 		Map<String, List<String>> responseHeader = connection.getHeaderFields();
-		this.responseHeader = this.createResponseHeader(responseHeader);
+		try {
+			this.responseHeader = this.createResponseHeader(responseHeader);
+		} catch (PageHeaderImproperException e) {
+			throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_INVALID, e);
+		}
 		if (readDataFlg) this.byteDump = this.getByteDump(connection);
 	}
 	
@@ -231,10 +257,11 @@ public class Page implements XmlConvertable{
 	 * @param requestHeader  リクエストヘッダ
 	 * @param responseHeader レスポンスヘッダ
 	 * @param data           ページデータ
-	 * @throws BrowzingException ページインスタンス生成に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageHeaderImproperException  リクエストヘッダ、またはレスポンスヘッダが不正であった場合
 	 */
-	protected Page(String url, Map<String,String> requestHeader, Map<String, List<String>> responseHeader, ByteDump data, List<PageEventHandler> pageEventHandlerList) throws BrowzingException {
-		if (url == null || url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);
+	protected Page(String url, Map<String,String> requestHeader, Map<String, List<String>> responseHeader, ByteDump data, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException, PageHeaderImproperException {
+		if (url == null || url.equals("")) throw new PageIllegalArgumentException(ERROR_URL_IS_NOT_SET);
 		this.url            = this.createUrl(url);
 		this.requestHeader  = this.createRequestHeader(requestHeader);
 		this.responseHeader = this.createResponseHeader(responseHeader);
@@ -270,11 +297,12 @@ public class Page implements XmlConvertable{
 	 * @param form 遷移先FORM
 	 * @param requestHeader リクエストヘッダ
 	 * @return 遷移先のページオブジェクト
-	 * @throws BrowzingException 遷移に失敗した場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 */
-	Page move(jp.co.dk.browzer.html.element.Form form, Map<String, String> requestHeader) throws BrowzingException {
-		if (form == null) throw new BrowzingException(ERROR_SPECIFIED_FORM_IS_NOT_SET);
-		if (!this.equals(form.getPage())) throw new BrowzingException(ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
+	Page move(jp.co.dk.browzer.html.element.Form form, Map<String, String> requestHeader) throws PageAccessException, PageIllegalArgumentException {
+		if (form == null) throw new PageIllegalArgumentException(ERROR_SPECIFIED_FORM_IS_NOT_SET);
+		if (!this.equals(form.getPage())) throw new PageIllegalArgumentException(ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
 		if (requestHeader == null) requestHeader = new HashMap<String, String>();
 		Map<String, String> defaultRequestHeader  = this.getRequestHeaderByPorperty();
 		Map<String, String> cookieRequestHeader   = this.getCookies();
@@ -328,15 +356,15 @@ public class Page implements XmlConvertable{
 	 * すでにドキュメントが生成されていた場合、キャッシュされているドキュメントオブジェクトを返却します。
 	 * 
 	 * @return ドキュメントオブジェクト
-	 * @throws BrowzingException ドキュメントオブジェクトの生成に失敗した場合
+	 * @throws PageAccessException ドキュメントオブジェクトの生成に失敗した場合
 	 */
-	public jp.co.dk.document.File getDocument() throws BrowzingException {
+	public jp.co.dk.document.File getDocument() throws PageAccessException {
 		if (this.document != null) return this.document;
 		for (PageEventHandler handler : this.eventHandler) handler.beforeCreateDocument(this);
 		try {
 			this.document = this.getDocument(new DocumentFactory(this));
 			return this.document;
-		} catch (BrowzingException e) {
+		} catch (PageAccessException e) {
 			for (PageEventHandler handler : this.eventHandler) handler.errorCreateDocument(e);
 			throw e;
 		}finally {
@@ -358,7 +386,7 @@ public class Page implements XmlConvertable{
 	 * @return ドキュメントオブジェクト
 	 * @throws BrowzingException ドキュメントオブジェクトの生成に失敗した場合
 	 */
-	public jp.co.dk.document.File getDocument(DocumentFactory documentFactory) throws BrowzingException {
+	public jp.co.dk.document.File getDocument(DocumentFactory documentFactory) throws PageAccessException {
 		InputStream inputStream = this.getData().getStream();
 		ContentsType contentsType = this.responseHeader.getContentsType();
 		if (contentsType != null) {
@@ -570,10 +598,10 @@ public class Page implements XmlConvertable{
 	 * このページがすでにデータを取得しており、メモリー内に読み込み済みだった場合、そのデータを返却します。<br/>
 	 * このページのデータを読み込んでいなかった場合、ページからそのデータをダウンロード、メモリー内に保存してから返却します。
 	 * 
-	 * @return ページデータ
-	 * @throws BrowzingException ページデータの取得に失敗した場合
+	 * @return バイトダンプのインスタンス
+	 * @throws PageAccessException 読み込みにて例外が発生、またはドキュメント解析に失敗した場合
 	 */
-	public ByteDump getData() throws BrowzingException {
+	public ByteDump getData() throws PageAccessException {
 		if (this.byteDump == null) this.byteDump = this.getByteDump(this.connection); 
 		return this.byteDump;
 	}
@@ -640,9 +668,9 @@ public class Page implements XmlConvertable{
 	 * 指定のURLの文字列を元にUrlオブジェクトを生成し、返却します。
 	 * @param url URL文字列
 	 * @return Urlオブジェクト
-	 * @throws BrowzingException URL文字列がnullまたは、空文字だった場合
+	 * @throws PageIllegalArgumentException URL文字列がnullまたは、空文字だった場合
 	 */
-	protected Url createUrl(String url) throws BrowzingException {
+	protected Url createUrl(String url) throws PageIllegalArgumentException {
 		return new Url(url);
 	}
 	
@@ -691,7 +719,7 @@ public class Page implements XmlConvertable{
 	 * @return URLコネクション
 	 * @throws BrowzingException URLが参照するリモートオブジェクトへの接続時に入出力例外が発生した場合
 	 */
-	protected HttpURLConnection createURLConnection(URL urlObj, HtmlRequestMethodName method) throws BrowzingException{
+	protected HttpURLConnection createURLConnection(URL urlObj, HtmlRequestMethodName method) throws PageAccessException{
 		for (PageEventHandler handler : this.eventHandler) handler.beforeOpenConnection(this.url, method);
 		HttpURLConnection urlConnection;
 		try {
@@ -701,9 +729,9 @@ public class Page implements XmlConvertable{
 			urlConnection.setDoInput(true);
 			urlConnection.setFollowRedirects(false);
 		} catch (IOException e) {
-			BrowzingException browzingException = new BrowzingException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, urlObj.toString(), e );
-			for (PageEventHandler handler : this.eventHandler) handler.errorOpenConnection(browzingException);
-			throw browzingException;
+			PageAccessException pageAccessException = new PageAccessException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, urlObj.toString(), e );
+			for (PageEventHandler handler : this.eventHandler) handler.errorOpenConnection(pageAccessException);
+			throw pageAccessException;
 		} finally {
 			for (PageEventHandler handler : this.eventHandler) handler.afterOpenConnection();
 		}
@@ -716,14 +744,14 @@ public class Page implements XmlConvertable{
 	 * 
 	 * @param connection URLコネクション
 	 * @return 入力ストリーム
-	 * @throws BrowzingException 入力ストリームの作成中に入出力エラーが発生した場合
+	 * @throws PageAccessException 入力ストリームの作成中に入出力エラーが発生した場合
 	 */
-	protected InputStream getUrlInputStream( URLConnection connection ) throws BrowzingException {
+	protected InputStream getUrlInputStream( URLConnection connection ) throws PageAccessException {
 		InputStream inputStream;
 		try {
 			inputStream = connection.getInputStream();
 		} catch (IOException e) {
-			throw new BrowzingException(ERROR_IO_ERROR_WAS_OCCURRED_WHILE_CREATING_THE_INPUT_STREAM, this.url.toString() ,e);
+			throw new PageAccessException(ERROR_IO_ERROR_WAS_OCCURRED_WHILE_CREATING_THE_INPUT_STREAM, this.url.toString() ,e);
 		}
 		return inputStream;
 	}
@@ -842,17 +870,18 @@ public class Page implements XmlConvertable{
 	 * 
 	 * @param connection URLコネクションオブジェクト
 	 * @return バイトダンプのインスタンス
-	 * @throws BrowzingException 読み込みにて例外が発生した場合
+	 * @throws PageAccessException 読み込みにて例外が発生、またはドキュメント解析に失敗した場合
 	 */
-	protected ByteDump getByteDump(URLConnection connection) throws BrowzingException {
+	protected ByteDump getByteDump(URLConnection connection) throws PageAccessException {
 		for (PageEventHandler handler : this.eventHandler) handler.beforeGetData(this);
+		InputStream pageDataStream = this.getUrlInputStream(connection);
 		try {
-			ByteDump data = new ByteDump(this.getUrlInputStream(connection));
+			ByteDump data = new ByteDump(pageDataStream);
 			return data;
 		} catch (DocumentException e) {
-			BrowzingException browzingException = new BrowzingException(ERROR_READ_PROCESS_FAILED, this.url.getURL(), e);
-			for (PageEventHandler handler : this.eventHandler) handler.errorGetData(browzingException);
-			throw browzingException;
+			PageAccessException pageAccessError = new PageAccessException(ERROR_READ_PROCESS_FAILED, this.url.getURL(), e);
+			for (PageEventHandler handler : this.eventHandler) handler.errorGetData(pageAccessError);
+			throw pageAccessError;
 		} finally {
 			for (PageEventHandler handler : this.eventHandler) handler.afterGetData(this);
 		}
@@ -864,9 +893,9 @@ public class Page implements XmlConvertable{
 	 * 
 	 * @param requestHeader リクエストヘッダのマップオブジェクト
 	 * @return リクエストヘッダオブジェクト
-	 * @throws BrowzingException リクエストヘッダのインスタンス生成に失敗した場合
+	 * @throws PageHeaderImproperException リクエストヘッダのインスタンス生成に失敗した場合
 	 */
-	protected RequestHeader createRequestHeader(Map<String, String> requestHeader) throws BrowzingException {
+	protected RequestHeader createRequestHeader(Map<String, String> requestHeader) throws PageHeaderImproperException {
 		return new RequestHeader(requestHeader);
 	}
 	
@@ -875,9 +904,9 @@ public class Page implements XmlConvertable{
 	 * 
 	 * @param responseHeader レスポンスヘッダのマップオブジェクト
 	 * @return レスポンスヘッダオブジェクト
-	 * @throws BrowzingException レスポンスヘッダのインスタンス生成に失敗した場合
+	 * @throws PageHeaderImproperException レスポンスヘッダのインスタンス生成に失敗した場合
 	 */
-	protected ResponseHeader createResponseHeader(Map<String, List<String>> responseHeader) throws BrowzingException {
+	protected ResponseHeader createResponseHeader(Map<String, List<String>> responseHeader) throws PageHeaderImproperException {
 		return new ResponseHeader(responseHeader);
 	}
 	

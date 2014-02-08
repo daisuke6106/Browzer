@@ -4,6 +4,7 @@ import java.io.InputStream;
 
 import jp.co.dk.browzer.contents.BrowzingExtension;
 import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.exception.PageAccessException;
 import jp.co.dk.browzer.html.HtmlElementFactory;
 import jp.co.dk.browzer.http.header.ContentsType;
 import jp.co.dk.document.File;
@@ -37,9 +38,9 @@ public class DocumentFactory {
 	 * @param extension URLファイル拡張子
 	 * @param inputStream 入力ストリーム
 	 * @return Documentオブジェクト
-	 * @throws BrowzingExtension Documentの生成に失敗した場合
+	 * @throws PageAccessException Documentの生成に失敗した場合
 	 */
-	public File create(BrowzingExtension extension, InputStream inputStream) throws BrowzingException {
+	public File create(BrowzingExtension extension, InputStream inputStream) throws PageAccessException {
 		try {
 			if (extension == null) return new jp.co.dk.document.File(inputStream);
 			switch (extension) {
@@ -51,7 +52,7 @@ public class DocumentFactory {
 					return new jp.co.dk.document.File(inputStream);
 			}
 		} catch (DocumentException e) {
-			throw new BrowzingException(ERROR_FAILED_TO_CREATE_DOCUMENT_INSTANCE, e);
+			throw new PageAccessException(ERROR_FAILED_TO_CREATE_DOCUMENT_INSTANCE, e);
 		}
 	}
 	
@@ -61,9 +62,9 @@ public class DocumentFactory {
 	 * @param contentsType コンテンツタイプ
 	 * @param inputStream 入力ストリーム
 	 * @return Documentオブジェクト
-	 * @throws BrowzingExtension Documentの生成に失敗した場合
+	 * @throws PageAccessException Documentの生成に失敗した場合
 	 */
-	public File create(ContentsType contentsType, InputStream inputStream) throws BrowzingException {
+	public File create(ContentsType contentsType, InputStream inputStream) throws PageAccessException {
 		try {
 			if (contentsType == null) throw new BrowzingException(ERROR_NON_SUPPORTED_EXTENSION);
 			switch (contentsType) {
@@ -75,7 +76,7 @@ public class DocumentFactory {
 					return new jp.co.dk.document.File(inputStream);
 			}
 		} catch (DocumentException e) {
-			throw new BrowzingException(ERROR_FAILED_TO_CREATE_DOCUMENT_INSTANCE, e);
+			throw new PageAccessException(ERROR_FAILED_TO_CREATE_DOCUMENT_INSTANCE, e);
 		}
 	}
 	

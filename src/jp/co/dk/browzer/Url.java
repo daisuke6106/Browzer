@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.exception.PageIllegalArgumentException;
 
 /**
  * URLは、URLを元にそのURLのプロトコル名、ホスト名、パス、パラメータの文字列などを取得するメソッドを保有するクラスです。
@@ -45,10 +45,10 @@ public class Url {
 	 * URL文字列からこのURLオブジェクトを生成する。
 	 * 
 	 * @param url URL文字列
-	 * @throws BrowzingException URL文字列がnullまたは、空文字だった場合
+	 * @throws PageIllegalArgumentException URL文字列がnullまたは、空文字だった場合
 	 */
-	public Url(String url) throws BrowzingException {
-		if (url == null || url.equals("")) throw new BrowzingException(ERROR_URL_IS_NOT_SET);
+	public Url(String url) throws PageIllegalArgumentException {
+		if (url == null || url.equals("")) throw new PageIllegalArgumentException(ERROR_URL_IS_NOT_SET);
 		this.url        = url;
 		this.urlObj     = this.createURL(url);
 		this.protocol   = this.getProtocol(this.urlObj);
@@ -125,14 +125,14 @@ public class Url {
 	 * 
 	 * @param url URL文字列
 	 * @return URLオブジェクト
-	 * @throws BrowzingException 指定されたURL文字列に指定されたプロトコルが未知である場合
+	 * @throws PageIllegalArgumentException 指定されたURL文字列に指定されたプロトコルが未知である場合
 	 */
-	protected URL createURL(String url) throws BrowzingException{
+	protected URL createURL(String url) throws PageIllegalArgumentException{
 		URL urlObj;
 		try {
 			urlObj = new URL(url);
 		} catch (MalformedURLException e1) {
-			throw new BrowzingException( ERROR_PROTOCOL_OF_THE_URL_SPECIFIED_IS_UNKNOWN, url, e1 );
+			throw new PageIllegalArgumentException( ERROR_PROTOCOL_OF_THE_URL_SPECIFIED_IS_UNKNOWN, url, e1 );
 		}
 		return urlObj;
 	}

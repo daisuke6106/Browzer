@@ -139,6 +139,12 @@ public class BrowzingMessage extends AbstractMessage {
 	/** HTTPヘッダに設定されたリソースの最終更新時刻の変換に失敗しました。日付フォーマットが複数存在します。Last-Modified=[{0}] */
 	public static final BrowzingMessage ERROR_FAILED_TO_CONVERT_LAST_MODIFIED_FIRLD_MORE_THEN_ONE = new BrowzingMessage("E040");
 	
+	/** リクエストヘッダが不正です。 */
+	public static final BrowzingMessage ERROR_REQUEST_HEADER_IS_INVALID = new BrowzingMessage("E041");
+	
+	/** レスポンスヘッダが不正です。 */
+	public static final BrowzingMessage ERROR_RESPONSE_HEADER_IS_INVALID = new BrowzingMessage("E041");
+	
 	/** HTTPステータスコード：100 クライアントにリクエストを継続することを指示します。 */
 	public static final BrowzingMessage HTTP_STATUS_CODE_100 = new BrowzingMessage("STATUS100");
 	

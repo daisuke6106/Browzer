@@ -325,6 +325,34 @@ public class TestPage extends TestBrowzerFoundation {
 	}
 	
 	@Test
+	public void getAnchorSameDomain() {
+		// URLがHTMLでない場合、例外が送出されること。
+			try {
+				new Page("http://blog-imgs-21-origin.fc2.com/v/i/p/vipvipblogblog/13944.jpg").getAnchorSameDomain();
+				fail();
+			} catch (BrowzingException e) {
+				if (e.getMessageObj() != ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML) fail(e);
+			}
+			try {
+				new Page("http://rss.dailynews.yahoo.co.jp/fc/rss.xml").getAnchorSameDomain();
+				fail();
+			} catch (BrowzingException e) {
+				if (e.getMessageObj() != ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML) fail(e);
+			}
+			
+			// 正常なHTMLのページの場合、正常に処理が完了すること。
+			try {
+				List<A> anchors = new Page("http://news.2chblog.jp/archives/51702010.html").getAnchorSameDomain();
+				for (A anchor : anchors){
+					Url thisAnchorUrl = new Url(anchor.getUrl());
+					assertEquals(thisAnchorUrl.getHost(), "news.2chblog.jp");
+				}
+			} catch (BrowzingException e) {
+				fail(e);
+			}
+	}
+	
+	@Test
 	public void getForm() {
 		// URLがHTMLでない場合、例外が送出されること。
 		try {

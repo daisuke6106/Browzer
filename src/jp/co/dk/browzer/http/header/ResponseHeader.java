@@ -11,6 +11,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.exception.PageHeaderImproperException;
 import jp.co.dk.browzer.http.header.record.ResponseRecord;
 
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
@@ -42,9 +43,9 @@ public class ResponseHeader implements Serializable{
 	 * マップを元にその通信にて使用されるHTTPヘッダを取り出し本オブジェクトに保持します。
 	 * 
 	 * @param responseHeader レスポンスヘッダー
-	 * @throws BrowzingException ヘッダ設定値が不正、またはサポートできない場合
+	 * @throws PageHeaderImproperException ヘッダ設定値が不正、またはサポートできない場合
 	 */
-	public ResponseHeader(Map<String, List<String>> responseHeader) throws BrowzingException {
+	public ResponseHeader(Map<String, List<String>> responseHeader) throws PageHeaderImproperException {
 		this.headerMap      = new HashMap<String, List<String>>(responseHeader);
 		this.responseRecord = new ResponseRecord(this.headerMap);
 		
@@ -170,17 +171,17 @@ public class ResponseHeader implements Serializable{
 	 * ヘッダにLast-Modifiedが複数設定されていた、または、日付が不正な日付フォーマットで合った場合、例外を送出します。
 	 * 
 	 * @return 最終更新日付
-	 * @throws BrowzingException ヘッダにLast-Modifiedが複数設定されていた、または、日付が不正な日付フォーマットで合った場合
+	 * @throws PageHeaderImproperException ヘッダにLast-Modifiedが複数設定されていた、または、日付が不正な日付フォーマットで合った場合
 	 */
-	public Date getLastModified() throws BrowzingException {
+	public Date getLastModified() throws PageHeaderImproperException {
 		List<String> lastModifideList = this.getHeader(HeaderField.LAST_MODIFIED);
 		if (lastModifideList.size() == 0) return null; 
-		if (lastModifideList.size() > 1) throw new BrowzingException(ERROR_FAILED_TO_CONVERT_LAST_MODIFIED_FIRLD_MORE_THEN_ONE, lastModifideList.toString());
+		if (lastModifideList.size() > 1) throw new PageHeaderImproperException(ERROR_FAILED_TO_CONVERT_LAST_MODIFIED_FIRLD_MORE_THEN_ONE, lastModifideList.toString());
 		String lastModifideStr = lastModifideList.get(0);
 		try {
 			return this.dateFormat.parse(lastModifideStr);
 		} catch (ParseException e) {
-			throw new BrowzingException(ERROR_FAILED_TO_CONVERT_LAST_MODIFIED_FORMAT_UNKNOWN, lastModifideStr, e);
+			throw new PageHeaderImproperException(ERROR_FAILED_TO_CONVERT_LAST_MODIFIED_FORMAT_UNKNOWN, lastModifideStr, e);
 		}
 	}
 	

@@ -77,6 +77,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 	
 	@Test
 	public void move_anchor() {
+		
 		// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝アンカー＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 		// 遷移先にnullを指定した場合、例外が送出されることを確認。
 		try {
@@ -93,7 +94,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 			String url = super.getRandomUrl();
 			Browzer browzer1 = super.getBrowzer(url);
 			Browzer browzer2 = super.getBrowzer(url);
-			Page page = browzer2.move(browzer1.getAnchor().get(0));
+			Page page = browzer2.move(browzer1.getAnchorSameDomain().get(0));
 			fail();
 		} catch (BrowzingException e) {
 			if ( e.getMessageObj() != ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) fail(e);
@@ -102,7 +103,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 		// 遷移先に指定したアンカーに遷移先が設定されていなかった場合、例外が送出されることを確認。
 		try {
 			Browzer browzer1 = getBrowzer();
-			final A anchor = (A) super.getRandomElement(browzer1.getAnchor(), rule);
+			final A anchor = (A) super.getRandomElement(browzer1.getAnchorSameDomain(), rule);
 			new Expectations(anchor) {{
 				anchor.getHref();
 	            returns("");
@@ -116,11 +117,11 @@ public class TestBrowser extends TestBrowzerFoundation {
 		// URLオブジェクトを指定した場合、正常に遷移できること。
 		try {
 			Browzer browzer1 = getBrowzer();
-			A anchor1 = super.getRandomElement(browzer1.getAnchor());
+			A anchor1 = super.getRandomElement(browzer1.getAnchorSameDomain());
 			browzer1.move(anchor1);
-			A anchor2 = super.getRandomElement(browzer1.getAnchor());
+			A anchor2 = super.getRandomElement(browzer1.getAnchorSameDomain());
 			browzer1.move(anchor2);
-			A anchor3 = super.getRandomElement(browzer1.getAnchor());
+			A anchor3 = super.getRandomElement(browzer1.getAnchorSameDomain());
 			browzer1.move(anchor3);
 			
 		} catch (BrowzingException e) {
@@ -131,7 +132,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 		// ページ遷移上限数０で遷移した場合
 		try {
 			Browzer browzer1 = super.getBrowzer(0);
-			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchorSameDomain(), rule));
 			fail();
 		} catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_REACHED_TO_THE_MAXIMUM_LEVEL) fail(e);
@@ -141,8 +142,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 		// ページ遷移上限数１で遷移した場合
 		try {
 			Browzer browzer1 = super.getBrowzer(1);
-			browzer1.move(super.getRandomElement(browzer1.getAnchor(),rule));
-			browzer1.move(super.getRandomElement(browzer1.getAnchor(),rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchorSameDomain(),rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchorSameDomain(),rule));
 			fail();
 		} catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_REACHED_TO_THE_MAXIMUM_LEVEL) fail(e);
@@ -152,10 +153,10 @@ public class TestBrowser extends TestBrowzerFoundation {
 		// ページ遷移上限数５で遷移した場合
 		try {
 			Browzer browzer1 = super.getBrowzer(3);
-			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
-			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
-			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
-			browzer1.move(super.getRandomElement(browzer1.getAnchor(), rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchorSameDomain(), rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchorSameDomain(), rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchorSameDomain(), rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchorSameDomain(), rule));
 			fail();
 		} catch (BrowzingException e) {
 			assertEquals(e.getMessageObj(), ERROR_REACHED_TO_THE_MAXIMUM_LEVEL);
@@ -404,7 +405,7 @@ public class TestBrowser extends TestBrowzerFoundation {
 		try {
 			String url = super.getRandomUrl();
 			Browzer browzer1 = super.getBrowzer(url);
-			A anchor = super.getRandomElement(browzer1.getAnchor());
+			A anchor = super.getRandomElement(browzer1.getAnchorSameDomain());
 			browzer1.move(anchor);
 			browzer1.back();
 			Page page = browzer1.getPage();
@@ -415,11 +416,11 @@ public class TestBrowser extends TestBrowzerFoundation {
 	}
 	
 	@Test
-	public void getAnchor() {
+	public void getAnchorSameDomain() {
 		// ページ遷移後、戻るメソッドを実施した場合、以前の画面に戻ること
 		try {
 			Browzer browzer1   = super.getBrowzer();
-			List<A> anchorList = browzer1.getAnchor();
+			List<A> anchorList = browzer1.getAnchorSameDomain();
 			for (A anchor : anchorList ) {
 				assertThat(anchor.getTagName(), is("a") );
 			}
@@ -449,21 +450,21 @@ public class TestBrowser extends TestBrowzerFoundation {
 		try {
 			String url1 = super.getRandomUrl();
 			Browzer browzer1 = super.getBrowzer(url1, 3);
-			browzer1.move(super.getRandomElement(browzer1.getAnchor(),rule));
-			browzer1.move(super.getRandomElement(browzer1.getAnchor(),rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchorSameDomain(),rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchorSameDomain(),rule));
 			if (!browzer1.ableMoveNextPage()) fail(); 
-			browzer1.move(super.getRandomElement(browzer1.getAnchor(),rule));
+			browzer1.move(super.getRandomElement(browzer1.getAnchorSameDomain(),rule));
 			if (browzer1.ableMoveNextPage()) fail(); 
 			
 			String url2 = super.getRandomUrl();
 			Browzer browzer2 = super.getBrowzer(url2);
-			browzer2.move(super.getRandomElement(browzer2.getAnchor(),rule));
+			browzer2.move(super.getRandomElement(browzer2.getAnchorSameDomain(),rule));
 			if (!browzer2.ableMoveNextPage()) fail();
-			browzer2.move(super.getRandomElement(browzer2.getAnchor(),rule));
+			browzer2.move(super.getRandomElement(browzer2.getAnchorSameDomain(),rule));
 			if (!browzer2.ableMoveNextPage()) fail(); 
-			browzer2.move(super.getRandomElement(browzer2.getAnchor(),rule));
+			browzer2.move(super.getRandomElement(browzer2.getAnchorSameDomain(),rule));
 			if (!browzer2.ableMoveNextPage()) fail(); 
-			browzer2.move(super.getRandomElement(browzer2.getAnchor(),rule));
+			browzer2.move(super.getRandomElement(browzer2.getAnchorSameDomain(),rule));
 			if (!browzer2.ableMoveNextPage()) fail(); 
 		} catch (BrowzingException e) {
 			fail(e);

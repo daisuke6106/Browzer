@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.exception.PageHeaderImproperException;
 
 /**
  * RequestHeaderは、HTTP通信にて使用されるHTTPヘッダを表すクラス
@@ -25,9 +26,9 @@ public class RequestHeader implements Serializable{
 	 * マップを元にその通信にて使用されるHTTPヘッダを取り出し本オブジェクトに保持します。
 	 * 
 	 * @param responseHeader レスポンスヘッダー
-	 * @throws BrowzingException ヘッダ設定値が不正、またはサポートできない場合
+	 * @throws PageHeaderImproperException ヘッダ設定値が不正、またはサポートできない場合
 	 */
-	public RequestHeader(Map<String, String> requestHeader) throws BrowzingException {
+	public RequestHeader(Map<String, String> requestHeader) throws PageHeaderImproperException {
 		this.headerMap = new HashMap<String, String>(requestHeader);
 	}
 	
