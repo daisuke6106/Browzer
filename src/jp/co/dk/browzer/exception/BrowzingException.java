@@ -26,7 +26,7 @@ public class BrowzingException extends AbstractMessageException{
 	 * @param msg メッセージ定数インスタンス
 	 * @since 1.0
 	 */
-	public BrowzingException(MessageInterface msg){
+	protected BrowzingException(MessageInterface msg){
 		super(msg);
 	}
 	
@@ -39,7 +39,7 @@ public class BrowzingException extends AbstractMessageException{
 	 * @param str メッセージ埋め込み文字列
 	 * @since 1.0
 	 */
-	public BrowzingException(MessageInterface msg, String str){
+	protected BrowzingException(MessageInterface msg, String str){
 		super(msg, str);
 	}
 	
@@ -52,7 +52,7 @@ public class BrowzingException extends AbstractMessageException{
 	 * @param list メッセージ埋め込み文字列一覧
 	 * @since 1.0
 	 */
-	public BrowzingException(MessageInterface msg, List<String> list){
+	protected BrowzingException(MessageInterface msg, List<String> list){
 		super(msg, list);
 	}
 	
@@ -65,7 +65,7 @@ public class BrowzingException extends AbstractMessageException{
 	 * @param str メッセージ埋め込み文字列一覧
 	 * @since 1.0
 	 */
-	public BrowzingException(MessageInterface msg, String[] str){
+	protected BrowzingException(MessageInterface msg, String[] str){
 		super(msg, str);
 	}
 	
@@ -78,7 +78,7 @@ public class BrowzingException extends AbstractMessageException{
 	 * @param throwable 例外インスタンス
 	 * @since 1.0
 	 */
-	public BrowzingException(MessageInterface msg, Throwable throwable){
+	protected BrowzingException(MessageInterface msg, Throwable throwable){
 		super(msg, throwable);
 	}
 	
@@ -92,7 +92,7 @@ public class BrowzingException extends AbstractMessageException{
 	 * @param throwable 例外インスタンス
 	 * @since 1.0
 	 */
-	public BrowzingException(MessageInterface msg, String str, Throwable throwable){
+	protected BrowzingException(MessageInterface msg, String str, Throwable throwable){
 		super(msg, str, throwable);
 	}
 	
@@ -106,7 +106,7 @@ public class BrowzingException extends AbstractMessageException{
 	 * @param throwable 例外インスタンス
 	 * @since 1.0
 	 */
-	public BrowzingException(MessageInterface msg, List<String> list,Throwable throwable){
+	protected BrowzingException(MessageInterface msg, List<String> list,Throwable throwable){
 		super(msg, list, throwable);
 	}
 	
@@ -120,7 +120,7 @@ public class BrowzingException extends AbstractMessageException{
 	 * @param throwable 例外インスタンス
 	 * @since 1.0
 	 */
-	public BrowzingException(MessageInterface msg, String[] str, Throwable throwable){
+	protected BrowzingException(MessageInterface msg, String[] str, Throwable throwable){
 		super(msg, str, throwable);
 	}
 }
