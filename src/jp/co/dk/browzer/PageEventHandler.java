@@ -2,9 +2,11 @@ package jp.co.dk.browzer;
 
 import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.exception.PageAccessException;
+import jp.co.dk.browzer.exception.PageIllegalArgumentException;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.html.element.MovableElement;
 import jp.co.dk.browzer.http.header.ResponseHeader;
+import jp.co.dk.document.exception.DocumentException;
 import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 
 /**
@@ -67,6 +69,21 @@ public interface PageEventHandler {
 	 * @param page   ページオブジェクト
 	 */
 	void beforeRedirect(ResponseHeader header, Page page);
+	
+	/**
+	 * リダイレクトハンドラにて例外が発生した場合に実行されるイベント
+	 */
+	void errorRedirect(PageIllegalArgumentException e);
+	
+	/**
+	 * リダイレクトハンドラにて例外が発生した場合に実行されるイベント
+	 */
+	void errorRedirect(PageAccessException e);
+	
+	/**
+	 * リダイレクトハンドラにて例外が発生した場合に実行されるイベント
+	 */
+	void errorRedirect(DocumentException e);
 	
 	/**
 	 * リダイレクトハンドラが実施された後に実行されるイベント
