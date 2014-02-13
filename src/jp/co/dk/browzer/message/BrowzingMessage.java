@@ -143,10 +143,10 @@ public class BrowzingMessage extends AbstractMessage {
 	public static final BrowzingMessage ERROR_REQUEST_HEADER_IS_INVALID = new BrowzingMessage("E041");
 	
 	/** レスポンスヘッダが不正です。 */
-	public static final BrowzingMessage ERROR_RESPONSE_HEADER_IS_INVALID = new BrowzingMessage("E041");
+	public static final BrowzingMessage ERROR_RESPONSE_HEADER_IS_INVALID = new BrowzingMessage("E042");
 	
 	/** リダイレクトに失敗しました。 */
-	public static final BrowzingMessage ERROR_FAILED_TO_REDIRECT = new BrowzingMessage("E042");
+	public static final BrowzingMessage ERROR_FAILED_TO_REDIRECT = new BrowzingMessage("E043");
 	
 	/** HTTPステータスコード：100 クライアントにリクエストを継続することを指示します。 */
 	public static final BrowzingMessage HTTP_STATUS_CODE_100 = new BrowzingMessage("STATUS100");

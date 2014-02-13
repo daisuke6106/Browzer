@@ -8,9 +8,12 @@ import jp.co.dk.browzer.PageEventHandler;
 import jp.co.dk.browzer.PageManager;
 import jp.co.dk.browzer.Url;
 import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.exception.PageAccessException;
+import jp.co.dk.browzer.exception.PageIllegalArgumentException;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.html.element.MovableElement;
 import jp.co.dk.browzer.http.header.ResponseHeader;
+import jp.co.dk.document.exception.DocumentException;
 import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 
 public class PrintPageEventHandler implements PageEventHandler{
@@ -79,13 +82,25 @@ public class PrintPageEventHandler implements PageEventHandler{
 		sb.append("    [info]response:").append(header.toString());
 		this.print(sb.toString());
 	}
+	
+	@Override
+	public void errorRedirect(PageIllegalArgumentException e) {
+		
+	}
 
 	@Override
+	public void errorRedirect(PageAccessException e) {
+		
+	}
+
+	@Override
+	public void errorRedirect(DocumentException e) {
+		
+	}
+	
+	@Override
 	public void afterRedirect() {
-//		StringBuilder sb = new StringBuilder();
-//		sb.append("[ fin ]");
-//		sb.append(":redirect:");
-//		this.print(sb.toString());
+		
 	}
 	
 	// ==================================================[PageManagerクラス関連イベント]==================================================
@@ -125,8 +140,8 @@ public class PrintPageEventHandler implements PageEventHandler{
 	}
 	
 	@Override
-	public void errorOpenConnection(BrowzingException browzingException) {
-		this.print(browzingException.toString());
+	public void errorOpenConnection(PageAccessException pageAccessException) {
+		this.print(pageAccessException.toString());
 	}
 
 	@Override
