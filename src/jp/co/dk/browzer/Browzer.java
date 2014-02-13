@@ -10,9 +10,12 @@ import jp.co.dk.browzer.PageRedirectHandler;
 import jp.co.dk.browzer.download.DownloadJudge;
 import jp.co.dk.browzer.event.PrintPageEventHandler;
 import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.exception.PageAccessException;
+import jp.co.dk.browzer.exception.PageSaveException;
 import jp.co.dk.browzer.html.element.A;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.html.element.MovableElement;
+import jp.co.dk.document.exception.DocumentException;
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
 /**
@@ -150,9 +153,10 @@ public class Browzer {
 	 * このページがHTMLでない場合、例外を送出します。
 	 * 
 	 * @return アンカー一覧 
-	 * @throws BrowzingException このページがHTMLでない場合
+	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
 	 */
-	public List<A> getAnchor() throws BrowzingException {
+	public List<A> getAnchor() throws PageAccessException, DocumentException {
 		List<A> returnAnchorList = new ArrayList<A>();
 		List<jp.co.dk.document.html.element.A> anchorList = this.pageManager.getPage().getAnchor();
 		for (jp.co.dk.document.html.element.A anchor : anchorList) {
@@ -168,9 +172,10 @@ public class Browzer {
 	 * このページがHTMLでない場合、例外を送出します。
 	 * 
 	 * @return 同じドメインのアンカー一覧 
-	 * @throws BrowzingException このページがHTMLでない場合 
+	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
 	 */
-	public List<A> getAnchorSameDomain() throws BrowzingException {
+	public List<A> getAnchorSameDomain() throws PageAccessException, DocumentException {
 		List<A> returnAnchorList = new ArrayList<A>();
 		List<jp.co.dk.document.html.element.A> anchorList = this.pageManager.getPage().getAnchorSameDomain();
 		for (jp.co.dk.document.html.element.A anchor : anchorList) {
@@ -186,9 +191,10 @@ public class Browzer {
 	 * このページがHTMLでない場合、例外を送出します。
 	 * 
 	 * @return 同じドメインとパスのアンカー一覧 
-	 * @throws BrowzingException このページがHTMLでない場合 
+	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
 	 */
-	public List<A> getAnchorSamePath() throws BrowzingException {
+	public List<A> getAnchorSamePath() throws PageAccessException, DocumentException {
 		List<A> returnAnchorList = new ArrayList<A>();
 		List<jp.co.dk.document.html.element.A> anchorList = this.pageManager.getPage().getAnchorSamePath();
 		for (jp.co.dk.document.html.element.A anchor : anchorList) {
@@ -202,9 +208,10 @@ public class Browzer {
 	 * このページに存在するすべてのフォームタグを取得します。
 	 * 
 	 * @return フォーム一覧
-	 * @throws BrowzingException このページがHTMLでない場合
+	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
 	 */
-	public List<Form> getForm() throws BrowzingException {
+	public List<Form> getForm() throws PageAccessException, DocumentException {
 		List<Form> returnFormList = new ArrayList<Form>();
 		List<jp.co.dk.document.html.element.Form> formList = this.pageManager.getPage().getForm();
 		for (jp.co.dk.document.html.element.Form form : formList) {
@@ -244,9 +251,11 @@ public class Browzer {
 	 * 
 	 * @param path ダウンロード先ディレクトリパス
 	 * @return 保存したファイルのオブジェクト
-	 * @throws ダウンロードに失敗した場合
+	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した場合
+	 * @throws PageSaveException ページの保存に失敗した場合
 	 */
-	public File save(File path) throws BrowzingException {
+	public File save(File path) throws PageAccessException, DocumentException, PageSaveException {
 		return this.pageManager.getPage().save(path);
 	}
 	
@@ -261,9 +270,11 @@ public class Browzer {
 	 * 
 	 * @param path ダウンロード先ディレクトリパス
 	 * @return 保存したファイルのオブジェクト
-	 * @throws ダウンロードに失敗した場合
+	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した場合
+	 * @throws PageSaveException ページの保存に失敗した場合
 	 */
-	public File save(File path, String fileName) throws BrowzingException {
+	public File save(File path, String fileName) throws PageAccessException, DocumentException, PageSaveException {
 		return this.pageManager.getPage().save(path, fileName);
 	}
 	
@@ -279,9 +290,11 @@ public class Browzer {
 	 * 
 	 * @param path ダウンロード先ディレクトリパス
 	 * @return 保存条件判定結果(true=保存を実行された、false=保存は実行されなかった)
-	 * @throws ダウンロードに失敗した場合
+	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した場合
+	 * @throws PageSaveException ページの保存に失敗した場合
 	 */
-	public boolean save(File path, DownloadJudge downloadJudge) throws BrowzingException {
+	public boolean save(File path, DownloadJudge downloadJudge) throws PageAccessException, DocumentException, PageSaveException {
 		if (downloadJudge != null && downloadJudge.judge(this.pageManager.getPage())){
 			this.pageManager.getPage().save(path);
 			return true;

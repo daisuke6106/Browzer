@@ -140,13 +140,13 @@ public class PageRedirectHandler {
 			}
 		} catch (PageIllegalArgumentException e) {
 			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.errorRedirect(e);
-			throw new PageRedirectException( ,e);
+			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);
 		} catch (PageAccessException e) {
 			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.errorRedirect(e);
-			throw new PageRedirectException( ,e);
+			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);
 		} catch (DocumentException e) {
 			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.errorRedirect(e);
-			throw new PageRedirectException( ,e);
+			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);
 		} finally {
 			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
 		}
@@ -167,9 +167,17 @@ public class PageRedirectHandler {
 		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);
 		String location = header.getLocation();
 		if (location == null || location.equals("")) throw new PageRedirectException(ERROR_REDIRECT_LOCATION_NOT_FOUND); 
-		Page nextPage = this.ceatePage(page.completionURL(location));
-		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
-		return nextPage;
+		Page nextPage;
+		try {
+			nextPage = this.ceatePage(page.completionURL(location));
+			return nextPage;
+		} catch (PageIllegalArgumentException e) {
+			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);
+		} catch (PageAccessException e) {
+			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);
+		} finally {
+			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
+		}
 	}
 	
 	/**

@@ -357,8 +357,8 @@ public class Page implements XmlConvertable{
 	 * すでにドキュメントが生成されていた場合、キャッシュされているドキュメントオブジェクトを返却します。
 	 * 
 	 * @return ドキュメントオブジェクト
-	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した場合
 	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した場合
 	 */
 	public jp.co.dk.document.File getDocument() throws PageAccessException, DocumentException {
 		if (this.document != null) return this.document;
@@ -386,8 +386,8 @@ public class Page implements XmlConvertable{
 	 * <br/>
 	 * @param documentFactory ドキュメント生成ファクトリ
 	 * @return ドキュメントオブジェクト
-	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した場合
 	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した場合
 	 */
 	public jp.co.dk.document.File getDocument(DocumentFactory documentFactory) throws PageAccessException, DocumentException {
 		InputStream inputStream = this.getData().getStream();
@@ -498,8 +498,8 @@ public class Page implements XmlConvertable{
 	 * このページがHTMLでない場合、例外を送出します。
 	 * 
 	 * @return アンカー一覧 
-	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
 	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
 	 */
 	public List<A> getAnchor() throws PageAccessException, DocumentException {
 		jp.co.dk.document.File document = this.getDocument();
@@ -520,8 +520,8 @@ public class Page implements XmlConvertable{
 	 * このページがHTMLでない場合、例外を送出します。
 	 * 
 	 * @return 同じドメインのアンカー一覧 
-	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
 	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
 	 */
 	public List<A> getAnchorSameDomain() throws PageAccessException, DocumentException {
 		List<A> allAnchorList        = this.getAnchor();
@@ -546,8 +546,8 @@ public class Page implements XmlConvertable{
 	 * このページがHTMLでない場合、例外を送出します。
 	 * 
 	 * @return 同じドメインとパスのアンカー一覧 
-	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
 	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
 	 */
 	public List<A> getAnchorSamePath() throws PageAccessException, DocumentException {
 		List<A>      allAnchorList        = this.getAnchor();
@@ -573,8 +573,8 @@ public class Page implements XmlConvertable{
 	 * このページがHTMLでない場合、例外を送出します。
 	 * 
 	 * @return フォーム一覧
-	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
 	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
 	 */
 	public List<Form> getForm() throws PageAccessException, DocumentException {
 		jp.co.dk.document.File document = this.getDocument();

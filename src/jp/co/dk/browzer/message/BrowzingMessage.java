@@ -40,8 +40,8 @@ public class BrowzingMessage extends AbstractMessage {
 	/** ドキュメントインスタンスの生成に失敗しました。class=[{0}]*/
 	public static final BrowzingMessage ERROR_FAILED_TO_CREATE_DOCUMENT_INSTANCE = new BrowzingMessage("E007");
 	
-	/** 指定のURLの拡張子はサポートしていません。URL=[{0}]*/
-	public static final BrowzingMessage ERROR_NON_SUPPORTED_EXTENSION = new BrowzingMessage("E008");
+	/** 拡張子が設定されていません。*/
+	public static final BrowzingMessage ERROR_EXTENSION_IS_NOT_SET = new BrowzingMessage("E008");
 	
 	/** 指定のディレクトリはすでに存在します。PATH=[{0}]*/
 	public static final BrowzingMessage ERROR_THE_SPECIFIED_DIRECTORY_ALREADY_EXISTS = new BrowzingMessage("E009");
@@ -144,6 +144,9 @@ public class BrowzingMessage extends AbstractMessage {
 	
 	/** レスポンスヘッダが不正です。 */
 	public static final BrowzingMessage ERROR_RESPONSE_HEADER_IS_INVALID = new BrowzingMessage("E041");
+	
+	/** リダイレクトに失敗しました。 */
+	public static final BrowzingMessage ERROR_FAILED_TO_REDIRECT = new BrowzingMessage("E042");
 	
 	/** HTTPステータスコード：100 クライアントにリクエストを継続することを指示します。 */
 	public static final BrowzingMessage HTTP_STATUS_CODE_100 = new BrowzingMessage("STATUS100");
