@@ -18,6 +18,7 @@ import jp.co.dk.browzer.contents.BrowzingExtension;
 import jp.co.dk.browzer.exception.PageAccessException;
 import jp.co.dk.browzer.exception.PageHeaderImproperException;
 import jp.co.dk.browzer.exception.PageIllegalArgumentException;
+import jp.co.dk.browzer.exception.PageSaveException;
 import jp.co.dk.browzer.http.header.ContentsType;
 import jp.co.dk.browzer.http.header.RequestHeader;
 import jp.co.dk.browzer.http.header.ResponseHeader;
@@ -356,9 +357,10 @@ public class Page implements XmlConvertable{
 	 * すでにドキュメントが生成されていた場合、キャッシュされているドキュメントオブジェクトを返却します。
 	 * 
 	 * @return ドキュメントオブジェクト
-	 * @throws PageAccessException ドキュメントオブジェクトの生成に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した場合
+	 * @throws PageAccessException ページデータの取得に失敗した場合
 	 */
-	public jp.co.dk.document.File getDocument() throws PageAccessException {
+	public jp.co.dk.document.File getDocument() throws PageAccessException, DocumentException {
 		if (this.document != null) return this.document;
 		for (PageEventHandler handler : this.eventHandler) handler.beforeCreateDocument(this);
 		try {
@@ -384,9 +386,10 @@ public class Page implements XmlConvertable{
 	 * <br/>
 	 * @param documentFactory ドキュメント生成ファクトリ
 	 * @return ドキュメントオブジェクト
-	 * @throws BrowzingException ドキュメントオブジェクトの生成に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した場合
+	 * @throws PageAccessException ページデータの取得に失敗した場合
 	 */
-	public jp.co.dk.document.File getDocument(DocumentFactory documentFactory) throws PageAccessException {
+	public jp.co.dk.document.File getDocument(DocumentFactory documentFactory) throws PageAccessException, DocumentException {
 		InputStream inputStream = this.getData().getStream();
 		ContentsType contentsType = this.responseHeader.getContentsType();
 		if (contentsType != null) {
@@ -495,11 +498,12 @@ public class Page implements XmlConvertable{
 	 * このページがHTMLでない場合、例外を送出します。
 	 * 
 	 * @return アンカー一覧 
-	 * @throws BrowzingException このページがHTMLでない場合 
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
+	 * @throws PageAccessException ページデータの取得に失敗した場合
 	 */
-	public List<A> getAnchor() throws BrowzingException {
+	public List<A> getAnchor() throws PageAccessException, DocumentException {
 		jp.co.dk.document.File document = this.getDocument();
-		if (!(document instanceof HtmlDocument)) throw new BrowzingException(ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML); 
+		if (!(document instanceof HtmlDocument)) throw new DocumentException(ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML); 
 		HtmlDocument htmlDocument = (HtmlDocument)document;
 		List<Element> elementList = htmlDocument.getElement(HtmlElementName.A);
 		List<A> anchorList = new ArrayList<A>();
@@ -516,9 +520,10 @@ public class Page implements XmlConvertable{
 	 * このページがHTMLでない場合、例外を送出します。
 	 * 
 	 * @return 同じドメインのアンカー一覧 
-	 * @throws BrowzingException このページがHTMLでない場合 
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
+	 * @throws PageAccessException ページデータの取得に失敗した場合
 	 */
-	public List<A> getAnchorSameDomain() throws BrowzingException {
+	public List<A> getAnchorSameDomain() throws PageAccessException, DocumentException {
 		List<A> allAnchorList        = this.getAnchor();
 		List<A> sameDomainAnchorList = new ArrayList<A>();
 		String  thisPageDmain        = this.url.getHost();
@@ -527,7 +532,7 @@ public class Page implements XmlConvertable{
 				Url url = new Url(anchor.getUrl());
 				String anchorsDomain = url.getHost();
 				if (thisPageDmain.equals(anchorsDomain)) sameDomainAnchorList.add(anchor);
-			} catch (BrowzingException e) {
+			} catch (PageIllegalArgumentException e) {
 				continue;
 			}
 		}
@@ -541,9 +546,10 @@ public class Page implements XmlConvertable{
 	 * このページがHTMLでない場合、例外を送出します。
 	 * 
 	 * @return 同じドメインとパスのアンカー一覧 
-	 * @throws BrowzingException このページがHTMLでない場合 
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
+	 * @throws PageAccessException ページデータの取得に失敗した場合
 	 */
-	public List<A> getAnchorSamePath() throws BrowzingException {
+	public List<A> getAnchorSamePath() throws PageAccessException, DocumentException {
 		List<A>      allAnchorList        = this.getAnchor();
 		List<A>      sameDomainAnchorList = new ArrayList<A>();
 		String       thisPageDmain        = this.url.getHost();
@@ -554,7 +560,7 @@ public class Page implements XmlConvertable{
 				String anchorsDomain         = url.getHost();
 				List<String> anchorsPathList = url.getPathList();
 				if (thisPageDmain.equals(anchorsDomain) && thisPagePathList.equals(anchorsPathList)) sameDomainAnchorList.add(anchor);
-			} catch (BrowzingException e) {
+			} catch (PageIllegalArgumentException e) {
 				continue;
 			}
 		}
@@ -567,11 +573,12 @@ public class Page implements XmlConvertable{
 	 * このページがHTMLでない場合、例外を送出します。
 	 * 
 	 * @return フォーム一覧
-	 * @throws BrowzingException このペーゾがHTMLでない場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
+	 * @throws PageAccessException ページデータの取得に失敗した場合
 	 */
-	public List<Form> getForm() throws BrowzingException {
+	public List<Form> getForm() throws PageAccessException, DocumentException {
 		jp.co.dk.document.File document = this.getDocument();
-		if (!(document instanceof HtmlDocument)) throw new BrowzingException(ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML); 
+		if (!(document instanceof HtmlDocument)) throw new DocumentException(ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML); 
 		HtmlDocument htmlDocument = (HtmlDocument)document;
 		List<Element> elementList = htmlDocument.getElement(HtmlElementName.FORM);
 		List<Form> formList = new ArrayList<Form>();
@@ -599,7 +606,7 @@ public class Page implements XmlConvertable{
 	 * このページのデータを読み込んでいなかった場合、ページからそのデータをダウンロード、メモリー内に保存してから返却します。
 	 * 
 	 * @return バイトダンプのインスタンス
-	 * @throws PageAccessException 読み込みにて例外が発生、またはドキュメント解析に失敗した場合
+	 * @throws PageAccessException 読み込みにて例外が発生した場合
 	 */
 	public ByteDump getData() throws PageAccessException {
 		if (this.byteDump == null) this.byteDump = this.getByteDump(this.connection); 
@@ -634,13 +641,16 @@ public class Page implements XmlConvertable{
 	 * 
 	 * @param path ダウンロード先ディレクトリパス
 	 * @return 保存したファイルのオブジェクト
-	 * @throws ダウンロードに失敗した場合
+	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した場合
+	 * @throws PageSaveException ページの保存に失敗した場合
 	 */
-	public File save(File path) throws BrowzingException {
+	public File save(File path) throws PageAccessException, DocumentException, PageSaveException {
+		jp.co.dk.document.File document = this.getDocument();
 		try {
-			return this.getDocument().save(path, this.getFileName());
+			return document.save(path, this.getFileName());
 		} catch (DocumentException e) {
-			throw new BrowzingException(ERROR_FAILED_TO_DOWNLOAD, this.url.getURL(), e);
+			throw new PageSaveException(ERROR_FAILED_TO_DOWNLOAD, this.url.getURL(), e);
 		}
 	}
 	
@@ -654,13 +664,16 @@ public class Page implements XmlConvertable{
 	 * 
 	 * @param path ダウンロード先ディレクトリパス
 	 * @return 保存したファイルのオブジェクト
-	 * @throws ダウンロードに失敗した場合
+	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した場合
+	 * @throws PageSaveException ページの保存に失敗した場合
 	 */
-	public File save(File path, String fileName) throws BrowzingException {
+	public File save(File path, String fileName) throws PageAccessException, DocumentException, PageSaveException {
+		jp.co.dk.document.File document = this.getDocument();
 		try {
-			return this.getDocument().save(path, fileName);
+			return document.save(path, fileName);
 		} catch (DocumentException e) {
-			throw new BrowzingException(ERROR_FAILED_TO_DOWNLOAD, this.url.getURL(), e);
+			throw new PageSaveException(ERROR_FAILED_TO_DOWNLOAD, this.url.getURL(), e);
 		}
 	}
 	
@@ -679,20 +692,23 @@ public class Page implements XmlConvertable{
 	 * 指定のパスにディレクトリ以外が設定された場合、例外を発生します。<br/>
 	 * 
 	 * @param path ダウンロード先ディレクトリパス
-	 * @throws ダウンロードに失敗した場合
+	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した場合
+	 * @throws PageSaveException ページの保存に失敗した場合
 	 */
-	protected void download(File path) throws BrowzingException {
+	protected void download(File path) throws PageAccessException, DocumentException, PageSaveException {
 		StringBuilder pathStr = new StringBuilder(path.getAbsolutePath()).append('/').append(this.url.getHost()).append('/').append(this.getPath());
 		File downloadPath = new File(pathStr.toString());
 		try {
 			downloadPath.mkdirs();
 		} catch (SecurityException e) {
-			throw new BrowzingException(ERROR_COULD_NOT_CREATE_DOWNLOAD_DIRECTORY, pathStr.toString(), e);
+			throw new PageSaveException(ERROR_COULD_NOT_CREATE_DOWNLOAD_DIRECTORY, pathStr.toString(), e);
 		}
+		jp.co.dk.document.File document = this.getDocument();
 		try {
-			this.getDocument().save(downloadPath, this.getFileName());
+			document.save(downloadPath, this.getFileName());
 		} catch (DocumentException e) {
-			throw new BrowzingException(ERROR_FAILED_TO_DOWNLOAD, this.url.getURL(), e);
+			throw new PageSaveException(ERROR_FAILED_TO_DOWNLOAD, this.url.getURL(), e);
 		}
 	}
 	
@@ -701,13 +717,13 @@ public class Page implements XmlConvertable{
 	 * 
 	 * @param url 補完対象URL
 	 * @return 補完済みURL
-	 * @throws BrowzingException 補完に失敗した場合
+	 * @throws PageIllegalArgumentException 補完に失敗した場合
 	 */
-	public String completionURL(String url) throws BrowzingException {
+	public String completionURL(String url) throws PageIllegalArgumentException {
 		try {
 			return new URL(this.url.getUrlObject(), url).toString();
 		} catch (MalformedURLException e) {
-			throw new BrowzingException(ERROR_COMPRETION_URL, new String[]{this.url.getURL(), url}, e);
+			throw new PageIllegalArgumentException(ERROR_COMPRETION_URL, new String[]{this.url.getURL(), url}, e);
 		}
 	}
 	
