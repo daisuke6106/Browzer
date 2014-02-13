@@ -3,7 +3,6 @@ package jp.co.dk.browzer;
 import java.io.InputStream;
 
 import jp.co.dk.browzer.contents.BrowzingExtension;
-import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.exception.PageAccessException;
 import jp.co.dk.browzer.html.HtmlElementFactory;
 import jp.co.dk.browzer.http.header.ContentsType;
@@ -40,19 +39,15 @@ public class DocumentFactory {
 	 * @return Documentオブジェクト
 	 * @throws PageAccessException Documentの生成に失敗した場合
 	 */
-	public File create(BrowzingExtension extension, InputStream inputStream) throws PageAccessException {
-		try {
-			if (extension == null) return new jp.co.dk.document.File(inputStream);
-			switch (extension) {
-				case HTML:
-					return new jp.co.dk.document.html.HtmlDocument(inputStream, new HtmlElementFactory(this.page));
-				case XML:
-					return new jp.co.dk.document.xml.XmlDocument(inputStream);
-				default:
-					return new jp.co.dk.document.File(inputStream);
-			}
-		} catch (DocumentException e) {
-			throw new PageAccessException(ERROR_FAILED_TO_CREATE_DOCUMENT_INSTANCE, e);
+	public File create(BrowzingExtension extension, InputStream inputStream) throws DocumentException {
+		if (extension == null) return new jp.co.dk.document.File(inputStream);
+		switch (extension) {
+			case HTML:
+				return new jp.co.dk.document.html.HtmlDocument(inputStream, new HtmlElementFactory(this.page));
+			case XML:
+				return new jp.co.dk.document.xml.XmlDocument(inputStream);
+			default:
+				return new jp.co.dk.document.File(inputStream);
 		}
 	}
 	
@@ -62,21 +57,17 @@ public class DocumentFactory {
 	 * @param contentsType コンテンツタイプ
 	 * @param inputStream 入力ストリーム
 	 * @return Documentオブジェクト
-	 * @throws PageAccessException Documentの生成に失敗した場合
+	 * @throws DocumentException Documentの生成に失敗した場合
 	 */
-	public File create(ContentsType contentsType, InputStream inputStream) throws PageAccessException {
-		try {
-			if (contentsType == null) throw new BrowzingException(ERROR_NON_SUPPORTED_EXTENSION);
-			switch (contentsType) {
-				case TEXT_HTML:
-					return new jp.co.dk.document.html.HtmlDocument(inputStream, new HtmlElementFactory(this.page));
-				case TEXT_XML:
-					return new jp.co.dk.document.xml.XmlDocument(inputStream);
-				default:
-					return new jp.co.dk.document.File(inputStream);
-			}
-		} catch (DocumentException e) {
-			throw new PageAccessException(ERROR_FAILED_TO_CREATE_DOCUMENT_INSTANCE, e);
+	public File create(ContentsType contentsType, InputStream inputStream) throws DocumentException {
+		if (contentsType == null) throw new DocumentException(ERROR_EXTENSION_IS_NOT_SET);
+		switch (contentsType) {
+			case TEXT_HTML:
+				return new jp.co.dk.document.html.HtmlDocument(inputStream, new HtmlElementFactory(this.page));
+			case TEXT_XML:
+				return new jp.co.dk.document.xml.XmlDocument(inputStream);
+			default:
+				return new jp.co.dk.document.File(inputStream);
 		}
 	}
 	
