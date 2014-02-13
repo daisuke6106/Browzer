@@ -82,10 +82,10 @@ public class Page implements XmlConvertable{
 	 * ページの情報はインスタンス生成時に読み込みます。<br/>
 	 * 
 	 * @param url URLを表す文字列
-	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	public Page(String url) throws PageAccessException, PageIllegalArgumentException {
+	public Page(String url) throws PageIllegalArgumentException, PageAccessException {
 		this(url, new HashMap<String,String>(), true, new ArrayList<PageEventHandler>());
 	}
 	
@@ -96,10 +96,10 @@ public class Page implements XmlConvertable{
 	 * 
 	 * @param url URLを表す文字列
 	 * @param requestHeader リクエストヘッダ
-	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	public Page(String url, Map<String, String> requestHeader) throws PageAccessException, PageIllegalArgumentException {
+	public Page(String url, Map<String, String> requestHeader) throws PageIllegalArgumentException, PageAccessException {
 		this(url, requestHeader, true, new ArrayList<PageEventHandler>());
 	}
 	
@@ -111,10 +111,10 @@ public class Page implements XmlConvertable{
 	 * @param url URLを表す文字列
 	 * @param requestHeader リクエストヘッダ
 	 * @param readDataFlg データ読み込みフラグ
-	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	public Page(String url, Map<String, String> requestHeader, boolean readDataFlg) throws PageAccessException, PageIllegalArgumentException {
+	public Page(String url, Map<String, String> requestHeader, boolean readDataFlg) throws PageIllegalArgumentException, PageAccessException {
 		this(url, requestHeader, readDataFlg, new ArrayList<PageEventHandler>());
 	}
 	
@@ -128,10 +128,10 @@ public class Page implements XmlConvertable{
 	 * @param url URLを表す文字列
 	 * @param requestHeader リクエストヘッダ
 	 * @param readDataFlg データ読み込みフラグ
-	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	public Page(String url, Map<String, String> requestHeader, boolean readDataFlg, List<PageEventHandler> pageEventHandlerList) throws PageAccessException, PageIllegalArgumentException {
+	public Page(String url, Map<String, String> requestHeader, boolean readDataFlg, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException, PageAccessException {
 		if (url == null || url.equals("")) throw new PageIllegalArgumentException(ERROR_URL_IS_NOT_SET);
 		if (requestHeader == null) requestHeader = new HashMap<String, String>(); 
 		this.url                 = this.createUrl(url);
@@ -168,10 +168,10 @@ public class Page implements XmlConvertable{
 	 * ページの情報はインスタンス生成時に読み込みます。<br/>
 	 * 
 	 * @param form FORM要素
-	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	protected Page(Form form) throws PageAccessException, PageIllegalArgumentException {
+	protected Page(Form form) throws PageIllegalArgumentException, PageAccessException {
 		this(form, new HashMap<String, String>(), true, new ArrayList<PageEventHandler>());
 	}
 	
@@ -182,10 +182,10 @@ public class Page implements XmlConvertable{
 	 * 
 	 * @param form FORM要素
 	 * @param requestProperty リクエストヘッダマップ
-	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	protected Page(Form form, Map<String, String> requestProperty) throws PageAccessException, PageIllegalArgumentException {
+	protected Page(Form form, Map<String, String> requestProperty) throws PageIllegalArgumentException, PageAccessException {
 		this(form, requestProperty, true, new ArrayList<PageEventHandler>());
 	}
 	
@@ -197,10 +197,10 @@ public class Page implements XmlConvertable{
 	 * @param form FORM要素
 	 * @param requestProperty リクエストヘッダマップ
 	 * @param readDataFlg データ読み込みフラグ
-	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	protected Page(Form form, Map<String, String> requestProperty, boolean readDataFlg) throws PageAccessException, PageIllegalArgumentException {
+	protected Page(Form form, Map<String, String> requestProperty, boolean readDataFlg) throws PageIllegalArgumentException, PageAccessException {
 		this(form, requestProperty, readDataFlg, new ArrayList<PageEventHandler>());
 	}
 	
@@ -214,10 +214,10 @@ public class Page implements XmlConvertable{
 	 * @param form FORM要素
 	 * @param requestProperty リクエストヘッダマップ
 	 * @param readDataFlg データ読み込みフラグ
-	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	protected Page(Form form, Map<String, String> requestProperty, boolean readDataFlg, List<PageEventHandler> pageEventHandlerList) throws PageAccessException, PageIllegalArgumentException {
+	protected Page(Form form, Map<String, String> requestProperty, boolean readDataFlg, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException, PageAccessException {
 		if (form == null) throw new PageIllegalArgumentException(ERROR_FORM_IS_NOT_SPECIFIED);
 		try {
 			this.url = this.createUrl(form.getAction().getURL().toString());
@@ -298,10 +298,10 @@ public class Page implements XmlConvertable{
 	 * @param form 遷移先FORM
 	 * @param requestHeader リクエストヘッダ
 	 * @return 遷移先のページオブジェクト
-	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	Page move(jp.co.dk.browzer.html.element.Form form, Map<String, String> requestHeader) throws PageAccessException, PageIllegalArgumentException {
+	Page move(jp.co.dk.browzer.html.element.Form form, Map<String, String> requestHeader) throws PageIllegalArgumentException, PageAccessException {
 		if (form == null) throw new PageIllegalArgumentException(ERROR_SPECIFIED_FORM_IS_NOT_SET);
 		if (!this.equals(form.getPage())) throw new PageIllegalArgumentException(ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
 		if (requestHeader == null) requestHeader = new HashMap<String, String>();

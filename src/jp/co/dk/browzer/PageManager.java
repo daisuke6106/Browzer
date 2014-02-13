@@ -7,6 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.exception.PageAccessException;
+import jp.co.dk.browzer.exception.PageIllegalArgumentException;
+import jp.co.dk.browzer.exception.PageMovableLimitException;
+import jp.co.dk.browzer.exception.PageRedirectException;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.xml.XmlConvertable;
 
@@ -49,9 +53,10 @@ public class PageManager implements XmlConvertable{
 	 * @param url URL文字列
 	 * @param pageRedirectHandler  ページリダイレクト制御オブジェクト
 	 * @param pageEventHandlerList ページイベントハンドラ一覧
-	 * @throws BrowzingException ページクラスの生成に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	public PageManager(String url, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList) throws BrowzingException {
+	public PageManager(String url, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException, PageAccessException {
 		this.pageRedirectHandler  = pageRedirectHandler;
 		this.pageEventHandlerList = pageEventHandlerList;
 		this.page                 = this.createPage(url);
@@ -66,9 +71,10 @@ public class PageManager implements XmlConvertable{
 	 * @param pageRedirectHandler ページリダイレクト制御オブジェクト
 	 * @param pageEventHandlerList ページイベントハンドラ一覧
 	 * @param maxNestLevel ページ遷移上限数
-	 * @throws BrowzingException ページクラスの生成に失敗した場合 
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	public PageManager(String url, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int maxNestLevel) throws BrowzingException {
+	public PageManager(String url, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int maxNestLevel) throws PageIllegalArgumentException, PageAccessException {
 		this.pageRedirectHandler  = pageRedirectHandler;
 		this.pageEventHandlerList = pageEventHandlerList;
 		this.page                 = this.createPage(url);
@@ -143,22 +149,25 @@ public class PageManager implements XmlConvertable{
 	 * 
 	 * @param page 遷移先ページ追加
 	 * @return 遷移先ページ管理オブジェクト
-	 * @throws BrowzingException 遷移に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
+	 * @throws PageRedirectException 遷移に失敗した場合
+	 * @throws PageMovableLimitException ページ遷移可能上限数に達した場合
 	 */
-	PageManager move(String url) throws BrowzingException {
+	PageManager move(String url) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException {
 		int nextLevel = this.nestLevel+1;
-		if ( !(this.maxNestLevel<0) && this.maxNestLevel < nextLevel) throw new BrowzingException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));
+		if ( !(this.maxNestLevel<0) && this.maxNestLevel < nextLevel) throw new PageMovableLimitException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));
 		Page nextPage;
 		try {
 			nextPage = this.createPage(url);
-		} catch (BrowzingException e) {
+		} catch (PageIllegalArgumentException | PageAccessException e) {
 			PageManager errorPageManager = this.createPageManager(this, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);
 			this.childPageList.add(errorPageManager);
 			return this;
 		}
 		try {
 			nextPage = pageRedirectHandler.redirect(nextPage);
-		} catch (BrowzingException e) {
+		} catch (PageRedirectException e) {
 			PageManager errorPageManager = this.createPageManager(this, nextPage, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);
 			this.childPageList.add(errorPageManager);
 			return this;
@@ -174,11 +183,14 @@ public class PageManager implements XmlConvertable{
 	 * 
 	 * @param page 遷移先ページ追加
 	 * @return 遷移先ページ管理オブジェクト
-	 * @throws BrowzingException 遷移に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
+	 * @throws PageRedirectException 遷移に失敗した場合
+	 * @throws PageMovableLimitException ページ遷移可能上限数に達した場合
 	 */
-	PageManager move(Form form) throws BrowzingException {
+	PageManager move(Form form) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException {
 		int nextLevel = this.nestLevel+1;
-		if ( !(this.maxNestLevel<0) && this.maxNestLevel < nextLevel) throw new BrowzingException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));
+		if ( !(this.maxNestLevel<0) && this.maxNestLevel < nextLevel) throw new PageMovableLimitException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));
 		Page nextPage;
 		try {
 			nextPage = this.createPage(form);
@@ -287,9 +299,10 @@ public class PageManager implements XmlConvertable{
 	 * 
 	 * @param url URL文字列
 	 * @return ページオブジェクト
-	 * @throws BrowzingException ページクラスの生成に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	protected Page createPage(String url) throws BrowzingException {
+	protected Page createPage(String url) throws PageIllegalArgumentException, PageAccessException {
 		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.beforeMove(this, url);
 		Page nextPage = new Page(url, new HashMap<String, String>(), false, this.pageEventHandlerList);
 		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.afterMove();
@@ -301,9 +314,10 @@ public class PageManager implements XmlConvertable{
 	 * 
 	 * @param form Formオブジェクト
 	 * @return ページオブジェクト
-	 * @throws BrowzingException ページクラスの生成に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	protected Page createPage(Form form) throws BrowzingException {
+	protected Page createPage(Form form) throws PageIllegalArgumentException, PageAccessException {
 		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.beforeMove(this, form.getPage().toString());
 		Page nextPage = new Page(form, new HashMap<String, String>(), false, this.pageEventHandlerList);
 		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.afterMove();

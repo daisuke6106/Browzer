@@ -1,4 +1,3 @@
-
 package jp.co.dk.browzer;
 
 import java.io.File;
@@ -11,6 +10,9 @@ import jp.co.dk.browzer.download.DownloadJudge;
 import jp.co.dk.browzer.event.PrintPageEventHandler;
 import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.exception.PageAccessException;
+import jp.co.dk.browzer.exception.PageIllegalArgumentException;
+import jp.co.dk.browzer.exception.PageMovableLimitException;
+import jp.co.dk.browzer.exception.PageRedirectException;
 import jp.co.dk.browzer.exception.PageSaveException;
 import jp.co.dk.browzer.html.element.A;
 import jp.co.dk.browzer.html.element.Form;
@@ -55,9 +57,10 @@ public class Browzer {
 	 * 指定のURLを元にブラウザを生成します。
 	 * 
 	 * @param url URL文字列
-	 * @throws BrowzingException ページの表示に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	public Browzer(String url) throws BrowzingException {
+	public Browzer(String url) throws PageIllegalArgumentException, PageAccessException {
 		this.pageEventHandlerList = this.getPageEventHandler();
 		this.pageRedirectHandler  = this.createPageRedirectHandler(this.pageEventHandlerList);
 		this.pageManager          = this.createPageManager(url, pageRedirectHandler);
@@ -69,9 +72,10 @@ public class Browzer {
 	 * 
 	 * @param url URL文字列
 	 * @param maxNestLevel 最大ネスト数
-	 * @throws BrowzingException ページの表示に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	public Browzer(String url, int maxNestLevel) throws BrowzingException {
+	public Browzer(String url, int maxNestLevel) throws PageIllegalArgumentException, PageAccessException {
 		this.pageEventHandlerList = this.getPageEventHandler();
 		this.pageRedirectHandler  = this.createPageRedirectHandler(this.pageEventHandlerList);
 		this.pageManager          = this.createPageManager(url, pageRedirectHandler, maxNestLevel);
@@ -88,15 +92,18 @@ public class Browzer {
 	 * 
 	 * @param movable 遷移先要素
 	 * @return ページオブジェクト
-	 * @throws BrowzingException 遷移に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
+	 * @throws PageRedirectException 遷移に失敗した場合
+	 * @throws PageMovableLimitException ページ遷移可能上限数に達した場合
 	 */
-	public Page move(MovableElement movable) throws BrowzingException {
+	public Page move(MovableElement movable) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException {
 		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.beforeMove(this, movable);
 		try {
-			if (movable == null) throw new BrowzingException(ERROR_SPECIFIED_ANCHOR_IS_NOT_SET);
-			if (!this.pageManager.getPage().equals(movable.getPage()))throw new BrowzingException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
+			if (movable == null) throw new PageIllegalArgumentException(ERROR_SPECIFIED_ANCHOR_IS_NOT_SET);
+			if (!this.pageManager.getPage().equals(movable.getPage()))throw new PageIllegalArgumentException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
 			String url = movable.getUrl();
-			if (url.equals("")) throw new BrowzingException(ERROR_ANCHOR_HAS_NOT_URL);
+			if (url.equals("")) throw new PageIllegalArgumentException(ERROR_ANCHOR_HAS_NOT_URL);
 			this.pageManager = this.pageManager.move(url);
 			return this.pageManager.getPage();
 		} catch (BrowzingException e ) {
@@ -118,13 +125,16 @@ public class Browzer {
 	 * 
 	 * @param form 遷移先FORM
 	 * @return FORMオブジェクト
-	 * @throws BrowzingException 遷移に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
+	 * @throws PageRedirectException 遷移に失敗した場合
+	 * @throws PageMovableLimitException ページ遷移可能上限数に達した場合
 	 */
-	public Page move(Form form) throws BrowzingException {
+	public Page move(Form form) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException {
 		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.beforeMove(this, form);
 		try {
-			if (form == null) throw new BrowzingException(ERROR_SPECIFIED_FORM_IS_NOT_SET);
-			if (!this.pageManager.getPage().equals(form.getPage()))throw new BrowzingException(ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
+			if (form == null) throw new PageIllegalArgumentException(ERROR_SPECIFIED_FORM_IS_NOT_SET);
+			if (!this.pageManager.getPage().equals(form.getPage()))throw new PageIllegalArgumentException(ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
 			this.pageManager = this.pageManager.move(form);
 			return this.pageManager.getPage();
 		} catch (BrowzingException e ) {
@@ -309,9 +319,10 @@ public class Browzer {
 	 * @param url URL
 	 * @param handler ページリダイレクトハンドラ
 	 * @return ページマネージャオブジェクト
-	 * @throws BrowzingException ページクラスの生成に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	protected PageManager createPageManager(String url, PageRedirectHandler handler) throws BrowzingException {
+	protected PageManager createPageManager(String url, PageRedirectHandler handler) throws PageIllegalArgumentException, PageAccessException {
 		return new PageManager(url, handler, this.pageEventHandlerList);
 	}
 	
@@ -322,9 +333,10 @@ public class Browzer {
 	 * @param handler ページリダイレクトハンドラ
 	 * @param maxNestLevel 最大遷移数
 	 * @return ページマネージャオブジェクト
-	 * @throws BrowzingException ページクラスの生成に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	protected PageManager createPageManager(String url, PageRedirectHandler handler, int maxNestLevel) throws BrowzingException {
+	protected PageManager createPageManager(String url, PageRedirectHandler handler, int maxNestLevel) throws PageIllegalArgumentException, PageAccessException {
 		return new PageManager(url, handler, this.pageEventHandlerList, maxNestLevel);
 	}
 	
