@@ -8,12 +8,15 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 import jp.co.dk.browzer.Page;
+import jp.co.dk.browzer.exception.PageAccessException;
+import jp.co.dk.browzer.exception.PageIllegalArgumentException;
 import jp.co.dk.browzer.exception.PageRedirectException;
 import jp.co.dk.browzer.exception.PageRedirectException;
 import jp.co.dk.browzer.http.header.ResponseHeader;
 import jp.co.dk.browzer.http.header.record.HttpStatusCode;
 import jp.co.dk.document.Element;
 import jp.co.dk.document.File;
+import jp.co.dk.document.exception.DocumentException;
 import jp.co.dk.document.html.HtmlDocument;
 import jp.co.dk.document.html.constant.HtmlElementName;
 import jp.co.dk.document.html.constant.HttpEquivName;
@@ -60,7 +63,7 @@ public class PageRedirectHandler {
 		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();
 		switch(httpStatusCode.getStatusType()) {
 			case INFOMATIONAL:
-				return this.redirectBy_REDIRECTION(header, page);
+				return this.redirectBy_INFOMATIONAL(header, page);
 				
 			case SUCCESS:
 				return this.redirectBy_SUCCESS(header, page);
@@ -109,32 +112,43 @@ public class PageRedirectHandler {
 	 */
 	protected Page redirectBy_SUCCESS(ResponseHeader header, Page page) throws PageRedirectException {
 		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);
-		File file = page.getDocument();
-		if (file instanceof HtmlDocument) {
-			HtmlDocument htmlDocument = (HtmlDocument)file;
-			List<Element> metaElementList = htmlDocument.getElement(HtmlElementName.META);
-			for (Element element : metaElementList) {
-				if (element instanceof Meta) {
-					Meta meta = (Meta)element;
-					if (HttpEquivName.REFRESH == meta.getHttpEquiv()) {
-						String contents = meta.getContent();
-						if (contents.equals("")) contents = "1"; 
-						int sleepType = Integer.parseInt(contents);
-						try {
-							Thread.sleep(sleepType * 1000);
-						} catch (InterruptedException e) {
-							throw new PageRedirectException(ERROR_THREAD_STOP, e); 
+		try {
+			File file = page.getDocument();
+			if (file instanceof HtmlDocument) {
+				HtmlDocument htmlDocument = (HtmlDocument)file;
+				List<Element> metaElementList = htmlDocument.getElement(HtmlElementName.META);
+				for (Element element : metaElementList) {
+					if (element instanceof Meta) {
+						Meta meta = (Meta)element;
+						if (HttpEquivName.REFRESH == meta.getHttpEquiv()) {
+							String contents = meta.getContent();
+							if (contents.equals("")) contents = "1"; 
+							int sleepType = Integer.parseInt(contents);
+							try {
+								Thread.sleep(sleepType * 1000);
+							} catch (InterruptedException e) {
+								throw new PageRedirectException(ERROR_THREAD_STOP, e); 
+							}
+							String url = meta.getAttribute("url");
+							return this.ceatePage(page.completionURL(url));
 						}
-						String url = meta.getAttribute("url");
-						return this.ceatePage(page.completionURL(url));
 					}
 				}
+				return page;
+			} else {
+				return page;
 			}
+		} catch (PageIllegalArgumentException e) {
+			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.errorRedirect(e);
+			throw new PageRedirectException( ,e);
+		} catch (PageAccessException e) {
+			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.errorRedirect(e);
+			throw new PageRedirectException( ,e);
+		} catch (DocumentException e) {
+			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.errorRedirect(e);
+			throw new PageRedirectException( ,e);
+		} finally {
 			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
-			return page;
-		} else {
-			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
-			return page;
 		}
 	}
 	
@@ -216,9 +230,10 @@ public class PageRedirectHandler {
 	 * 
 	 * @param url URL文字列
 	 * @return ページオブジェクト
-	 * @throws PageRedirectException ページクラスの生成に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	protected Page ceatePage(String url) throws PageRedirectException {
+	protected Page ceatePage(String url) throws PageIllegalArgumentException, PageAccessException {
 		return new Page(url);
 	}
 }
