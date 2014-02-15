@@ -8,9 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.exception.PageAccessException;
+import jp.co.dk.browzer.exception.PageIllegalArgumentException;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.http.header.ResponseHeader;
 import jp.co.dk.document.Element;
+import jp.co.dk.document.exception.DocumentException;
 import jp.co.dk.document.html.HtmlDocument;
 import jp.co.dk.document.html.HtmlElement;
 import jp.co.dk.document.html.constant.HtmlElementName;
@@ -33,28 +36,37 @@ public class TestPage extends TestBrowzerFoundation {
 			String nullString = null;
 			Page page = new Page(nullString);
 			fail();
-		} catch (BrowzingException e) {
+		} catch (PageIllegalArgumentException e) {
 			assertEquals(e.getMessageObj(), jp.co.dk.browzer.message.BrowzingMessage.ERROR_URL_IS_NOT_SET);
+		} catch (PageAccessException e) {
+			fail(e);
 		}
 		
 		// 引数に不正な文字列を設定した場合、例外が送出されること。
 		try {
 			Page page = new Page("aaa");
 			fail();
-		} catch (BrowzingException e) {
-			success(e);
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
 		}
 		
 		// 引数に存在するURLを設定された場合、正常にインスタンスが生成できること。
 		try {
 			Page page = new Page("https://www.google.com");
-		} catch (BrowzingException e) {
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
 			fail(e);
 		}
+		
 		// 引数に存在するURLを設定された場合、正常にインスタンスが生成できること。(パラメータあり)
 		try {
 			Page page = new Page("http://www.google.co.jp/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CCUQFjAA&url=http%3A%2F%2Ftest.jp%2F&ei=if9NULqAIanBiQf1uIHACg&usg=AFQjCNFAiQ33DWa0llvM8UoNTY_aKUckbg&sig2=VmamtFiwcu4ABy2tGn5hfQ");
-		} catch (BrowzingException e) {
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
 			fail(e);
 		}
 		
@@ -76,8 +88,12 @@ public class TestPage extends TestBrowzerFoundation {
 			}};
 			Page newPage = new Page(formElement, new HashMap<String, String>());
 			fail();
-		} catch (BrowzingException e) {
-			if(e.getMessageObj() != ERROR_AN_INVALID_URL_WAS_SPECIFIED) fail();
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
 		}
 		
 		// FORM指定して遷移する際に、Formにnullが設定された場合、例外が発生すること。
@@ -85,8 +101,10 @@ public class TestPage extends TestBrowzerFoundation {
 			Form form = null;
 			Page newPage = new Page(form, null);
 			fail();
-		} catch (BrowzingException e) {
-			if(e.getMessageObj() != ERROR_FORM_IS_NOT_SPECIFIED) fail();
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
 		}
 		
 		// FORM指定して遷移する際に、引数のリクエストヘッダマップにnullが設定された場合でも正常に遷移できること。
@@ -101,8 +119,12 @@ public class TestPage extends TestBrowzerFoundation {
 			txt1.setValue("test");
 			txt2.setValue("value");
 			Page newPage = new Page(formElement, null);
-		} catch (BrowzingException e) {
-			fail();
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
 		}
 	}
 	
