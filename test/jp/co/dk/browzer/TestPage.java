@@ -37,7 +37,7 @@ public class TestPage extends TestBrowzerFoundation {
 			Page page = new Page(nullString);
 			fail();
 		} catch (PageIllegalArgumentException e) {
-			assertEquals(e.getMessageObj(), jp.co.dk.browzer.message.BrowzingMessage.ERROR_URL_IS_NOT_SET);
+			assertEquals(e, jp.co.dk.browzer.message.BrowzingMessage.ERROR_URL_IS_NOT_SET);
 		} catch (PageAccessException e) {
 			fail(e);
 		}
@@ -47,7 +47,7 @@ public class TestPage extends TestBrowzerFoundation {
 			Page page = new Page("aaa");
 			fail();
 		} catch (PageIllegalArgumentException e) {
-			fail(e);
+			assertEquals(e, jp.co.dk.browzer.message.BrowzingMessage.ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL);
 		} catch (PageAccessException e) {
 			fail(e);
 		}
@@ -328,8 +328,12 @@ public class TestPage extends TestBrowzerFoundation {
 		// URLがHTMLでない場合、例外が送出されること。
 		try {
 			new Page("http://blog-imgs-21-origin.fc2.com/v/i/p/vipvipblogblog/13944.jpg").getAnchor();
-		} catch (BrowzingException e) {
+		} catch (PageAccessException e) {
 			if (e.getMessageObj() != ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML) fail(e);
+		} catch (DocumentException e) {
+			fail(e);
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
 		}
 		try {
 			new Page("http://rss.dailynews.yahoo.co.jp/fc/rss.xml").getAnchor();
