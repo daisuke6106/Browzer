@@ -3,7 +3,7 @@ package jp.co.dk.browzer.html.selector;
 import java.util.regex.Pattern;
 
 import jp.co.dk.browzer.Page;
-import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.exception.PageIllegalArgumentException;
 
 import jp.co.dk.document.Element;
 import jp.co.dk.document.ElementSelector;
@@ -18,9 +18,9 @@ public class PatternMatchImgSelector implements ElementSelector {
 	
 	private Pattern pattern;
 	
-	public PatternMatchImgSelector(Page page, Pattern pattern) throws BrowzingException {
-		if (page    == null) throw new BrowzingException(ERROR_PAGE_IS_NOT_SET);
-		if (pattern == null) throw new BrowzingException(ERROR_SEARCH_TARGET_FILE_NAME_IS_NOT_SET);
+	public PatternMatchImgSelector(Page page, Pattern pattern) throws PageIllegalArgumentException {
+		if (page    == null) throw new PageIllegalArgumentException(ERROR_PAGE_IS_NOT_SET);
+		if (pattern == null) throw new PageIllegalArgumentException(ERROR_SEARCH_TARGET_FILE_NAME_IS_NOT_SET);
 		this.page    = page;
 		this.pattern = pattern;
 	}
