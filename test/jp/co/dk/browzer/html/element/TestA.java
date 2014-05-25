@@ -5,6 +5,7 @@ import java.util.List;
 import jp.co.dk.browzer.Browzer;
 import jp.co.dk.browzer.TestBrowzerFoundation;
 import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.document.exception.DocumentException;
 
 import org.junit.Test;
 
@@ -22,7 +23,7 @@ public class TestA extends TestBrowzerFoundation {
 	}
 	
 	@Test
-	public void getHost() throws BrowzingException {
+	public void getHost() throws BrowzingException, DocumentException {
 		Browzer browzer = super.getBrowzer("http://takenokosokuhou.com/archives/18579834.html");
 		assertThat(browzer.getAnchor().get(0).getHost(), is ("takenokosokuhou.com"));
 	}

@@ -13,6 +13,7 @@ import jp.co.dk.browzer.html.element.Image;
 import jp.co.dk.browzer.html.element.Link;
 import jp.co.dk.browzer.html.element.Script;
 import jp.co.dk.document.Element;
+import jp.co.dk.document.exception.DocumentException;
 import jp.co.dk.document.html.HtmlDocument;
 import jp.co.dk.document.html.HtmlElement;
 import jp.co.dk.document.html.constant.HtmlElementName;
@@ -98,6 +99,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			fail();
 		} catch (BrowzingException e) {
 			if ( e.getMessageObj() != ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) fail(e);
+		} catch (DocumentException e) {
+			fail(e);
 		}
 		
 		// 遷移先に指定したアンカーに遷移先が設定されていなかった場合、例外が送出されることを確認。
@@ -112,6 +115,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			fail();
 		} catch (BrowzingException e) {
 			if ( e.getMessageObj() != ERROR_ANCHOR_HAS_NOT_URL) fail(e);
+		} catch (DocumentException e) {
+			fail(e);
 		}
 		
 		// URLオブジェクトを指定した場合、正常に遷移できること。
@@ -126,6 +131,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			
 		} catch (BrowzingException e) {
 			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
 		}
 		
 		// 指定のページ遷移上限数を指定してページ遷移した場合、指定した上限を超えようとした場合、例外が送出されること。
@@ -136,6 +143,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			fail();
 		} catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_REACHED_TO_THE_MAXIMUM_LEVEL) fail(e);
+		} catch (DocumentException e) {
+			fail(e);
 		}
 		
 		// 指定のページ遷移上限数を指定してページ遷移した場合、指定した上限を超えようとした場合、例外が送出されること。
@@ -147,6 +156,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			fail();
 		} catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_REACHED_TO_THE_MAXIMUM_LEVEL) fail(e);
+		} catch (DocumentException e) {
+			fail(e);
 		}
 		
 		// 指定のページ遷移上限数を指定してページ遷移した場合、指定した上限を超えようとした場合、例外が送出されること。
@@ -160,6 +171,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			fail();
 		} catch (BrowzingException e) {
 			assertEquals(e.getMessageObj(), ERROR_REACHED_TO_THE_MAXIMUM_LEVEL);
+		} catch (DocumentException e) {
+			fail(e);
 		}
 	}
 	
@@ -191,6 +204,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			fail();
 		} catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) ;
+		} catch (DocumentException e) {
+			fail(e);
 		}
 		
 		// リンク要素に遷移する
@@ -208,6 +223,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			fail();
 		}catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_ANCHOR_HAS_NOT_URL) fail(e);
+		} catch (DocumentException e) {
+			fail(e);
 		}
 		
 		// リンク要素に遷移する
@@ -219,6 +236,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			Link link = (Link) super.getRandomElement(linkList1);
 	        Page linkPage = browzer1.move(link);
 		}catch (BrowzingException e) {
+			fail(e);
+		} catch (DocumentException e) {
 			fail(e);
 		}
 	}
@@ -251,6 +270,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			fail();
 		} catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) ;
+		} catch (DocumentException e) {
+			fail(e);
 		}
 		
 		// スクリプト要素に遷移する
@@ -266,8 +287,10 @@ public class TestBrowser extends TestBrowzerFoundation {
 	        }};
 	        browzer1.move(script);
 			fail();
-		}catch (BrowzingException e) {
+		} catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_ANCHOR_HAS_NOT_URL) fail(e);
+		} catch (DocumentException e) {
+			fail(e);
 		}
 		
 		// スクリプト要素に遷移する
@@ -279,6 +302,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			Script script = (Script) super.getRandomElement(scriptList1);
 	        Page scriptPage = browzer1.move(script);
 		}catch (BrowzingException e) {
+			fail(e);
+		} catch (DocumentException e) {
 			fail(e);
 		}
 	}
@@ -311,6 +336,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			fail();
 		} catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) ;
+		} catch (DocumentException e) {
+			fail(e);
 		}
 		
 		// イメージ要素に遷移する
@@ -328,6 +355,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			fail();
 		}catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_ANCHOR_HAS_NOT_URL) fail(e);
+		} catch (DocumentException e) {
+			fail(e);
 		}
 		
 		// イメージ要素に遷移する
@@ -339,6 +368,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			Image image = (Image) super.getRandomElement(imageList1);
 	        Page imagePage = browzer1.move(image);
 		}catch (BrowzingException e) {
+			fail(e);
+		} catch (DocumentException e) {
 			fail(e);
 		}
 	}
@@ -375,6 +406,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			}
 		} catch (BrowzingException e) {
 			if (e.getMessageObj() != ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) ;
+		} catch (DocumentException e) {
+			fail(e);
 		}
 		
 		// FROM要素に遷移する
@@ -396,6 +429,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			assertHasString(document2.toString(), "ADDR = value");
 		} catch (BrowzingException e) {
 			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
 		}
 	}
 	
@@ -412,6 +447,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			assertEquals(page.getURL(), url);
 		} catch (BrowzingException e) {
 			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
 		}
 	}
 	
@@ -426,11 +463,13 @@ public class TestBrowser extends TestBrowzerFoundation {
 			}
 		} catch(BrowzingException e) {
 			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
 		}
 	}
 	
 	@Test
-	public void getForm() throws BrowzingException {
+	public void getForm() throws BrowzingException, DocumentException {
 		Browzer browzer = super.getBrowzer("http://www.htmq.com/html/form.shtml");
 		List<Form> formList = browzer.getForm();
 		assertThat(formList.get(0).getAction().toString(), is("http://www.htmq.com/search/"));
@@ -468,6 +507,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			if (!browzer2.ableMoveNextPage()) fail(); 
 		} catch (BrowzingException e) {
 			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
 		}
 	}
 	
@@ -491,6 +532,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			if(!file3.exists() && file3.getName().equals("default.html")) fail();
 			
 		} catch (BrowzingException e) {
+			fail(e);
+		} catch (DocumentException e) {
 			fail(e);
 		}
 		
@@ -516,6 +559,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			
 		} catch (BrowzingException e) {
 			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
 		}
 		
 		// 指定の条件でダウンロード実行した場合、正常にダウンロードできること。
@@ -528,6 +573,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 					try {
 						file = page.getDocument();
 					} catch (BrowzingException e) {
+						return false;
+					} catch (DocumentException e) {
 						return false;
 					}
 					if(file instanceof HtmlDocument) return true;
@@ -557,6 +604,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			assertTrue(result4);
 			
 		} catch (BrowzingException e) {
+			fail(e);
+		} catch (DocumentException e) {
 			fail(e);
 		}
 	}

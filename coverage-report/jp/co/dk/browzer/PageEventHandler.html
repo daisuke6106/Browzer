@@ -19,9 +19,11 @@
       <td class='line'></td><td>&nbsp;</td>
       <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.exception.PageAccessException;
+import jp.co.dk.browzer.exception.PageIllegalArgumentException;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.html.element.MovableElement;
 import jp.co.dk.browzer.http.header.ResponseHeader;
+import jp.co.dk.document.exception.DocumentException;
 import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 </div><span>import ...</span></pre></td>
     </tr>
@@ -36,11 +38,11 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
  */</div><span>/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>16</td><td>&nbsp;</td>
+      <td class='line'>18</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>public interface PageEventHandler {</pre></td>
     </tr>
     <tr>
-      <td class='line'>17</td><td>&nbsp;</td>
+      <td class='line'>19</td><td>&nbsp;</td>
       <td><pre class='comment'>	// ==================================================[Browzerクラス関連イベント]==================================================</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -53,7 +55,7 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>24</td><td>&nbsp;</td>
+      <td class='line'>26</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public void beforeMove(Browzer browzer, MovableElement movable);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -67,7 +69,7 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>32</td><td>&nbsp;</td>
+      <td class='line'>34</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public void moveError(Browzer browzer, MovableElement movable, BrowzingException browzingException);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -80,7 +82,7 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>39</td><td>&nbsp;</td>
+      <td class='line'>41</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public void afterMove(Browzer browzer, MovableElement movable);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -93,7 +95,7 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>46</td><td>&nbsp;</td>
+      <td class='line'>48</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public void beforeMove(Browzer browzer, Form form);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -107,7 +109,7 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>54</td><td>&nbsp;</td>
+      <td class='line'>56</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public void moveError(Browzer browzer, Form form, BrowzingException browzingException);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -120,12 +122,12 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>61</td><td>&nbsp;</td>
+      <td class='line'>63</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public void afterMove(Browzer browzer, Form form);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>63</td><td>&nbsp;</td>
+      <td class='line'>65</td><td>&nbsp;</td>
       <td><pre class='comment'>	// ==================================================[PageRedirectHandlerクラス関連イベント]==================================================</pre></td>
     </tr>
     <tr>
@@ -137,8 +139,41 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>69</td><td>&nbsp;</td>
+      <td class='line'>71</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	void beforeRedirect(ResponseHeader header, Page page);</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * リダイレクトハンドラにて例外が発生した場合に実行されるイベント
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>76</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	void errorRedirect(PageIllegalArgumentException e);</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * リダイレクトハンドラにて例外が発生した場合に実行されるイベント
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>81</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	void errorRedirect(PageAccessException e);</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * リダイレクトハンドラにて例外が発生した場合に実行されるイベント
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>86</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	void errorRedirect(DocumentException e);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -148,12 +183,12 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>74</td><td>&nbsp;</td>
+      <td class='line'>91</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	void afterRedirect();</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>76</td><td>&nbsp;</td>
+      <td class='line'>93</td><td>&nbsp;</td>
       <td><pre class='comment'>	// ==================================================[PageManagerクラス関連イベント]==================================================</pre></td>
     </tr>
     <tr>
@@ -165,7 +200,7 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>82</td><td>&nbsp;</td>
+      <td class='line'>99</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	void beforeMove(PageManager pageManager, String url);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -176,12 +211,12 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>87</td><td>&nbsp;</td>
+      <td class='line'>104</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	void afterMove();</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>89</td><td>&nbsp;</td>
+      <td class='line'>106</td><td>&nbsp;</td>
       <td><pre class='comment'>	// ==================================================[Pageクラス関連イベント]==================================================</pre></td>
     </tr>
     <tr>
@@ -193,7 +228,7 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>95</td><td>&nbsp;</td>
+      <td class='line'>112</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	void beforeOpenConnection(Url urlObj, HtmlRequestMethodName method);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -205,7 +240,7 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>101</td><td>&nbsp;</td>
+      <td class='line'>118</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	void errorOpenConnection(PageAccessException pageAccessException);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -216,7 +251,7 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>106</td><td>&nbsp;</td>
+      <td class='line'>123</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	void afterOpenConnection();</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -228,7 +263,7 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>112</td><td>&nbsp;</td>
+      <td class='line'>129</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	void beforeGetData(Page page);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -240,7 +275,7 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>118</td><td>&nbsp;</td>
+      <td class='line'>135</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	void errorGetData(BrowzingException browzingException);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -252,7 +287,7 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>124</td><td>&nbsp;</td>
+      <td class='line'>141</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	void afterGetData(Page page);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -264,7 +299,7 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>130</td><td>&nbsp;</td>
+      <td class='line'>147</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	void beforeCreateDocument(Page page);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -276,7 +311,7 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>136</td><td>&nbsp;</td>
+      <td class='line'>153</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	void errorCreateDocument(BrowzingException browzingException);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -288,11 +323,11 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>142</td><td>&nbsp;</td>
+      <td class='line'>159</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	void afterCreateDocument(Page page);</pre></td>
     </tr>
     <tr>
-      <td class='line'>143</td><td>&nbsp;</td>
+      <td class='line'>160</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>}</pre></td>
     </tr>
   </table>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JMockit Coverage Report - BrowzingException.java</title>
+  <title>JMockit Coverage Report - PageSaveException.java</title>
   <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
   <link rel='stylesheet' type='text/css' href='../../../../../coverage.css'/>
   <script type='text/javascript' src='../../../../../coverage.js'></script>
@@ -9,7 +9,7 @@
 </head>
 <body onload='prettyPrint()'>
   <table cellpadding='0' cellspacing='1'>
-    <caption>Browzer/src/jp/co/dk/browzer/exception/BrowzingException.java</caption>
+    <caption>Browzer/src/jp/co/dk/browzer/exception/PageSaveException.java</caption>
     <tr>
       <td class='line'>1</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>package jp.co.dk.browzer.exception;</pre></td>
@@ -20,22 +20,12 @@
       <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import java.util.List;
 
 import jp.co.dk.message.MessageInterface;
-import jp.co.dk.message.exception.AbstractMessageException;
 </div><span>import ...</span></pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'></td><td>&nbsp;</td>
-      <td class='comment' onclick='showHideLines(this)'><div>/**
- * BrowzingExceptionは、HTML、XMLでのブラウザ操作にて例外が発生したことを通知する例外クラスです。
- * 
- * @version 1.0
- * @author D.Kanno
- */</div><span>/*...*/</span></td>
-    </tr>
-    <tr>
-      <td class='line'>14</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>public class BrowzingException extends AbstractMessageException{</pre></td>
+      <td class='line'>7</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>public class PageSaveException extends BrowzingException {</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -45,8 +35,8 @@ import jp.co.dk.message.exception.AbstractMessageException;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>19</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private static final long serialVersionUID = 8573728932127558752L;</pre></td>
+      <td class='line'>12</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private static final long serialVersionUID = -482848090623669237L;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -61,16 +51,16 @@ import jp.co.dk.message.exception.AbstractMessageException;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>29</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected BrowzingException(MessageInterface msg){</pre></td>
+      <td class='line'>22</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public PageSaveException(MessageInterface msg){</pre></td>
     </tr>
     <tr>
-      <td class='line'>30</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l30s0'>		super(msg);</pre></td>
+      <td class='line'>23</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l23s0'>		super(msg);</pre></td>
     </tr>
     <tr>
-      <td class='line'>31</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l31s0'>	}</pre></td>
+      <td class='line'>24</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l24s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -86,16 +76,16 @@ import jp.co.dk.message.exception.AbstractMessageException;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>42</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected BrowzingException(MessageInterface msg, String str){</pre></td>
+      <td class='line'>35</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public PageSaveException(MessageInterface msg, String str){</pre></td>
     </tr>
     <tr>
-      <td class='line'>43</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l43s0'>		super(msg, str);</pre></td>
+      <td class='line'>36</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l36s0'>		super(msg, str);</pre></td>
     </tr>
     <tr>
-      <td class='line'>44</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l44s0'>	}</pre></td>
+      <td class='line'>37</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l37s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -111,16 +101,16 @@ import jp.co.dk.message.exception.AbstractMessageException;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>55</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected BrowzingException(MessageInterface msg, List&lt;String> list){</pre></td>
+      <td class='line'>48</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public PageSaveException(MessageInterface msg, List&lt;String> list){</pre></td>
     </tr>
     <tr>
-      <td class='line'>56</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l56s0'>		super(msg, list);</pre></td>
+      <td class='line'>49</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l49s0'>		super(msg, list);</pre></td>
     </tr>
     <tr>
-      <td class='line'>57</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l57s0'>	}</pre></td>
+      <td class='line'>50</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l50s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -136,16 +126,16 @@ import jp.co.dk.message.exception.AbstractMessageException;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>68</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected BrowzingException(MessageInterface msg, String[] str){</pre></td>
+      <td class='line'>61</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public PageSaveException(MessageInterface msg, String[] str){</pre></td>
     </tr>
     <tr>
-      <td class='line'>69</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l69s0'>		super(msg, str);</pre></td>
+      <td class='line'>62</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l62s0'>		super(msg, str);</pre></td>
     </tr>
     <tr>
-      <td class='line'>70</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l70s0'>	}</pre></td>
+      <td class='line'>63</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l63s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -161,16 +151,16 @@ import jp.co.dk.message.exception.AbstractMessageException;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>81</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected BrowzingException(MessageInterface msg, Throwable throwable){</pre></td>
+      <td class='line'>74</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public PageSaveException(MessageInterface msg, Throwable throwable){</pre></td>
     </tr>
     <tr>
-      <td class='line'>82</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l82s0'>		super(msg, throwable);</pre></td>
+      <td class='line'>75</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l75s0'>		super(msg, throwable);</pre></td>
     </tr>
     <tr>
-      <td class='line'>83</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l83s0'>	}</pre></td>
+      <td class='line'>76</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l76s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -187,16 +177,16 @@ import jp.co.dk.message.exception.AbstractMessageException;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>95</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected BrowzingException(MessageInterface msg, String str, Throwable throwable){</pre></td>
+      <td class='line'>88</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public PageSaveException(MessageInterface msg, String str, Throwable throwable){</pre></td>
     </tr>
     <tr>
-      <td class='line'>96</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l96s0'>		super(msg, str, throwable);</pre></td>
+      <td class='line'>89</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l89s0'>		super(msg, str, throwable);</pre></td>
     </tr>
     <tr>
-      <td class='line'>97</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l97s0'>	}</pre></td>
+      <td class='line'>90</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l90s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -213,16 +203,16 @@ import jp.co.dk.message.exception.AbstractMessageException;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>109</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected BrowzingException(MessageInterface msg, List&lt;String> list,Throwable throwable){</pre></td>
+      <td class='line'>102</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public PageSaveException(MessageInterface msg, List&lt;String> list,Throwable throwable){</pre></td>
     </tr>
     <tr>
-      <td class='line'>110</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l110s0'>		super(msg, list, throwable);</pre></td>
+      <td class='line'>103</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l103s0'>		super(msg, list, throwable);</pre></td>
     </tr>
     <tr>
-      <td class='line'>111</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l111s0'>	}</pre></td>
+      <td class='line'>104</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l104s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -239,19 +229,20 @@ import jp.co.dk.message.exception.AbstractMessageException;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>123</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected BrowzingException(MessageInterface msg, String[] str, Throwable throwable){</pre></td>
+      <td class='line'>116</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public PageSaveException(MessageInterface msg, String[] str, Throwable throwable){</pre></td>
     </tr>
     <tr>
-      <td class='line'>124</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l124s0'>		super(msg, str, throwable);</pre></td>
+      <td class='line'>117</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l117s0'>		super(msg, str, throwable);</pre></td>
     </tr>
     <tr>
-      <td class='line'>125</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l125s0'>	}</pre></td>
+      <td class='line'>118</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l118s0'>	}</pre></td>
     </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>126</td><td>&nbsp;</td>
+      <td class='line'>120</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>}</pre></td>
     </tr>
   </table>

@@ -11,7 +11,7 @@
   <table cellpadding='0' cellspacing='1'>
     <caption>Browzer/src/jp/co/dk/browzer/http/header/ContentsType.java</caption>
     <tr>
-      <td class='line'>1</td><td class='count'>25</td>
+      <td class='line'>1</td><td class='count'>58</td>
       <td><pre class='prettyprint covered' id='l1s0'>package jp.co.dk.browzer.http.header;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -2456,19 +2456,19 @@
       <td><pre class='prettyprint'>	public boolean isType(String contentType) {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>28</td>
+      <td></td><td class='count'>80</td>
       <td class='paths'>
         <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 2/2</span>
-        <span class='covered' onclick="showPath(this,'l628s0 l629s0')">A: 3</span>
-        <span class='covered' onclick="showPath(this,'l628s0 l631s0')">B: 25</span>
+        <span class='covered' onclick="showPath(this,'l628s0 l629s0')">A: 23</span>
+        <span class='covered' onclick="showPath(this,'l628s0 l631s0')">B: 57</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>628</td><td class='count'>28</td>
-      <td><pre class='prettyprint jmp'>		<span id='l628s0' title='Executions: 28' class='covered'>if (contentType.indexOf(this.typeStr) == -1)</span> <span id='l628s1' title='Executions: 3' class='covered'>{</span></pre></td>
+      <td class='line'>628</td><td class='count'>80</td>
+      <td><pre class='prettyprint jmp'>		<span id='l628s0' title='Executions: 80' class='covered'>if (contentType.indexOf(this.typeStr) == -1)</span> <span id='l628s1' title='Executions: 23' class='covered'>{</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>629</td><td class='count'>3</td>
+      <td class='line'>629</td><td class='count'>23</td>
       <td><pre class='prettyprint covered' id='l629s0'>			return false;</pre></td>
     </tr>
     <tr>
@@ -2476,7 +2476,7 @@
       <td><pre class='prettyprint'>		} else {</pre></td>
     </tr>
     <tr>
-      <td class='line'>631</td><td class='count'>25</td>
+      <td class='line'>631</td><td class='count'>57</td>
       <td><pre class='prettyprint covered' id='l631s0'>			return true;</pre></td>
     </tr>
     <tr>
@@ -2596,20 +2596,20 @@
       <td><pre class='prettyprint'>	public String getDefaultExtension() {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>6</td>
+      <td></td><td class='count'>10</td>
       <td class='paths'>
         <span style='cursor:default; background-color:#aa5500' onclick='hidePath()'>Path coverage: 1/3</span>
         <span class='uncovered' onclick="showPath(this,'l680s0 l680s2')">A: 0</span>
         <span class='uncovered' onclick="showPath(this,'l680s0 l680s1 l680s2')">B: 0</span>
-        <span class='covered' onclick="showPath(this,'l680s0 l680s1 l681s0')">C: 6</span>
+        <span class='covered' onclick="showPath(this,'l680s0 l680s1 l681s0')">C: 10</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>680</td><td class='count'>6</td>
-      <td><pre class='prettyprint jmp'>		<span id='l680s0' title='Executions: 6' class='covered'>if (this.extensions == null</span> || <span id='l680s1' title='Executions: 6' class='covered'>this.extensions.length == 0)</span> <span id='l680s2' title='Executions: 0' class='uncovered'>return "";</span></pre></td>
+      <td class='line'>680</td><td class='count'>10</td>
+      <td><pre class='prettyprint jmp'>		<span id='l680s0' title='Executions: 10' class='covered'>if (this.extensions == null</span> || <span id='l680s1' title='Executions: 10' class='covered'>this.extensions.length == 0)</span> <span id='l680s2' title='Executions: 0' class='uncovered'>return "";</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>681</td><td class='count'>6</td>
+      <td class='line'>681</td><td class='count'>10</td>
       <td><pre class='prettyprint covered' id='l681s0'>		return this.extensions[0];</pre></td>
     </tr>
     <tr>

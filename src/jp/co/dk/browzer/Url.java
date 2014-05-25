@@ -132,7 +132,7 @@ public class Url {
 		try {
 			urlObj = new URL(url);
 		} catch (MalformedURLException e1) {
-			throw new PageIllegalArgumentException( ERROR_PROTOCOL_OF_THE_URL_SPECIFIED_IS_UNKNOWN, url, e1 );
+			throw new PageIllegalArgumentException(ERROR_PROTOCOL_OF_THE_URL_SPECIFIED_IS_UNKNOWN, url, e1);
 		}
 		return urlObj;
 	}

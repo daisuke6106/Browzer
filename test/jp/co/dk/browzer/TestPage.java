@@ -2,14 +2,13 @@ package jp.co.dk.browzer;
 
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
-import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.exception.PageAccessException;
 import jp.co.dk.browzer.exception.PageIllegalArgumentException;
+import jp.co.dk.browzer.exception.PageSaveException;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.http.header.ResponseHeader;
 import jp.co.dk.document.Element;
@@ -30,14 +29,15 @@ import org.junit.Test;
 public class TestPage extends TestBrowzerFoundation {
 	
 	@Test
-	public void constructor() throws BrowzingException {
+	public void constructor() {
+		
 		// 引数にnullを設定した場合、例外が送出されること。
 		try {
 			String nullString = null;
 			Page page = new Page(nullString);
 			fail();
 		} catch (PageIllegalArgumentException e) {
-			assertEquals(e, jp.co.dk.browzer.message.BrowzingMessage.ERROR_URL_IS_NOT_SET);
+			assertEquals(e.getMessage(), ERROR_URL_IS_NOT_SET.getMessage());
 		} catch (PageAccessException e) {
 			fail(e);
 		}
@@ -47,7 +47,7 @@ public class TestPage extends TestBrowzerFoundation {
 			Page page = new Page("aaa");
 			fail();
 		} catch (PageIllegalArgumentException e) {
-			assertEquals(e, jp.co.dk.browzer.message.BrowzingMessage.ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL);
+			assertEquals(e.getMessage(), ERROR_PROTOCOL_OF_THE_URL_SPECIFIED_IS_UNKNOWN.getMessage("aaa"));
 		} catch (PageAccessException e) {
 			fail(e);
 		}
@@ -70,18 +70,24 @@ public class TestPage extends TestBrowzerFoundation {
 			fail(e);
 		}
 		
+		// FORM指定して遷移する際に、FORMが指定されていなかった場合、指定の例外が出力されること。
+		try {
+			Form form = null;
+			new Page(form, new HashMap<String, String>());
+			fail();
+		} catch (PageIllegalArgumentException e) {
+			assertEquals(e.getMessage(), ERROR_FORM_IS_NOT_SPECIFIED.getMessage());
+ 		} catch (PageAccessException e) {
+			fail(e);
+		}
+		
 		// FORM指定して遷移する際に、URLの作成に失敗した場合、指定の例外が出力されること。
 		try {
 			Page page = new Page("http://www.tohoho-web.com/html/form.htm");
 			HtmlDocument document1 = (HtmlDocument)page.getDocument();
 			List<Element> formList1 = document1.getElement(HtmlElementName.FORM);
 			final Form formElement = (Form)formList1.get(0);
-			List<HtmlElement> formList = formElement.getFormElementList();
-			Text txt1 = (Text)formList.get(0);
-			Text txt2 = (Text)formList.get(1);
-			txt1.setValue("test");
-			txt2.setValue("value");
-			
+			String uel = formElement.getAction().getURL().toString();
 			new Expectations(formElement) {{
 				formElement.getAction();
 				result = new HtmlDocumentException(DocumentMessage.ERROR_AN_INVALID_URL_WAS_SPECIFIED, "Dummy URL", new Exception());
@@ -89,21 +95,10 @@ public class TestPage extends TestBrowzerFoundation {
 			Page newPage = new Page(formElement, new HashMap<String, String>());
 			fail();
 		} catch (PageIllegalArgumentException e) {
-			fail(e);
-		} catch (PageAccessException e) {
+			assertEquals(e.getMessage(), ERROR_AN_INVALID_URL_WAS_SPECIFIED.getMessage("Dummy URL"));
+ 		} catch (PageAccessException e) {
 			fail(e);
 		} catch (DocumentException e) {
-			fail(e);
-		}
-		
-		// FORM指定して遷移する際に、Formにnullが設定された場合、例外が発生すること。
-		try {
-			Form form = null;
-			Page newPage = new Page(form, null);
-			fail();
-		} catch (PageIllegalArgumentException e) {
-			fail(e);
-		} catch (PageAccessException e) {
 			fail(e);
 		}
 		
@@ -128,67 +123,138 @@ public class TestPage extends TestBrowzerFoundation {
 		}
 	}
 	
-	
 	@Test
-	public void getHost() throws BrowzingException {
+	public void getHost(){
 		// URLにホスト名のみ指定して作成していた場合でもホスト名のみ抽出されること。
-		Page page1 = super.createPage("http://ja.wikipedia.org");
-		assertEquals(page1.getHost(), "ja.wikipedia.org");
+		try {
+			Page page1 = new Page("http://ja.wikipedia.org");
+			assertEquals(page1.getHost(), "ja.wikipedia.org");
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		}		
 		
 		// URLにホスト名＋パスを指定して作成した場合でも、ホスト名を正常に取得できること。
-		Page page2 = super.createPage("http://ja.wikipedia.org/wiki/HyperText_Markup_Language");
-		assertEquals(page2.getHost(), "ja.wikipedia.org");
+		try {
+			Page page2 = new Page("http://ja.wikipedia.org/wiki/HyperText_Markup_Language");
+			assertEquals(page2.getHost(), "ja.wikipedia.org");
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		}
 	}
 	
 	@Test
-	public void getURL() throws BrowzingException{
+	public void getURL(){
 		// URLにホスト名のみ指定して作成していた場合、正常にURLが返却されること。
-		Page page1 = new Page("http://ja.wikipedia.org");
-		assertEquals("http://ja.wikipedia.org", page1.getURL());
+		try {
+			Page page1 = new Page("http://ja.wikipedia.org");
+			assertEquals("http://ja.wikipedia.org", page1.getURL());
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		}
 		
 		// URLにホスト名＋パスを指定して作成していた場合、正常にURLが返却されること。
-		Page page2 = super.createPage("http://ja.wikipedia.org/wiki/HyperText_Markup_Language");
-		assertEquals("http://ja.wikipedia.org/wiki/HyperText_Markup_Language", page2.getURL());
-		
+		try {
+			Page page2 = new Page("http://ja.wikipedia.org/wiki/HyperText_Markup_Language");
+			assertEquals("http://ja.wikipedia.org/wiki/HyperText_Markup_Language", page2.getURL());
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		}
+
 		// URLにホスト名＋パス＋パラメータを指定して作成していた場合、正常にURLが返却されること。
-		Page page3 = new Page("http://phpjavascriptroom.com/?t=js&p=location4");
-		assertEquals("http://phpjavascriptroom.com/?t=js&p=location4", page3.getURL());
+		try {
+			Page page3 = new Page("http://phpjavascriptroom.com/?t=js&p=location4");
+			assertEquals("http://phpjavascriptroom.com/?t=js&p=location4", page3.getURL());
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		}
 		
 	}
 	
 	@Test
-	public void getURLObject() throws MalformedURLException, BrowzingException {
+	public void getURLObject(){
 		// URLにホスト名のみ指定して作成していた場合、正常にURLが返却されること。
-		Page page1 = new Page("http://ja.wikipedia.org");
-		assertEquals("http://ja.wikipedia.org", page1.getURLObject().toString());
+		try {
+			Page page1 = new Page("http://ja.wikipedia.org");
+			assertEquals("http://ja.wikipedia.org", page1.getURLObject().toString());
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		}
 		
 		// URLにホスト名＋パスを指定して作成していた場合、正常にURLが返却されること。
-		Page page2 = super.createPage("http://ja.wikipedia.org/wiki/HyperText_Markup_Language");
-		assertEquals("http://ja.wikipedia.org/wiki/HyperText_Markup_Language", page2.getURLObject().toString());
+		try {
+			Page page2 = new Page("http://ja.wikipedia.org/wiki/HyperText_Markup_Language");
+			assertEquals("http://ja.wikipedia.org/wiki/HyperText_Markup_Language", page2.getURLObject().toString());
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		}
 		
 		// URLにホスト名＋パス＋パラメータを指定して作成していた場合、正常にURLが返却されること。
-		Page page3 = new Page("http://phpjavascriptroom.com/?t=js&p=location4");
-		assertEquals("http://phpjavascriptroom.com/?t=js&p=location4", page3.getURLObject().toString());
+		try {
+			Page page3 = new Page("http://phpjavascriptroom.com/?t=js&p=location4");
+			assertEquals("http://phpjavascriptroom.com/?t=js&p=location4", page3.getURLObject().toString());
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		}
 	}
 	
 	@Test
-	public void getDocument() throws BrowzingException{
+	public void getDocument(){
 		// 通常にURLからドキュメンとオブジェクトを取得した場合、正常に取得できること。(HTMLの場合)
-		Page page1 = new Page("http://phpjavascriptroom.com/?t=js&p=location4");
-		jp.co.dk.document.File document1 = page1.getDocument();
-		if (!(document1 instanceof jp.co.dk.document.html.HtmlDocument)) fail(); 
+		try {
+			Page page1 = new Page("http://phpjavascriptroom.com/?t=js&p=location4");
+			jp.co.dk.document.File document1 = page1.getDocument();
+			if (!(document1 instanceof jp.co.dk.document.html.HtmlDocument)) fail(); 
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
+		}
 		
 		// 通常にURLからドキュメンとオブジェクトを取得した場合、正常に取得できること。(XMLの場合)
-		Page page2 = new Page("http://rss.dailynews.yahoo.co.jp/fc/rss.xml");
-		jp.co.dk.document.File document2 = page2.getDocument();
-		if (!(document2 instanceof jp.co.dk.document.xml.XmlDocument)) fail(); 
+		try {
+			Page page2 = new Page("http://rss.dailynews.yahoo.co.jp/fc/rss.xml");
+			jp.co.dk.document.File document2 = page2.getDocument();
+			if (!(document2 instanceof jp.co.dk.document.xml.XmlDocument)) fail(); 
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
+		}
 		
 		// 通常にURLからドキュメンとオブジェクトを取得した場合、正常に取得できること。(IMGの場合)
-		Page page3 = new Page("http://blog-imgs-21-origin.fc2.com/v/i/p/vipvipblogblog/13944.jpg");
-		jp.co.dk.document.File document3 = page3.getDocument();
-		if (!(document3 instanceof jp.co.dk.document.File)) fail(); 
+		try {
+			Page page3 = new Page("http://blog-imgs-21-origin.fc2.com/v/i/p/vipvipblogblog/13944.jpg");
+			jp.co.dk.document.File document3 = page3.getDocument();
+			if (!(document3 instanceof jp.co.dk.document.File)) fail(); 
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
+		}
 		
-		// 通常にURLからドキュメンとオブジェクトを取得した場合、かつ、拡張子が存在しない場合、
+		// 通常にURLからドキュメントオブジェクトを取得した場合、かつ、拡張子が存在しない場合、
 		// 判断不可能として例外が発生すること。
 		try {
 			Page page4 = new Page("http://phpjavascriptroom.com/?t=js&p=location4");
@@ -201,9 +267,12 @@ public class TestPage extends TestBrowzerFoundation {
 			};
 			Deencapsulation.setField(page4, header);
 			jp.co.dk.document.File document4 = page4.getDocument();
-			if (!(document4 instanceof jp.co.dk.document.File)) fail(); 
-		} catch (BrowzingException e) {
-			if (e.getMessageObj() != ERROR_NON_SUPPORTED_EXTENSION) fail(e);
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
 		}
 		
 		// 通常にURLからドキュメンとオブジェクトを取得した場合、かつ、拡張子が存在する場合、
@@ -220,7 +289,11 @@ public class TestPage extends TestBrowzerFoundation {
 			Deencapsulation.setField(page4, header);
 			jp.co.dk.document.File document4 = page4.getDocument();
 			if (!(document4 instanceof jp.co.dk.document.html.HtmlDocument)) fail(); 
-		} catch (BrowzingException e) {
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
 			fail(e);
 		}
 		
@@ -238,7 +311,11 @@ public class TestPage extends TestBrowzerFoundation {
 			Deencapsulation.setField(page4, header);
 			jp.co.dk.document.File document4 = page4.getDocument();
 			if (!(document4 instanceof jp.co.dk.document.xml.XmlDocument)) fail(); 
-		} catch (BrowzingException e) {
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
 			fail(e);
 		}
 		
@@ -256,7 +333,11 @@ public class TestPage extends TestBrowzerFoundation {
 			Deencapsulation.setField(page4, header);
 			jp.co.dk.document.File document4 = page4.getDocument();
 			if (!(document4 instanceof jp.co.dk.document.File)) fail(); 
-		} catch (BrowzingException e) {
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
 			fail(e);
 		}
 	}
@@ -269,7 +350,9 @@ public class TestPage extends TestBrowzerFoundation {
 		try {
 			Page page = new Page("http://phpjavascriptroom.com/?t=js&p=location4");
 			assertEquals(page.getParameter(), map);
-		} catch (BrowzingException e) {
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
 			fail(e);
 		}
 		
@@ -282,42 +365,55 @@ public class TestPage extends TestBrowzerFoundation {
 			assertEquals(new Page("http://gigazine.net").getPath(), "");
 			assertEquals(new Page("http://d.hatena.ne.jp/teraliso/20081202/").getPath(), "teraliso/20081202/");
 			assertEquals(new Page("http://www.kanzaki.com/docs/sw/http-header.html").getPath(), "docs/sw/");
-		} catch (BrowzingException e) {
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
 			fail(e);
 		}
 	}
 	
 	@Test
-	public void getFileName() throws BrowzingException {
-		assertEquals(new Page("http://www.kanzaki.com/docs/sw/http-header.html").getFileName(), "http-header.html");
-		assertEquals(new Page("http://gigazine.net/").getFileName(), "index.html");
-		assertEquals(new Page("http://gigazine.net").getFileName(), "index.html");
-		assertEquals(new Page("http://d.hatena.ne.jp/teraliso/20081202/").getFileName(), "index.html");
-		assertEquals(new Page("http://d.hatena.ne.jp/teraliso/20081202").getFileName(), "index.html");
+	public void getFileName() {
+		try {
+			assertEquals(new Page("http://www.kanzaki.com/docs/sw/http-header.html").getFileName(), "http-header.html");
+			assertEquals(new Page("http://gigazine.net/").getFileName(), "index.html");
+			assertEquals(new Page("http://gigazine.net").getFileName(), "index.html");
+			assertEquals(new Page("http://d.hatena.ne.jp/teraliso/20081202/").getFileName(), "index.html");
+			assertEquals(new Page("http://d.hatena.ne.jp/teraliso/20081202").getFileName(), "index.html");
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		}
 	}
 	
 	@Test
-	public void getExtension() throws BrowzingException {
-		assertEquals(new Page("http://www.kanzaki.com/docs/sw/http-header.html").getExtension(), "html");
-		assertEquals(new Page("http://gigazine.net").getExtension(), "html");
-		assertEquals(new Page("http://blog-imgs-21-origin.fc2.com/v/i/p/vipvipblogblog/13944.jpg").getExtension(), "jpg");
-		assertEquals(new Page("http://www.tohoho-web.com/html/meta.htm").getExtension(), "htm");
-		
-		final Page page = new Page("http://gigazine.net");
-		new Expectations(page) {
-			{
+	public void getExtension() {
+		try {
+			assertEquals(new Page("http://www.kanzaki.com/docs/sw/http-header.html").getExtension(), "html");
+			assertEquals(new Page("http://gigazine.net").getExtension(), "html");
+			assertEquals(new Page("http://blog-imgs-21-origin.fc2.com/v/i/p/vipvipblogblog/13944.jpg").getExtension(), "jpg");
+			assertEquals(new Page("http://www.tohoho-web.com/html/meta.htm").getExtension(), "htm");
+			final Page page = new Page("http://gigazine.net");
+			new Expectations(page) {{
 				page.getFileName();
 				result = "aaa";
-			}
-		};
-		assertEquals(page.getExtension(), "");
+			}};
+			assertEquals(page.getExtension(), "");
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		}
 	}
 	
 	@Test
 	public void getProtocol() {
 		try {
 			assertEquals(new Page("http://www.kanzaki.com/docs/sw/http-header.html").getProtocol(), "http");
-		} catch (BrowzingException e) {
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
 			fail(e);
 		}
 	}
@@ -329,23 +425,33 @@ public class TestPage extends TestBrowzerFoundation {
 		try {
 			new Page("http://blog-imgs-21-origin.fc2.com/v/i/p/vipvipblogblog/13944.jpg").getAnchor();
 		} catch (PageAccessException e) {
-			if (e.getMessageObj() != ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML) fail(e);
-		} catch (DocumentException e) {
 			fail(e);
+		} catch (DocumentException e) {
+			if (e.getMessageObj() != ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML) fail(e);
 		} catch (PageIllegalArgumentException e) {
 			fail(e);
 		}
+		
+		// URLがHTMLでない場合、例外が送出されること。
 		try {
 			new Page("http://rss.dailynews.yahoo.co.jp/fc/rss.xml").getAnchor();
-		} catch (BrowzingException e) {
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
 			if (e.getMessageObj() != ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML) fail(e);
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
 		}
 		
 		// 正常なHTMLのページの場合、正常に処理が完了すること。
 		try {
 			List<A> anchors = new Page("http://www.google.co.jp").getAnchor();
 			if (anchors.size() == 0) fail();
-		} catch (BrowzingException e) {
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
+		} catch (PageIllegalArgumentException e) {
 			fail(e);
 		}
 	}
@@ -353,29 +459,43 @@ public class TestPage extends TestBrowzerFoundation {
 	@Test
 	public void getAnchorSameDomain() {
 		// URLがHTMLでない場合、例外が送出されること。
-			try {
-				new Page("http://blog-imgs-21-origin.fc2.com/v/i/p/vipvipblogblog/13944.jpg").getAnchorSameDomain();
-				fail();
-			} catch (BrowzingException e) {
-				if (e.getMessageObj() != ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML) fail(e);
+		try {
+			new Page("http://blog-imgs-21-origin.fc2.com/v/i/p/vipvipblogblog/13944.jpg").getAnchorSameDomain();
+			fail();
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
+			if (e.getMessageObj() != ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML) fail(e);
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		}
+		
+		// URLがHTMLでない場合、例外が送出されること。
+		try {
+			new Page("http://rss.dailynews.yahoo.co.jp/fc/rss.xml").getAnchorSameDomain();
+			fail();
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
+			if (e.getMessageObj() != ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML) fail(e);
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		}
+		
+		// 正常なHTMLのページの場合、正常に処理が完了すること。
+		try {
+			List<A> anchors = new Page("http://news.2chblog.jp/archives/51702010.html").getAnchorSameDomain();
+			for (A anchor : anchors){
+				Url thisAnchorUrl = new Url(anchor.getUrl());
+				assertEquals(thisAnchorUrl.getHost(), "news.2chblog.jp");
 			}
-			try {
-				new Page("http://rss.dailynews.yahoo.co.jp/fc/rss.xml").getAnchorSameDomain();
-				fail();
-			} catch (BrowzingException e) {
-				if (e.getMessageObj() != ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML) fail(e);
-			}
-			
-			// 正常なHTMLのページの場合、正常に処理が完了すること。
-			try {
-				List<A> anchors = new Page("http://news.2chblog.jp/archives/51702010.html").getAnchorSameDomain();
-				for (A anchor : anchors){
-					Url thisAnchorUrl = new Url(anchor.getUrl());
-					assertEquals(thisAnchorUrl.getHost(), "news.2chblog.jp");
-				}
-			} catch (BrowzingException e) {
-				fail(e);
-			}
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		}
 	}
 	
 	@Test
@@ -383,30 +503,51 @@ public class TestPage extends TestBrowzerFoundation {
 		// URLがHTMLでない場合、例外が送出されること。
 		try {
 			new Page("http://blog-imgs-21-origin.fc2.com/v/i/p/vipvipblogblog/13944.jpg").getForm();
-		} catch (BrowzingException e) {
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
 			if (e.getMessageObj() != ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML) fail(e);
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
 		}
+		
+		// URLがHTMLでない場合、例外が送出されること。
 		try {
 			new Page("http://rss.dailynews.yahoo.co.jp/fc/rss.xml").getForm();
-		} catch (BrowzingException e) {
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
 			if (e.getMessageObj() != ERROR_THIS_PAGE_CAN_NOT_BE_USERD_TO_OBTAIN_THE_ANCHOR_BECAUSE_IT_IS_NOT_HTML) fail(e);
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
 		}
 		
 		// 正常なHTMLのページの場合、正常に処理が完了すること
 		try {
-			Page page = super.createPage("http://www.htmq.com/html/form.shtml");
+			Page page = new Page("http://www.htmq.com/html/form.shtml");
 			List<jp.co.dk.document.html.element.Form> formList = page.getForm();
 			assertEquals(formList.size(), 3);
-		} catch (BrowzingException e) {
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
+		} catch (PageIllegalArgumentException e) {
 			fail(e);
 		}
 	}
 	
 	@Test
-	public void getSize() throws BrowzingException {
-		Page page = new Page("http://ja.wikipedia.org/wiki/HyperText_Markup_Language");
-		long size = page.getSize();
-		if (size == 110109) fail(); 
+	public void getSize(){
+		try {
+			Page page = new Page("http://ja.wikipedia.org/wiki/HyperText_Markup_Language");
+			long size = page.getSize();
+			if (size == 110109) fail(); 
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageAccessException e) {
+			fail(e);
+		}
+		
 	}
 	
 	@Test
@@ -426,7 +567,13 @@ public class TestPage extends TestBrowzerFoundation {
 			Page page3 = new Page("http://d.hatena.ne.jp/teraliso/20081202");
 			java.io.File file3 = page3.save(super.getTestTmpDir());
 			if(!file3.exists() && file3.getName().equals("default.html")) fail();
-		} catch (BrowzingException e) {
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageSaveException e) {
 			fail(e);
 		}
 		
@@ -445,7 +592,13 @@ public class TestPage extends TestBrowzerFoundation {
 			Page page3 = new Page("http://d.hatena.ne.jp/teraliso/20081202");
 			java.io.File file3 = page3.save(super.getTestTmpDir(), "ccc,html");
 			if(!file3.exists() && file3.getName().equals("ccc.html")) fail();
-		} catch (BrowzingException e) {
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageSaveException e) {
 			fail(e);
 		}
 		
@@ -455,7 +608,13 @@ public class TestPage extends TestBrowzerFoundation {
 			Page page1 = new Page("http://www.tohoho-web.com/html/meta.htm");
 			java.io.File file1 = page1.save(super.getTestTmpDir());
 			fail();
-		} catch (BrowzingException e) {
+		}catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageSaveException e) {
 			if (e.getMessageObj() != ERROR_FAILED_TO_DOWNLOAD) fail(e);
 		}
 		
@@ -465,7 +624,13 @@ public class TestPage extends TestBrowzerFoundation {
 			Page page1 = new Page("http://www.tohoho-web.com/html/meta.htm");
 			java.io.File file1 = page1.save(super.getTestTmpDir(), "aaa.html");
 			fail();
-		} catch (BrowzingException e) {
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageSaveException e) {
 			if (e.getMessageObj() != ERROR_FAILED_TO_DOWNLOAD) fail(e);
 		}
 	}
@@ -484,7 +649,13 @@ public class TestPage extends TestBrowzerFoundation {
 			// EUC-JP
 			Page page3 = new Page("http://d.hatena.ne.jp/teraliso/20081202");
 			page3.download(super.getTestTmpDir());
-		} catch (BrowzingException e) {
+		} catch (PageAccessException e) {
+			fail(e);
+		} catch (DocumentException e) {
+			fail(e);
+		} catch (PageIllegalArgumentException e) {
+			fail(e);
+		} catch (PageSaveException e) {
 			fail(e);
 		}
 	}

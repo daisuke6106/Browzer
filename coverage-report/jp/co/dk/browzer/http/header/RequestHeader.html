@@ -21,7 +21,6 @@
 import java.util.HashMap;
 import java.util.Map;
 
-import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.exception.PageHeaderImproperException;
 </div><span>import ...</span></pre></td>
     </tr>
@@ -36,22 +35,22 @@ import jp.co.dk.browzer.exception.PageHeaderImproperException;
  */</div><span>/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>16</td><td>&nbsp;</td>
+      <td class='line'>15</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>public class RequestHeader implements Serializable{</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>18</td><td>&nbsp;</td>
+      <td class='line'>17</td><td>&nbsp;</td>
       <td><pre class='comment'>	/** シリアルバージョンID */</pre></td>
     </tr>
     <tr>
-      <td class='line'>19</td><td>&nbsp;</td>
+      <td class='line'>18</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	private static final long serialVersionUID = 5547244168178351392L;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>21</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private Map&lt;String, String> <span class='instance uncovered' title='Reads: 0 Writes: 25'>headerMap</span>;</pre></td>
+      <td class='line'>20</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private Map&lt;String, String> <span class='instance uncovered' title='Reads: 0 Writes: 57'>headerMap</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -66,16 +65,16 @@ import jp.co.dk.browzer.exception.PageHeaderImproperException;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>31</td><td class='count'>25</td>
-      <td><pre class='prettyprint covered' id='l31s0'>	public RequestHeader(Map&lt;String, String> requestHeader) throws PageHeaderImproperException {</pre></td>
+      <td class='line'>30</td><td class='count'>57</td>
+      <td><pre class='prettyprint covered' id='l30s0'>	public RequestHeader(Map&lt;String, String> requestHeader) throws PageHeaderImproperException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>32</td><td class='count'>25</td>
-      <td><pre class='prettyprint covered' id='l32s0'>		this.headerMap = new HashMap&lt;String, String>(requestHeader);</pre></td>
+      <td class='line'>31</td><td class='count'>57</td>
+      <td><pre class='prettyprint covered' id='l31s0'>		this.headerMap = new HashMap&lt;String, String>(requestHeader);</pre></td>
     </tr>
     <tr>
-      <td class='line'>33</td><td class='count'>25</td>
-      <td><pre class='prettyprint covered' id='l33s0'>	}</pre></td>
+      <td class='line'>32</td><td class='count'>57</td>
+      <td><pre class='prettyprint covered' id='l32s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -87,36 +86,36 @@ import jp.co.dk.browzer.exception.PageHeaderImproperException;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>40</td><td>&nbsp;</td>
+      <td class='line'>39</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public Map&lt;String, String> getHeaderMap() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>41</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l41s0'>		return new HashMap&lt;String, String>(this.headerMap);</pre></td>
+      <td class='line'>40</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l40s0'>		return new HashMap&lt;String, String>(this.headerMap);</pre></td>
     </tr>
     <tr>
-      <td class='line'>42</td><td>&nbsp;</td>
+      <td class='line'>41</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>44</td><td>&nbsp;</td>
+      <td class='line'>43</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	@Override</pre></td>
     </tr>
     <tr>
-      <td class='line'>45</td><td>&nbsp;</td>
+      <td class='line'>44</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public String toString() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>46</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l46s0'>		return this.headerMap.toString();</pre></td>
+      <td class='line'>45</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l45s0'>		return this.headerMap.toString();</pre></td>
     </tr>
     <tr>
-      <td class='line'>47</td><td>&nbsp;</td>
+      <td class='line'>46</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr>
-      <td class='line'>48</td><td>&nbsp;</td>
+      <td class='line'>47</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>}</pre></td>
     </tr>
   </table>

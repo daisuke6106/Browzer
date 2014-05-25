@@ -11,7 +11,6 @@ import jp.co.dk.browzer.Page;
 import jp.co.dk.browzer.exception.PageAccessException;
 import jp.co.dk.browzer.exception.PageIllegalArgumentException;
 import jp.co.dk.browzer.exception.PageRedirectException;
-import jp.co.dk.browzer.exception.PageRedirectException;
 import jp.co.dk.browzer.http.header.ResponseHeader;
 import jp.co.dk.browzer.http.header.record.HttpStatusCode;
 import jp.co.dk.document.Element;

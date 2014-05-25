@@ -222,7 +222,7 @@ public class Page implements XmlConvertable{
 		try {
 			this.url = this.createUrl(form.getAction().getURL().toString());
 		} catch (HtmlDocumentException e) {
-			throw new PageIllegalArgumentException(ERROR_AN_INVALID_URL_WAS_SPECIFIED, e);
+			throw new PageIllegalArgumentException(ERROR_AN_INVALID_URL_WAS_SPECIFIED, e.getEmbeddedStrList(), e);
 		}
 		this.readDataFlg    = readDataFlg;
 		this.eventHandler   = pageEventHandlerList;
