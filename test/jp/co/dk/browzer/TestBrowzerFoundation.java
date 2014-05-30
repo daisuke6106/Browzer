@@ -8,9 +8,7 @@ import jp.co.dk.browzer.exception.PageAccessException;
 import jp.co.dk.browzer.exception.PageIllegalArgumentException;
 import jp.co.dk.browzer.exception.PageMovableLimitException;
 import jp.co.dk.browzer.exception.PageRedirectException;
-import jp.co.dk.browzer.html.element.A;
 import jp.co.dk.browzer.html.element.Form;
-import jp.co.dk.browzer.html.element.Image;
 import jp.co.dk.message.MessageInterface;
 import jp.co.dk.test.template.TestCaseTemplate;
 
@@ -65,17 +63,14 @@ class BrowzerForTest extends Browzer{
 
 	public BrowzerForTest(String url) throws PageIllegalArgumentException, PageAccessException {
 		super(url);
-		// System.out.println("Create Browzer at [" + url + "]");
 	}
 	
 	public BrowzerForTest(String url, int nestLebel) throws PageIllegalArgumentException, PageAccessException {
 		super(url,nestLebel);
-		// System.out.println("Create Browzer at [" + url + "]");
 	}
 	
 	@Override
 	public Page move(Form form) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException{
-		// System.out.println("\tmove to [" + form + "]");
 		return super.move(form);
 	}
 	

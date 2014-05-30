@@ -17,7 +17,7 @@ import jp.co.dk.document.exception.DocumentException;
 import jp.co.dk.document.html.HtmlDocument;
 import jp.co.dk.document.html.HtmlElement;
 import jp.co.dk.document.html.constant.HtmlElementName;
-import jp.co.dk.document.html.element.form.Text;
+import jp.co.dk.document.html.element.form.FormText;
 import jp.co.dk.test.template.RandomSelectRule;
 
 import mockit.Expectations;
@@ -419,8 +419,8 @@ public class TestBrowser extends TestBrowzerFoundation {
 			List<Element> formList1 = document1.getElement(HtmlElementName.FORM);
 			Form formElement = (Form)formList1.get(0);
 			List<HtmlElement> formList = formElement.getFormElementList();
-			Text txt1 = (Text)formList.get(0);
-			Text txt2 = (Text)formList.get(1);
+			FormText txt1 = (FormText)formList.get(0);
+			FormText txt2 = (FormText)formList.get(1);
 			txt1.setValue("test");
 			txt2.setValue("value");
 			browzer1.move(formElement);

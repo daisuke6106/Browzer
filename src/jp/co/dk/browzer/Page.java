@@ -239,7 +239,7 @@ public class Page implements XmlConvertable{
 			outputStream.write(form.createMessage());
 			outputStream.close();
 		} catch (IOException e) {
-			throw new PageAccessException(ERROR_FAILED_TO_SEND_MESSAGE, new String[]{this.url.getURL(), form.getMethod().getMethod()}, e);
+			throw new PageAccessException(ERROR_FAILED_TO_SEND_MESSAGE, new String[]{this.url.getURL(), form.getMethod().toString()}, e);
 		}
 		Map<String, List<String>> responseHeader = connection.getHeaderFields();
 		try {

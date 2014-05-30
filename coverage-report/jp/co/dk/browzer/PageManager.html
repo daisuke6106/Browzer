@@ -24,6 +24,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.exception.PageAccessException;
+import jp.co.dk.browzer.exception.PageIllegalArgumentException;
+import jp.co.dk.browzer.exception.PageMovableLimitException;
+import jp.co.dk.browzer.exception.PageRedirectException;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.xml.XmlConvertable;
 </div><span>import ...</span></pre></td>
@@ -39,80 +43,80 @@ import jp.co.dk.xml.XmlConvertable;
  */</div><span>/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>19</td><td>&nbsp;</td>
+      <td class='line'>23</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>public class PageManager implements XmlConvertable{</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>21</td><td>&nbsp;</td>
+      <td class='line'>25</td><td>&nbsp;</td>
       <td><pre class='comment'>	/** 親ページ管理オブジェクト */</pre></td>
     </tr>
     <tr>
-      <td class='line'>22</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected PageManager <span class='instance covered' title='Reads: 132 Writes: 18'>parentPage</span>;</pre></td>
+      <td class='line'>26</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected PageManager <span class='instance covered' title='Reads: 75 Writes: 19'>parentPage</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>24</td><td>&nbsp;</td>
+      <td class='line'>28</td><td>&nbsp;</td>
       <td><pre class='comment'>	/** 現在のページのオブジェクト */</pre></td>
     </tr>
     <tr>
-      <td class='line'>25</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected Page <span class='instance covered' title='Reads: 297 Writes: 61'>page</span>;</pre></td>
+      <td class='line'>29</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected Page <span class='instance covered' title='Reads: 252 Writes: 70'>page</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>27</td><td>&nbsp;</td>
+      <td class='line'>31</td><td>&nbsp;</td>
       <td><pre class='comment'>	/** ページ接続エラー */</pre></td>
     </tr>
     <tr>
-      <td class='line'>28</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected BrowzingException <span class='instance covered' title='Reads: 83 Writes: 0'>error</span>;</pre></td>
+      <td class='line'>32</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected BrowzingException <span class='instance covered' title='Reads: 55 Writes: 0'>error</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>30</td><td>&nbsp;</td>
+      <td class='line'>34</td><td>&nbsp;</td>
       <td><pre class='comment'>	/** ページリダイレクトハンドラ */</pre></td>
     </tr>
     <tr>
-      <td class='line'>31</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected PageRedirectHandler <span class='instance uncovered' title='Reads: 36 Writes: 64'>pageRedirectHandler</span>;</pre></td>
+      <td class='line'>35</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected PageRedirectHandler <span class='instance uncovered' title='Reads: 38 Writes: 73'>pageRedirectHandler</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>33</td><td>&nbsp;</td>
+      <td class='line'>37</td><td>&nbsp;</td>
       <td><pre class='comment'>	/** ページイベントハンドラ一覧 */</pre></td>
     </tr>
     <tr>
-      <td class='line'>34</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected List&lt;PageEventHandler> <span class='instance covered' title='Reads: 207 Writes: 64'>pageEventHandlerList</span>;</pre></td>
+      <td class='line'>38</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected List&lt;PageEventHandler> <span class='instance covered' title='Reads: 235 Writes: 73'>pageEventHandlerList</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>36</td><td>&nbsp;</td>
+      <td class='line'>40</td><td>&nbsp;</td>
       <td><pre class='comment'>	/** この画面に属する小画面のページオブジェクト一覧 */</pre></td>
     </tr>
     <tr>
-      <td class='line'>37</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected List&lt;PageManager> <span class='instance covered' title='Reads: 149 Writes: 61'>childPageList</span>;</pre></td>
+      <td class='line'>41</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected List&lt;PageManager> <span class='instance uncovered' title='Reads: 93 Writes: 70'>childPageList</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>39</td><td>&nbsp;</td>
+      <td class='line'>43</td><td>&nbsp;</td>
       <td><pre class='comment'>	/** 現在のネストレベル */</pre></td>
     </tr>
     <tr>
-      <td class='line'>40</td><td class='count'>64</td>
-      <td><pre class='prettyprint covered' id='l40s0'>	protected int <span class='instance covered' title='Reads: 20 Writes: 82'>nestLevel</span> = 0;</pre></td>
+      <td class='line'>44</td><td class='count'>73</td>
+      <td><pre class='prettyprint covered' id='l44s0'>	protected int <span class='instance covered' title='Reads: 29 Writes: 92'>nestLevel</span> = 0;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>42</td><td>&nbsp;</td>
+      <td class='line'>46</td><td>&nbsp;</td>
       <td><pre class='comment'>	/** 最大ネストレベル */</pre></td>
     </tr>
     <tr>
-      <td class='line'>43</td><td class='count'>64</td>
-      <td><pre class='prettyprint covered' id='l43s0'>	protected int <span class='instance uncovered' title='Reads: 38 Writes: 85'>maxNestLevel</span> = -1;</pre></td>
+      <td class='line'>47</td><td class='count'>73</td>
+      <td><pre class='prettyprint covered' id='l47s0'>	protected int <span class='instance covered' title='Reads: 59 Writes: 96'>maxNestLevel</span> = -1;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -124,32 +128,33 @@ import jp.co.dk.xml.XmlConvertable;
 	 * @param url URL文字列
 	 * @param pageRedirectHandler  ページリダイレクト制御オブジェクト
 	 * @param pageEventHandlerList ページイベントハンドラ一覧
-	 * @throws BrowzingException ページクラスの生成に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>54</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l54s0'>	public PageManager(String url, PageRedirectHandler pageRedirectHandler, List&lt;PageEventHandler> pageEventHandlerList) throws BrowzingException {</pre></td>
+      <td class='line'>59</td><td class='count'>50</td>
+      <td><pre class='prettyprint covered' id='l59s0'>	public PageManager(String url, PageRedirectHandler pageRedirectHandler, List&lt;PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException, PageAccessException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>55</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l55s0'>		this.pageRedirectHandler  = pageRedirectHandler;</pre></td>
+      <td class='line'>60</td><td class='count'>50</td>
+      <td><pre class='prettyprint covered' id='l60s0'>		this.pageRedirectHandler  = pageRedirectHandler;</pre></td>
     </tr>
     <tr>
-      <td class='line'>56</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l56s0'>		this.pageEventHandlerList = pageEventHandlerList;</pre></td>
+      <td class='line'>61</td><td class='count'>50</td>
+      <td><pre class='prettyprint covered' id='l61s0'>		this.pageEventHandlerList = pageEventHandlerList;</pre></td>
     </tr>
     <tr>
-      <td class='line'>57</td><td class='count'>43</td>
-      <td><pre class='prettyprint covered' id='l57s0'>		this.page                 = this.createPage(url);</pre></td>
+      <td class='line'>62</td><td class='count'>50</td>
+      <td><pre class='prettyprint covered' id='l62s0'>		this.page                 = this.createPage(url);</pre></td>
     </tr>
     <tr>
-      <td class='line'>58</td><td class='count'>40</td>
-      <td><pre class='prettyprint covered' id='l58s0'>		this.childPageList        = new ArrayList&lt;PageManager>();</pre></td>
+      <td class='line'>63</td><td class='count'>47</td>
+      <td><pre class='prettyprint covered' id='l63s0'>		this.childPageList        = new ArrayList&lt;PageManager>();</pre></td>
     </tr>
     <tr>
-      <td class='line'>59</td><td class='count'>40</td>
-      <td><pre class='prettyprint covered' id='l59s0'>	}</pre></td>
+      <td class='line'>64</td><td class='count'>47</td>
+      <td><pre class='prettyprint covered' id='l64s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -162,36 +167,37 @@ import jp.co.dk.xml.XmlConvertable;
 	 * @param pageRedirectHandler ページリダイレクト制御オブジェクト
 	 * @param pageEventHandlerList ページイベントハンドラ一覧
 	 * @param maxNestLevel ページ遷移上限数
-	 * @throws BrowzingException ページクラスの生成に失敗した場合 
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>71</td><td class='count'>3</td>
-      <td><pre class='prettyprint covered' id='l71s0'>	public PageManager(String url, PageRedirectHandler pageRedirectHandler, List&lt;PageEventHandler> pageEventHandlerList, int maxNestLevel) throws BrowzingException {</pre></td>
+      <td class='line'>77</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l77s0'>	public PageManager(String url, PageRedirectHandler pageRedirectHandler, List&lt;PageEventHandler> pageEventHandlerList, int maxNestLevel) throws PageIllegalArgumentException, PageAccessException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>72</td><td class='count'>3</td>
-      <td><pre class='prettyprint covered' id='l72s0'>		this.pageRedirectHandler  = pageRedirectHandler;</pre></td>
+      <td class='line'>78</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l78s0'>		this.pageRedirectHandler  = pageRedirectHandler;</pre></td>
     </tr>
     <tr>
-      <td class='line'>73</td><td class='count'>3</td>
-      <td><pre class='prettyprint covered' id='l73s0'>		this.pageEventHandlerList = pageEventHandlerList;</pre></td>
+      <td class='line'>79</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l79s0'>		this.pageEventHandlerList = pageEventHandlerList;</pre></td>
     </tr>
     <tr>
-      <td class='line'>74</td><td class='count'>3</td>
-      <td><pre class='prettyprint covered' id='l74s0'>		this.page                 = this.createPage(url);</pre></td>
+      <td class='line'>80</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l80s0'>		this.page                 = this.createPage(url);</pre></td>
     </tr>
     <tr>
-      <td class='line'>75</td><td class='count'>3</td>
-      <td><pre class='prettyprint covered' id='l75s0'>		this.maxNestLevel         = maxNestLevel;</pre></td>
+      <td class='line'>81</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l81s0'>		this.maxNestLevel         = maxNestLevel;</pre></td>
     </tr>
     <tr>
-      <td class='line'>76</td><td class='count'>3</td>
-      <td><pre class='prettyprint covered' id='l76s0'>		this.childPageList        = new ArrayList&lt;PageManager>();</pre></td>
+      <td class='line'>82</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l82s0'>		this.childPageList        = new ArrayList&lt;PageManager>();</pre></td>
     </tr>
     <tr>
-      <td class='line'>77</td><td class='count'>3</td>
-      <td><pre class='prettyprint covered' id='l77s0'>	}</pre></td>
+      <td class='line'>83</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered' id='l83s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -209,40 +215,40 @@ import jp.co.dk.xml.XmlConvertable;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>90</td><td class='count'>18</td>
-      <td><pre class='prettyprint covered' id='l90s0'>	protected PageManager(PageManager parentPage, Page page, PageRedirectHandler pageRedirectHandler, List&lt;PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {</pre></td>
+      <td class='line'>96</td><td class='count'>19</td>
+      <td><pre class='prettyprint covered' id='l96s0'>	protected PageManager(PageManager parentPage, Page page, PageRedirectHandler pageRedirectHandler, List&lt;PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>91</td><td class='count'>18</td>
-      <td><pre class='prettyprint covered' id='l91s0'>		this.parentPage           = parentPage;</pre></td>
+      <td class='line'>97</td><td class='count'>19</td>
+      <td><pre class='prettyprint covered' id='l97s0'>		this.parentPage           = parentPage;</pre></td>
     </tr>
     <tr>
-      <td class='line'>92</td><td class='count'>18</td>
-      <td><pre class='prettyprint covered' id='l92s0'>		this.page                 = page;</pre></td>
+      <td class='line'>98</td><td class='count'>19</td>
+      <td><pre class='prettyprint covered' id='l98s0'>		this.page                 = page;</pre></td>
     </tr>
     <tr>
-      <td class='line'>93</td><td class='count'>18</td>
-      <td><pre class='prettyprint covered' id='l93s0'>		this.pageRedirectHandler  = pageRedirectHandler;</pre></td>
+      <td class='line'>99</td><td class='count'>19</td>
+      <td><pre class='prettyprint covered' id='l99s0'>		this.pageRedirectHandler  = pageRedirectHandler;</pre></td>
     </tr>
     <tr>
-      <td class='line'>94</td><td class='count'>18</td>
-      <td><pre class='prettyprint covered' id='l94s0'>		this.pageEventHandlerList = pageEventHandlerList;</pre></td>
+      <td class='line'>100</td><td class='count'>19</td>
+      <td><pre class='prettyprint covered' id='l100s0'>		this.pageEventHandlerList = pageEventHandlerList;</pre></td>
     </tr>
     <tr>
-      <td class='line'>95</td><td class='count'>18</td>
-      <td><pre class='prettyprint covered' id='l95s0'>		this.nestLevel            = nestLevel;</pre></td>
+      <td class='line'>101</td><td class='count'>19</td>
+      <td><pre class='prettyprint covered' id='l101s0'>		this.nestLevel            = nestLevel;</pre></td>
     </tr>
     <tr>
-      <td class='line'>96</td><td class='count'>18</td>
-      <td><pre class='prettyprint covered' id='l96s0'>		this.maxNestLevel         = maxNestLevel;</pre></td>
+      <td class='line'>102</td><td class='count'>19</td>
+      <td><pre class='prettyprint covered' id='l102s0'>		this.maxNestLevel         = maxNestLevel;</pre></td>
     </tr>
     <tr>
-      <td class='line'>97</td><td class='count'>18</td>
-      <td><pre class='prettyprint covered' id='l97s0'>		this.childPageList        = new ArrayList&lt;PageManager>();</pre></td>
+      <td class='line'>103</td><td class='count'>19</td>
+      <td><pre class='prettyprint covered' id='l103s0'>		this.childPageList        = new ArrayList&lt;PageManager>();</pre></td>
     </tr>
     <tr>
-      <td class='line'>98</td><td class='count'>18</td>
-      <td><pre class='prettyprint covered' id='l98s0'>	}</pre></td>
+      <td class='line'>104</td><td class='count'>19</td>
+      <td><pre class='prettyprint covered' id='l104s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -258,40 +264,40 @@ import jp.co.dk.xml.XmlConvertable;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>109</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l109s0'>	protected PageManager(PageManager parentPage, BrowzingException error, PageRedirectHandler pageRedirectHandler, List&lt;PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>110</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l110s0'>		this.parentPage           = parentPage;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>111</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l111s0'>		this.error                = error;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>112</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l112s0'>		this.pageRedirectHandler  = pageRedirectHandler;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>113</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l113s0'>		this.pageEventHandlerList = pageEventHandlerList;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>114</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l114s0'>		this.nestLevel            = nestLevel;</pre></td>
-    </tr>
-    <tr>
       <td class='line'>115</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l115s0'>		this.maxNestLevel         = maxNestLevel;</pre></td>
+      <td><pre class='prettyprint uncovered' id='l115s0'>	protected PageManager(PageManager parentPage, BrowzingException error, PageRedirectHandler pageRedirectHandler, List&lt;PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {</pre></td>
     </tr>
     <tr>
       <td class='line'>116</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l116s0'>		this.childPageList        = new ArrayList&lt;PageManager>();</pre></td>
+      <td><pre class='prettyprint uncovered' id='l116s0'>		this.parentPage           = parentPage;</pre></td>
     </tr>
     <tr>
       <td class='line'>117</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l117s0'>	}</pre></td>
+      <td><pre class='prettyprint uncovered' id='l117s0'>		this.error                = error;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>118</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l118s0'>		this.pageRedirectHandler  = pageRedirectHandler;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>119</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l119s0'>		this.pageEventHandlerList = pageEventHandlerList;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>120</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l120s0'>		this.nestLevel            = nestLevel;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>121</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l121s0'>		this.maxNestLevel         = maxNestLevel;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>122</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l122s0'>		this.childPageList        = new ArrayList&lt;PageManager>();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>123</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l123s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -308,44 +314,44 @@ import jp.co.dk.xml.XmlConvertable;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>129</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l129s0'>	protected PageManager(PageManager parentPage, Page page, BrowzingException error, PageRedirectHandler pageRedirectHandler, List&lt;PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>130</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l130s0'>		this.parentPage           = parentPage;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>131</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l131s0'>		this.page                 = page;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>132</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l132s0'>		this.error                = error;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>133</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l133s0'>		this.pageRedirectHandler  = pageRedirectHandler;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>134</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l134s0'>		this.pageEventHandlerList = pageEventHandlerList;</pre></td>
-    </tr>
-    <tr>
       <td class='line'>135</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l135s0'>		this.nestLevel            = nestLevel;</pre></td>
+      <td><pre class='prettyprint uncovered' id='l135s0'>	protected PageManager(PageManager parentPage, Page page, BrowzingException error, PageRedirectHandler pageRedirectHandler, List&lt;PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {</pre></td>
     </tr>
     <tr>
       <td class='line'>136</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l136s0'>		this.maxNestLevel         = maxNestLevel;</pre></td>
+      <td><pre class='prettyprint uncovered' id='l136s0'>		this.parentPage           = parentPage;</pre></td>
     </tr>
     <tr>
       <td class='line'>137</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l137s0'>		this.childPageList        = new ArrayList&lt;PageManager>();</pre></td>
+      <td><pre class='prettyprint uncovered' id='l137s0'>		this.page                 = page;</pre></td>
     </tr>
     <tr>
       <td class='line'>138</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l138s0'>	}</pre></td>
+      <td><pre class='prettyprint uncovered' id='l138s0'>		this.error                = error;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>139</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l139s0'>		this.pageRedirectHandler  = pageRedirectHandler;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>140</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l140s0'>		this.pageEventHandlerList = pageEventHandlerList;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>141</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l141s0'>		this.nestLevel            = nestLevel;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>142</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l142s0'>		this.maxNestLevel         = maxNestLevel;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>143</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l143s0'>		this.childPageList        = new ArrayList&lt;PageManager>();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>144</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l144s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -356,104 +362,107 @@ import jp.co.dk.xml.XmlConvertable;
 	 * 
 	 * @param page 遷移先ページ追加
 	 * @return 遷移先ページ管理オブジェクト
-	 * @throws BrowzingException 遷移に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
+	 * @throws PageRedirectException 遷移に失敗した場合
+	 * @throws PageMovableLimitException ページ遷移可能上限数に達した場合
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>148</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	PageManager move(String url) throws BrowzingException {</pre></td>
+      <td class='line'>157</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	PageManager move(String url) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>18</td>
+      <td></td><td class='count'>21</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#55aa00' onclick='hidePath()'>Path coverage: 2/3</span>
-        <span class='covered' onclick="showPath(this,'l149s0 l150s0 l150s1 l150s2')">A: 1</span>
-        <span class='covered' onclick="showPath(this,'l149s0 l150s0 l153s0 l160s0 l166s0 l168s0')">B: 17</span>
-        <span class='uncovered' onclick="showPath(this,'l149s0 l150s0 l150s1 l153s0 l160s0 l166s0 l168s0')">C: 0</span>
+        <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 3/3</span>
+        <span class='covered' onclick="showPath(this,'l158s0 l159s0 l159s1 l159s2')">A: 3</span>
+        <span class='covered' onclick="showPath(this,'l158s0 l159s0 l162s0 l169s0 l175s0 l177s0')">B: 11</span>
+        <span class='covered' onclick="showPath(this,'l158s0 l159s0 l159s1 l162s0 l169s0 l175s0 l177s0')">C: 7</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>149</td><td class='count'>18</td>
-      <td><pre class='prettyprint covered' id='l149s0'>		int nextLevel = this.nestLevel+1;</pre></td>
+      <td class='line'>158</td><td class='count'>21</td>
+      <td><pre class='prettyprint covered' id='l158s0'>		int nextLevel = this.nestLevel+1;</pre></td>
     </tr>
     <tr>
-      <td class='line'>150</td><td class='count'>18</td>
-      <td><pre class='prettyprint jmp'>		<span id='l150s0' title='Executions: 18' class='covered'>if ( !(this.maxNestLevel&lt;0)</span> && <span id='l150s1' title='Executions: 1' class='covered'>this.maxNestLevel &lt; nextLevel)</span> <span id='l150s2' title='Executions: 1' class='covered'>throw new BrowzingException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));</span></pre></td>
+      <td class='line'>159</td><td class='count'>21</td>
+      <td><pre class='prettyprint jmp'>		<span id='l159s0' title='Executions: 21' class='covered'>if ( !(this.maxNestLevel&lt;0)</span> && <span id='l159s1' title='Executions: 10' class='covered'>this.maxNestLevel &lt; nextLevel)</span> <span id='l159s2' title='Executions: 3' class='covered'>throw new PageMovableLimitException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>151</td><td>&nbsp;</td>
+      <td class='line'>160</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		Page nextPage;</pre></td>
     </tr>
     <tr>
-      <td class='line'>152</td><td>&nbsp;</td>
+      <td class='line'>161</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>153</td><td class='count'>17</td>
-      <td><pre class='prettyprint covered' id='l153s0'>			nextPage = this.createPage(url);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>154</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l154s0'>		} catch (BrowzingException e) {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>155</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l155s0'>			PageManager errorPageManager = this.createPageManager(this, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>156</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l156s0'>			this.childPageList.add(errorPageManager);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>157</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l157s0'>			return this;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>158</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>		}</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>159</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>		try {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>160</td><td class='count'>17</td>
-      <td><pre class='prettyprint covered' id='l160s0'>			nextPage = pageRedirectHandler.redirect(nextPage);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>161</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l161s0'>		} catch (BrowzingException e) {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>162</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l162s0'>			PageManager errorPageManager = this.createPageManager(this, nextPage, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);</pre></td>
+      <td class='line'>162</td><td class='count'>18</td>
+      <td><pre class='prettyprint covered' id='l162s0'>			nextPage = this.createPage(url);</pre></td>
     </tr>
     <tr>
       <td class='line'>163</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l163s0'>			this.childPageList.add(errorPageManager);</pre></td>
+      <td><pre class='prettyprint uncovered' id='l163s0'>		} catch (PageIllegalArgumentException | PageAccessException e) {</pre></td>
     </tr>
     <tr>
       <td class='line'>164</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l164s0'>			return this;</pre></td>
+      <td><pre class='prettyprint uncovered' id='l164s0'>			PageManager errorPageManager = this.createPageManager(this, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);</pre></td>
     </tr>
     <tr>
-      <td class='line'>165</td><td>&nbsp;</td>
+      <td class='line'>165</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l165s0'>			this.childPageList.add(errorPageManager);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>166</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l166s0'>			return this;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>167</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>166</td><td class='count'>17</td>
-      <td><pre class='prettyprint covered' id='l166s0'>		PageManager childPageManager = this.createPageManager(this, nextPage, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);</pre></td>
+      <td class='line'>168</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>167</td><td class='count'>17</td>
-      <td><pre class='prettyprint covered' id='l167s0'>		this.childPageList.add(childPageManager);</pre></td>
+      <td class='line'>169</td><td class='count'>18</td>
+      <td><pre class='prettyprint covered' id='l169s0'>			nextPage = pageRedirectHandler.redirect(nextPage);</pre></td>
     </tr>
     <tr>
-      <td class='line'>168</td><td class='count'>17</td>
-      <td><pre class='prettyprint covered' id='l168s0'>		return childPageManager;</pre></td>
+      <td class='line'>170</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l170s0'>		} catch (PageRedirectException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>169</td><td>&nbsp;</td>
+      <td class='line'>171</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l171s0'>			PageManager errorPageManager = this.createPageManager(this, nextPage, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>172</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l172s0'>			this.childPageList.add(errorPageManager);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>173</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l173s0'>			return this;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>174</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>175</td><td class='count'>18</td>
+      <td><pre class='prettyprint covered' id='l175s0'>		PageManager childPageManager = this.createPageManager(this, nextPage, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>176</td><td class='count'>18</td>
+      <td><pre class='prettyprint covered' id='l176s0'>		this.childPageList.add(childPageManager);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>177</td><td class='count'>18</td>
+      <td><pre class='prettyprint covered' id='l177s0'>		return childPageManager;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>178</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -465,104 +474,107 @@ import jp.co.dk.xml.XmlConvertable;
 	 * 
 	 * @param page 遷移先ページ追加
 	 * @return 遷移先ページ管理オブジェクト
-	 * @throws BrowzingException 遷移に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
+	 * @throws PageRedirectException 遷移に失敗した場合
+	 * @throws PageMovableLimitException ページ遷移可能上限数に達した場合
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>179</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	PageManager move(Form form) throws BrowzingException {</pre></td>
+      <td class='line'>191</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	PageManager move(Form form) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException {</pre></td>
     </tr>
     <tr>
       <td></td><td class='count'>1</td>
       <td class='paths'>
         <span style='cursor:default; background-color:#aa5500' onclick='hidePath()'>Path coverage: 1/3</span>
-        <span class='uncovered' onclick="showPath(this,'l180s0 l181s0 l181s1 l181s2')">A: 0</span>
-        <span class='covered' onclick="showPath(this,'l180s0 l181s0 l184s0 l191s0 l197s0 l199s0')">B: 1</span>
-        <span class='uncovered' onclick="showPath(this,'l180s0 l181s0 l181s1 l184s0 l191s0 l197s0 l199s0')">C: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l192s0 l193s0 l193s1 l193s2')">A: 0</span>
+        <span class='covered' onclick="showPath(this,'l192s0 l193s0 l196s0 l203s0 l209s0 l211s0')">B: 1</span>
+        <span class='uncovered' onclick="showPath(this,'l192s0 l193s0 l193s1 l196s0 l203s0 l209s0 l211s0')">C: 0</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>180</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l180s0'>		int nextLevel = this.nestLevel+1;</pre></td>
+      <td class='line'>192</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l192s0'>		int nextLevel = this.nestLevel+1;</pre></td>
     </tr>
     <tr>
-      <td class='line'>181</td><td class='count'>1</td>
-      <td><pre class='prettyprint jmp'>		<span id='l181s0' title='Executions: 1' class='covered'>if ( !(this.maxNestLevel&lt;0)</span> && <span id='l181s1' title='Executions: 0' class='uncovered'>this.maxNestLevel &lt; nextLevel)</span> <span id='l181s2' title='Executions: 0' class='uncovered'>throw new BrowzingException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));</span></pre></td>
+      <td class='line'>193</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>		<span id='l193s0' title='Executions: 1' class='covered'>if ( !(this.maxNestLevel&lt;0)</span> && <span id='l193s1' title='Executions: 0' class='uncovered'>this.maxNestLevel &lt; nextLevel)</span> <span id='l193s2' title='Executions: 0' class='uncovered'>throw new PageMovableLimitException(ERROR_REACHED_TO_THE_MAXIMUM_LEVEL, Integer.toString(nextLevel));</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>182</td><td>&nbsp;</td>
+      <td class='line'>194</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		Page nextPage;</pre></td>
     </tr>
     <tr>
-      <td class='line'>183</td><td>&nbsp;</td>
+      <td class='line'>195</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>184</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l184s0'>			nextPage = this.createPage(form);</pre></td>
+      <td class='line'>196</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l196s0'>			nextPage = this.createPage(form);</pre></td>
     </tr>
     <tr>
-      <td class='line'>185</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l185s0'>		} catch (BrowzingException e) {</pre></td>
+      <td class='line'>197</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l197s0'>		} catch (BrowzingException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>186</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l186s0'>			PageManager errorPageManager = this.createPageManager(this, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);</pre></td>
+      <td class='line'>198</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l198s0'>			PageManager errorPageManager = this.createPageManager(this, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);</pre></td>
     </tr>
     <tr>
-      <td class='line'>187</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l187s0'>			this.childPageList.add(errorPageManager);</pre></td>
+      <td class='line'>199</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l199s0'>			this.childPageList.add(errorPageManager);</pre></td>
     </tr>
     <tr>
-      <td class='line'>188</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l188s0'>			return this;</pre></td>
+      <td class='line'>200</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l200s0'>			return this;</pre></td>
     </tr>
     <tr>
-      <td class='line'>189</td><td>&nbsp;</td>
+      <td class='line'>201</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>190</td><td>&nbsp;</td>
+      <td class='line'>202</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>191</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l191s0'>			nextPage = pageRedirectHandler.redirect(nextPage);</pre></td>
+      <td class='line'>203</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l203s0'>			nextPage = pageRedirectHandler.redirect(nextPage);</pre></td>
     </tr>
     <tr>
-      <td class='line'>192</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l192s0'>		} catch (BrowzingException e) {</pre></td>
+      <td class='line'>204</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l204s0'>		} catch (BrowzingException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>193</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l193s0'>			PageManager errorPageManager = this.createPageManager(this, nextPage, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);</pre></td>
+      <td class='line'>205</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l205s0'>			PageManager errorPageManager = this.createPageManager(this, nextPage, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);</pre></td>
     </tr>
     <tr>
-      <td class='line'>194</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l194s0'>			this.childPageList.add(errorPageManager);</pre></td>
+      <td class='line'>206</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l206s0'>			this.childPageList.add(errorPageManager);</pre></td>
     </tr>
     <tr>
-      <td class='line'>195</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l195s0'>			return this;</pre></td>
+      <td class='line'>207</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l207s0'>			return this;</pre></td>
     </tr>
     <tr>
-      <td class='line'>196</td><td>&nbsp;</td>
+      <td class='line'>208</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>197</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l197s0'>		PageManager childPageManager = this.createPageManager(this, nextPage, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);</pre></td>
+      <td class='line'>209</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l209s0'>		PageManager childPageManager = this.createPageManager(this, nextPage, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);</pre></td>
     </tr>
     <tr>
-      <td class='line'>198</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l198s0'>		this.childPageList.add(childPageManager);</pre></td>
+      <td class='line'>210</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l210s0'>		this.childPageList.add(childPageManager);</pre></td>
     </tr>
     <tr>
-      <td class='line'>199</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l199s0'>		return childPageManager;</pre></td>
+      <td class='line'>211</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l211s0'>		return childPageManager;</pre></td>
     </tr>
     <tr>
-      <td class='line'>200</td><td>&nbsp;</td>
+      <td class='line'>212</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -577,27 +589,27 @@ import jp.co.dk.xml.XmlConvertable;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>209</td><td>&nbsp;</td>
+      <td class='line'>221</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	PageManager back() {</pre></td>
     </tr>
     <tr>
       <td></td><td class='count'>1</td>
       <td class='paths'>
         <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 1/2</span>
-        <span class='uncovered' onclick="showPath(this,'l210s0 l210s1')">A: 0</span>
-        <span class='covered' onclick="showPath(this,'l210s0 l211s0')">B: 1</span>
+        <span class='uncovered' onclick="showPath(this,'l222s0 l222s1')">A: 0</span>
+        <span class='covered' onclick="showPath(this,'l222s0 l223s0')">B: 1</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>210</td><td class='count'>1</td>
-      <td><pre class='prettyprint jmp'>		<span id='l210s0' title='Executions: 1' class='covered'>if (this.nestLevel == 0)</span> <span id='l210s1' title='Executions: 0' class='uncovered'>return this;</span></pre></td>
+      <td class='line'>222</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>		<span id='l222s0' title='Executions: 1' class='covered'>if (this.nestLevel == 0)</span> <span id='l222s1' title='Executions: 0' class='uncovered'>return this;</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>211</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l211s0'>		return this.parentPage;</pre></td>
+      <td class='line'>223</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l223s0'>		return this.parentPage;</pre></td>
     </tr>
     <tr>
-      <td class='line'>212</td><td>&nbsp;</td>
+      <td class='line'>224</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -610,15 +622,15 @@ import jp.co.dk.xml.XmlConvertable;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>219</td><td>&nbsp;</td>
+      <td class='line'>231</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public Page getParentPage() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>220</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l220s0'>		return this.parentPage.getPage();</pre></td>
+      <td class='line'>232</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l232s0'>		return this.parentPage.getPage();</pre></td>
     </tr>
     <tr>
-      <td class='line'>221</td><td>&nbsp;</td>
+      <td class='line'>233</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -629,20 +641,20 @@ import jp.co.dk.xml.XmlConvertable;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>226</td><td>&nbsp;</td>
+      <td class='line'>238</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public void removeParent() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>227</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l227s0'>		this.parentPage = null;</pre></td>
+      <td class='line'>239</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l239s0'>		this.parentPage = null;</pre></td>
     </tr>
     <tr>
-      <td class='line'>228</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l228s0'>		this.nestLevel = 0;</pre></td>
+      <td class='line'>240</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l240s0'>		this.nestLevel = 0;</pre></td>
     </tr>
     <tr>
-      <td class='line'>229</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l229s0'>	}</pre></td>
+      <td class='line'>241</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l241s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -654,31 +666,31 @@ import jp.co.dk.xml.XmlConvertable;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>236</td><td>&nbsp;</td>
+      <td class='line'>248</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public List&lt;Page> getChildPages() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>237</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l237s0'>		List&lt;Page> childPagesList = new ArrayList&lt;Page>();</pre></td>
+      <td class='line'>249</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l249s0'>		List&lt;Page> childPagesList = new ArrayList&lt;Page>();</pre></td>
     </tr>
     <tr>
-      <td class='line'>238</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l238s0'>		for (PageManager pagemanager : this.childPageList) {</pre></td>
+      <td class='line'>250</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l250s0'>		for (PageManager pagemanager : this.childPageList) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>239</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l239s0'>			childPagesList.add(pagemanager.getPage());</pre></td>
+      <td class='line'>251</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l251s0'>			childPagesList.add(pagemanager.getPage());</pre></td>
     </tr>
     <tr>
-      <td class='line'>240</td><td>&nbsp;</td>
+      <td class='line'>252</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>241</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l241s0'>		return childPagesList;</pre></td>
+      <td class='line'>253</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l253s0'>		return childPagesList;</pre></td>
     </tr>
     <tr>
-      <td class='line'>242</td><td>&nbsp;</td>
+      <td class='line'>254</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -689,16 +701,16 @@ import jp.co.dk.xml.XmlConvertable;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>247</td><td>&nbsp;</td>
+      <td class='line'>259</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public void removeChild() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>248</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l248s0'>		this.childPageList = new ArrayList&lt;PageManager>();</pre></td>
+      <td class='line'>260</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l260s0'>		this.childPageList = new ArrayList&lt;PageManager>();</pre></td>
     </tr>
     <tr>
-      <td class='line'>249</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l249s0'>	}</pre></td>
+      <td class='line'>261</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l261s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -710,15 +722,15 @@ import jp.co.dk.xml.XmlConvertable;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>256</td><td>&nbsp;</td>
+      <td class='line'>268</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public Page getPage() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>257</td><td class='count'>214</td>
-      <td><pre class='prettyprint covered' id='l257s0'>		return this.page;</pre></td>
+      <td class='line'>269</td><td class='count'>197</td>
+      <td><pre class='prettyprint covered' id='l269s0'>		return this.page;</pre></td>
     </tr>
     <tr>
-      <td class='line'>258</td><td>&nbsp;</td>
+      <td class='line'>270</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -732,94 +744,94 @@ import jp.co.dk.xml.XmlConvertable;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>266</td><td>&nbsp;</td>
+      <td class='line'>278</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public boolean ableMoveNextPage() {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
+      <td></td><td class='count'>6</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/3</span>
-        <span class='uncovered' onclick="showPath(this,'l267s0 l268s0 l268s1 l269s0')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l267s0 l268s0 l271s0')">B: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l267s0 l268s0 l268s1 l271s0')">C: 0</span>
+        <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 3/3</span>
+        <span class='covered' onclick="showPath(this,'l279s0 l280s0 l280s1 l281s0')">A: 1</span>
+        <span class='covered' onclick="showPath(this,'l279s0 l280s0 l283s0')">B: 4</span>
+        <span class='covered' onclick="showPath(this,'l279s0 l280s0 l280s1 l283s0')">C: 1</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>267</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l267s0'>		int nextNestLevel = this.nestLevel +1;</pre></td>
+      <td class='line'>279</td><td class='count'>6</td>
+      <td><pre class='prettyprint covered' id='l279s0'>		int nextNestLevel = this.nestLevel +1;</pre></td>
     </tr>
     <tr>
-      <td class='line'>268</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l268s0' title='Executions: 0' class='uncovered'>if ( !(this.maxNestLevel&lt;0)</span> && <span id='l268s1' title='Executions: 0' class='uncovered'>this.maxNestLevel &lt; nextNestLevel)</span> <span id='l268s2' title='Executions: 0' class='uncovered'>{</span></pre></td>
+      <td class='line'>280</td><td class='count'>6</td>
+      <td><pre class='prettyprint jmp'>		<span id='l280s0' title='Executions: 6' class='covered'>if ( !(this.maxNestLevel&lt;0)</span> && <span id='l280s1' title='Executions: 2' class='covered'>this.maxNestLevel &lt; nextNestLevel)</span> <span id='l280s2' title='Executions: 1' class='covered'>{</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>269</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l269s0'>			return false;</pre></td>
+      <td class='line'>281</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l281s0'>			return false;</pre></td>
     </tr>
     <tr>
-      <td class='line'>270</td><td>&nbsp;</td>
+      <td class='line'>282</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		} else {</pre></td>
     </tr>
     <tr>
-      <td class='line'>271</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l271s0'>			return true;</pre></td>
+      <td class='line'>283</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered' id='l283s0'>			return true;</pre></td>
     </tr>
     <tr>
-      <td class='line'>272</td><td>&nbsp;</td>
+      <td class='line'>284</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>273</td><td>&nbsp;</td>
+      <td class='line'>285</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>275</td><td>&nbsp;</td>
+      <td class='line'>287</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public PageStatus getPageStatus() {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>83</td>
+      <td></td><td class='count'>55</td>
       <td class='paths'>
         <span style='cursor:default; background-color:#db2400' onclick='hidePath()'>Path coverage: 1/7</span>
-        <span class='covered' onclick="showPath(this,'l276s0 l276s1 l277s0')">A: 83</span>
-        <span class='uncovered' onclick="showPath(this,'l276s0 l278s0 l278s1 l279s0')">B: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l276s0 l276s1 l278s0 l278s1 l279s0')">C: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l276s0 l278s0 l281s0')">D: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l276s0 l278s0 l278s1 l281s0')">E: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l276s0 l276s1 l278s0 l281s0')">F: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l276s0 l276s1 l278s0 l278s1 l281s0')">G: 0</span>
+        <span class='covered' onclick="showPath(this,'l288s0 l288s1 l289s0')">A: 55</span>
+        <span class='uncovered' onclick="showPath(this,'l288s0 l290s0 l290s1 l291s0')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l288s0 l288s1 l290s0 l290s1 l291s0')">C: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l288s0 l290s0 l293s0')">D: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l288s0 l290s0 l290s1 l293s0')">E: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l288s0 l288s1 l290s0 l293s0')">F: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l288s0 l288s1 l290s0 l290s1 l293s0')">G: 0</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>276</td><td class='count'>83</td>
-      <td><pre class='prettyprint jmp'>		<span id='l276s0' title='Executions: 83' class='covered'>if (this.page != null</span> && <span id='l276s1' title='Executions: 83' class='covered'>this.error == null)</span> <span id='l276s2' title='Executions: 83' class='covered'>{</span></pre></td>
+      <td class='line'>288</td><td class='count'>55</td>
+      <td><pre class='prettyprint jmp'>		<span id='l288s0' title='Executions: 55' class='covered'>if (this.page != null</span> && <span id='l288s1' title='Executions: 55' class='covered'>this.error == null)</span> <span id='l288s2' title='Executions: 55' class='covered'>{</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>277</td><td class='count'>83</td>
-      <td><pre class='prettyprint covered' id='l277s0'>			return PageStatus.SUCCESS;</pre></td>
+      <td class='line'>289</td><td class='count'>55</td>
+      <td><pre class='prettyprint covered' id='l289s0'>			return PageStatus.SUCCESS;</pre></td>
     </tr>
     <tr>
-      <td class='line'>278</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l278s0' title='Executions: 0' class='uncovered'>}</span> else <span id='l278s1' title='Executions: 0' class='uncovered'>if (this.page != null</span> && <span id='l278s2' title='Executions: 0' class='uncovered'>this.error != null)</span> </pre></td>
+      <td class='line'>290</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>		<span id='l290s0' title='Executions: 0' class='uncovered'>}</span> else <span id='l290s1' title='Executions: 0' class='uncovered'>if (this.page != null</span> && <span id='l290s2' title='Executions: 0' class='uncovered'>this.error != null)</span> </pre></td>
     </tr>
     <tr>
-      <td class='line'>279</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l279s0'>			return PageStatus.ERROR_REDIRECT;</pre></td>
+      <td class='line'>291</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l291s0'>			return PageStatus.ERROR_REDIRECT;</pre></td>
     </tr>
     <tr>
-      <td class='line'>280</td><td>&nbsp;</td>
+      <td class='line'>292</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		} else {</pre></td>
     </tr>
     <tr>
-      <td class='line'>281</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l281s0'>			return PageStatus.ERROR_ACCESS;</pre></td>
+      <td class='line'>293</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l293s0'>			return PageStatus.ERROR_ACCESS;</pre></td>
     </tr>
     <tr>
-      <td class='line'>282</td><td>&nbsp;</td>
+      <td class='line'>294</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>283</td><td>&nbsp;</td>
+      <td class='line'>295</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -830,31 +842,32 @@ import jp.co.dk.xml.XmlConvertable;
 	 * 
 	 * @param url URL文字列
 	 * @return ページオブジェクト
-	 * @throws BrowzingException ページクラスの生成に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>292</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected Page createPage(String url) throws BrowzingException {</pre></td>
+      <td class='line'>305</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected Page createPage(String url) throws PageIllegalArgumentException, PageAccessException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>293</td><td class='count'>63</td>
-      <td><pre class='prettyprint jmp'>		<span id='l293s0' title='Executions: 63' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l293s1' title='Executions: 126' class='covered'>pageEventHandlerList)</span> </pre></td>
+      <td class='line'>306</td><td class='count'>72</td>
+      <td><pre class='prettyprint jmp'>		<span id='l306s0' title='Executions: 72' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l306s1' title='Executions: 144' class='covered'>pageEventHandlerList)</span> </pre></td>
     </tr>
     <tr>
-      <td class='line'>294</td><td class='count'>63</td>
-      <td><pre class='prettyprint covered' id='l294s0'>		Page nextPage = new Page(url, new HashMap&lt;String, String>(), false, this.pageEventHandlerList);</pre></td>
+      <td class='line'>307</td><td class='count'>72</td>
+      <td><pre class='prettyprint covered' id='l307s0'>		Page nextPage = new Page(url, new HashMap&lt;String, String>(), false, this.pageEventHandlerList);</pre></td>
     </tr>
     <tr>
-      <td class='line'>295</td><td class='count'>60</td>
-      <td><pre class='prettyprint jmp'>		<span id='l295s0' title='Executions: 60' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l295s1' title='Executions: 120' class='covered'>pageEventHandlerList)</span> </pre></td>
+      <td class='line'>308</td><td class='count'>69</td>
+      <td><pre class='prettyprint jmp'>		<span id='l308s0' title='Executions: 69' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l308s1' title='Executions: 138' class='covered'>pageEventHandlerList)</span> </pre></td>
     </tr>
     <tr>
-      <td class='line'>296</td><td class='count'>60</td>
-      <td><pre class='prettyprint covered' id='l296s0'>		return nextPage;</pre></td>
+      <td class='line'>309</td><td class='count'>69</td>
+      <td><pre class='prettyprint covered' id='l309s0'>		return nextPage;</pre></td>
     </tr>
     <tr>
-      <td class='line'>297</td><td>&nbsp;</td>
+      <td class='line'>310</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -865,31 +878,32 @@ import jp.co.dk.xml.XmlConvertable;
 	 * 
 	 * @param form Formオブジェクト
 	 * @return ページオブジェクト
-	 * @throws BrowzingException ページクラスの生成に失敗した場合
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>306</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected Page createPage(Form form) throws BrowzingException {</pre></td>
+      <td class='line'>320</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected Page createPage(Form form) throws PageIllegalArgumentException, PageAccessException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>307</td><td class='count'>1</td>
-      <td><pre class='prettyprint jmp'>		<span id='l307s0' title='Executions: 1' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l307s1' title='Executions: 2' class='covered'>pageEventHandlerList)</span> </pre></td>
+      <td class='line'>321</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>		<span id='l321s0' title='Executions: 1' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l321s1' title='Executions: 2' class='covered'>pageEventHandlerList)</span> </pre></td>
     </tr>
     <tr>
-      <td class='line'>308</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l308s0'>		Page nextPage = new Page(form, new HashMap&lt;String, String>(), false, this.pageEventHandlerList);</pre></td>
+      <td class='line'>322</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l322s0'>		Page nextPage = new Page(form, new HashMap&lt;String, String>(), false, this.pageEventHandlerList);</pre></td>
     </tr>
     <tr>
-      <td class='line'>309</td><td class='count'>1</td>
-      <td><pre class='prettyprint jmp'>		<span id='l309s0' title='Executions: 1' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l309s1' title='Executions: 2' class='covered'>pageEventHandlerList)</span> </pre></td>
+      <td class='line'>323</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>		<span id='l323s0' title='Executions: 1' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l323s1' title='Executions: 2' class='covered'>pageEventHandlerList)</span> </pre></td>
     </tr>
     <tr>
-      <td class='line'>310</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l310s0'>		return nextPage;</pre></td>
+      <td class='line'>324</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l324s0'>		return nextPage;</pre></td>
     </tr>
     <tr>
-      <td class='line'>311</td><td>&nbsp;</td>
+      <td class='line'>325</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -917,15 +931,15 @@ import jp.co.dk.xml.XmlConvertable;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>333</td><td>&nbsp;</td>
+      <td class='line'>347</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	protected PageManager createPageManager(PageManager pageManager, Page page, PageRedirectHandler pageRedirectHandler, List&lt;PageEventHandler> pageEventHandlerList, int nextLevel, int maxNestLevel) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>334</td><td class='count'>18</td>
-      <td><pre class='prettyprint covered' id='l334s0'>		return new PageManager(pageManager, page, pageRedirectHandler, pageEventHandlerList, nextLevel, maxNestLevel);</pre></td>
+      <td class='line'>348</td><td class='count'>19</td>
+      <td><pre class='prettyprint covered' id='l348s0'>		return new PageManager(pageManager, page, pageRedirectHandler, pageEventHandlerList, nextLevel, maxNestLevel);</pre></td>
     </tr>
     <tr>
-      <td class='line'>335</td><td>&nbsp;</td>
+      <td class='line'>349</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -952,15 +966,15 @@ import jp.co.dk.xml.XmlConvertable;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>356</td><td>&nbsp;</td>
+      <td class='line'>370</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	protected PageManager createPageManager(PageManager parentPage, BrowzingException error, PageRedirectHandler pageRedirectHandler, List&lt;PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>357</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l357s0'>		return new PageManager(parentPage, error, pageRedirectHandler, pageEventHandlerList, nestLevel, maxNestLevel);</pre></td>
+      <td class='line'>371</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l371s0'>		return new PageManager(parentPage, error, pageRedirectHandler, pageEventHandlerList, nestLevel, maxNestLevel);</pre></td>
     </tr>
     <tr>
-      <td class='line'>358</td><td>&nbsp;</td>
+      <td class='line'>372</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -989,275 +1003,275 @@ import jp.co.dk.xml.XmlConvertable;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>381</td><td>&nbsp;</td>
+      <td class='line'>395</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	protected PageManager createPageManager(PageManager parentPage, Page page, BrowzingException error, PageRedirectHandler pageRedirectHandler, List&lt;PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>382</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l382s0'>		return new PageManager(parentPage, page, error, pageRedirectHandler, pageEventHandlerList, nestLevel, maxNestLevel);</pre></td>
+      <td class='line'>396</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l396s0'>		return new PageManager(parentPage, page, error, pageRedirectHandler, pageEventHandlerList, nestLevel, maxNestLevel);</pre></td>
     </tr>
     <tr>
-      <td class='line'>383</td><td>&nbsp;</td>
+      <td class='line'>397</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>385</td><td>&nbsp;</td>
+      <td class='line'>399</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	@Override</pre></td>
     </tr>
     <tr>
-      <td class='line'>386</td><td>&nbsp;</td>
+      <td class='line'>400</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public jp.co.dk.xml.Element convert() throws jp.co.dk.xml.exception.XmlDocumentException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>387</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l387s0'>		jp.co.dk.xml.Element xmlElement = this.page.convert();</pre></td>
+      <td class='line'>401</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l401s0'>		jp.co.dk.xml.Element xmlElement = this.page.convert();</pre></td>
     </tr>
     <tr>
-      <td class='line'>388</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l388s0'>		for (PageManager pageManager : this.childPageList) {</pre></td>
+      <td class='line'>402</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l402s0'>		for (PageManager pageManager : this.childPageList) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>389</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l389s0'>			xmlElement.appendChild(pageManager);</pre></td>
+      <td class='line'>403</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l403s0'>			xmlElement.appendChild(pageManager);</pre></td>
     </tr>
     <tr>
-      <td class='line'>390</td><td>&nbsp;</td>
+      <td class='line'>404</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>391</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l391s0'>		return xmlElement;</pre></td>
+      <td class='line'>405</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l405s0'>		return xmlElement;</pre></td>
     </tr>
     <tr>
-      <td class='line'>392</td><td>&nbsp;</td>
+      <td class='line'>406</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>394</td><td>&nbsp;</td>
+      <td class='line'>408</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	@Override</pre></td>
     </tr>
     <tr>
-      <td class='line'>395</td><td>&nbsp;</td>
+      <td class='line'>409</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public String toString() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>396</td><td>&nbsp;</td>
+      <td class='line'>410</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		PageManager pageManager;</pre></td>
     </tr>
     <tr>
-      <td class='line'>397</td><td class='count'>35</td>
-      <td><pre class='prettyprint jmp'>		<span id='l397s0' title='Executions: 35' class='covered'>for (pageManager = this; pageManager.parentPage != null; pageManager = pageManager.parentPage);</span></pre></td>
+      <td class='line'>411</td><td class='count'>36</td>
+      <td><pre class='prettyprint jmp'>		<span id='l411s0' title='Executions: 36' class='covered'>for (pageManager = this; pageManager.parentPage != null; pageManager = pageManager.parentPage);</span></pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>399</td><td class='count'>35</td>
-      <td><pre class='prettyprint covered' id='l399s0'>		boolean[] islasted= {};</pre></td>
+      <td class='line'>413</td><td class='count'>36</td>
+      <td><pre class='prettyprint covered' id='l413s0'>		boolean[] islasted= {};</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>401</td><td class='count'>35</td>
-      <td><pre class='prettyprint covered' id='l401s0'>		String newline = System.getProperty("line.separator");</pre></td>
+      <td class='line'>415</td><td class='count'>36</td>
+      <td><pre class='prettyprint covered' id='l415s0'>		String newline = System.getProperty("line.separator");</pre></td>
     </tr>
     <tr>
-      <td class='line'>402</td><td class='count'>35</td>
-      <td><pre class='prettyprint covered' id='l402s0'>		Page activePage = this.getPage();</pre></td>
+      <td class='line'>416</td><td class='count'>36</td>
+      <td><pre class='prettyprint covered' id='l416s0'>		Page activePage = this.getPage();</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>404</td><td class='count'>35</td>
-      <td><pre class='prettyprint covered' id='l404s0'>		StringBuilder sb = new StringBuilder();</pre></td>
+      <td class='line'>418</td><td class='count'>36</td>
+      <td><pre class='prettyprint covered' id='l418s0'>		StringBuilder sb = new StringBuilder();</pre></td>
     </tr>
     <tr>
-      <td class='line'>405</td><td class='count'>35</td>
-      <td><pre class='prettyprint covered' id='l405s0'>		pageManager.toStringUrl(sb, islasted, newline, activePage);</pre></td>
+      <td class='line'>419</td><td class='count'>36</td>
+      <td><pre class='prettyprint covered' id='l419s0'>		pageManager.toStringUrl(sb, islasted, newline, activePage);</pre></td>
     </tr>
     <tr>
-      <td class='line'>406</td><td class='count'>35</td>
-      <td><pre class='prettyprint covered' id='l406s0'>		return sb.toString();</pre></td>
+      <td class='line'>420</td><td class='count'>36</td>
+      <td><pre class='prettyprint covered' id='l420s0'>		return sb.toString();</pre></td>
     </tr>
     <tr>
-      <td class='line'>407</td><td>&nbsp;</td>
+      <td class='line'>421</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>409</td><td>&nbsp;</td>
+      <td class='line'>423</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	private void toStringUrl(StringBuilder stringBuilder, boolean[] islasts, String newline, Page activePage) {</pre></td>
     </tr>
     <tr>
       <td></td><td class='count'>0</td>
       <td class='paths'>
         <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/6</span>
-        <span class='uncovered' onclick="showPath(this,'l410s0 l411s0 l414s0 l410s1 l417s0 l424s0 l426s0 l437s0')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l410s0 l411s0 l414s0 l410s1 l417s0 l418s0 l421s0 l424s0 l426s0 l437s0')">B: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l410s0 l411s0 l414s0 l410s1 l417s0 l418s0 l419s0 l424s0 l426s0 l437s0')">C: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l410s0 l411s0 l412s0 l410s1 l417s0 l424s0 l426s0 l437s0')">D: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l410s0 l411s0 l412s0 l410s1 l417s0 l418s0 l421s0 l424s0 l426s0 l437s0')">E: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l410s0 l411s0 l412s0 l410s1 l417s0 l418s0 l419s0 l424s0 l426s0 l437s0')">F: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l424s0 l425s0 l428s0 l424s1 l431s0 l438s0 l440s0 l451s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l424s0 l425s0 l428s0 l424s1 l431s0 l432s0 l435s0 l438s0 l440s0 l451s0')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l424s0 l425s0 l428s0 l424s1 l431s0 l432s0 l433s0 l438s0 l440s0 l451s0')">C: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l424s0 l425s0 l426s0 l424s1 l431s0 l438s0 l440s0 l451s0')">D: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l424s0 l425s0 l426s0 l424s1 l431s0 l432s0 l435s0 l438s0 l440s0 l451s0')">E: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l424s0 l425s0 l426s0 l424s1 l431s0 l432s0 l433s0 l438s0 l440s0 l451s0')">F: 0</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>410</td><td class='count'>204</td>
-      <td><pre class='prettyprint covered' id='l410s0'>		for (int i=0; i&lt;islasts.length-1; i++) {</pre></td>
+      <td class='line'>424</td><td class='count'>65</td>
+      <td><pre class='prettyprint covered' id='l424s0'>		for (int i=0; i&lt;islasts.length-1; i++) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>411</td><td class='count'>121</td>
-      <td><pre class='prettyprint jmp'>			<span id='l411s0' title='Executions: 121' class='covered'>if (islasts[i])</span> <span id='l411s1' title='Executions: 121' class='covered'>{</span></pre></td>
+      <td class='line'>425</td><td class='count'>10</td>
+      <td><pre class='prettyprint jmp'>			<span id='l425s0' title='Executions: 10' class='covered'>if (islasts[i])</span> <span id='l425s1' title='Executions: 10' class='covered'>{</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>412</td><td class='count'>121</td>
-      <td><pre class='prettyprint covered' id='l412s0'>				stringBuilder.append("  ");</pre></td>
+      <td class='line'>426</td><td class='count'>10</td>
+      <td><pre class='prettyprint covered' id='l426s0'>				stringBuilder.append("  ");</pre></td>
     </tr>
     <tr>
-      <td class='line'>413</td><td>&nbsp;</td>
+      <td class='line'>427</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>			} else {</pre></td>
     </tr>
     <tr>
-      <td class='line'>414</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l414s0'>				stringBuilder.append('│');</pre></td>
+      <td class='line'>428</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l428s0'>				stringBuilder.append('│');</pre></td>
     </tr>
     <tr>
-      <td class='line'>415</td><td>&nbsp;</td>
+      <td class='line'>429</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>			}</pre></td>
     </tr>
     <tr>
-      <td class='line'>416</td><td>&nbsp;</td>
+      <td class='line'>430</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>417</td><td class='count'>83</td>
-      <td><pre class='prettyprint jmp'>		<span id='l417s0' title='Executions: 83' class='covered'>if (islasts.length != 0)</span> <span id='l417s1' title='Executions: 48' class='covered'>{</span></pre></td>
+      <td class='line'>431</td><td class='count'>55</td>
+      <td><pre class='prettyprint jmp'>		<span id='l431s0' title='Executions: 55' class='covered'>if (islasts.length != 0)</span> <span id='l431s1' title='Executions: 19' class='covered'>{</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>418</td><td class='count'>48</td>
-      <td><pre class='prettyprint jmp'>			<span id='l418s0' title='Executions: 48' class='covered'>if (islasts[islasts.length-1])</span> <span id='l418s1' title='Executions: 48' class='covered'>{</span></pre></td>
+      <td class='line'>432</td><td class='count'>19</td>
+      <td><pre class='prettyprint jmp'>			<span id='l432s0' title='Executions: 19' class='covered'>if (islasts[islasts.length-1])</span> <span id='l432s1' title='Executions: 19' class='covered'>{</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>419</td><td class='count'>48</td>
-      <td><pre class='prettyprint covered' id='l419s0'>				stringBuilder.append('└');</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>420</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>			} else {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>421</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l421s0'>				stringBuilder.append('├');</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>422</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>			}</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>423</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>		}</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>424</td><td class='count'>83</td>
-      <td><pre class='prettyprint covered' id='l424s0'>		stringBuilder.append(this.pageInfomationToString(this, activePage));</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>425</td><td class='count'>83</td>
-      <td><pre class='prettyprint covered' id='l425s0'>		stringBuilder.append(newline);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>426</td><td class='count'>131</td>
-      <td><pre class='prettyprint covered' id='l426s0'>		for (int i=0, size = this.childPageList.size(); i&lt;size ;i++) {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>427</td><td class='count'>48</td>
-      <td><pre class='prettyprint covered' id='l427s0'>			boolean[] newIslasts = new boolean[islasts.length+1];</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>428</td><td class='count'>48</td>
-      <td><pre class='prettyprint jmp'>			<span id='l428s0' title='Executions: 48' class='covered'>for (int k=0; k&lt;islasts.length; k++)</span> <span id='l428s1' title='Executions: 169' class='covered'>newIslasts[k] = islasts[k];</span></pre></td>
-    </tr>
-    <tr>
-      <td class='line'>429</td><td class='count'>48</td>
-      <td><pre class='prettyprint jmp'>			<span id='l429s0' title='Executions: 48' class='covered'>if (i==size-1)</span> <span id='l429s1' title='Executions: 48' class='covered'>{</span></pre></td>
-    </tr>
-    <tr>
-      <td class='line'>430</td><td class='count'>48</td>
-      <td><pre class='prettyprint covered' id='l430s0'>				newIslasts[newIslasts.length-1] = true;</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'>432</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>			} else {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>433</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l433s0'>				newIslasts[newIslasts.length-1] = false;</pre></td>
+      <td class='line'>433</td><td class='count'>19</td>
+      <td><pre class='prettyprint covered' id='l433s0'>				stringBuilder.append('└');</pre></td>
     </tr>
     <tr>
       <td class='line'>434</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>			}</pre></td>
+      <td><pre class='prettyprint'>			} else {</pre></td>
     </tr>
     <tr>
-      <td class='line'>435</td><td class='count'>48</td>
-      <td><pre class='prettyprint covered' id='l435s0'>			this.childPageList.get(i).toStringUrl(stringBuilder, newIslasts, newline, activePage);</pre></td>
+      <td class='line'>435</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l435s0'>				stringBuilder.append('├');</pre></td>
     </tr>
     <tr>
       <td class='line'>436</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>437</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>437</td><td class='count'>83</td>
-      <td><pre class='prettyprint covered' id='l437s0'>	}</pre></td>
+      <td class='line'>438</td><td class='count'>55</td>
+      <td><pre class='prettyprint covered' id='l438s0'>		stringBuilder.append(this.pageInfomationToString(this, activePage));</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>439</td><td class='count'>55</td>
+      <td><pre class='prettyprint covered' id='l439s0'>		stringBuilder.append(newline);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>440</td><td class='count'>74</td>
+      <td><pre class='prettyprint covered' id='l440s0'>		for (int i=0, size = this.childPageList.size(); i&lt;size ;i++) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>441</td><td class='count'>19</td>
+      <td><pre class='prettyprint covered' id='l441s0'>			boolean[] newIslasts = new boolean[islasts.length+1];</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>442</td><td class='count'>19</td>
+      <td><pre class='prettyprint jmp'>			<span id='l442s0' title='Executions: 19' class='covered'>for (int k=0; k&lt;islasts.length; k++)</span> <span id='l442s1' title='Executions: 29' class='covered'>newIslasts[k] = islasts[k];</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>443</td><td class='count'>19</td>
+      <td><pre class='prettyprint jmp'>			<span id='l443s0' title='Executions: 19' class='covered'>if (i==size-1)</span> <span id='l443s1' title='Executions: 19' class='covered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>444</td><td class='count'>19</td>
+      <td><pre class='prettyprint covered' id='l444s0'>				newIslasts[newIslasts.length-1] = true;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>439</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected String pageInfomationToString(PageManager activePageManager, Page activePage) {</pre></td>
+      <td class='line'>446</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			} else {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>83</td>
-      <td class='paths'>
-        <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 2/2</span>
-        <span class='covered' onclick="showPath(this,'l440s0 l442s0 l443s0 l447s0')">A: 48</span>
-        <span class='covered' onclick="showPath(this,'l440s0 l442s0 l442s1 l443s0 l447s0')">B: 35</span>
-      </td>
-    </tr>
-    <tr>
-      <td class='line'>440</td><td class='count'>83</td>
-      <td><pre class='prettyprint covered' id='l440s0'>		StringBuilder sb = new StringBuilder();</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>441</td><td class='count'>83</td>
-      <td><pre class='prettyprint covered' id='l441s0'>		Page thisPage  = activePageManager.getPage();</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>442</td><td class='count'>83</td>
-      <td><pre class='prettyprint jmp'>		<span id='l442s0' title='Executions: 83' class='covered'>if (activePage == thisPage)</span> <span id='l442s1' title='Executions: 35' class='covered'>sb.append("[[[active]]]");</span> </pre></td>
-    </tr>
-    <tr>
-      <td class='line'>443</td><td class='count'>83</td>
-      <td><pre class='prettyprint covered' id='l443s0'>		sb.append(activePageManager.getPageStatus()).append(":URL=[").append(thisPage.getURL().toString()).append("]:");</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>444</td><td class='count'>83</td>
-      <td><pre class='prettyprint covered' id='l444s0'>		String fileName  = thisPage.getFileName();</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>445</td><td class='count'>83</td>
-      <td><pre class='prettyprint covered' id='l445s0'>		String extension = thisPage.getExtension();</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>446</td><td class='count'>83</td>
-      <td><pre class='prettyprint covered' id='l446s0'>		sb.append("FILE=[").append("filename=").append(fileName).append(", extension=").append(extension).append("]");</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>447</td><td class='count'>83</td>
-      <td><pre class='prettyprint covered' id='l447s0'>		return sb.toString();</pre></td>
+      <td class='line'>447</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l447s0'>				newIslasts[newIslasts.length-1] = false;</pre></td>
     </tr>
     <tr>
       <td class='line'>448</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>449</td><td class='count'>19</td>
+      <td><pre class='prettyprint covered' id='l449s0'>			this.childPageList.get(i).toStringUrl(stringBuilder, newIslasts, newline, activePage);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>450</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>451</td><td class='count'>55</td>
+      <td><pre class='prettyprint covered' id='l451s0'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>453</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected String pageInfomationToString(PageManager activePageManager, Page activePage) {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>55</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 2/2</span>
+        <span class='covered' onclick="showPath(this,'l454s0 l456s0 l457s0 l461s0')">A: 19</span>
+        <span class='covered' onclick="showPath(this,'l454s0 l456s0 l456s1 l457s0 l461s0')">B: 36</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>454</td><td class='count'>55</td>
+      <td><pre class='prettyprint covered' id='l454s0'>		StringBuilder sb = new StringBuilder();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>455</td><td class='count'>55</td>
+      <td><pre class='prettyprint covered' id='l455s0'>		Page thisPage  = activePageManager.getPage();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>456</td><td class='count'>55</td>
+      <td><pre class='prettyprint jmp'>		<span id='l456s0' title='Executions: 55' class='covered'>if (activePage == thisPage)</span> <span id='l456s1' title='Executions: 36' class='covered'>sb.append("[[[active]]]");</span> </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>457</td><td class='count'>55</td>
+      <td><pre class='prettyprint covered' id='l457s0'>		sb.append(activePageManager.getPageStatus()).append(":URL=[").append(thisPage.getURL().toString()).append("]:");</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>458</td><td class='count'>55</td>
+      <td><pre class='prettyprint covered' id='l458s0'>		String fileName  = thisPage.getFileName();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>459</td><td class='count'>55</td>
+      <td><pre class='prettyprint covered' id='l459s0'>		String extension = thisPage.getExtension();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>460</td><td class='count'>55</td>
+      <td><pre class='prettyprint covered' id='l460s0'>		sb.append("FILE=[").append("filename=").append(fileName).append(", extension=").append(extension).append("]");</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>461</td><td class='count'>55</td>
+      <td><pre class='prettyprint covered' id='l461s0'>		return sb.toString();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>462</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr>
-      <td class='line'>449</td><td>&nbsp;</td>
+      <td class='line'>463</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1270,8 +1284,8 @@ import jp.co.dk.xml.XmlConvertable;
  */</div><span>/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>456</td><td class='count'>3</td>
-      <td><pre class='prettyprint covered' id='l456s0'>enum PageStatus {</pre></td>
+      <td class='line'>470</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered' id='l470s0'>enum PageStatus {</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -1282,7 +1296,7 @@ import jp.co.dk.xml.XmlConvertable;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>462</td><td>&nbsp;</td>
+      <td class='line'>476</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	SUCCESS,</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1294,7 +1308,7 @@ import jp.co.dk.xml.XmlConvertable;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>468</td><td>&nbsp;</td>
+      <td class='line'>482</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	ERROR_ACCESS,</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -1306,11 +1320,11 @@ import jp.co.dk.xml.XmlConvertable;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>474</td><td>&nbsp;</td>
+      <td class='line'>488</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	ERROR_REDIRECT</pre></td>
     </tr>
     <tr>
-      <td class='line'>475</td><td>&nbsp;</td>
+      <td class='line'>489</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>}</pre></td>
     </tr>
   </table>
