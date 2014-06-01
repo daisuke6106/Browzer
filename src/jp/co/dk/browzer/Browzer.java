@@ -62,8 +62,8 @@ public class Browzer {
 	 */
 	public Browzer(String url) throws PageIllegalArgumentException, PageAccessException {
 		this.pageEventHandlerList = this.getPageEventHandler();
-		this.pageRedirectHandler  = this.createPageRedirectHandler(this.pageEventHandlerList);
-		this.pageManager          = this.createPageManager(url, pageRedirectHandler);
+		this.pageRedirectHandler  = this.createPageRedirectHandler();
+		this.pageManager          = this.createPageManager(url, this.pageRedirectHandler);
 	}
 	
 	/**
@@ -77,8 +77,8 @@ public class Browzer {
 	 */
 	public Browzer(String url, int maxNestLevel) throws PageIllegalArgumentException, PageAccessException {
 		this.pageEventHandlerList = this.getPageEventHandler();
-		this.pageRedirectHandler  = this.createPageRedirectHandler(this.pageEventHandlerList);
-		this.pageManager          = this.createPageManager(url, pageRedirectHandler, maxNestLevel);
+		this.pageRedirectHandler  = this.createPageRedirectHandler();
+		this.pageManager          = this.createPageManager(url, this.pageRedirectHandler, maxNestLevel);
 	}
 	
 	/**
@@ -345,8 +345,8 @@ public class Browzer {
 	 * @param pageEventHandlerList ページイベントハンドラ一覧
 	 * @return ページリダイレクトハンドラ
 	 */
-	protected PageRedirectHandler createPageRedirectHandler(List<PageEventHandler> pageEventHandlerList) {
-		return new PageRedirectHandler(pageEventHandlerList);
+	protected PageRedirectHandler createPageRedirectHandler() {
+		return new PageRedirectHandler(this.getPageEventHandler());
 	}
 	
 	/**

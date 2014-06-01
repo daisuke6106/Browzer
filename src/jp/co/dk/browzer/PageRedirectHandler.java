@@ -5,6 +5,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.dk.browzer.Page;
@@ -31,6 +32,14 @@ public class PageRedirectHandler {
 	
 	/** イベントハンドラ */
 	List<PageEventHandler> eventHandler;
+	
+	/**
+	 * コンストラクタ<p/>
+	 * イベントハンドラの指定無しにページリダイレクトハンドラを生成します。
+	 */
+	PageRedirectHandler() {
+		this.eventHandler = new ArrayList<PageEventHandler>();
+	}
 	
 	/**
 	 * コンストラクタ<p/>
