@@ -37,7 +37,7 @@ public class PageRedirectHandler {
 	 * コンストラクタ<p/>
 	 * イベントハンドラの指定無しにページリダイレクトハンドラを生成します。
 	 */
-	PageRedirectHandler() {
+	protected PageRedirectHandler() {
 		this.eventHandler = new ArrayList<PageEventHandler>();
 	}
 	
@@ -47,7 +47,7 @@ public class PageRedirectHandler {
 	 * 
 	 * @param eventHandler イベントハンドラ一覧
 	 */
-	PageRedirectHandler(List<PageEventHandler> eventHandler) {
+	protected PageRedirectHandler(List<PageEventHandler> eventHandler) {
 		this.eventHandler = eventHandler;
 	}
 	
