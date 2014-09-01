@@ -24,7 +24,7 @@ import mockit.Expectations;
 
 import org.junit.Test;
 
-public class TestBrowser extends TestBrowzerFoundation {
+public class BrowserTest extends BrowzerFoundationTest {
 	
 	// ［準備］リンク一覧からランダムに遷移先がHTMLであるアンカーを取得するためのルールを定義
 	private RandomSelectRule rule = new RandomSelectRule() {

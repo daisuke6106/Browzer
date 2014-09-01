@@ -5,7 +5,7 @@ import jp.co.dk.property.Property;
 
 import org.junit.Test;
 
-public class TestBrowzerProperty {
+public class BrowzerPropertyTest {
 
 	@Test
 	public void test() {

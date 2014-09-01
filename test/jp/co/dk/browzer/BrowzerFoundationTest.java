@@ -12,7 +12,7 @@ import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.message.MessageInterface;
 import jp.co.dk.test.template.TestCaseTemplate;
 
-public class TestBrowzerFoundation extends TestCaseTemplate {
+public class BrowzerFoundationTest extends TestCaseTemplate {
 	
 	protected String getRandomUrl() {
 		List<String> urlList = new ArrayList<String>();

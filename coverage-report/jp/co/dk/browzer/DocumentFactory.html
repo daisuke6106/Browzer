@@ -46,7 +46,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>22</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private Page <span class='instance covered' title='Reads: 72 Writes: 86'>page</span>;</pre></td>
+      <td><pre class='prettyprint'>	private Page <span class='instance covered' title='Reads: 52 Writes: 61'>page</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -59,15 +59,15 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>30</td><td class='count'>86</td>
+      <td class='line'>30</td><td class='count'>61</td>
       <td><pre class='prettyprint covered' id='l30s0'>	public DocumentFactory(Page page) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>31</td><td class='count'>86</td>
+      <td class='line'>31</td><td class='count'>61</td>
       <td><pre class='prettyprint covered' id='l31s0'>		this.page = page;</pre></td>
     </tr>
     <tr>
-      <td class='line'>32</td><td class='count'>86</td>
+      <td class='line'>32</td><td class='count'>61</td>
       <td><pre class='prettyprint covered' id='l32s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -87,38 +87,38 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>	public File create(BrowzingExtension extension, InputStream inputStream) throws DocumentException {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>4</td>
+      <td></td><td class='count'>0</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#40bf00' onclick='hidePath()'>Path coverage: 3/4</span>
-        <span class='covered' onclick="showPath(this,'l43s0 l43s1')">A: 1</span>
-        <span class='covered' onclick="showPath(this,'l43s0 l44s0 l46s0')">B: 2</span>
-        <span class='covered' onclick="showPath(this,'l43s0 l44s0 l48s0')">C: 1</span>
+        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/4</span>
+        <span class='uncovered' onclick="showPath(this,'l43s0 l43s1')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l43s0 l44s0 l46s0')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l43s0 l44s0 l48s0')">C: 0</span>
         <span class='uncovered' onclick="showPath(this,'l43s0 l44s0 l50s0')">D: 0</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>43</td><td class='count'>4</td>
-      <td><pre class='prettyprint jmp'>		<span id='l43s0' title='Executions: 4' class='covered'>if (extension == null)</span> <span id='l43s1' title='Executions: 1' class='covered'>return new jp.co.dk.document.File(inputStream);</span></pre></td>
+      <td class='line'>43</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>		<span id='l43s0' title='Executions: 0' class='uncovered'>if (extension == null)</span> <span id='l43s1' title='Executions: 0' class='uncovered'>return new jp.co.dk.document.File(inputStream);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>44</td><td class='count'>6</td>
-      <td><pre class='prettyprint covered' id='l44s0'>		switch (extension) {</pre></td>
+      <td class='line'>44</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l44s0'>		switch (extension) {</pre></td>
     </tr>
     <tr>
       <td class='line'>45</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>			case HTML:</pre></td>
     </tr>
     <tr>
-      <td class='line'>46</td><td class='count'>2</td>
-      <td><pre class='prettyprint covered' id='l46s0'>				return new jp.co.dk.document.html.HtmlDocument(inputStream, new HtmlElementFactory(this.page));</pre></td>
+      <td class='line'>46</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l46s0'>				return new jp.co.dk.document.html.HtmlDocument(inputStream, new HtmlElementFactory(this.page));</pre></td>
     </tr>
     <tr>
       <td class='line'>47</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>			case XML:</pre></td>
     </tr>
     <tr>
-      <td class='line'>48</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l48s0'>				return new jp.co.dk.document.xml.XmlDocument(inputStream);</pre></td>
+      <td class='line'>48</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l48s0'>				return new jp.co.dk.document.xml.XmlDocument(inputStream);</pre></td>
     </tr>
     <tr>
       <td class='line'>49</td><td>&nbsp;</td>
@@ -153,21 +153,21 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>	public File create(ContentsType contentsType, InputStream inputStream) throws DocumentException {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>82</td>
+      <td></td><td class='count'>61</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#40bf00' onclick='hidePath()'>Path coverage: 3/4</span>
+        <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 2/4</span>
         <span class='uncovered' onclick="showPath(this,'l63s0 l63s1')">A: 0</span>
-        <span class='covered' onclick="showPath(this,'l63s0 l64s0 l66s0')">B: 70</span>
-        <span class='covered' onclick="showPath(this,'l63s0 l64s0 l68s0')">C: 5</span>
-        <span class='covered' onclick="showPath(this,'l63s0 l64s0 l70s0')">D: 7</span>
+        <span class='covered' onclick="showPath(this,'l63s0 l64s0 l66s0')">B: 52</span>
+        <span class='uncovered' onclick="showPath(this,'l63s0 l64s0 l68s0')">C: 0</span>
+        <span class='covered' onclick="showPath(this,'l63s0 l64s0 l70s0')">D: 9</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>63</td><td class='count'>82</td>
-      <td><pre class='prettyprint jmp'>		<span id='l63s0' title='Executions: 82' class='covered'>if (contentsType == null)</span> <span id='l63s1' title='Executions: 0' class='uncovered'>throw new DocumentException(ERROR_EXTENSION_IS_NOT_SET);</span></pre></td>
+      <td class='line'>63</td><td class='count'>61</td>
+      <td><pre class='prettyprint jmp'>		<span id='l63s0' title='Executions: 61' class='covered'>if (contentsType == null)</span> <span id='l63s1' title='Executions: 0' class='uncovered'>throw new DocumentException(ERROR_EXTENSION_IS_NOT_SET);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>64</td><td class='count'>164</td>
+      <td class='line'>64</td><td class='count'>122</td>
       <td><pre class='prettyprint covered' id='l64s0'>		switch (contentsType) {</pre></td>
     </tr>
     <tr>
@@ -175,7 +175,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>			case TEXT_HTML:</pre></td>
     </tr>
     <tr>
-      <td class='line'>66</td><td class='count'>70</td>
+      <td class='line'>66</td><td class='count'>52</td>
       <td><pre class='prettyprint covered' id='l66s0'>				return new jp.co.dk.document.html.HtmlDocument(inputStream, new HtmlElementFactory(this.page));</pre></td>
     </tr>
     <tr>
@@ -183,15 +183,15 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>			case TEXT_XML:</pre></td>
     </tr>
     <tr>
-      <td class='line'>68</td><td class='count'>5</td>
-      <td><pre class='prettyprint covered' id='l68s0'>				return new jp.co.dk.document.xml.XmlDocument(inputStream);</pre></td>
+      <td class='line'>68</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l68s0'>				return new jp.co.dk.document.xml.XmlDocument(inputStream);</pre></td>
     </tr>
     <tr>
       <td class='line'>69</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>			default:</pre></td>
     </tr>
     <tr>
-      <td class='line'>70</td><td class='count'>7</td>
+      <td class='line'>70</td><td class='count'>9</td>
       <td><pre class='prettyprint covered' id='l70s0'>				return new jp.co.dk.document.File(inputStream);</pre></td>
     </tr>
     <tr>

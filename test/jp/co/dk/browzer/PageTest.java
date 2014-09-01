@@ -26,7 +26,7 @@ import mockit.Expectations;
 
 import org.junit.Test;
 
-public class TestPage extends TestBrowzerFoundation {
+public class PageTest extends BrowzerFoundationTest {
 	
 	@Test
 	public void constructor() {

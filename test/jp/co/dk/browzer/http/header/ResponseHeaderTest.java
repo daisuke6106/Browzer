@@ -12,10 +12,10 @@ import java.util.Map;
 import org.junit.Test;
 
 import jp.co.dk.browzer.Page;
-import jp.co.dk.browzer.TestBrowzerFoundation;
+import jp.co.dk.browzer.BrowzerFoundationTest;
 import jp.co.dk.browzer.exception.BrowzingException;
 
-public class TestResponseHeader extends TestBrowzerFoundation {
+public class ResponseHeaderTest extends BrowzerFoundationTest {
 	
 	@Test
 	public void constractor() {
