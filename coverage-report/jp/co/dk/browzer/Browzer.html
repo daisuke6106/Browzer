@@ -74,7 +74,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
     </tr>
     <tr>
       <td class='line'>47</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected PageManager <span class='instance covered' title='Reads: 99 Writes: 50'>pageManager</span>;</pre></td>
+      <td><pre class='prettyprint'>	protected PageManager <span class='instance covered' title='Reads: 97 Writes: 50'>pageManager</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -92,7 +92,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
     </tr>
     <tr>
       <td class='line'>53</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	protected List&lt;PageEventHandler> <span class='instance covered' title='Reads: 91 Writes: 43'>pageEventHandlerList</span>;</pre></td>
+      <td><pre class='prettyprint'>	protected List&lt;PageEventHandler> <span class='instance covered' title='Reads: 88 Writes: 43'>pageEventHandlerList</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -287,20 +287,20 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       </td>
     </tr>
     <tr>
-      <td class='line'>134</td><td class='count'>3</td>
-      <td><pre class='prettyprint jmp'>		<span id='l134s0' title='Executions: 3' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l134s1' title='Executions: 6' class='covered'>pageEventHandlerList)</span> </pre></td>
+      <td class='line'>134</td><td class='count'>2</td>
+      <td><pre class='prettyprint jmp'>		<span id='l134s0' title='Executions: 2' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l134s1' title='Executions: 4' class='covered'>pageEventHandlerList)</span> </pre></td>
     </tr>
     <tr>
       <td class='line'>135</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>136</td><td class='count'>3</td>
-      <td><pre class='prettyprint jmp'>			<span id='l136s0' title='Executions: 3' class='covered'>if (form == null)</span> <span id='l136s1' title='Executions: 1' class='covered'>throw new PageIllegalArgumentException(ERROR_SPECIFIED_FORM_IS_NOT_SET);</span></pre></td>
+      <td class='line'>136</td><td class='count'>2</td>
+      <td><pre class='prettyprint jmp'>			<span id='l136s0' title='Executions: 2' class='covered'>if (form == null)</span> <span id='l136s1' title='Executions: 1' class='covered'>throw new PageIllegalArgumentException(ERROR_SPECIFIED_FORM_IS_NOT_SET);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>137</td><td class='count'>2</td>
-      <td><pre class='prettyprint jmp'>			<span id='l137s0' title='Executions: 2' class='covered'>if (!this.pageManager.getPage().equals(form.getPage()))throw new PageIllegalArgumentException(ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);</span></pre></td>
+      <td class='line'>137</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>			<span id='l137s0' title='Executions: 1' class='covered'>if (!this.pageManager.getPage().equals(form.getPage()))throw new PageIllegalArgumentException(ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);</span></pre></td>
     </tr>
     <tr>
       <td class='line'>138</td><td class='count'>1</td>
@@ -311,27 +311,27 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint covered' id='l139s0'>			return this.pageManager.getPage();</pre></td>
     </tr>
     <tr>
-      <td class='line'>140</td><td class='count'>2</td>
+      <td class='line'>140</td><td class='count'>1</td>
       <td><pre class='prettyprint covered' id='l140s0'>		} catch (BrowzingException e ) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>141</td><td class='count'>2</td>
-      <td><pre class='prettyprint jmp'>			<span id='l141s0' title='Executions: 2' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l141s1' title='Executions: 4' class='covered'>pageEventHandlerList)</span> </pre></td>
+      <td class='line'>141</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>			<span id='l141s0' title='Executions: 1' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l141s1' title='Executions: 2' class='covered'>pageEventHandlerList)</span> </pre></td>
     </tr>
     <tr>
-      <td class='line'>142</td><td class='count'>2</td>
+      <td class='line'>142</td><td class='count'>1</td>
       <td><pre class='prettyprint covered' id='l142s0'>			throw e;</pre></td>
     </tr>
     <tr>
-      <td class='line'>143</td><td class='count'>2</td>
+      <td class='line'>143</td><td class='count'>1</td>
       <td><pre class='prettyprint covered' id='l143s0'>		}finally {</pre></td>
     </tr>
     <tr>
-      <td class='line'>144</td><td class='count'>3</td>
-      <td><pre class='prettyprint jmp'>			<span id='l144s0' title='Executions: 3' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l144s1' title='Executions: 2' class='covered'>pageEventHandlerList)</span> <span id='l144s2' title='Executions: 4' class='covered'>pageEventHandler.afterMove(this, form);</span></pre></td>
+      <td class='line'>144</td><td class='count'>2</td>
+      <td><pre class='prettyprint jmp'>			<span id='l144s0' title='Executions: 2' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l144s1' title='Executions: 2' class='covered'>pageEventHandlerList)</span> <span id='l144s2' title='Executions: 2' class='covered'>pageEventHandler.afterMove(this, form);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>145</td><td class='count'>2</td>
+      <td class='line'>145</td><td class='count'>1</td>
       <td><pre class='prettyprint covered' id='l145s0'>		}</pre></td>
     </tr>
     <tr>
@@ -453,19 +453,19 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint covered' id='l190s0'>		List&lt;jp.co.dk.document.html.element.A> anchorList = this.pageManager.getPage().getAnchorSameDomain();</pre></td>
     </tr>
     <tr>
-      <td class='line'>191</td><td class='count'>1273</td>
+      <td class='line'>191</td><td class='count'>1733</td>
       <td><pre class='prettyprint covered' id='l191s0'>		for (jp.co.dk.document.html.element.A anchor : anchorList) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>192</td><td class='count'>1251</td>
-      <td><pre class='prettyprint jmp'>			<span id='l192s0' title='Executions: 1251' class='covered'>if (anchor instanceof A)</span> <span id='l192s1' title='Executions: 1251' class='covered'>returnAnchorList.add((A)anchor);</span></pre></td>
+      <td class='line'>192</td><td class='count'>1713</td>
+      <td><pre class='prettyprint jmp'>			<span id='l192s0' title='Executions: 1713' class='covered'>if (anchor instanceof A)</span> <span id='l192s1' title='Executions: 1713' class='covered'>returnAnchorList.add((A)anchor);</span></pre></td>
     </tr>
     <tr>
       <td class='line'>193</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>194</td><td class='count'>11</td>
+      <td class='line'>194</td><td class='count'>10</td>
       <td><pre class='prettyprint covered' id='l194s0'>		return returnAnchorList;</pre></td>
     </tr>
     <tr>
@@ -855,7 +855,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>	public String toString() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>364</td><td class='count'>19</td>
+      <td class='line'>364</td><td class='count'>18</td>
       <td><pre class='prettyprint covered' id='l364s0'>		return this.pageManager.toString();</pre></td>
     </tr>
     <tr>
