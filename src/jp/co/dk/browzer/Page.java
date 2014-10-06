@@ -35,7 +35,6 @@ import jp.co.dk.document.html.element.Form;
 import jp.co.dk.document.html.exception.HtmlDocumentException;
 import jp.co.dk.property.Property;
 import jp.co.dk.xml.XmlConvertable;
-
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
 /**
@@ -560,6 +559,62 @@ public class Page implements XmlConvertable{
 				String anchorsDomain         = url.getHost();
 				List<String> anchorsPathList = url.getPathList();
 				if (thisPageDmain.equals(anchorsDomain) && thisPagePathList.equals(anchorsPathList)) sameDomainAnchorList.add(anchor);
+			} catch (PageIllegalArgumentException e) {
+				continue;
+			}
+		}
+		return sameDomainAnchorList;
+	}
+	
+	/**
+	 * このページに存在するアンカーで拡張子がhtml,htmのアンカー一覧を取得します。<p/>
+	 * このページに存在するすべてのアンカータグを取り出し、アンカーに定義されているURLでhtml,htmと定義されているアンカーを抽出し返却します。<br/>
+	 * 該当のアンカーが存在しなかった場合、空のリストを返却します。<br/>
+	 * このページがHTMLでない場合、例外を送出します。
+	 * 
+	 * @return このページに存在するアンカーで拡張子がhtml,htmのアンカー一覧 
+	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
+	 */
+	public List<A> getAnchorIncludeHtml() throws PageAccessException, DocumentException {
+		List<A>      allAnchorList        = this.getAnchor();
+		List<A>      sameDomainAnchorList = new ArrayList<A>();
+		for (A anchor : allAnchorList) {
+			try {
+				Url url = new Url(anchor.getUrl());
+				List<String> anchorsPathList = url.getPathList();
+				if (anchorsPathList.size() != 0) {
+					String lastPath = anchorsPathList.get(anchorsPathList.size()-1);
+					if (lastPath.endsWith(".html") || lastPath.endsWith(".htm")) sameDomainAnchorList.add(anchor);
+				}
+			} catch (PageIllegalArgumentException e) {
+				continue;
+			}
+		}
+		return sameDomainAnchorList;
+	}
+	
+	/**
+	 * このページに存在するアンカーでhtml,htm以外の拡張子を保持するアンカー一覧を取得します。<p/>
+	 * このページに存在するすべてのアンカータグを取り出し、アンカーに定義されているURLで拡張子が定義されているアンカーを抽出し返却します。<br/>
+	 * 該当のアンカーが存在しなかった場合、空のリストを返却します。<br/>
+	 * このページがHTMLでない場合、例外を送出します。
+	 * 
+	 * @return このページに存在するアンカーでhtml,htm以外の拡張子を保持するアンカー一覧
+	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
+	 */
+	public List<A> getAnchorExcludeHtml() throws PageAccessException, DocumentException {
+		List<A>      allAnchorList        = this.getAnchor();
+		List<A>      sameDomainAnchorList = new ArrayList<A>();
+		for (A anchor : allAnchorList) {
+			try {
+				Url url = new Url(anchor.getUrl());
+				List<String> anchorsPathList = url.getPathList();
+				if (anchorsPathList.size() != 0) {
+					String lastPath = anchorsPathList.get(anchorsPathList.size()-1);
+					if (lastPath.indexOf(".") != -1 && !(lastPath.endsWith(".html") || lastPath.endsWith(".htm"))) sameDomainAnchorList.add(anchor);
+				}
 			} catch (PageIllegalArgumentException e) {
 				continue;
 			}

@@ -8,6 +8,7 @@ import jp.co.dk.browzer.Page;
  * @version 1.0
  * @author D.Kanno
  */
+@FunctionalInterface
 public interface DownloadJudge {
 	
 	/**

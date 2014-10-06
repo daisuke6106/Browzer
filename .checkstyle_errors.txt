@@ -267,585 +267,613 @@ Starting audit...
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:66: 行が 80 文字を超えています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:68: 行が 80 文字を超えています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/DocumentFactory.java:73: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:39: '.*' 形式のインポートの使用は避けるべきです - jp.co.dk.browzer.message.BrowzingMessage.*。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:41: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:43: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:47: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:49: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:53:44: '{' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:54: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:54:1: File contains tab characters (this is the first instance).
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:55: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:56:23: 変数 'url' は private とし、アクセッサメソッドを持つべきです。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:57: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:58: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:59:33: 変数 'requestHeader' は private とし、アクセッサメソッドを持つべきです。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:60: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:61: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:62:34: 変数 'responseHeader' は private とし、アクセッサメソッドを持つべきです。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:63: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:64: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:65:27: 変数 'readDataFlg' は private とし、アクセッサメソッドを持つべきです。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:66: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:67: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:68:28: 変数 'byteDump' は private とし、アクセッサメソッドを持つべきです。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:69: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:70: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:71:42: 変数 'document' は private とし、アクセッサメソッドを持つべきです。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:72: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:73: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:74:33: 変数 'connection' は private とし、アクセッサメソッドを持つべきです。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:75: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:76: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:77: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:77:42: 変数 'eventHandler' は private とし、アクセッサメソッドを持つべきです。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:78: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:79: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:83: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:86: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:38: '.*' 形式のインポートの使用は避けるべきです - jp.co.dk.browzer.message.BrowzingMessage.*。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:40: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:42: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:46: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:48: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:52:44: '{' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:53: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:53:1: File contains tab characters (this is the first instance).
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:54: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:55:23: 変数 'url' は private とし、アクセッサメソッドを持つべきです。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:56: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:57: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:58:33: 変数 'requestHeader' は private とし、アクセッサメソッドを持つべきです。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:59: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:60: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:61:34: 変数 'responseHeader' は private とし、アクセッサメソッドを持つべきです。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:62: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:63: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:64:27: 変数 'readDataFlg' は private とし、アクセッサメソッドを持つべきです。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:65: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:66: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:67:28: 変数 'byteDump' は private とし、アクセッサメソッドを持つべきです。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:68: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:69: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:70:42: 変数 'document' は private とし、アクセッサメソッドを持つべきです。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:71: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:72: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:73:33: 変数 'connection' は private とし、アクセッサメソッドを持つべきです。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:74: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:75: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:76: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:76:42: 変数 'eventHandler' は private とし、アクセッサメソッドを持つべきです。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:77: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:78: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:82: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:85: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:87: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:87:21: Parameter url should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:87:28: 'url' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:87:40: PageIllegalArgumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:87:70: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:87:70: 冗長な throws: 'PageAccessException' が重複しています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:88: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:88:21: Parameter url should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:88:28: 'url' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:88:40: PageIllegalArgumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:88:70: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:88:70: 冗長な throws: 'PageAccessException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:89: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:89:46: ',' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:91: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:92: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:96: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:100: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:88:46: ',' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:90: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:91: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:95: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:99: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:101: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:101:21: Parameter url should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:101:28: 'url' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:101:33: Parameter requestHeader should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:101:53: 'requestHeader' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:101:75: PageIllegalArgumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:101:105: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:101:105: 冗長な throws: 'PageAccessException' が重複しています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:102: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:102:21: Parameter url should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:102:28: 'url' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:102:33: Parameter requestHeader should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:102:53: 'requestHeader' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:102:75: PageIllegalArgumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:102:105: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:102:105: 冗長な throws: 'PageAccessException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:103: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:105: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:106: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:110: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:115: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:104: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:105: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:109: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:114: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:116: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:116:21: Parameter url should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:116:28: 'url' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:116:33: Parameter requestHeader should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:116:53: 'requestHeader' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:116:68: Parameter readDataFlg should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:116:76: 'readDataFlg' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:116:96: PageIllegalArgumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:116:126: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:116:126: 冗長な throws: 'PageAccessException' が重複しています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:117: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:117:21: Parameter url should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:117:28: 'url' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:117:33: Parameter requestHeader should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:117:53: 'requestHeader' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:117:68: Parameter readDataFlg should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:117:76: 'readDataFlg' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:117:96: PageIllegalArgumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:117:126: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:117:126: 冗長な throws: 'PageAccessException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:118: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:120: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:121: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:127: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:132: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:119: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:120: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:126: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:131: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:133: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:133:21: Parameter url should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:133:28: 'url' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:133:33: Parameter requestHeader should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:133:53: 'requestHeader' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:133:68: Parameter readDataFlg should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:133:76: 'readDataFlg' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:133:89: Parameter pageEventHandlerList should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:133:112: 'pageEventHandlerList' には @param タグが必要です。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:133:141: PageIllegalArgumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:133:171: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:133:171: 冗長な throws: 'PageAccessException' が重複しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:134: 'if' 文では '{}' を使用しなければなりません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:134: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:134:21: Parameter url should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:134:28: 'url' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:134:33: Parameter requestHeader should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:134:53: 'requestHeader' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:134:68: Parameter readDataFlg should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:134:76: 'readDataFlg' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:134:89: Parameter pageEventHandlerList should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:134:112: 'pageEventHandlerList' には @param タグが必要です。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:134:141: PageIllegalArgumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:134:171: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:134:171: 冗長な throws: 'PageAccessException' が重複しています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:135: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:135: Line has trailing spaces.
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:135: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:136: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:136: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:136: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:140: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:140:31: 'connection' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:141: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:142: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:145: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:147: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:154: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:154:55: '(' の後にホワイトスペースがあります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:154:142: ')' の前にホワイトスペースがあります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:156: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:156:43: 'responseHeader' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:158: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:160: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:162: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:164: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:165: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:169: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:172: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:139: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:139:31: 'connection' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:140: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:141: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:144: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:146: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:153: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:153:55: '(' の後にホワイトスペースがあります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:153:142: ')' の前にホワイトスペースがあります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:155: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:155:43: 'responseHeader' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:157: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:159: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:161: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:163: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:164: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:168: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:171: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:173: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:173:24: Parameter form should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:173:42: PageIllegalArgumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:173:72: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:173:72: 冗長な throws: 'PageAccessException' が重複しています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:174: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:174:24: Parameter form should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:174:42: PageIllegalArgumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:174:72: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:174:72: 冗長な throws: 'PageAccessException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:175: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:177: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:178: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:182: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:186: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:176: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:177: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:181: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:185: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:187: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:187:24: Parameter form should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:187:35: Parameter requestProperty should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:187:79: PageIllegalArgumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:187:109: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:187:109: 冗長な throws: 'PageAccessException' が重複しています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:188: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:188:24: Parameter form should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:188:35: Parameter requestProperty should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:188:79: PageIllegalArgumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:188:109: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:188:109: 冗長な throws: 'PageAccessException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:189: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:191: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:192: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:196: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:201: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:190: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:191: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:195: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:200: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:202: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:202:24: Parameter form should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:202:35: Parameter requestProperty should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:202:72: Parameter readDataFlg should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:202:80: 'readDataFlg' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:202:100: PageIllegalArgumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:202:130: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:202:130: 冗長な throws: 'PageAccessException' が重複しています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:203: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:203:24: Parameter form should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:203:35: Parameter requestProperty should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:203:72: Parameter readDataFlg should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:203:80: 'readDataFlg' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:203:100: PageIllegalArgumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:203:130: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:203:130: 冗長な throws: 'PageAccessException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:204: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:206: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:207: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:213: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:218: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:205: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:206: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:212: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:217: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:219: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:219:24: Parameter form should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:219:35: Parameter requestProperty should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:219:72: Parameter readDataFlg should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:219:80: 'readDataFlg' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:219:93: Parameter pageEventHandlerList should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:219:116: 'pageEventHandlerList' には @param タグが必要です。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:219:145: PageIllegalArgumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:219:175: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:219:175: 冗長な throws: 'PageAccessException' が重複しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:220: 'if' 文では '{}' を使用しなければなりません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:220: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:220:24: Parameter form should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:220:35: Parameter requestProperty should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:220:72: Parameter readDataFlg should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:220:80: 'readDataFlg' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:220:93: Parameter pageEventHandlerList should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:220:116: 'pageEventHandlerList' には @param タグが必要です。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:220:145: PageIllegalArgumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:220:175: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:220:175: 冗長な throws: 'PageAccessException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:221: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:221: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:223: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:225: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:229: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:229: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:229: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:231: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:233: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:222: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:224: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:228: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:228: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:228: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:230: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:232: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:234: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:234:31: 'connection' がフィールドを隠しています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:235: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:235:31: 'connection' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:236: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:238: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:242: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:244: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:244:43: 'responseHeader' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:246: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:248: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:250: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:252: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:253: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:256: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:237: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:241: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:243: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:243:43: 'responseHeader' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:245: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:247: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:249: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:251: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:252: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:255: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:263: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:263:24: Parameter url should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:263:31: 'url' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:263:36: Parameter requestHeader should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:263:47: ',' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:263:55: 'requestHeader' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:263:70: Parameter responseHeader should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:263:96: 'responseHeader' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:263:112: Parameter data should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:263:127: Parameter pageEventHandlerList should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:263:150: 'pageEventHandlerList' には @param タグが必要です。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:263:179: PageIllegalArgumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:263:209: PageHeaderImproperException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:263:209: 冗長な throws: 'PageHeaderImproperException' が重複しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:264: 'if' 文では '{}' を使用しなければなりません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:264: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:264:24: Parameter url should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:264:31: 'url' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:264:36: Parameter requestHeader should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:264:47: ',' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:264:55: 'requestHeader' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:264:70: Parameter responseHeader should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:264:96: 'responseHeader' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:264:112: Parameter data should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:264:127: Parameter pageEventHandlerList should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:264:150: 'pageEventHandlerList' には @param タグが必要です。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:264:179: PageIllegalArgumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:264:209: PageHeaderImproperException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:264:209: 冗長な throws: 'PageHeaderImproperException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:265: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:265: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:272: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:273: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:282: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:297: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:302: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:271: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:272: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:281: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:296: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:301: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:303: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:303:9: メソッド 'move' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:303:19: Parameter form should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:303:60: Parameter requestHeader should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:303:80: 'requestHeader' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:303:102: PageIllegalArgumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:303:132: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:303:132: 冗長な throws: 'PageAccessException' が重複しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:304: 'if' 文では '{}' を使用しなければなりません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:304: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:304:9: メソッド 'move' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:304:19: Parameter form should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:304:60: Parameter requestHeader should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:304:80: 'requestHeader' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:304:102: PageIllegalArgumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:304:132: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:304:132: 冗長な throws: 'PageAccessException' が重複しています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:305: 'if' 文では '{}' を使用しなければなりません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:305: 行が 80 文字を超えています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:306: 'if' 文では '{}' を使用しなければなりません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:306: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:307: 'if' 文では '{}' を使用しなければなりません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:307: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:308: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:312: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:314: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:315: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:311: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:313: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:314: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:318: Line has trailing spaces.
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:319: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:320: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:323:9: メソッド 'getHost' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:326: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:327: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:330: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:333:9: メソッド 'getURL' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:336: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:337: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:339: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:342:9: メソッド 'getURLObject' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:345: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:346: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:350:9: メソッド 'getUrl' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:353: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:354: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:358: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:363: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:363:9: メソッド 'getDocument' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:363:60: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:363:81: DocumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:363:81: 冗長な throws: 'DocumentException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:364: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:365: 'for' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:365: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:367: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:370: 'for' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:370: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:372:18: 'finally' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:372:18: '}' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:373: 'for' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:373: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:376: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:377: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:322:9: メソッド 'getHost' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:325: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:326: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:329: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:332:9: メソッド 'getURL' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:335: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:336: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:338: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:341:9: メソッド 'getURLObject' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:344: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:345: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:349:9: メソッド 'getUrl' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:352: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:353: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:357: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:362: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:362:9: メソッド 'getDocument' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:362:60: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:362:81: DocumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:362:81: 冗長な throws: 'DocumentException' が重複しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:363: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:364: 'for' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:364: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:366: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:369: 'for' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:369: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:371:18: 'finally' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:371:18: '}' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:372: 'for' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:372: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:375: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:376: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:382: 行が 80 文字を超えています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:383: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:384: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:392: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:392:9: メソッド 'getDocument' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:392:51: Parameter documentFactory should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:392:91: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:392:112: DocumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:392:112: 冗長な throws: 'DocumentException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:394: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:396: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:391: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:391:9: メソッド 'getDocument' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:391:51: Parameter documentFactory should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:391:91: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:391:112: DocumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:391:112: 冗長な throws: 'DocumentException' が重複しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:393: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:395: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:398: 行が 80 文字を超えています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:399: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:400: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:404: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:405: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:408: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:411:9: メソッド 'getParameter' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:414: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:415: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:418: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:420: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:423:9: メソッド 'getPath' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:425: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:429: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:429: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:434: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:435: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:438: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:441: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:443:9: メソッド 'getPathList' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:446: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:447: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:450: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:452: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:454: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:457:9: メソッド 'getFileName' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:459: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:459: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:460:63: '-' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:460:64: '-' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:467: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:468: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:471: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:473: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:476: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:479:9: メソッド 'getExtension' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:482: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:485: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:486: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:488: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:491:9: メソッド 'getProtocol' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:494: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:495: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:403: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:404: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:407: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:410:9: メソッド 'getParameter' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:413: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:414: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:417: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:419: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:422:9: メソッド 'getPath' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:424: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:428: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:428: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:433: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:434: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:437: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:440: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:442:9: メソッド 'getPathList' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:445: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:446: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:449: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:451: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:453: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:456:9: メソッド 'getFileName' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:458: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:458: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:459:63: '-' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:459:64: '-' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:466: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:467: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:470: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:472: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:475: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:478:9: メソッド 'getExtension' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:481: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:484: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:485: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:487: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:490:9: メソッド 'getProtocol' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:493: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:494: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:498: Line has trailing spaces.
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:499: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:500: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:504: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:504:9: メソッド 'getAnchor' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:504:43: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:504:64: DocumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:504:64: 冗長な throws: 'DocumentException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:505:40: 'document' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:506: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:506: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:506: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:507:59: 'cast' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:508: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:510:52: '{' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:511: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:511:69: 'cast' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:515: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:516: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:503: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:503:9: メソッド 'getAnchor' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:503:43: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:503:64: DocumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:503:64: 冗長な throws: 'DocumentException' が重複しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:504:40: 'document' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:505: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:505: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:505: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:506:59: 'cast' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:507: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:509:52: '{' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:510: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:510:69: 'cast' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:514: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:515: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:520: Line has trailing spaces.
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:521: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:522: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:526: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:526:9: メソッド 'getAnchorSameDomain' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:526:53: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:526:74: DocumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:526:74: 冗長な throws: 'DocumentException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:532:37: 'url' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:534: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:534: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:541: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:542: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:525: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:525:9: メソッド 'getAnchorSameDomain' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:525:53: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:525:74: DocumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:525:74: 冗長な throws: 'DocumentException' が重複しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:531:37: 'url' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:533: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:533: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:540: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:541: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:546: Line has trailing spaces.
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:547: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:548: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:552: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:552:9: メソッド 'getAnchorSamePath' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:552:51: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:552:72: DocumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:552:72: 冗長な throws: 'DocumentException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:559:37: 'url' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:551: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:551:9: メソッド 'getAnchorSamePath' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:551:51: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:551:72: DocumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:551:72: 冗長な throws: 'DocumentException' が重複しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:558:37: 'url' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:560: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:561: 'if' 文では '{}' を使用しなければなりません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:561: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:562: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:562: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:569: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:570: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:574: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:579: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:579:9: メソッド 'getForm' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:579:44: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:579:65: DocumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:579:65: 冗長な throws: 'DocumentException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:580:40: 'document' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:581: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:581: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:581: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:582:59: 'cast' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:583: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:585:52: '{' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:586: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:586: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:586:73: 'cast' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:590: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:591: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:568: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:569: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:569:9: Javadoc コメントがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:569:9: メソッド 'getAnchorIncludeHtml' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:569:54: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:569:75: DocumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:569:75: 冗長な throws: 'DocumentException' が重複しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:574:37: 'url' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:575: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:577: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:577:101: '-' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:577:102: '-' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:578: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:578: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:586: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:587: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:587:9: Javadoc コメントがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:587:9: メソッド 'getAnchorExcludeHtml' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:587:54: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:587:75: DocumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:587:75: 冗長な throws: 'DocumentException' が重複しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:592:37: 'url' がフィールドを隠しています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:593: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:594: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:595: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:598:9: メソッド 'getSize' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:601: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:602: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:595: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:595:101: '-' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:595:102: '-' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:596: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:596: 行が 80 文字を超えています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:604: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:607: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:611:9: メソッド 'getData' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:611:42: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:612: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:612: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:612: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:615: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:616: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:618: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:621:9: メソッド 'getRequestHeader' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:624: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:625: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:627: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:630:9: メソッド 'getResponseHeader' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:633: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:634: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:641: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:648: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:648:9: メソッド 'save' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:648:26: Parameter path should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:648:44: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:648:65: DocumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:648:65: 冗長な throws: 'DocumentException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:648:84: PageSaveException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:648:84: 冗長な throws: 'PageSaveException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:649:40: 'document' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:653: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:656: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:657: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:664: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:671: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:671:9: メソッド 'save' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:671:26: Parameter path should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:671:37: Parameter fileName should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:671:44: 'fileName' には @param タグが必要です。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:671:61: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:671:82: DocumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:671:82: 冗長な throws: 'DocumentException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:671:101: PageSaveException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:671:101: 冗長な throws: 'PageSaveException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:672:40: 'document' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:676: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:679: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:680: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:686: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:686:9: メソッド 'createUrl' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:686:33: Parameter url should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:686:40: 'url' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:686:52: PageIllegalArgumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:689: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:690: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:693: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:699: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:699:9: メソッド 'download' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:699:33: Parameter path should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:699:51: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:699:72: DocumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:699:72: 冗長な throws: 'DocumentException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:699:91: PageSaveException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:699:91: 冗長な throws: 'PageSaveException' が重複しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:700: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:705: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:605: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:609: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:614: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:614:9: メソッド 'getForm' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:614:44: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:614:65: DocumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:614:65: 冗長な throws: 'DocumentException' が重複しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:615:40: 'document' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:616: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:616: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:616: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:617:59: 'cast' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:618: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:620:52: '{' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:621: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:621: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:621:73: 'cast' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:625: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:626: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:628: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:629: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:630: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:633:9: メソッド 'getSize' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:636: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:637: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:639: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:642: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:646:9: メソッド 'getData' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:646:42: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:647: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:647: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:647: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:650: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:651: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:653: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:656:9: メソッド 'getRequestHeader' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:659: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:660: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:662: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:665:9: メソッド 'getResponseHeader' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:668: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:669: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:676: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:683: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:683:9: メソッド 'save' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:683:26: Parameter path should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:683:44: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:683:65: DocumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:683:65: 冗長な throws: 'DocumentException' が重複しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:683:84: PageSaveException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:683:84: 冗長な throws: 'PageSaveException' が重複しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:684:40: 'document' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:688: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:691: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:692: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:699: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:706: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:706:9: メソッド 'save' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:706:26: Parameter path should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:706:37: Parameter fileName should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:706:44: 'fileName' には @param タグが必要です。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:706:61: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:706:82: DocumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:706:82: 冗長な throws: 'DocumentException' が重複しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:706:101: PageSaveException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:706:101: 冗長な throws: 'PageSaveException' が重複しています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:707:40: 'document' がフィールドを隠しています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:711: 行が 80 文字を超えています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:714: Line has trailing spaces.
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:715: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:717: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:722: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:722:9: メソッド 'completionURL' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:722:37: Parameter url should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:722:44: 'url' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:722:56: PageIllegalArgumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:726: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:729: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:730: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:732: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:736:12: @throws タグの 'BrowzingException' のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:738: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:738:9: メソッド 'createURLConnection' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:738:57: Parameter urlObj should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:738:69: Parameter method should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:738:106: @throws タグの 'PageAccessException' のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:738:106: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:738:125: '{' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:739: 'for' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:739: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:742: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:742:60: 'cast' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:748: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:748:91: '(' の後にホワイトスペースがあります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:748:176: ')' の前にホワイトスペースがあります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:749: 'for' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:749: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:752: 'for' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:752: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:756: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:757: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:758: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:760: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:765: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:765:9: メソッド 'getUrlInputStream' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:765:49: '(' の後にホワイトスペースがあります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:765:50: Parameter connection should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:765:64: 'connection' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:765:74: ')' の前にホワイトスペースがあります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:765:84: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:770: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:770:137: ',' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:774: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:775: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:778: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:782:9: メソッド 'getExtension' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:782:50: Parameter path should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:785:32: ')' の前にホワイトスペースがあります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:788:60: '+' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:788:61: '+' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:797: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:798: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:801: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:806: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:806:9: メソッド 'setRequestProperty' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:806:52: Parameter connection should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:806:66: 'connection' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:806:78: ',' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:806:78: Parameter requestMap should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:806:89: ',' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:807:21: '(' の後にホワイトスペースがあります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:815: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:816: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:818: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:821: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:821:9: メソッド 'hasTrailingSlash' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:822:28: '=' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:822:29: '=' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:825: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:826: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:829: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:832:9: メソッド 'getRequestHeaderByPorperty' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:834: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:834:42: 'requestHeader' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:838: 'for' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:839: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:839:90: '-' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:839:91: '-' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:843: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:844: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:847: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:850:9: メソッド 'getCookies' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:852: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:853: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:855: 'for' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:856: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:856:89: '-' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:856:90: '-' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:859: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:860: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:869: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:873:9: メソッド 'defaultFileName' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:873:42: Parameter responseHeader should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:873:57: 'responseHeader' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:721: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:721:9: メソッド 'createUrl' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:721:33: Parameter url should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:721:40: 'url' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:721:52: PageIllegalArgumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:724: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:725: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:728: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:734: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:734:9: メソッド 'download' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:734:33: Parameter path should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:734:51: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:734:72: DocumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:734:72: 冗長な throws: 'DocumentException' が重複しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:734:91: PageSaveException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:734:91: 冗長な throws: 'PageSaveException' が重複しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:735: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:740: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:742:40: 'document' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:746: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:749: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:750: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:752: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:757: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:757:9: メソッド 'completionURL' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:757:37: Parameter url should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:757:44: 'url' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:757:56: PageIllegalArgumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:761: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:764: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:765: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:767: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:771:12: @throws タグの 'BrowzingException' のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:773: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:773:9: メソッド 'createURLConnection' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:773:57: Parameter urlObj should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:773:69: Parameter method should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:773:106: @throws タグの 'PageAccessException' のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:773:106: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:773:125: '{' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:774: 'for' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:774: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:777: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:777:60: 'cast' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:783: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:783:91: '(' の後にホワイトスペースがあります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:783:176: ')' の前にホワイトスペースがあります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:784: 'for' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:784: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:787: 'for' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:787: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:791: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:792: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:793: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:795: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:800: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:800:9: メソッド 'getUrlInputStream' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:800:49: '(' の後にホワイトスペースがあります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:800:50: Parameter connection should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:800:64: 'connection' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:800:74: ')' の前にホワイトスペースがあります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:800:84: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:805: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:805:137: ',' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:809: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:810: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:813: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:817:9: メソッド 'getExtension' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:817:50: Parameter path should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:820:32: ')' の前にホワイトスペースがあります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:823:60: '+' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:823:61: '+' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:832: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:833: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:836: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:841: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:841:9: メソッド 'setRequestProperty' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:841:52: Parameter connection should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:841:66: 'connection' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:841:78: ',' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:841:78: Parameter requestMap should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:841:89: ',' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:842:21: '(' の後にホワイトスペースがあります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:850: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:851: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:853: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:856: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:856:9: メソッド 'hasTrailingSlash' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:857:28: '=' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:857:29: '=' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:860: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:861: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:864: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:867:9: メソッド 'getRequestHeaderByPorperty' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:869: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:869:42: 'requestHeader' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:873: 'for' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:874: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:874:90: '-' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:874:91: '-' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:878: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:879: 最初の一文はピリオドで終わらなければなりません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:882: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:883: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:886: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:885:9: メソッド 'getCookies' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:887: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:888: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:890: 'for' 文では '{}' を使用しなければなりません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:891: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:891:9: メソッド 'getByteDump' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:891:40: Parameter connection should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:891:54: 'connection' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:891:73: PageAccessException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:892: 'for' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:892: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:898: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:899: 'for' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:899: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:902: 'for' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:902: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:891:89: '-' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:891:90: '-' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:894: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:895: 最初の一文はピリオドで終わらなければなりません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:904: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:906: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:907: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:909: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:914: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:914:9: メソッド 'createRequestHeader' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:914:53: Parameter requestHeader should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:914:73: 'requestHeader' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:914:95: PageHeaderImproperException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:908:9: メソッド 'defaultFileName' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:908:42: Parameter responseHeader should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:908:57: 'responseHeader' がフィールドを隠しています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:917: Line has trailing spaces.
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:918: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:920: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:925: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:925:9: メソッド 'createResponseHeader' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:925:55: Parameter responseHeader should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:925:81: 'responseHeader' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:925:104: PageHeaderImproperException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:928: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:929:9: メソッド 'toString' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:934:9: メソッド 'convert' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:935: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:935:54: jp.co.dk.xml.exception.XmlDocumentException のクラス情報が取得できません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:936: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:921: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:926: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:926:9: メソッド 'getByteDump' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:926:40: Parameter connection should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:926:54: 'connection' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:926:73: PageAccessException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:927: 'for' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:927: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:933: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:934: 'for' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:934: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:937: 'for' 文では '{}' を使用しなければなりません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:937: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:937:74: ',' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:938: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:938:79: ',' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:939: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:939:75: ',' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:940: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:940:75: ',' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:942: 'if' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:942: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:942: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:939: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:941: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:942: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:944: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:949: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:949:9: メソッド 'createRequestHeader' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:949:53: Parameter requestHeader should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:949:73: 'requestHeader' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:949:95: PageHeaderImproperException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:952: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:953: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:955: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:960: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:960:9: メソッド 'createResponseHeader' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:960:55: Parameter responseHeader should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:960:81: 'responseHeader' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:960:104: PageHeaderImproperException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:963: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:964:9: メソッド 'toString' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:969:9: メソッド 'convert' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:970: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:970:54: jp.co.dk.xml.exception.XmlDocumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:971: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:972: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:972:74: ',' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:973: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:973:79: ',' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:974: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:974:75: ',' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:975: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:975:75: ',' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:977: 'if' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:977: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/Page.java:977: 行が 80 文字を超えています。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/PageEventHandler.java:0: ファイルが新しい行で終了していません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/PageEventHandler.java:12: 最初の一文はピリオドで終わらなければなりません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/PageEventHandler.java:14: Line has trailing spaces.
@@ -2168,82 +2196,85 @@ Starting audit...
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:44: Line has trailing spaces.
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:45:9: メソッド 'createForm' は拡張するように設計されていません - abstract か final か空である必要があります。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/HtmlElementFactory.java:46:35: Parameter htmlElement should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:10: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:12: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:16: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:16:82: '{' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:17: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:17:1: File contains tab characters (this is the first instance).
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:18:9: Javadoc コメントがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:12: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:14: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:18: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:18:82: '{' の前にホワイトスペースがありません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:19: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:20: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:22: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:19:1: File contains tab characters (this is the first instance).
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:20:9: Javadoc コメントがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:21: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:22: 最初の一文はピリオドで終わらなければなりません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:24: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:28:18: Parameter element should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:28:39: Parameter page should be final.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:28:44: 'page' がフィールドを隠しています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:32: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:33:9: メソッド 'getHref' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:36: 行が 80 文字を超えています。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:42: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:43: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:45: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:48:9: メソッド 'getPage' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:26: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:30:18: Parameter element should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:30:39: Parameter page should be final.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:30:44: 'page' がフィールドを隠しています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:34: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:35:9: メソッド 'getHref' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:38: 行が 80 文字を超えています。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:44: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:45:9: Javadoc コメントがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:45:9: メソッド 'getUrlObject' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:45:42: PageIllegalArgumentException のクラス情報が取得できません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:48: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:49: 最初の一文はピリオドで終わらなければなりません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:51: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:52: 最初の一文はピリオドで終わらなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:54: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:57:9: メソッド 'getHost' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:65: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:66: Line has trailing spaces.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:67:9: Javadoc コメントがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:67:9: メソッド 'samelevel' は拡張するように設計されていません - abstract か final か空である必要があります。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:73:24: Array brackets at illegal position.
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:73:54: '+' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:73:55: '+' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:73:75: '+' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:73:76: '+' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:74: 'for' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:74:27: '=' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:74:28: '=' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:74:32: '<' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:74:33: '<' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:74:64: '=' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:74:65: '=' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:75: 'for' 文では '{}' を使用しなければなりません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:75:27: '=' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:75:28: '=' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:75:32: '<' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:75:33: '<' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:75:64: '=' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:75:65: '=' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:76:28: '=' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:76:29: '=' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:76:34: '<=' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:76:36: '<=' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:77:36: '=' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:77:37: '=' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:77:42: '<=' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:77:44: '<=' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:83:47: '-' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:83:48: '-' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:83:56: '+' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:83:57: '+' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:84:53: '-' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:84:54: '-' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:84:56: '+' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:84:57: '+' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:85:47: '-' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:85:48: '-' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:85:53: '-' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:85:54: '-' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:85:56: '+' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:85:57: '+' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:85:58: '+' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:85:59: '+' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:91:43: '+' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:91:44: '+' の後にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:91:64: '+' の前にホワイトスペースがありません。
-/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:91:65: '+' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:54:9: メソッド 'getPage' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:57: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:58: 最初の一文はピリオドで終わらなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:60: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:63:9: メソッド 'getHost' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:71: Line has trailing spaces.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:72:9: Javadoc コメントがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:72:9: メソッド 'samelevel' は拡張するように設計されていません - abstract か final か空である必要があります。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:78:24: Array brackets at illegal position.
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:78:54: '+' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:78:55: '+' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:78:75: '+' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:78:76: '+' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:79: 'for' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:79:27: '=' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:79:28: '=' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:79:32: '<' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:79:33: '<' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:79:64: '=' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:79:65: '=' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:80: 'for' 文では '{}' を使用しなければなりません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:80:27: '=' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:80:28: '=' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:80:32: '<' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:80:33: '<' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:80:64: '=' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:80:65: '=' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:81:28: '=' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:81:29: '=' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:81:34: '<=' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:81:36: '<=' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:82:36: '=' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:82:37: '=' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:82:42: '<=' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:82:44: '<=' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:88:47: '-' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:88:48: '-' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:88:56: '+' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:88:57: '+' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:89:53: '-' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:89:54: '-' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:89:56: '+' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:89:57: '+' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:90:47: '-' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:90:48: '-' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:90:53: '-' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:90:54: '-' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:90:56: '+' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:90:57: '+' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:90:58: '+' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:90:59: '+' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:96:43: '+' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:96:44: '+' の後にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:96:64: '+' の前にホワイトスペースがありません。
+/home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/A.java:96:65: '+' の後にホワイトスペースがありません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/Action.java:10: 最初の一文はピリオドで終わらなければなりません。
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/Action.java:12: Line has trailing spaces.
 /home/dk/github_workspace/Browzer/src/jp/co/dk/browzer/html/element/Action.java:16:66: '{' の前にホワイトスペースがありません。

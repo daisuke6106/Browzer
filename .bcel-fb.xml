@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<BugCollection version="2.0.2" sequence="0" timestamp="1412185970201" analysisTimestamp="1412185970213" release="">
+<BugCollection version="2.0.2" sequence="0" timestamp="1412488051584" analysisTimestamp="1412488051602" release="">
   <Project projectName="">
     <Jar>/home/dk/github_workspace/Browzer/browzer.jar</Jar>
     <AuxClasspathEntry>/home/dk/github_workspace/Browzer/lib/dk_xml_all.jar</AuxClasspathEntry>
@@ -152,7 +152,22 @@
     </Error>
     <Error>
       <ErrorMessage>Unable to get XClass for java/util/Arrays</ErrorMessage>
-      <Exception>java.lang.ArrayIndexOutOfBoundsException</Exception>
+      <Exception>java.lang.ArrayIndexOutOfBoundsException: 40705</Exception>
+      <StackTrace>org.objectweb.asm.ClassReader.readClass(Unknown Source)</StackTrace>
+      <StackTrace>org.objectweb.asm.ClassReader.accept(Unknown Source)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.asm.FBClassReader.accept(FBClassReader.java:44)</StackTrace>
+      <StackTrace>org.objectweb.asm.ClassReader.accept(Unknown Source)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.classfile.engine.ClassParserUsingASM.parse(ClassParserUsingASM.java:110)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.classfile.engine.ClassParserUsingASM.parse(ClassParserUsingASM.java:565)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine.analyze(ClassInfoAnalysisEngine.java:76)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine.analyze(ClassInfoAnalysisEngine.java:38)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.classfile.impl.AnalysisCache.getClassAnalysis(AnalysisCache.java:266)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.ba.XFactory.getXClass(XFactory.java:652)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.ba.AnalysisCacheToAnalysisContextAdapter.setAppClassList(AnalysisCacheToAnalysisContextAdapter.java:391)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.FindBugs2.setAppClassList(FindBugs2.java:981)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.FindBugs2.execute(FindBugs2.java:224)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.FindBugs.runMain(FindBugs.java:391)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.FindBugs2.main(FindBugs2.java:1298)</StackTrace>
     </Error>
     <Error>
       <ErrorMessage>Unable to get XClass for net/htmlparser/jericho/Segment</ErrorMessage>
@@ -222,13 +237,28 @@
     </Error>
     <Error>
       <ErrorMessage>Couldn&apos;t get class info for java/util/Arrays</ErrorMessage>
-      <Exception>java.lang.ArrayIndexOutOfBoundsException</Exception>
+      <Exception>java.lang.ArrayIndexOutOfBoundsException: 40705</Exception>
+      <StackTrace>org.objectweb.asm.ClassReader.readClass(Unknown Source)</StackTrace>
+      <StackTrace>org.objectweb.asm.ClassReader.accept(Unknown Source)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.asm.FBClassReader.accept(FBClassReader.java:44)</StackTrace>
+      <StackTrace>org.objectweb.asm.ClassReader.accept(Unknown Source)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.classfile.engine.ClassParserUsingASM.parse(ClassParserUsingASM.java:110)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.classfile.engine.ClassParserUsingASM.parse(ClassParserUsingASM.java:565)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine.analyze(ClassInfoAnalysisEngine.java:76)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine.analyze(ClassInfoAnalysisEngine.java:38)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.classfile.impl.AnalysisCache.getClassAnalysis(AnalysisCache.java:266)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.ba.XFactory.getXClass(XFactory.java:652)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.ba.AnalysisCacheToAnalysisContextAdapter.setAppClassList(AnalysisCacheToAnalysisContextAdapter.java:391)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.FindBugs2.setAppClassList(FindBugs2.java:981)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.FindBugs2.execute(FindBugs2.java:224)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.FindBugs.runMain(FindBugs.java:391)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.FindBugs2.main(FindBugs2.java:1298)</StackTrace>
     </Error>
   </Errors>
-  <FindBugsSummary timestamp="Thu, 2 Oct 2014 02:52:50 +0900" total_classes="0" referenced_classes="190" total_bugs="0" total_size="0" num_packages="0" vm_version="25.20-b23" cpu_seconds="1.57" clock_seconds="0.56" peak_mbytes="93.41" alloc_mbytes="1749.50" gc_seconds="0.01">
+  <FindBugsSummary timestamp="Sun, 5 Oct 2014 14:47:31 +0900" total_classes="0" referenced_classes="190" total_bugs="0" total_size="0" num_packages="0" vm_version="25.20-b23" cpu_seconds="1.71" clock_seconds="0.66" peak_mbytes="93.23" alloc_mbytes="1749.50" gc_seconds="0.02">
     <FindBugsProfile>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="212" invocations="273" avgMicrosecondsPerInvocation="778" maxMicrosecondsPerInvocation="22403" standardDeviationMircosecondsPerInvocation="2333"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.impl.ZipCodeBaseFactory" totalMilliseconds="35" invocations="25" avgMicrosecondsPerInvocation="1400" maxMicrosecondsPerInvocation="32603" standardDeviationMircosecondsPerInvocation="6372"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="242" invocations="273" avgMicrosecondsPerInvocation="890" maxMicrosecondsPerInvocation="24736" standardDeviationMircosecondsPerInvocation="2601"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.impl.ZipCodeBaseFactory" totalMilliseconds="56" invocations="25" avgMicrosecondsPerInvocation="2255" maxMicrosecondsPerInvocation="51200" standardDeviationMircosecondsPerInvocation="10006"/>
     </FindBugsProfile>
   </FindBugsSummary>
   <ClassFeatures></ClassFeatures>
