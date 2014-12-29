@@ -2,15 +2,18 @@ package jp.co.dk.browzer;
 
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import jp.co.dk.browzer.exception.PageAccessException;
+import jp.co.dk.browzer.exception.PageHeaderImproperException;
 import jp.co.dk.browzer.exception.PageIllegalArgumentException;
 import jp.co.dk.browzer.exception.PageSaveException;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.http.header.ResponseHeader;
+import jp.co.dk.document.ByteDump;
 import jp.co.dk.document.Element;
 import jp.co.dk.document.exception.DocumentException;
 import jp.co.dk.document.html.HtmlDocument;
@@ -20,108 +23,161 @@ import jp.co.dk.document.html.element.A;
 import jp.co.dk.document.html.element.form.FormText;
 import jp.co.dk.document.html.exception.HtmlDocumentException;
 import jp.co.dk.document.message.DocumentMessage;
-
+import jp.co.dk.test.template.TestCaseTemplate;
 import mockit.Deencapsulation;
 import mockit.Expectations;
 
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.experimental.runners.Enclosed;
+import org.junit.runner.RunWith;
 
+@RunWith(Enclosed.class)
 public class PageTest extends BrowzerFoundationTest {
 	
-	@Test
-	public void constructor() {
+	public static class コンストラクタ extends BrowzerFoundationTest {
 		
-		// 引数にnullを設定した場合、例外が送出されること。
-		try {
-			String nullString = null;
-			Page page = new Page(nullString);
-			fail();
-		} catch (PageIllegalArgumentException e) {
-			assertEquals(e.getMessage(), ERROR_URL_IS_NOT_SET.getMessage());
-		} catch (PageAccessException e) {
-			fail(e);
+		@Test
+        public void 引数にnullを設定した場合例外が送出されること() {
+			try {
+				String nullString = null;
+				Page page = new Page(nullString);
+				fail();
+			} catch (PageIllegalArgumentException e) {
+				assertEquals(e.getMessage(), ERROR_URL_IS_NOT_SET.getMessage());
+			} catch (PageAccessException e) {
+				fail(e);
+			}
 		}
 		
-		// 引数に不正な文字列を設定した場合、例外が送出されること。
-		try {
-			Page page = new Page("aaa");
-			fail();
-		} catch (PageIllegalArgumentException e) {
-			assertEquals(e.getMessage(), ERROR_PROTOCOL_OF_THE_URL_SPECIFIED_IS_UNKNOWN.getMessage("aaa"));
-		} catch (PageAccessException e) {
-			fail(e);
+		@Test
+        public void 引数に不正な文字列を設定した場合例外が送出されること() {
+			try {
+				Page page = new Page("aaa");
+				fail();
+			} catch (PageIllegalArgumentException e) {
+				assertEquals(e.getMessage(), ERROR_PROTOCOL_OF_THE_URL_SPECIFIED_IS_UNKNOWN.getMessage("aaa"));
+			} catch (PageAccessException e) {
+				fail(e);
+			}
 		}
 		
-		// 引数に存在するURLを設定された場合、正常にインスタンスが生成できること。
-		try {
-			Page page = new Page("https://www.google.com");
-		} catch (PageIllegalArgumentException e) {
-			fail(e);
-		} catch (PageAccessException e) {
-			fail(e);
+		@Test
+		public void 引数に存在するURLを設定された場合正常にインスタンスが生成できること＿パラメータあり() {
+			try {
+				Page page = new Page("http://www.google.co.jp/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CCUQFjAA&url=http%3A%2F%2Ftest.jp%2F&ei=if9NULqAIanBiQf1uIHACg&usg=AFQjCNFAiQ33DWa0llvM8UoNTY_aKUckbg&sig2=VmamtFiwcu4ABy2tGn5hfQ");
+			} catch (PageIllegalArgumentException e) {
+				fail(e);
+			} catch (PageAccessException e) {
+				fail(e);
+			}
 		}
 		
-		// 引数に存在するURLを設定された場合、正常にインスタンスが生成できること。(パラメータあり)
-		try {
-			Page page = new Page("http://www.google.co.jp/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CCUQFjAA&url=http%3A%2F%2Ftest.jp%2F&ei=if9NULqAIanBiQf1uIHACg&usg=AFQjCNFAiQ33DWa0llvM8UoNTY_aKUckbg&sig2=VmamtFiwcu4ABy2tGn5hfQ");
-		} catch (PageIllegalArgumentException e) {
-			fail(e);
-		} catch (PageAccessException e) {
-			fail(e);
+		@Test
+		public void  FORM指定して遷移する際にFORMが指定されていなかった場合指定の例外が出力されること() {
+			try {
+				Form form = null;
+				new Page(form, new HashMap<String, String>());
+				fail();
+			} catch (PageIllegalArgumentException e) {
+				assertEquals(e.getMessage(), ERROR_FORM_IS_NOT_SPECIFIED.getMessage());
+	 		} catch (PageAccessException e) {
+				fail(e);
+			}
 		}
 		
-		// FORM指定して遷移する際に、FORMが指定されていなかった場合、指定の例外が出力されること。
-		try {
-			Form form = null;
-			new Page(form, new HashMap<String, String>());
-			fail();
-		} catch (PageIllegalArgumentException e) {
-			assertEquals(e.getMessage(), ERROR_FORM_IS_NOT_SPECIFIED.getMessage());
- 		} catch (PageAccessException e) {
-			fail(e);
+		@Test
+		public void FORM指定して遷移する際にURLの作成に失敗した場合指定の例外が出力されること() {
+			try {
+				Page page = new Page("http://www.tohoho-web.com/html/form.htm");
+				HtmlDocument document1 = (HtmlDocument)page.getDocument();
+				List<Element> formList1 = document1.getElement(HtmlElementName.FORM);
+				final Form formElement = (Form)formList1.get(0);
+				String uel = formElement.getAction().getURL().toString();
+				new Expectations(formElement) {{
+					formElement.getAction();
+					result = new HtmlDocumentException(DocumentMessage.ERROR_AN_INVALID_URL_WAS_SPECIFIED, "Dummy URL", new Exception());
+				}};
+				Page newPage = new Page(formElement, new HashMap<String, String>());
+				fail();
+			} catch (PageIllegalArgumentException e) {
+				assertEquals(e.getMessage(), ERROR_AN_INVALID_URL_WAS_SPECIFIED.getMessage("Dummy URL"));
+	 		} catch (PageAccessException e) {
+				fail(e);
+			} catch (DocumentException e) {
+				fail(e);
+			}
 		}
 		
-		// FORM指定して遷移する際に、URLの作成に失敗した場合、指定の例外が出力されること。
-		try {
-			Page page = new Page("http://www.tohoho-web.com/html/form.htm");
-			HtmlDocument document1 = (HtmlDocument)page.getDocument();
-			List<Element> formList1 = document1.getElement(HtmlElementName.FORM);
-			final Form formElement = (Form)formList1.get(0);
-			String uel = formElement.getAction().getURL().toString();
-			new Expectations(formElement) {{
-				formElement.getAction();
-				result = new HtmlDocumentException(DocumentMessage.ERROR_AN_INVALID_URL_WAS_SPECIFIED, "Dummy URL", new Exception());
-			}};
-			Page newPage = new Page(formElement, new HashMap<String, String>());
-			fail();
-		} catch (PageIllegalArgumentException e) {
-			assertEquals(e.getMessage(), ERROR_AN_INVALID_URL_WAS_SPECIFIED.getMessage("Dummy URL"));
- 		} catch (PageAccessException e) {
-			fail(e);
-		} catch (DocumentException e) {
-			fail(e);
-		}
-		
-		// FORM指定して遷移する際に、引数のリクエストヘッダマップにnullが設定された場合でも正常に遷移できること。
-		try {
-			Page page = new Page("http://www.tohoho-web.com/html/form.htm");
-			HtmlDocument document1 = (HtmlDocument)page.getDocument();
-			List<Element> formList1 = document1.getElement(HtmlElementName.FORM);
-			final Form formElement = (Form)formList1.get(0);
-			List<HtmlElement> formList = formElement.getFormElementList();
-			FormText txt1 = (FormText)formList.get(0);
-			FormText txt2 = (FormText)formList.get(1);
-			txt1.setValue("test");
-			txt2.setValue("value");
-			Page newPage = new Page(formElement, null);
-		} catch (PageIllegalArgumentException e) {
-			fail(e);
-		} catch (PageAccessException e) {
-			fail(e);
-		} catch (DocumentException e) {
-			fail(e);
+		@Test
+		public void FORM指定して遷移する際に引数のリクエストヘッダマップにnullが設定された場合でも正常に遷移できること() {
+			try {
+				Page page = new Page("http://www.tohoho-web.com/html/form.htm");
+				HtmlDocument document1 = (HtmlDocument)page.getDocument();
+				List<Element> formList1 = document1.getElement(HtmlElementName.FORM);
+				final Form formElement = (Form)formList1.get(0);
+				List<HtmlElement> formList = formElement.getFormElementList();
+				FormText txt1 = (FormText)formList.get(0);
+				FormText txt2 = (FormText)formList.get(1);
+				txt1.setValue("test");
+				txt2.setValue("value");
+				Page newPage = new Page(formElement, null);
+			} catch (PageIllegalArgumentException e) {
+				fail(e);
+			} catch (PageAccessException e) {
+				fail(e);
+			} catch (DocumentException e) {
+				fail(e);
+			}
 		}
 	}
+	
+	
+	
+	
+	public static class 通常のＵＲＬにてインスタンスを生成した場合 extends BrowzerFoundationTest {
+		
+		protected Page sut;
+		
+		@Before
+		public void init() {
+			try {
+				String url = "http://test.com";
+				Map<String,String> requestHeader = new HashMap<String, String>();
+				Map<String, List<String>> responseHeader = new HashMap<String, List<String>>();
+				ByteDump byteData = new ByteDump(this.getInputStreamByOwnClass("test.html"));
+				List<PageEventHandler> pageEventHandlerList = new ArrayList<PageEventHandler>();
+				this.sut = new Page(url, requestHeader, responseHeader, byteData, pageEventHandlerList);
+			} catch (PageIllegalArgumentException e) {
+				fail(e);
+			} catch (PageHeaderImproperException e) {
+				fail(e);
+			} catch (DocumentException e) {
+				fail(e);
+			}
+		}
+		
+		@Test
+		public void getHost() {
+			assertThat(this.sut.getHost(), is("test.com"));
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@Test
 	public void getHost(){
