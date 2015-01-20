@@ -12,7 +12,6 @@ import jp.co.dk.browzer.exception.PageIllegalArgumentException;
 import jp.co.dk.browzer.exception.PageMovableLimitException;
 import jp.co.dk.browzer.exception.PageRedirectException;
 import jp.co.dk.browzer.html.element.Form;
-import jp.co.dk.xml.XmlConvertable;
 
 /**
  * PageManagerは、ページ遷移状態管理を行うページ管理クラスです。
@@ -20,7 +19,7 @@ import jp.co.dk.xml.XmlConvertable;
  * @version 1.0
  * @author D.Kanno
  */
-public class PageManager implements XmlConvertable{
+public class PageManager {
 	
 	/** 親ページ管理オブジェクト */
 	protected PageManager parentPage;
@@ -394,15 +393,6 @@ public class PageManager implements XmlConvertable{
 	 */
 	protected PageManager createPageManager(PageManager parentPage, Page page, BrowzingException error, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {
 		return new PageManager(parentPage, page, error, pageRedirectHandler, pageEventHandlerList, nestLevel, maxNestLevel);
-	}
-	
-	@Override
-	public jp.co.dk.xml.Element convert() throws jp.co.dk.xml.exception.XmlDocumentException {
-		jp.co.dk.xml.Element xmlElement = this.page.convert();
-		for (PageManager pageManager : this.childPageList) {
-			xmlElement.appendChild(pageManager);
-		}
-		return xmlElement;
 	}
 	
 	@Override

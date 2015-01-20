@@ -21,8 +21,6 @@ public class BrowzerFoundationTest extends TestCaseTemplate {
 		urlList.add("http://michaelsan.livedoor.biz/archives/51798684.html");
 		urlList.add("http://www.watch2chan.com/archives/32013869.html");
 		urlList.add("http://burusoku-vip.com/archives/1694675.html");
-		urlList.add("http://kazetaka.com/archives/52044363.html");
-		urlList.add("http://www.a-kabe.com/aria/");
 		urlList.add("http://ip.w69b.com/");
 		urlList.add("http://avaronsukareto.blog120.fc2.com/");
 		return super.getRandomElement(urlList);

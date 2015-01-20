@@ -34,7 +34,6 @@ import jp.co.dk.document.html.element.A;
 import jp.co.dk.document.html.element.Form;
 import jp.co.dk.document.html.exception.HtmlDocumentException;
 import jp.co.dk.property.Property;
-import jp.co.dk.xml.XmlConvertable;
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
 /**
@@ -49,7 +48,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
  * @version 1.0
  * @author D.Kanno
  */
-public class Page implements XmlConvertable{
+public class Page {
 	
 	/** URLオブジェクト */
 	protected Url url;
@@ -986,15 +985,4 @@ public class Page implements XmlConvertable{
 		return this.url.toString();
 	}
 
-	@Override
-	public jp.co.dk.xml.Element convert() throws jp.co.dk.xml.exception.XmlDocumentException {
-		jp.co.dk.xml.Element xmlElement = new jp.co.dk.xml.Element("page");
-		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("url",this.url.getURL()));
-		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("protocol",this.url.getProtocol()));
-		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("host",this.url.getHost()));
-		xmlElement.addAttribute(new jp.co.dk.xml.Attribute("path",this.getPath()));
-		long size = this.getSize();
-		if (size != -1) xmlElement.addAttribute(new jp.co.dk.xml.Attribute("size", Long.toString(size))); 
-		return xmlElement;
-	}
 }

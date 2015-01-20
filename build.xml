@@ -2,10 +2,13 @@
 
 <project default="all" basedir=".">
 	
-	<!-- プロパティファイル読み込み -->
+	<!-- 本プロジェクトプロパティファイル読み込み -->
 	<property file="./build.properties"/>
 	
-    <!-- 共通タスク読み込み -->
-	<import file="${commons.antxml.path}"/>
+	<!-- 共通タスク読み込み -->
+	<property file="../AntCommons/ant_commons.properties"/>
+	
+	<!-- 共通タスク読み込み -->
+	<import file="../AntCommons/ant_commons.xml"/>
 	
 </project>
