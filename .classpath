@@ -5,14 +5,14 @@
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="src" path="src/test/resources"/>
-	<classpathentry kind="lib" path="lib/message_all.jar"/>
-	<classpathentry kind="lib" path="lib/property_all.jar"/>
-	<classpathentry kind="lib" path="lib/document_all.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/test/jmockit-coverage.jar"/>
 	<classpathentry kind="lib" path="lib/test/jmockit.jar"/>
 	<classpathentry kind="lib" path="lib/test/testtemplate_all.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="messages"/>
+	<classpathentry kind="lib" path="lib/message_1.0.0_all.jar"/>
+	<classpathentry kind="lib" path="lib/property_1.0.0_all.jar"/>
+	<classpathentry kind="lib" path="lib/document_1.0.0_all.jar"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>

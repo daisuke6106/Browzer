@@ -36,7 +36,7 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>19</td><td class='count'>78</td>
+      <td class='line'>19</td><td class='count'>80</td>
       <td><pre class='prettyprint covered' id='l19s0'>public class PrintPageEventHandler implements PageEventHandler{</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -393,7 +393,7 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
       <td><pre class='comment'>//		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>120</td><td class='count'>44</td>
+      <td class='line'>120</td><td class='count'>45</td>
       <td><pre class='prettyprint covered' id='l120s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -439,35 +439,35 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
       <td><pre class='prettyprint'>	public void beforeOpenConnection(Url urlObj, HtmlRequestMethodName method) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>133</td><td class='count'>41</td>
+      <td class='line'>133</td><td class='count'>42</td>
       <td><pre class='prettyprint covered' id='l133s0'>		this.openConnectionTime = getDate();</pre></td>
     </tr>
     <tr>
-      <td class='line'>134</td><td class='count'>41</td>
+      <td class='line'>134</td><td class='count'>42</td>
       <td><pre class='prettyprint covered' id='l134s0'>		StringBuilder sb = new StringBuilder();</pre></td>
     </tr>
     <tr>
-      <td class='line'>135</td><td class='count'>41</td>
+      <td class='line'>135</td><td class='count'>42</td>
       <td><pre class='prettyprint covered' id='l135s0'>		sb.append("    [start]");</pre></td>
     </tr>
     <tr>
-      <td class='line'>136</td><td class='count'>41</td>
+      <td class='line'>136</td><td class='count'>42</td>
       <td><pre class='prettyprint covered' id='l136s0'>		sb.append(":openconnection:");</pre></td>
     </tr>
     <tr>
-      <td class='line'>137</td><td class='count'>41</td>
+      <td class='line'>137</td><td class='count'>42</td>
       <td><pre class='prettyprint covered' id='l137s0'>		sb.append("URL=[").append(urlObj.toString()).append("],");</pre></td>
     </tr>
     <tr>
-      <td class='line'>138</td><td class='count'>41</td>
+      <td class='line'>138</td><td class='count'>42</td>
       <td><pre class='prettyprint covered' id='l138s0'>		sb.append("METHOD=[").append(method.toString()).append("]");</pre></td>
     </tr>
     <tr>
-      <td class='line'>139</td><td class='count'>41</td>
+      <td class='line'>139</td><td class='count'>42</td>
       <td><pre class='prettyprint covered' id='l139s0'>		this.print(sb.toString());</pre></td>
     </tr>
     <tr>
-      <td class='line'>140</td><td class='count'>41</td>
+      <td class='line'>140</td><td class='count'>42</td>
       <td><pre class='prettyprint covered' id='l140s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -497,35 +497,35 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
       <td><pre class='prettyprint'>	public void afterOpenConnection() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>149</td><td class='count'>41</td>
+      <td class='line'>149</td><td class='count'>42</td>
       <td><pre class='prettyprint covered' id='l149s0'>		long now = getDate();</pre></td>
     </tr>
     <tr>
-      <td class='line'>150</td><td class='count'>41</td>
+      <td class='line'>150</td><td class='count'>42</td>
       <td><pre class='prettyprint covered' id='l150s0'>		long time = now - this.openConnectionTime;</pre></td>
     </tr>
     <tr>
-      <td class='line'>151</td><td class='count'>41</td>
+      <td class='line'>151</td><td class='count'>42</td>
       <td><pre class='prettyprint covered' id='l151s0'>		StringBuilder sb = new StringBuilder();</pre></td>
     </tr>
     <tr>
-      <td class='line'>152</td><td class='count'>41</td>
+      <td class='line'>152</td><td class='count'>42</td>
       <td><pre class='prettyprint covered' id='l152s0'>		sb.append("    [ fin ]");</pre></td>
     </tr>
     <tr>
-      <td class='line'>153</td><td class='count'>41</td>
+      <td class='line'>153</td><td class='count'>42</td>
       <td><pre class='prettyprint covered' id='l153s0'>		sb.append(":openconnection:");</pre></td>
     </tr>
     <tr>
-      <td class='line'>154</td><td class='count'>41</td>
+      <td class='line'>154</td><td class='count'>42</td>
       <td><pre class='prettyprint covered' id='l154s0'>		sb.append("TIME=[").append(time).append("]");</pre></td>
     </tr>
     <tr>
-      <td class='line'>155</td><td class='count'>41</td>
+      <td class='line'>155</td><td class='count'>42</td>
       <td><pre class='prettyprint covered' id='l155s0'>		this.print(sb.toString());</pre></td>
     </tr>
     <tr>
-      <td class='line'>156</td><td class='count'>41</td>
+      <td class='line'>156</td><td class='count'>42</td>
       <td><pre class='prettyprint covered' id='l156s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -588,35 +588,35 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
       <td><pre class='prettyprint'>	public void afterGetData(Page page) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>174</td><td class='count'>28</td>
+      <td class='line'>174</td><td class='count'>29</td>
       <td><pre class='prettyprint covered' id='l174s0'>		long now = getDate();</pre></td>
     </tr>
     <tr>
-      <td class='line'>175</td><td class='count'>28</td>
+      <td class='line'>175</td><td class='count'>29</td>
       <td><pre class='prettyprint covered' id='l175s0'>		long time = now - this.getDateTime;</pre></td>
     </tr>
     <tr>
-      <td class='line'>176</td><td class='count'>28</td>
+      <td class='line'>176</td><td class='count'>29</td>
       <td><pre class='prettyprint covered' id='l176s0'>		StringBuilder sb = new StringBuilder();</pre></td>
     </tr>
     <tr>
-      <td class='line'>177</td><td class='count'>28</td>
+      <td class='line'>177</td><td class='count'>29</td>
       <td><pre class='prettyprint covered' id='l177s0'>		sb.append("    [ fin ]");</pre></td>
     </tr>
     <tr>
-      <td class='line'>178</td><td class='count'>28</td>
+      <td class='line'>178</td><td class='count'>29</td>
       <td><pre class='prettyprint covered' id='l178s0'>		sb.append(":readdate      :");</pre></td>
     </tr>
     <tr>
-      <td class='line'>179</td><td class='count'>28</td>
+      <td class='line'>179</td><td class='count'>29</td>
       <td><pre class='prettyprint covered' id='l179s0'>		sb.append("TIME=[").append(time).append("]");</pre></td>
     </tr>
     <tr>
-      <td class='line'>180</td><td class='count'>28</td>
+      <td class='line'>180</td><td class='count'>29</td>
       <td><pre class='prettyprint covered' id='l180s0'>		this.print(sb.toString());</pre></td>
     </tr>
     <tr>
-      <td class='line'>181</td><td class='count'>28</td>
+      <td class='line'>181</td><td class='count'>29</td>
       <td><pre class='prettyprint covered' id='l181s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -662,12 +662,12 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
       <td><pre class='prettyprint'>	public void errorCreateDocument(BrowzingException browzingException) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>194</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l194s0'>		this.print(browzingException.toString());</pre></td>
+      <td class='line'>194</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l194s0'>		this.print(browzingException.toString());</pre></td>
     </tr>
     <tr>
-      <td class='line'>195</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l195s0'>	}</pre></td>
+      <td class='line'>195</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l195s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -723,7 +723,7 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
       <td><pre class='prettyprint'>	protected long getDate() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>213</td><td class='count'>197</td>
+      <td class='line'>213</td><td class='count'>200</td>
       <td><pre class='prettyprint covered' id='l213s0'>		return new Date().getTime();</pre></td>
     </tr>
     <tr>
@@ -743,11 +743,11 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
       <td><pre class='prettyprint'>	protected void print(String str) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>221</td><td class='count'>228</td>
+      <td class='line'>221</td><td class='count'>230</td>
       <td><pre class='prettyprint covered' id='l221s0'>		System.out.println(str);</pre></td>
     </tr>
     <tr>
-      <td class='line'>222</td><td class='count'>228</td>
+      <td class='line'>222</td><td class='count'>230</td>
       <td><pre class='prettyprint covered' id='l222s0'>	}</pre></td>
     </tr>
     <tr>
