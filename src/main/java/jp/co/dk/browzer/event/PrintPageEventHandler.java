@@ -218,6 +218,6 @@ public class PrintPageEventHandler implements PageEventHandler{
 	 * @param str 出力対象文字列
 	 */
 	protected void print(String str) {
-		System.out.println(str);
+//		System.out.println(str);
 	}
 }
