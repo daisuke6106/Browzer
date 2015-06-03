@@ -18,6 +18,8 @@ import jp.co.dk.browzer.html.element.A;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.html.element.MovableElement;
 import jp.co.dk.document.exception.DocumentException;
+import jp.co.dk.logger.Logger;
+import jp.co.dk.logger.LoggerFactory;
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
 /**
@@ -52,6 +54,9 @@ public class Browzer {
 	/** ページイベントハンドラ一覧 */
 	protected List<PageEventHandler> pageEventHandlerList;
 	
+	/** ロガーインスタンス */
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	/**
 	 * コンストラクタ<p/>
 	 * 指定のURLを元にブラウザを生成します。
@@ -61,6 +66,7 @@ public class Browzer {
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
 	public Browzer(String url) throws PageIllegalArgumentException, PageAccessException {
+		this.logger.constractor(this.getClass(), url);
 		this.pageEventHandlerList = this.getPageEventHandler();
 		this.pageRedirectHandler  = this.createPageRedirectHandler();
 		this.pageManager          = this.createPageManager(url, this.pageRedirectHandler);
@@ -76,6 +82,7 @@ public class Browzer {
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
 	public Browzer(String url, int maxNestLevel) throws PageIllegalArgumentException, PageAccessException {
+		this.logger.constractor(this.getClass(), url, new Integer(maxNestLevel));
 		this.pageEventHandlerList = this.getPageEventHandler();
 		this.pageRedirectHandler  = this.createPageRedirectHandler();
 		this.pageManager          = this.createPageManager(url, this.pageRedirectHandler, maxNestLevel);
@@ -103,6 +110,9 @@ public class Browzer {
 			if (movable == null) throw new PageIllegalArgumentException(ERROR_SPECIFIED_ANCHOR_IS_NOT_SET);
 			if (!this.pageManager.getPage().equals(movable.getPage()))throw new PageIllegalArgumentException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
 			String url = movable.getUrl();
+			
+			this.logger.info("move url=[" + url + "]");
+			
 			if (url.equals("")) throw new PageIllegalArgumentException(ERROR_ANCHOR_HAS_NOT_URL);
 			this.pageManager = this.pageManager.move(url);
 			return this.pageManager.getPage();
@@ -135,6 +145,9 @@ public class Browzer {
 		try {
 			if (form == null) throw new PageIllegalArgumentException(ERROR_SPECIFIED_FORM_IS_NOT_SET);
 			if (!this.pageManager.getPage().equals(form.getPage()))throw new PageIllegalArgumentException(ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
+			
+			this.logger.info("move form=[" + form + "]");
+			
 			this.pageManager = this.pageManager.move(form);
 			return this.pageManager.getPage();
 		} catch (BrowzingException e ) {

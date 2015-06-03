@@ -33,6 +33,8 @@ import jp.co.dk.document.html.constant.HtmlRequestMethodName;
 import jp.co.dk.document.html.element.A;
 import jp.co.dk.document.html.element.Form;
 import jp.co.dk.document.html.exception.HtmlDocumentException;
+import jp.co.dk.logger.Logger;
+import jp.co.dk.logger.LoggerFactory;
 import jp.co.dk.property.Property;
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
@@ -73,6 +75,9 @@ public class Page {
 	
 	/** ページイベントハンドラ */
 	protected List<PageEventHandler> eventHandler = new ArrayList<PageEventHandler>();
+	
+	/** ロガーインスタンス */
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	/**
 	 * コンストラクタ<p>
@@ -130,23 +135,29 @@ public class Page {
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
 	public Page(String url, Map<String, String> requestHeader, boolean readDataFlg, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException, PageAccessException {
+		this.logger.constractor(this.getClass(), url, requestHeader, new Boolean(readDataFlg), pageEventHandlerList);
+		
 		if (url == null || url.equals("")) throw new PageIllegalArgumentException(ERROR_URL_IS_NOT_SET);
-		if (requestHeader == null) requestHeader = new HashMap<String, String>(); 
+		if (requestHeader == null) requestHeader = new HashMap<String, String>();
 		this.url                 = this.createUrl(url);
 		this.readDataFlg         = readDataFlg;
 		this.eventHandler        = pageEventHandlerList;
+		
 		URLConnection connection = this.createURLConnection(this.url.getUrlObject(), HtmlRequestMethodName.GET);
 		
 		Map<String, String> requestHeaderByProperty = this.getRequestHeaderByPorperty();
 		requestHeaderByProperty.putAll(requestHeader);
 		try {
 			this.requestHeader = this.createRequestHeader(requestHeaderByProperty);
+			this.logger.info("request_header=[" + this.requestHeader + "]");
 		} catch (PageHeaderImproperException e) {
 			throw new PageIllegalArgumentException(ERROR_REQUEST_HEADER_IS_INVALID, e);
 		}
 		this.setRequestProperty(connection, requestHeaderByProperty);
 		try {
+			this.logger.info("connection start");
 			connection.connect();
+			this.logger.info("connection fin");
 			this.connection = connection;
 		} catch (IOException e) {
 			throw new PageAccessException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, this.url.toString(), e );
@@ -154,10 +165,13 @@ public class Page {
 		Map<String, List<String>> responseHeader = connection.getHeaderFields();
 		try {
 			this.responseHeader = this.createResponseHeader(responseHeader);
+			this.logger.info("response_header=[" + this.responseHeader + "]");
 		} catch (PageHeaderImproperException e) {
 			throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_INVALID, e);
 		}
+		this.logger.info("download start");
 		if (readDataFlg) this.byteDump = this.getByteDump(connection);
+		this.logger.info("download fin size=[" + this.byteDump.length() + " Byte]");
 	}
 	
 	/**
@@ -216,7 +230,11 @@ public class Page {
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
 	protected Page(Form form, Map<String, String> requestProperty, boolean readDataFlg, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException, PageAccessException {
+		this.logger.constractor(this.getClass(), form, requestProperty, new Boolean(readDataFlg), pageEventHandlerList);
+		
 		if (form == null) throw new PageIllegalArgumentException(ERROR_FORM_IS_NOT_SPECIFIED);
+		if (requestProperty == null) requestProperty = new HashMap<String, String>();
+		
 		try {
 			this.url = this.createUrl(form.getAction().getURL().toString());
 		} catch (HtmlDocumentException e) {
@@ -224,28 +242,35 @@ public class Page {
 		}
 		this.readDataFlg    = readDataFlg;
 		this.eventHandler   = pageEventHandlerList;
-		if (requestProperty == null) requestProperty = new HashMap<String, String>(); 
+		 
 		try {
 			this.requestHeader = this.createRequestHeader(requestProperty);
+			this.logger.info("request_header=[" + this.requestHeader + "]");
 		} catch (PageHeaderImproperException e) {
 			throw new PageIllegalArgumentException(ERROR_REQUEST_HEADER_IS_INVALID, e);
 		}
 		URLConnection connection = this.createURLConnection(this.url.getUrlObject(), form.getMethod());
 		this.connection = this.setRequestProperty(connection, requestProperty);
 		try {
+			this.logger.info("connection start");
 			BufferedWriter outputStream = new BufferedWriter(new OutputStreamWriter(this.connection.getOutputStream()));
 			outputStream.write(form.createMessage());
 			outputStream.close();
+			this.logger.info("connection fin");
 		} catch (IOException e) {
 			throw new PageAccessException(ERROR_FAILED_TO_SEND_MESSAGE, new String[]{this.url.getURL(), form.getMethod().toString()}, e);
 		}
 		Map<String, List<String>> responseHeader = connection.getHeaderFields();
 		try {
 			this.responseHeader = this.createResponseHeader(responseHeader);
+			this.logger.info("response_header=[" + this.responseHeader + "]");
+			
 		} catch (PageHeaderImproperException e) {
 			throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_INVALID, e);
 		}
+		this.logger.info("download start");
 		if (readDataFlg) this.byteDump = this.getByteDump(connection);
+		this.logger.info("download fin size=[" + this.byteDump.length() + " Byte]");
 	}
 	
 	/**
@@ -260,6 +285,7 @@ public class Page {
 	 * @throws PageHeaderImproperException  リクエストヘッダ、またはレスポンスヘッダが不正であった場合
 	 */
 	protected Page(String url, Map<String,String> requestHeader, Map<String, List<String>> responseHeader, ByteDump data, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException, PageHeaderImproperException {
+		this.logger.constractor(this.getClass(), url, requestHeader, responseHeader, data, pageEventHandlerList);
 		if (url == null || url.equals("")) throw new PageIllegalArgumentException(ERROR_URL_IS_NOT_SET);
 		this.url            = this.createUrl(url);
 		this.requestHeader  = this.createRequestHeader(requestHeader);
