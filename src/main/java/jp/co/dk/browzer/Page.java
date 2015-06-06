@@ -169,9 +169,11 @@ public class Page {
 		} catch (PageHeaderImproperException e) {
 			throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_INVALID, e);
 		}
-		this.logger.info("download start");
-		if (readDataFlg) this.byteDump = this.getByteDump(connection);
-		this.logger.info("download fin size=[" + this.byteDump.length() + " Byte]");
+		if (readDataFlg) {
+			this.logger.info("download start");
+			this.byteDump = this.getByteDump(connection);
+			this.logger.info("download fin size=[" + this.byteDump.length() + " Byte]");
+		}
 	}
 	
 	/**
@@ -268,9 +270,11 @@ public class Page {
 		} catch (PageHeaderImproperException e) {
 			throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_INVALID, e);
 		}
-		this.logger.info("download start");
-		if (readDataFlg) this.byteDump = this.getByteDump(connection);
-		this.logger.info("download fin size=[" + this.byteDump.length() + " Byte]");
+		if (readDataFlg) {
+			this.logger.info("download start");
+			this.byteDump = this.getByteDump(connection);
+			this.logger.info("download fin size=[" + this.byteDump.length() + " Byte]");
+		}
 	}
 	
 	/**
