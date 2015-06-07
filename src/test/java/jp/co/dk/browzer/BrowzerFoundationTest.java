@@ -4,12 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.dk.browzer.exception.BrowzingException;
-import jp.co.dk.browzer.exception.PageAccessException;
-import jp.co.dk.browzer.exception.PageIllegalArgumentException;
-import jp.co.dk.browzer.exception.PageMovableLimitException;
-import jp.co.dk.browzer.exception.PageRedirectException;
-import jp.co.dk.browzer.html.element.Form;
-import jp.co.dk.message.MessageInterface;
 import jp.co.dk.test.template.TestCaseTemplate;
 
 public class BrowzerFoundationTest extends TestCaseTemplate {
@@ -31,45 +25,15 @@ public class BrowzerFoundationTest extends TestCaseTemplate {
 	}
 	
 	protected Browzer getBrowzer(String url) throws BrowzingException{
-		return new BrowzerForTest(url);
+		return new Browzer(url);
 	}
 	
 	protected Browzer getBrowzer(int nestLevel) throws BrowzingException {
-		return new BrowzerForTest(getRandomUrl(), nestLevel);
+		return new Browzer(getRandomUrl(), nestLevel);
 	}
 	
 	protected Browzer getBrowzer(String url, int nestLevel) throws BrowzingException {
-		return new BrowzerForTest(url, nestLevel);
-	}
-	
-	protected Page createPage(String url) throws BrowzingException{
-		return new Page(url);
-	}
-	
-	protected void assertEquals(MessageInterface e1, MessageInterface e2) {
-		super.assertEquals(e1.getMessage(), e2.getMessage());
-	}
-	
-	protected void fail(BrowzingException e) {
-		e.printStackTrace();
-		super.fail(e);
-	}
-	
-}
-
-class BrowzerForTest extends Browzer{
-
-	public BrowzerForTest(String url) throws PageIllegalArgumentException, PageAccessException {
-		super(url);
-	}
-	
-	public BrowzerForTest(String url, int nestLebel) throws PageIllegalArgumentException, PageAccessException {
-		super(url,nestLebel);
-	}
-	
-	@Override
-	public Page move(Form form) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException{
-		return super.move(form);
+		return new Browzer(url, nestLevel);
 	}
 	
 }
