@@ -155,7 +155,7 @@ public class Page {
 		}
 		this.setRequestProperty(connection, requestHeaderByProperty);
 		try {
-			this.logger.info("connection start");
+			this.logger.info("connection start url=[" + this.url + "]");
 			connection.connect();
 			this.logger.info("connection fin");
 			this.connection = connection;
@@ -254,7 +254,7 @@ public class Page {
 		URLConnection connection = this.createURLConnection(this.url.getUrlObject(), form.getMethod());
 		this.connection = this.setRequestProperty(connection, requestProperty);
 		try {
-			this.logger.info("connection start");
+			this.logger.info("connection start url=[" + this.url + "]");
 			BufferedWriter outputStream = new BufferedWriter(new OutputStreamWriter(this.connection.getOutputStream()));
 			outputStream.write(form.createMessage());
 			outputStream.close();
