@@ -222,6 +222,31 @@ public class Url {
 	}
 	
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((urlObj == null) ? 0 : urlObj.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Url other = (Url) obj;
+		if (urlObj == null) {
+			if (other.urlObj != null)
+				return false;
+		} else if (!urlObj.equals(other.urlObj))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return this.url;
 	}

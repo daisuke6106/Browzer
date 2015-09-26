@@ -87,7 +87,9 @@ public class BrowserTest extends BrowzerFoundationTest {
 			browzer.move(anhor);
 			fail();
 		} catch (BrowzingException e) {
-			if (e.getMessageObj() != ERROR_SPECIFIED_ANCHOR_IS_NOT_SET) ;
+			if (e.getMessageObj() != ERROR_SPECIFIED_ANCHOR_IS_NOT_SET){
+				fail();
+			}
 		}
 		
 		// 異なるページオブジェクトにあるURLを指定した場合、例外が発生すること。
@@ -203,7 +205,9 @@ public class BrowserTest extends BrowzerFoundationTest {
 			browzer2.move((Link)randomElement);
 			fail();
 		} catch (BrowzingException e) {
-			if (e.getMessageObj() != ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) ;
+			if (e.getMessageObj() != ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) {
+				fail();
+			}
 		} catch (DocumentException e) {
 			fail(e);
 		}
@@ -269,7 +273,9 @@ public class BrowserTest extends BrowzerFoundationTest {
 			browzer2.move((Script)randomElement);
 			fail();
 		} catch (BrowzingException e) {
-			if (e.getMessageObj() != ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) ;
+			if (e.getMessageObj() != ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) {
+				fail();
+			}
 		} catch (DocumentException e) {
 			fail(e);
 		}
@@ -335,7 +341,9 @@ public class BrowserTest extends BrowzerFoundationTest {
 			browzer2.move((Image)randomElement);
 			fail();
 		} catch (BrowzingException e) {
-			if (e.getMessageObj() != ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) ;
+			if (e.getMessageObj() != ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) {
+				fail();
+			}
 		} catch (DocumentException e) {
 			fail(e);
 		}
@@ -405,7 +413,9 @@ public class BrowserTest extends BrowzerFoundationTest {
 				}
 			}
 		} catch (BrowzingException e) {
-			if (e.getMessageObj() != ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) ;
+			if (e.getMessageObj() != ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE) {
+				fail();
+			}
 		} catch (DocumentException e) {
 			fail(e);
 		}

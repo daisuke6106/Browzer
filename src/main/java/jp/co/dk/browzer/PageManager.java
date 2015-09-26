@@ -224,10 +224,12 @@ public class PageManager {
 	
 	/**
 	 * このページの遷移元である親ページを取得します。
+	 * 現在のページの遷移元が存在しなかった場合、nullが返却されます。
 	 * 
 	 * @return 親ページオブジェクト
 	 */
 	public Page getParentPage() {
+		if (this.parentPage == null) return null;
 		return this.parentPage.getPage();
 	}
 	
@@ -398,7 +400,7 @@ public class PageManager {
 	@Override
 	public String toString() {
 		PageManager pageManager;
-		for (pageManager = this; pageManager.parentPage != null; pageManager = pageManager.parentPage);
+		for (pageManager = this; pageManager.parentPage != null; pageManager = pageManager.parentPage){}
 		
 		boolean[] islasted= {};
 		
