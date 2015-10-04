@@ -521,6 +521,19 @@ public class Page {
 	}
 	
 	/**
+	 * <p>このページ内の文字列を取得する。</p>
+	 * このページがHTMLの場合に限り、このページの文字列を取得する。<br/>
+	 * それ以外の場合、空文字を返却する。
+	 * 
+	 * @return ページ内の文字列
+	 */
+	public String getText() {
+		if (!(this.document instanceof HtmlDocument)) return "";
+		HtmlDocument htmlDocument = (HtmlDocument)this.document;
+		return htmlDocument.getContent();
+	}
+	
+	/**
 	 * アンカー一覧を取得します。<p/>
 	 * このページに存在するすべてのアンカータグを取得します。<br/>
 	 * このページがHTMLでない場合、例外を送出します。
