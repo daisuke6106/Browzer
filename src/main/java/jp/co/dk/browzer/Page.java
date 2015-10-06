@@ -570,7 +570,7 @@ public class Page {
 		String  thisPageDmain        = this.url.getHost();
 		for (A anchor : allAnchorList) {
 			try {
-				Url url = new Url(anchor.getUrl());
+				Url url = this.createUrl(anchor.getUrl());
 				String anchorsDomain = url.getHost();
 				if (thisPageDmain.equals(anchorsDomain)) sameDomainAnchorList.add(anchor);
 			} catch (PageIllegalArgumentException e) {
@@ -597,7 +597,7 @@ public class Page {
 		List<String> thisPagePathList     = this.url.getPathList();
 		for (A anchor : allAnchorList) {
 			try {
-				Url url = new Url(anchor.getUrl());
+				Url url = this.createUrl(anchor.getUrl());
 				String anchorsDomain         = url.getHost();
 				List<String> anchorsPathList = url.getPathList();
 				if (thisPageDmain.equals(anchorsDomain) && thisPagePathList.equals(anchorsPathList)) sameDomainAnchorList.add(anchor);
@@ -623,7 +623,7 @@ public class Page {
 		List<A>      sameDomainAnchorList = new ArrayList<A>();
 		for (A anchor : allAnchorList) {
 			try {
-				Url url = new Url(anchor.getUrl());
+				Url url = this.createUrl(anchor.getUrl());
 				List<String> anchorsPathList = url.getPathList();
 				if (anchorsPathList.size() != 0) {
 					String lastPath = anchorsPathList.get(anchorsPathList.size()-1);
@@ -651,7 +651,7 @@ public class Page {
 		List<A>      sameDomainAnchorList = new ArrayList<A>();
 		for (A anchor : allAnchorList) {
 			try {
-				Url url = new Url(anchor.getUrl());
+				Url url = this.createUrl(anchor.getUrl());
 				List<String> anchorsPathList = url.getPathList();
 				if (anchorsPathList.size() != 0) {
 					String lastPath = anchorsPathList.get(anchorsPathList.size()-1);
