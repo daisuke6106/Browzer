@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import jp.co.dk.browzer.exception.PageIllegalArgumentException;
 
@@ -41,14 +43,21 @@ public class Url {
 	/** パラメータ一覧 */
 	protected Map<String, String> parameter;
 	
+	/** フラグメントパターン */
+	protected static Pattern fragmentPattern = Pattern.compile("^(.+?)#(.+?)$");
+	
 	/**
-	 * URL文字列からこのURLオブジェクトを生成する。
+	 * <p>URL文字列からこのURLオブジェクトを生成する。</p>
+	 * URL文字列を基にホスト、パス、パラメータを保持する。<br/>
+	 * フラグメントが設定されている場合、フラグメントを除外してオブジェクトが生成される。<br/>
 	 * 
 	 * @param url URL文字列
 	 * @throws PageIllegalArgumentException URL文字列がnullまたは、空文字だった場合
 	 */
 	public Url(String url) throws PageIllegalArgumentException {
 		if (url == null || url.equals("")) throw new PageIllegalArgumentException(ERROR_URL_IS_NOT_SET);
+		Matcher fragmentMatcher = fragmentPattern.matcher(url);
+		if (fragmentMatcher.find()) url = fragmentMatcher.group(1);
 		this.url        = url;
 		this.urlObj     = this.createURL(url);
 		this.protocol   = this.getProtocol(this.urlObj);
