@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JMockit Coverage Report - PageRedirectHandler.java</title>
+  <title>PageRedirectHandler.java</title>
   <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
   <link rel='stylesheet' type='text/css' href='../../../../coverage.css'/>
+  <link rel='shortcut icon' type='image/png' href='../../../../logo.png'/>
   <script type='text/javascript' src='../../../../coverage.js'></script>
   <script type='text/javascript' src='../../../../prettify.js'></script>
 </head>
@@ -61,7 +62,7 @@ import jp.co.dk.document.html.element.Meta;
     </tr>
     <tr>
       <td class='line'>34</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	List&lt;PageEventHandler> <span class='instance covered' title='Reads: 18 Writes: 45'>eventHandler</span>;</pre></td>
+      <td><pre class='prettyprint'>	List&lt;PageEventHandler> eventHandler;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -72,16 +73,16 @@ import jp.co.dk.document.html.element.Meta;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>40</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l40s0'>	protected PageRedirectHandler() {</pre></td>
+      <td class='line'>40</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected PageRedirectHandler() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>41</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l41s0'>		this.eventHandler = new ArrayList&lt;PageEventHandler>();</pre></td>
+      <td class='line'>41</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		this.eventHandler = new ArrayList&lt;PageEventHandler>();</pre></td>
     </tr>
     <tr>
-      <td class='line'>42</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l42s0'>	}</pre></td>
+      <td class='line'>42</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -94,16 +95,16 @@ import jp.co.dk.document.html.element.Meta;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>50</td><td class='count'>45</td>
-      <td><pre class='prettyprint covered' id='l50s0'>	protected PageRedirectHandler(List&lt;PageEventHandler> eventHandler) {</pre></td>
+      <td class='line'>50</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected PageRedirectHandler(List&lt;PageEventHandler> eventHandler) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>51</td><td class='count'>45</td>
-      <td><pre class='prettyprint covered' id='l51s0'>		this.eventHandler = eventHandler;</pre></td>
+      <td class='line'>51</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		this.eventHandler = eventHandler;</pre></td>
     </tr>
     <tr>
-      <td class='line'>52</td><td class='count'>45</td>
-      <td><pre class='prettyprint covered' id='l52s0'>	}</pre></td>
+      <td class='line'>52</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -129,36 +130,24 @@ import jp.co.dk.document.html.element.Meta;
       <td><pre class='prettyprint'>	Page redirect(Page page) throws PageRedirectException {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>9</td>
-      <td class='paths'>
-        <span style='cursor:default; background-color:#aa5500' onclick='hidePath()'>Path coverage: 2/6</span>
-        <span class='uncovered' onclick="showPath(this,'l70s0 l72s0 l74s0')">A: 0</span>
-        <span class='covered' onclick="showPath(this,'l70s0 l72s0 l77s0')">B: 8</span>
-        <span class='covered' onclick="showPath(this,'l70s0 l72s0 l80s0')">C: 1</span>
-        <span class='uncovered' onclick="showPath(this,'l70s0 l72s0 l83s0')">D: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l70s0 l72s0 l86s0')">E: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l70s0 l72s0 l91s0')">F: 0</span>
-      </td>
+      <td class='line'>70</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		ResponseHeader header = page.getResponseHeader();</pre></td>
     </tr>
     <tr>
-      <td class='line'>70</td><td class='count'>9</td>
-      <td><pre class='prettyprint covered' id='l70s0'>		ResponseHeader header = page.getResponseHeader();</pre></td>
+      <td class='line'>71</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();</pre></td>
     </tr>
     <tr>
-      <td class='line'>71</td><td class='count'>9</td>
-      <td><pre class='prettyprint covered' id='l71s0'>		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>72</td><td class='count'>18</td>
-      <td><pre class='prettyprint covered' id='l72s0'>		switch(httpStatusCode.getStatusType()) {</pre></td>
+      <td class='line'>72</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		switch(httpStatusCode.getStatusType()) {</pre></td>
     </tr>
     <tr>
       <td class='line'>73</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>			case INFOMATIONAL:</pre></td>
     </tr>
     <tr>
-      <td class='line'>74</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l74s0'>				return this.redirectBy_INFOMATIONAL(header, page);</pre></td>
+      <td class='line'>74</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				return this.redirectBy_INFOMATIONAL(header, page);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -166,8 +155,8 @@ import jp.co.dk.document.html.element.Meta;
       <td><pre class='prettyprint'>			case SUCCESS:</pre></td>
     </tr>
     <tr>
-      <td class='line'>77</td><td class='count'>8</td>
-      <td><pre class='prettyprint covered' id='l77s0'>				return this.redirectBy_SUCCESS(header, page);</pre></td>
+      <td class='line'>77</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				return this.redirectBy_SUCCESS(header, page);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -175,8 +164,8 @@ import jp.co.dk.document.html.element.Meta;
       <td><pre class='prettyprint'>			case REDIRECTION:</pre></td>
     </tr>
     <tr>
-      <td class='line'>80</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l80s0'>				return this.redirectBy_REDIRECTION(header, page);</pre></td>
+      <td class='line'>80</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				return this.redirectBy_REDIRECTION(header, page);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -184,8 +173,8 @@ import jp.co.dk.document.html.element.Meta;
       <td><pre class='prettyprint'>			case CLIENT_ERROR:</pre></td>
     </tr>
     <tr>
-      <td class='line'>83</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l83s0'>				return this.redirectBy_CLIENT_ERROR(header, page);</pre></td>
+      <td class='line'>83</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				return this.redirectBy_CLIENT_ERROR(header, page);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -193,8 +182,8 @@ import jp.co.dk.document.html.element.Meta;
       <td><pre class='prettyprint'>			case SERVER_ERROR:</pre></td>
     </tr>
     <tr>
-      <td class='line'>86</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l86s0'>				return this.redirectBy_SERVER_ERROR(header, page);</pre></td>
+      <td class='line'>86</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				return this.redirectBy_SERVER_ERROR(header, page);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -210,8 +199,8 @@ import jp.co.dk.document.html.element.Meta;
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>91</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l91s0'>		return page;</pre></td>
+      <td class='line'>91</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		return page;</pre></td>
     </tr>
     <tr>
       <td class='line'>92</td><td>&nbsp;</td>
@@ -235,16 +224,16 @@ import jp.co.dk.document.html.element.Meta;
       <td><pre class='prettyprint'>	protected Page redirectBy_INFOMATIONAL(ResponseHeader header, Page page) throws PageRedirectException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>104</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l104s0' title='Executions: 0' class='uncovered'>for (PageEventHandler pageEventHandler</span> : <span id='l104s1' title='Executions: 0' class='uncovered'>eventHandler)</span> </pre></td>
+      <td class='line'>104</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);</pre></td>
     </tr>
     <tr>
-      <td class='line'>105</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l105s0' title='Executions: 0' class='uncovered'>for (PageEventHandler pageEventHandler</span> : <span id='l105s1' title='Executions: 0' class='uncovered'>eventHandler)</span> </pre></td>
+      <td class='line'>105</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();</pre></td>
     </tr>
     <tr>
-      <td class='line'>106</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l106s0'>		return page;</pre></td>
+      <td class='line'>106</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		return page;</pre></td>
     </tr>
     <tr>
       <td class='line'>107</td><td>&nbsp;</td>
@@ -271,92 +260,84 @@ import jp.co.dk.document.html.element.Meta;
       <td><pre class='prettyprint'>	protected Page redirectBy_SUCCESS(ResponseHeader header, Page page) throws PageRedirectException {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
-      <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/2</span>
-        <span class='uncovered' onclick="showPath(this,'l122s0 l125s0 l126s0 l128s0 l159s0')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l122s0 l125s0 l147s0 l159s0')">B: 0</span>
-      </td>
-    </tr>
-    <tr>
-      <td class='line'>122</td><td class='count'>8</td>
-      <td><pre class='prettyprint jmp'>		<span id='l122s0' title='Executions: 8' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l122s1' title='Executions: 16' class='covered'>eventHandler)</span> </pre></td>
+      <td class='line'>122</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);</pre></td>
     </tr>
     <tr>
       <td class='line'>123</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>124</td><td class='count'>8</td>
-      <td><pre class='prettyprint covered' id='l124s0'>			File file = page.getDocument();</pre></td>
+      <td class='line'>124</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			File file = page.getDocument();</pre></td>
     </tr>
     <tr>
-      <td class='line'>125</td><td class='count'>8</td>
-      <td><pre class='prettyprint jmp'>			<span id='l125s0' title='Executions: 8' class='covered'>if (file instanceof HtmlDocument)</span> <span id='l125s1' title='Executions: 8' class='covered'>{</span></pre></td>
+      <td class='line'>125</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			if (file instanceof HtmlDocument) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>126</td><td class='count'>8</td>
-      <td><pre class='prettyprint covered' id='l126s0'>				HtmlDocument htmlDocument = (HtmlDocument)file;</pre></td>
+      <td class='line'>126</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				HtmlDocument htmlDocument = (HtmlDocument)file;</pre></td>
     </tr>
     <tr>
-      <td class='line'>127</td><td class='count'>8</td>
-      <td><pre class='prettyprint covered' id='l127s0'>				List&lt;Element> metaElementList = htmlDocument.getElement(HtmlElementName.META);</pre></td>
+      <td class='line'>127</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				List&lt;Element> metaElementList = htmlDocument.getElement(HtmlElementName.META);</pre></td>
     </tr>
     <tr>
-      <td class='line'>128</td><td class='count'>47</td>
-      <td><pre class='prettyprint covered' id='l128s0'>				for (Element element : metaElementList) {</pre></td>
+      <td class='line'>128</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				for (Element element : metaElementList) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>129</td><td class='count'>31</td>
-      <td><pre class='prettyprint jmp'>					<span id='l129s0' title='Executions: 31' class='covered'>if (element instanceof Meta)</span> <span id='l129s1' title='Executions: 31' class='covered'>{</span></pre></td>
+      <td class='line'>129</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>					if (element instanceof Meta) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>130</td><td class='count'>31</td>
-      <td><pre class='prettyprint covered' id='l130s0'>						Meta meta = (Meta)element;</pre></td>
+      <td class='line'>130</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>						Meta meta = (Meta)element;</pre></td>
     </tr>
     <tr>
-      <td class='line'>131</td><td class='count'>31</td>
-      <td><pre class='prettyprint jmp'>						<span id='l131s0' title='Executions: 31' class='covered'>if (HttpEquivName.REFRESH == meta.getHttpEquiv()) {</span></pre></td>
+      <td class='line'>131</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>						if (HttpEquivName.REFRESH == meta.getHttpEquiv()) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>132</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l132s0'>							String contents = meta.getContent();</pre></td>
+      <td class='line'>132</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>							String contents = meta.getContent();</pre></td>
     </tr>
     <tr>
-      <td class='line'>133</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>							<span id='l133s0' title='Executions: 0' class='uncovered'>if (contents.equals("")) contents = "1";</span> </pre></td>
+      <td class='line'>133</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>							if (contents.equals("")) contents = "1"; </pre></td>
     </tr>
     <tr>
-      <td class='line'>134</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l134s0'>							int sleepType = Integer.parseInt(contents);</pre></td>
+      <td class='line'>134</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>							int sleepType = Integer.parseInt(contents);</pre></td>
     </tr>
     <tr>
       <td class='line'>135</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>							try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>136</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l136s0'>								Thread.sleep(sleepType * 1000);</pre></td>
+      <td class='line'>136</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>								Thread.sleep(sleepType * 1000);</pre></td>
     </tr>
     <tr>
-      <td class='line'>137</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l137s0'>							} catch (InterruptedException e) {</pre></td>
+      <td class='line'>137</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>							} catch (InterruptedException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>138</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l138s0'>								throw new PageRedirectException(ERROR_THREAD_STOP, e); </pre></td>
+      <td class='line'>138</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>								throw new PageRedirectException(ERROR_THREAD_STOP, e); </pre></td>
     </tr>
     <tr>
       <td class='line'>139</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>							}</pre></td>
     </tr>
     <tr>
-      <td class='line'>140</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l140s0'>							String url = meta.getAttribute("url");</pre></td>
+      <td class='line'>140</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>							String url = meta.getAttribute("url");</pre></td>
     </tr>
     <tr>
-      <td class='line'>141</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l141s0'>							return this.ceatePage(page.completionURL(url));</pre></td>
+      <td class='line'>141</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>							return this.ceatePage(page.completionURL(url));</pre></td>
     </tr>
     <tr>
       <td class='line'>142</td><td>&nbsp;</td>
@@ -371,68 +352,68 @@ import jp.co.dk.document.html.element.Meta;
       <td><pre class='prettyprint'>				}</pre></td>
     </tr>
     <tr>
-      <td class='line'>145</td><td class='count'>16</td>
-      <td><pre class='prettyprint covered' id='l145s0'>				return page;</pre></td>
+      <td class='line'>145</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				return page;</pre></td>
     </tr>
     <tr>
       <td class='line'>146</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>			} else {</pre></td>
     </tr>
     <tr>
-      <td class='line'>147</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l147s0'>				return page;</pre></td>
+      <td class='line'>147</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				return page;</pre></td>
     </tr>
     <tr>
       <td class='line'>148</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>			}</pre></td>
     </tr>
     <tr>
-      <td class='line'>149</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l149s0'>		} catch (PageIllegalArgumentException e) {</pre></td>
+      <td class='line'>149</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		} catch (PageIllegalArgumentException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>150</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>			<span id='l150s0' title='Executions: 0' class='uncovered'>for (PageEventHandler pageEventHandler</span> : <span id='l150s1' title='Executions: 0' class='uncovered'>eventHandler)</span> </pre></td>
+      <td class='line'>150</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.errorRedirect(e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>151</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l151s0'>			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);</pre></td>
+      <td class='line'>151</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>152</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l152s0'>		} catch (PageAccessException e) {</pre></td>
+      <td class='line'>152</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		} catch (PageAccessException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>153</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>			<span id='l153s0' title='Executions: 0' class='uncovered'>for (PageEventHandler pageEventHandler</span> : <span id='l153s1' title='Executions: 0' class='uncovered'>eventHandler)</span> </pre></td>
+      <td class='line'>153</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.errorRedirect(e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>154</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l154s0'>			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);</pre></td>
+      <td class='line'>154</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>155</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l155s0'>		} catch (DocumentException e) {</pre></td>
+      <td class='line'>155</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		} catch (DocumentException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>156</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>			<span id='l156s0' title='Executions: 0' class='uncovered'>for (PageEventHandler pageEventHandler</span> : <span id='l156s1' title='Executions: 0' class='uncovered'>eventHandler)</span> </pre></td>
+      <td class='line'>156</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.errorRedirect(e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>157</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l157s0'>			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);</pre></td>
+      <td class='line'>157</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>158</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l158s0'>		} finally {</pre></td>
+      <td class='line'>158</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		} finally {</pre></td>
     </tr>
     <tr>
-      <td class='line'>159</td><td class='count'>8</td>
-      <td><pre class='prettyprint jmp'>			<span id='l159s0' title='Executions: 8' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l159s1' title='Executions: 0' class='uncovered'>eventHandler)</span> <span id='l159s2' title='Executions: 16' class='covered'>pageEventHandler.afterRedirect();</span></pre></td>
+      <td class='line'>159</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();</pre></td>
     </tr>
     <tr>
-      <td class='line'>160</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l160s0'>		}</pre></td>
+      <td class='line'>160</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
       <td class='line'>161</td><td>&nbsp;</td>
@@ -458,25 +439,16 @@ import jp.co.dk.document.html.element.Meta;
       <td><pre class='prettyprint'>	protected Page redirectBy_REDIRECTION(ResponseHeader header, Page page) throws PageRedirectException {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
-      <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/3</span>
-        <span class='uncovered' onclick="showPath(this,'l175s0 l177s0 l177s2')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l175s0 l177s0 l177s1 l177s2')">B: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l175s0 l177s0 l177s1 l180s0 l187s0')">C: 0</span>
-      </td>
+      <td class='line'>175</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);</pre></td>
     </tr>
     <tr>
-      <td class='line'>175</td><td class='count'>1</td>
-      <td><pre class='prettyprint jmp'>		<span id='l175s0' title='Executions: 1' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l175s1' title='Executions: 2' class='covered'>eventHandler)</span> </pre></td>
+      <td class='line'>176</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		String location = header.getLocation();</pre></td>
     </tr>
     <tr>
-      <td class='line'>176</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l176s0'>		String location = header.getLocation();</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>177</td><td class='count'>1</td>
-      <td><pre class='prettyprint jmp'>		<span id='l177s0' title='Executions: 1' class='covered'>if (location == null</span> || <span id='l177s1' title='Executions: 1' class='covered'>location.equals("")) throw new PageRedirectException(ERROR_REDIRECT_LOCATION_NOT_FOUND);</span> </pre></td>
+      <td class='line'>177</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		if (location == null || location.equals("")) throw new PageRedirectException(ERROR_REDIRECT_LOCATION_NOT_FOUND); </pre></td>
     </tr>
     <tr>
       <td class='line'>178</td><td>&nbsp;</td>
@@ -487,40 +459,40 @@ import jp.co.dk.document.html.element.Meta;
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>180</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l180s0'>			nextPage = this.ceatePage(page.completionURL(location));</pre></td>
+      <td class='line'>180</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			nextPage = this.ceatePage(page.completionURL(location));</pre></td>
     </tr>
     <tr>
-      <td class='line'>181</td><td class='count'>2</td>
-      <td><pre class='prettyprint covered' id='l181s0'>			return nextPage;</pre></td>
+      <td class='line'>181</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			return nextPage;</pre></td>
     </tr>
     <tr>
-      <td class='line'>182</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l182s0'>		} catch (PageIllegalArgumentException e) {</pre></td>
+      <td class='line'>182</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		} catch (PageIllegalArgumentException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>183</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l183s0'>			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);</pre></td>
+      <td class='line'>183</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>184</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l184s0'>		} catch (PageAccessException e) {</pre></td>
+      <td class='line'>184</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		} catch (PageAccessException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>185</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l185s0'>			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);</pre></td>
+      <td class='line'>185</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>186</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l186s0'>		} finally {</pre></td>
+      <td class='line'>186</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		} finally {</pre></td>
     </tr>
     <tr>
-      <td class='line'>187</td><td class='count'>1</td>
-      <td><pre class='prettyprint jmp'>			<span id='l187s0' title='Executions: 1' class='covered'>for (PageEventHandler pageEventHandler</span> : <span id='l187s1' title='Executions: 2' class='covered'>eventHandler)</span> <span id='l187s2' title='Executions: 0' class='uncovered'>pageEventHandler.afterRedirect();</span></pre></td>
+      <td class='line'>187</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();</pre></td>
     </tr>
     <tr>
-      <td class='line'>188</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l188s0'>		}</pre></td>
+      <td class='line'>188</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
       <td class='line'>189</td><td>&nbsp;</td>
@@ -545,36 +517,28 @@ import jp.co.dk.document.html.element.Meta;
       <td><pre class='prettyprint'>	protected Page redirectBy_CLIENT_ERROR(ResponseHeader header, Page page) throws PageRedirectException {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
-      <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/2</span>
-        <span class='uncovered' onclick="showPath(this,'l202s0 l204s0 l220s0 l220s1 l221s0')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l202s0 l204s0 l205s0 l218s0 l220s0 l220s1 l221s0')">B: 0</span>
-      </td>
+      <td class='line'>202</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);</pre></td>
     </tr>
     <tr>
-      <td class='line'>202</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l202s0' title='Executions: 0' class='uncovered'>for (PageEventHandler pageEventHandler</span> : <span id='l202s1' title='Executions: 0' class='uncovered'>eventHandler)</span> </pre></td>
+      <td class='line'>203</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();</pre></td>
     </tr>
     <tr>
-      <td class='line'>203</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l203s0'>		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();</pre></td>
+      <td class='line'>204</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		if (httpStatusCode == HttpStatusCode.STATUS_401) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>204</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l204s0' title='Executions: 0' class='uncovered'>if (httpStatusCode == HttpStatusCode.STATUS_401)</span> <span id='l204s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+      <td class='line'>205</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			BufferedReader reader = new BufferedReader( new InputStreamReader(System.in));</pre></td>
     </tr>
     <tr>
-      <td class='line'>205</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l205s0'>			BufferedReader reader = new BufferedReader( new InputStreamReader(System.in));</pre></td>
+      <td class='line'>206</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			System.out.print(INFO_PLEASE_INPUT_USER_AND_PASSWORD.getMessage());</pre></td>
     </tr>
     <tr>
-      <td class='line'>206</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l206s0'>			System.out.print(INFO_PLEASE_INPUT_USER_AND_PASSWORD.getMessage());</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>207</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l207s0'>			System.out.print(INFO_USER.getMessage());</pre></td>
+      <td class='line'>207</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			System.out.print(INFO_USER.getMessage());</pre></td>
     </tr>
     <tr>
       <td class='line'>208</td><td>&nbsp;</td>
@@ -585,8 +549,8 @@ import jp.co.dk.document.html.element.Meta;
       <td><pre class='prettyprint'>			try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>210</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l210s0'>				while ((line = reader.readLine()) != null) {</pre></td>
+      <td class='line'>210</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				while ((line = reader.readLine()) != null) {</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -594,8 +558,8 @@ import jp.co.dk.document.html.element.Meta;
       <td><pre class='prettyprint'>				}</pre></td>
     </tr>
     <tr>
-      <td class='line'>213</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>			<span id='l213s0' title='Executions: 0' class='uncovered'>} catch (IOException e) {</span></pre></td>
+      <td class='line'>213</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			} catch (IOException e) {</pre></td>
     </tr>
     <tr>
       <td class='line'>214</td><td>&nbsp;</td>
@@ -611,24 +575,24 @@ import jp.co.dk.document.html.element.Meta;
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>218</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l218s0'>			System.out.print(INFO_USER.getMessage());</pre></td>
+      <td class='line'>218</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			System.out.print(INFO_USER.getMessage());</pre></td>
     </tr>
     <tr>
       <td class='line'>219</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>220</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l220s0' title='Executions: 0' class='uncovered'>for (PageEventHandler pageEventHandler</span> : <span id='l220s1' title='Executions: 0' class='uncovered'>eventHandler)</span> </pre></td>
+      <td class='line'>220</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();</pre></td>
     </tr>
     <tr>
-      <td class='line'>221</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l221s0'>		throw new PageRedirectException(ERROR_HTTP_STATUS_CODE_IS_SENT_BACK_FROM_SERVER_HAS_RETURNED_NON_NORMAL, </pre></td>
+      <td class='line'>221</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		throw new PageRedirectException(ERROR_HTTP_STATUS_CODE_IS_SENT_BACK_FROM_SERVER_HAS_RETURNED_NON_NORMAL, </pre></td>
     </tr>
     <tr>
-      <td class='line'>222</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l222s0'>				new String[]{ httpStatusCode.getCode(), httpStatusCode.getMessage().getMessage(), page.getURL()});</pre></td>
+      <td class='line'>222</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				new String[]{ httpStatusCode.getCode(), httpStatusCode.getMessage().getMessage(), page.getURL()});</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -653,24 +617,24 @@ import jp.co.dk.document.html.element.Meta;
       <td><pre class='prettyprint'>	protected Page redirectBy_SERVER_ERROR(ResponseHeader header, Page page) throws PageRedirectException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>236</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l236s0' title='Executions: 0' class='uncovered'>for (PageEventHandler pageEventHandler</span> : <span id='l236s1' title='Executions: 0' class='uncovered'>eventHandler)</span> </pre></td>
+      <td class='line'>236</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);</pre></td>
     </tr>
     <tr>
-      <td class='line'>237</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l237s0'>		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();</pre></td>
+      <td class='line'>237</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();</pre></td>
     </tr>
     <tr>
-      <td class='line'>238</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l238s0' title='Executions: 0' class='uncovered'>for (PageEventHandler pageEventHandler</span> : <span id='l238s1' title='Executions: 0' class='uncovered'>eventHandler)</span> </pre></td>
+      <td class='line'>238</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();</pre></td>
     </tr>
     <tr>
-      <td class='line'>239</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l239s0'>		throw new PageRedirectException(ERROR_HTTP_STATUS_CODE_IS_SENT_BACK_FROM_SERVER_HAS_RETURNED_NON_NORMAL, </pre></td>
+      <td class='line'>239</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		throw new PageRedirectException(ERROR_HTTP_STATUS_CODE_IS_SENT_BACK_FROM_SERVER_HAS_RETURNED_NON_NORMAL, </pre></td>
     </tr>
     <tr>
-      <td class='line'>240</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l240s0'>				new String[]{ httpStatusCode.getCode(), httpStatusCode.getMessage().getMessage(), page.getURL()});</pre></td>
+      <td class='line'>240</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				new String[]{ httpStatusCode.getCode(), httpStatusCode.getMessage().getMessage(), page.getURL()});</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -694,8 +658,8 @@ import jp.co.dk.document.html.element.Meta;
       <td><pre class='prettyprint'>	protected Page ceatePage(String url) throws PageIllegalArgumentException, PageAccessException {</pre></td>
     </tr>
     <tr>
-      <td class='line'>253</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l253s0'>		return new Page(url);</pre></td>
+      <td class='line'>253</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		return new Page(url);</pre></td>
     </tr>
     <tr>
       <td class='line'>254</td><td>&nbsp;</td>

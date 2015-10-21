@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JMockit Coverage Report - DocumentFactory.java</title>
+  <title>DocumentFactory.java</title>
   <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
   <link rel='stylesheet' type='text/css' href='../../../../coverage.css'/>
+  <link rel='shortcut icon' type='image/png' href='../../../../logo.png'/>
   <script type='text/javascript' src='../../../../coverage.js'></script>
   <script type='text/javascript' src='../../../../prettify.js'></script>
 </head>
@@ -46,7 +47,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>22</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private Page <span class='instance covered' title='Reads: 38 Writes: 40'>page</span>;</pre></td>
+      <td><pre class='prettyprint'>	private Page page;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -59,15 +60,15 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 	 */</div><span>	/*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>30</td><td class='count'>40</td>
+      <td class='line'>30</td><td class='count'>2</td>
       <td><pre class='prettyprint covered' id='l30s0'>	public DocumentFactory(Page page) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>31</td><td class='count'>40</td>
+      <td class='line'>31</td><td class='count'>2</td>
       <td><pre class='prettyprint covered' id='l31s0'>		this.page = page;</pre></td>
     </tr>
     <tr>
-      <td class='line'>32</td><td class='count'>40</td>
+      <td class='line'>32</td><td class='count'>2</td>
       <td><pre class='prettyprint covered' id='l32s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -85,16 +86,6 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
     <tr>
       <td class='line'>42</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public File create(BrowzingExtension extension, InputStream inputStream) throws DocumentException {</pre></td>
-    </tr>
-    <tr>
-      <td></td><td class='count'>0</td>
-      <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/4</span>
-        <span class='uncovered' onclick="showPath(this,'l43s0 l43s1')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l43s0 l44s0 l46s0')">B: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l43s0 l44s0 l48s0')">C: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l43s0 l44s0 l50s0')">D: 0</span>
-      </td>
     </tr>
     <tr>
       <td class='line'>43</td><td class='count'>0</td>
@@ -153,21 +144,11 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>	public File create(ContentsType contentsType, InputStream inputStream) throws DocumentException {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>40</td>
-      <td class='paths'>
-        <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 2/4</span>
-        <span class='uncovered' onclick="showPath(this,'l63s0 l63s1')">A: 0</span>
-        <span class='covered' onclick="showPath(this,'l63s0 l64s0 l66s0')">B: 38</span>
-        <span class='uncovered' onclick="showPath(this,'l63s0 l64s0 l68s0')">C: 0</span>
-        <span class='covered' onclick="showPath(this,'l63s0 l64s0 l70s0')">D: 2</span>
-      </td>
+      <td class='line'>63</td><td class='count'>2</td>
+      <td><pre class='prettyprint jmp'>		<span id='l63s0' title='Executions: 2' class='covered'>if (contentsType == null)</span> <span id='l63s1' title='Executions: 0' class='uncovered'>throw new DocumentException(ERROR_EXTENSION_IS_NOT_SET);</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>63</td><td class='count'>40</td>
-      <td><pre class='prettyprint jmp'>		<span id='l63s0' title='Executions: 40' class='covered'>if (contentsType == null)</span> <span id='l63s1' title='Executions: 0' class='uncovered'>throw new DocumentException(ERROR_EXTENSION_IS_NOT_SET);</span></pre></td>
-    </tr>
-    <tr>
-      <td class='line'>64</td><td class='count'>80</td>
+      <td class='line'>64</td><td class='count'>4</td>
       <td><pre class='prettyprint covered' id='l64s0'>		switch (contentsType) {</pre></td>
     </tr>
     <tr>
@@ -175,7 +156,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>			case TEXT_HTML:</pre></td>
     </tr>
     <tr>
-      <td class='line'>66</td><td class='count'>38</td>
+      <td class='line'>66</td><td class='count'>2</td>
       <td><pre class='prettyprint covered' id='l66s0'>				return new jp.co.dk.document.html.HtmlDocument(inputStream, new HtmlElementFactory(this.page));</pre></td>
     </tr>
     <tr>
@@ -191,8 +172,8 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
       <td><pre class='prettyprint'>			default:</pre></td>
     </tr>
     <tr>
-      <td class='line'>70</td><td class='count'>2</td>
-      <td><pre class='prettyprint covered' id='l70s0'>				return new jp.co.dk.document.File(inputStream);</pre></td>
+      <td class='line'>70</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l70s0'>				return new jp.co.dk.document.File(inputStream);</pre></td>
     </tr>
     <tr>
       <td class='line'>71</td><td>&nbsp;</td>

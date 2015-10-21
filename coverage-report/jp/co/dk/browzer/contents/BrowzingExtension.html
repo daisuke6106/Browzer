@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JMockit Coverage Report - BrowzingExtension.java</title>
+  <title>BrowzingExtension.java</title>
   <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
   <link rel='stylesheet' type='text/css' href='../../../../../coverage.css'/>
+  <link rel='shortcut icon' type='image/png' href='../../../../../logo.png'/>
   <script type='text/javascript' src='../../../../../coverage.js'></script>
   <script type='text/javascript' src='../../../../../prettify.js'></script>
 </head>
 <body onload='prettyPrint()'>
   <table cellpadding='0' cellspacing='1'>
-    <caption>Browzer/src/jp/co/dk/browzer/contents/BrowzingExtension.java</caption>
+    <caption>Browzer/src/main/java/jp/co/dk/browzer/contents/BrowzingExtension.java</caption>
     <tr>
-      <td class='line'>1</td><td class='count'>5</td>
-      <td><pre class='prettyprint covered' id='l1s0'>package jp.co.dk.browzer.contents;</pre></td>
+      <td class='line'>1</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>package jp.co.dk.browzer.contents;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -58,16 +59,16 @@
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>21</td><td class='count'>2</td>
-      <td><pre class='prettyprint covered' id='l21s0'>	private BrowzingExtension(String[] extension) {</pre></td>
+      <td class='line'>21</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private BrowzingExtension(String[] extension) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>22</td><td class='count'>2</td>
-      <td><pre class='prettyprint covered' id='l22s0'>		this.extension      = extension;</pre></td>
+      <td class='line'>22</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		this.extension      = extension;</pre></td>
     </tr>
     <tr>
-      <td class='line'>23</td><td class='count'>2</td>
-      <td><pre class='prettyprint covered' id='l23s0'>	}</pre></td>
+      <td class='line'>23</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -83,8 +84,8 @@
       <td><pre class='prettyprint'>	public String[] getExtension() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>31</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l31s0'>		return this.extension.clone();</pre></td>
+      <td class='line'>31</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		return this.extension.clone();</pre></td>
     </tr>
     <tr>
       <td class='line'>32</td><td>&nbsp;</td>
@@ -105,24 +106,16 @@
       <td><pre class='prettyprint'>	public boolean hasExtension(String targetExtension) {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
-      <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/2</span>
-        <span class='uncovered' onclick="showPath(this,'l41s0 l42s0 l43s0')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l41s0 l42s0 l41s1 l46s0')">B: 0</span>
-      </td>
+      <td class='line'>41</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		for (String extension : this.extension) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>41</td><td class='count'>11</td>
-      <td><pre class='prettyprint covered' id='l41s0'>		for (String extension : this.extension) {</pre></td>
+      <td class='line'>42</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			if (extension.equals(targetExtension)) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>42</td><td class='count'>8</td>
-      <td><pre class='prettyprint jmp'>			<span id='l42s0' title='Executions: 8' class='covered'>if (extension.equals(targetExtension)) {</span></pre></td>
-    </tr>
-    <tr>
-      <td class='line'>43</td><td class='count'>3</td>
-      <td><pre class='prettyprint covered' id='l43s0'>				return true;</pre></td>
+      <td class='line'>43</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				return true;</pre></td>
     </tr>
     <tr>
       <td class='line'>44</td><td>&nbsp;</td>
@@ -133,8 +126,8 @@
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>46</td><td class='count'>3</td>
-      <td><pre class='prettyprint covered' id='l46s0'>		return false;</pre></td>
+      <td class='line'>46</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		return false;</pre></td>
     </tr>
     <tr>
       <td class='line'>47</td><td>&nbsp;</td>

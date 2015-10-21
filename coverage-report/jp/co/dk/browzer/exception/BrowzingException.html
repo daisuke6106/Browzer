@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JMockit Coverage Report - BrowzingException.java</title>
+  <title>BrowzingException.java</title>
   <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
   <link rel='stylesheet' type='text/css' href='../../../../../coverage.css'/>
+  <link rel='shortcut icon' type='image/png' href='../../../../../logo.png'/>
   <script type='text/javascript' src='../../../../../coverage.js'></script>
   <script type='text/javascript' src='../../../../../prettify.js'></script>
 </head>
@@ -56,8 +57,8 @@ import jp.co.dk.message.exception.AbstractMessageException;
       <td><pre class='comment'>	/** ロガーインスタンス */</pre></td>
     </tr>
     <tr>
-      <td class='line'>24</td><td class='count'>28</td>
-      <td><pre class='prettyprint covered' id='l24s0'>	protected Logger <span class='instance covered' title='Reads: 28 Writes: 28'>logger</span> = LoggerFactory.getLogger(this.getClass());</pre></td>
+      <td class='line'>24</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered' id='l24s0'>	protected Logger logger = LoggerFactory.getLogger(this.getClass());</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -76,15 +77,15 @@ import jp.co.dk.message.exception.AbstractMessageException;
       <td><pre class='prettyprint'>	protected BrowzingException(MessageInterface msg){</pre></td>
     </tr>
     <tr>
-      <td class='line'>35</td><td class='count'>15</td>
+      <td class='line'>35</td><td class='count'>3</td>
       <td><pre class='prettyprint covered' id='l35s0'>		super(msg);</pre></td>
     </tr>
     <tr>
-      <td class='line'>36</td><td class='count'>15</td>
+      <td class='line'>36</td><td class='count'>3</td>
       <td><pre class='prettyprint covered' id='l36s0'>		this.logger.error(this.getMessage());</pre></td>
     </tr>
     <tr>
-      <td class='line'>37</td><td class='count'>15</td>
+      <td class='line'>37</td><td class='count'>3</td>
       <td><pre class='prettyprint covered' id='l37s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -105,16 +106,16 @@ import jp.co.dk.message.exception.AbstractMessageException;
       <td><pre class='prettyprint'>	protected BrowzingException(MessageInterface msg, String str){</pre></td>
     </tr>
     <tr>
-      <td class='line'>49</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l49s0'>		super(msg, str);</pre></td>
+      <td class='line'>49</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l49s0'>		super(msg, str);</pre></td>
     </tr>
     <tr>
-      <td class='line'>50</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l50s0'>		this.logger.error(this.getMessage());</pre></td>
+      <td class='line'>50</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l50s0'>		this.logger.error(this.getMessage());</pre></td>
     </tr>
     <tr>
-      <td class='line'>51</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l51s0'>	}</pre></td>
+      <td class='line'>51</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l51s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -222,15 +223,15 @@ import jp.co.dk.message.exception.AbstractMessageException;
       <td><pre class='prettyprint'>	protected BrowzingException(MessageInterface msg, String str, Throwable throwable){</pre></td>
     </tr>
     <tr>
-      <td class='line'>106</td><td class='count'>12</td>
+      <td class='line'>106</td><td class='count'>1</td>
       <td><pre class='prettyprint covered' id='l106s0'>		super(msg, str, throwable);</pre></td>
     </tr>
     <tr>
-      <td class='line'>107</td><td class='count'>12</td>
+      <td class='line'>107</td><td class='count'>1</td>
       <td><pre class='prettyprint covered' id='l107s0'>		this.logger.error(this.getMessage());</pre></td>
     </tr>
     <tr>
-      <td class='line'>108</td><td class='count'>12</td>
+      <td class='line'>108</td><td class='count'>1</td>
       <td><pre class='prettyprint covered' id='l108s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -252,16 +253,16 @@ import jp.co.dk.message.exception.AbstractMessageException;
       <td><pre class='prettyprint'>	protected BrowzingException(MessageInterface msg, List&lt;String> list,Throwable throwable){</pre></td>
     </tr>
     <tr>
-      <td class='line'>121</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l121s0'>		super(msg, list, throwable);</pre></td>
+      <td class='line'>121</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l121s0'>		super(msg, list, throwable);</pre></td>
     </tr>
     <tr>
-      <td class='line'>122</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l122s0'>		this.logger.error(this.getMessage());</pre></td>
+      <td class='line'>122</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l122s0'>		this.logger.error(this.getMessage());</pre></td>
     </tr>
     <tr>
-      <td class='line'>123</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l123s0'>	}</pre></td>
+      <td class='line'>123</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l123s0'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>

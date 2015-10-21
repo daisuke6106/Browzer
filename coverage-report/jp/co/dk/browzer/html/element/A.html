@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JMockit Coverage Report - A.java</title>
+  <title>A.java</title>
   <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
   <link rel='stylesheet' type='text/css' href='../../../../../../coverage.css'/>
+  <link rel='shortcut icon' type='image/png' href='../../../../../../logo.png'/>
   <script type='text/javascript' src='../../../../../../coverage.js'></script>
   <script type='text/javascript' src='../../../../../../prettify.js'></script>
 </head>
@@ -42,7 +43,7 @@ import jp.co.dk.document.html.HtmlElement;
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>18</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private Page <span class='instance covered' title='Reads: 2186 Writes: 2362'>page</span>;</pre></td>
+      <td><pre class='prettyprint'>	private Page page;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -61,16 +62,16 @@ import jp.co.dk.document.html.HtmlElement;
       <td><pre class='prettyprint'>	public A(HtmlElement element, Page page) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>29</td><td class='count'>2362</td>
-      <td><pre class='prettyprint covered' id='l29s0'>		super(element);</pre></td>
+      <td class='line'>29</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		super(element);</pre></td>
     </tr>
     <tr>
-      <td class='line'>30</td><td class='count'>2362</td>
-      <td><pre class='prettyprint covered' id='l30s0'>		this.page = page;</pre></td>
+      <td class='line'>30</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		this.page = page;</pre></td>
     </tr>
     <tr>
-      <td class='line'>31</td><td class='count'>2362</td>
-      <td><pre class='prettyprint covered' id='l31s0'>	}</pre></td>
+      <td class='line'>31</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -86,20 +87,20 @@ import jp.co.dk.document.html.HtmlElement;
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>36</td><td class='count'>2177</td>
-      <td><pre class='prettyprint covered' id='l36s0'>			URL url = new URL(this.page.getURLObject(),  super.getHref());</pre></td>
+      <td class='line'>36</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			URL url = new URL(this.page.getURLObject(),  super.getHref());</pre></td>
     </tr>
     <tr>
-      <td class='line'>37</td><td class='count'>2168</td>
-      <td><pre class='prettyprint covered' id='l37s0'>			return url.toString();</pre></td>
+      <td class='line'>37</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			return url.toString();</pre></td>
     </tr>
     <tr>
-      <td class='line'>38</td><td class='count'>9</td>
-      <td><pre class='prettyprint covered' id='l38s0'>		} catch (MalformedURLException e) {</pre></td>
+      <td class='line'>38</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		} catch (MalformedURLException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>39</td><td class='count'>9</td>
-      <td><pre class='prettyprint covered' id='l39s0'>			return super.getHref();</pre></td>
+      <td class='line'>39</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			return super.getHref();</pre></td>
     </tr>
     <tr>
       <td class='line'>40</td><td>&nbsp;</td>
@@ -123,8 +124,8 @@ import jp.co.dk.document.html.HtmlElement;
       <td><pre class='prettyprint'>	public Page getPage() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>49</td><td class='count'>9</td>
-      <td><pre class='prettyprint covered' id='l49s0'>		return this.page;</pre></td>
+      <td class='line'>49</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		return this.page;</pre></td>
     </tr>
     <tr>
       <td class='line'>50</td><td>&nbsp;</td>
@@ -148,20 +149,20 @@ import jp.co.dk.document.html.HtmlElement;
       <td><pre class='prettyprint'>		try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>59</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l59s0'>			URL url = new URL(this.getHref());</pre></td>
+      <td class='line'>59</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			URL url = new URL(this.getHref());</pre></td>
     </tr>
     <tr>
-      <td class='line'>60</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l60s0'>			return url.getHost();</pre></td>
+      <td class='line'>60</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			return url.getHost();</pre></td>
     </tr>
     <tr>
-      <td class='line'>61</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l61s0'>		} catch (MalformedURLException e) {</pre></td>
+      <td class='line'>61</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		} catch (MalformedURLException e) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>62</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l62s0'>			return super.getHref();</pre></td>
+      <td class='line'>62</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			return super.getHref();</pre></td>
     </tr>
     <tr>
       <td class='line'>63</td><td>&nbsp;</td>
@@ -177,96 +178,88 @@ import jp.co.dk.document.html.HtmlElement;
       <td><pre class='prettyprint'>	public double samelevel() {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
-      <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/2</span>
-        <span class='uncovered' onclick="showPath(this,'l68s0 l78s0 l81s0 l83s0 l91s0')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l68s0 l78s0 l79s0 l83s0 l91s0')">B: 0</span>
-      </td>
+      <td class='line'>68</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		String url1 = this.page.getURL();</pre></td>
     </tr>
     <tr>
-      <td class='line'>68</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l68s0'>		String url1 = this.page.getURL();</pre></td>
+      <td class='line'>69</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		String url2 = this.getHref();</pre></td>
     </tr>
     <tr>
-      <td class='line'>69</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l69s0'>		String url2 = this.getHref();</pre></td>
+      <td class='line'>70</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		char[] chararray1 = url1.toCharArray();</pre></td>
     </tr>
     <tr>
-      <td class='line'>70</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l70s0'>		char[] chararray1 = url1.toCharArray();</pre></td>
+      <td class='line'>71</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		char[] chararray2 = url2.toCharArray();</pre></td>
     </tr>
     <tr>
-      <td class='line'>71</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l71s0'>		char[] chararray2 = url2.toCharArray();</pre></td>
+      <td class='line'>72</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		int cost = 0;</pre></td>
     </tr>
     <tr>
-      <td class='line'>72</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l72s0'>		int cost = 0;</pre></td>
+      <td class='line'>73</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		int d[][] = new int[chararray1.length+1][chararray2.length+1];</pre></td>
     </tr>
     <tr>
-      <td class='line'>73</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l73s0'>		int d[][] = new int[chararray1.length+1][chararray2.length+1];</pre></td>
+      <td class='line'>74</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		for (int i=0; i&lt;chararray1.length; i++) d[i][0]=i;</pre></td>
     </tr>
     <tr>
-      <td class='line'>74</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l74s0' title='Executions: 0' class='uncovered'>for (int i=0; i&lt;chararray1.length; i++)</span> <span id='l74s1' title='Executions: 0' class='uncovered'>d[i][0]=i;</span></pre></td>
+      <td class='line'>75</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		for (int i=0; i&lt;chararray2.length; i++) d[0][i]=i;</pre></td>
     </tr>
     <tr>
-      <td class='line'>75</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>		<span id='l75s0' title='Executions: 0' class='uncovered'>for (int i=0; i&lt;chararray2.length; i++)</span> <span id='l75s1' title='Executions: 0' class='uncovered'>d[0][i]=i;</span></pre></td>
+      <td class='line'>76</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		for (int i1=1; i1&lt;=chararray1.length; i1++) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>76</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l76s0'>		for (int i1=1; i1&lt;=chararray1.length; i1++) {</pre></td>
+      <td class='line'>77</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			for (int i2=1; i2&lt;=chararray2.length; i2++) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>77</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l77s0'>			for (int i2=1; i2&lt;=chararray2.length; i2++) {</pre></td>
+      <td class='line'>78</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				if (chararray1[i1] == chararray2[i2]) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>78</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>				<span id='l78s0' title='Executions: 0' class='uncovered'>if (chararray1[i1] == chararray2[i2])</span> <span id='l78s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+      <td class='line'>79</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>					cost = 0;</pre></td>
     </tr>
     <tr>
-      <td class='line'>79</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l79s0'>					cost = 0;</pre></td>
+      <td class='line'>80</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				} else {</pre></td>
     </tr>
     <tr>
-      <td class='line'>80</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l80s0'>				} else {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>81</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l81s0'>					cost = 1;</pre></td>
+      <td class='line'>81</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>					cost = 1;</pre></td>
     </tr>
     <tr>
       <td class='line'>82</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>				}</pre></td>
     </tr>
     <tr>
-      <td class='line'>83</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l83s0'>				int add = d[i1-1][i2  ]+1; // 文字の挿入</pre></td>
+      <td class='line'>83</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				int add = d[i1-1][i2  ]+1; // 文字の挿入</pre></td>
     </tr>
     <tr>
-      <td class='line'>84</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l84s0'>				int del = d[i1  ][i2-1]+1; // 文字の削除</pre></td>
+      <td class='line'>84</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				int del = d[i1  ][i2-1]+1; // 文字の削除</pre></td>
     </tr>
     <tr>
-      <td class='line'>85</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l85s0'>				int rep = d[i1-1][i2-1]+1+cost; // 文字の置換</pre></td>
+      <td class='line'>85</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				int rep = d[i1-1][i2-1]+1+cost; // 文字の置換</pre></td>
     </tr>
     <tr>
-      <td class='line'>86</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l86s0'>				int[] sort = {add, del, rep};</pre></td>
+      <td class='line'>86</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				int[] sort = {add, del, rep};</pre></td>
     </tr>
     <tr>
-      <td class='line'>87</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l87s0'>				Arrays.sort(sort);</pre></td>
+      <td class='line'>87</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				Arrays.sort(sort);</pre></td>
     </tr>
     <tr>
-      <td class='line'>88</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l88s0'>				d[i1][i2] = sort[0];</pre></td>
+      <td class='line'>88</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				d[i1][i2] = sort[0];</pre></td>
     </tr>
     <tr>
       <td class='line'>89</td><td>&nbsp;</td>
@@ -277,8 +270,8 @@ import jp.co.dk.document.html.HtmlElement;
       <td><pre class='prettyprint'>		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>91</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l91s0'>		return d[chararray1.length+1][chararray2.length+1];</pre></td>
+      <td class='line'>91</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		return d[chararray1.length+1][chararray2.length+1];</pre></td>
     </tr>
     <tr>
       <td class='line'>92</td><td>&nbsp;</td>

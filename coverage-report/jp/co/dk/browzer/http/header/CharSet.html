@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JMockit Coverage Report - CharSet.java</title>
+  <title>CharSet.java</title>
   <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
   <link rel='stylesheet' type='text/css' href='../../../../../../coverage.css'/>
+  <link rel='shortcut icon' type='image/png' href='../../../../../../logo.png'/>
   <script type='text/javascript' src='../../../../../../coverage.js'></script>
   <script type='text/javascript' src='../../../../../../prettify.js'></script>
 </head>
@@ -11,7 +12,7 @@
   <table cellpadding='0' cellspacing='1'>
     <caption>Browzer/src/main/java/jp/co/dk/browzer/http/header/CharSet.java</caption>
     <tr>
-      <td class='line'>1</td><td class='count'>57</td>
+      <td class='line'>1</td><td class='count'>4</td>
       <td><pre class='prettyprint covered' id='l1s0'>package jp.co.dk.browzer.http.header;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
@@ -119,24 +120,15 @@
       <td><pre class='prettyprint'>	public boolean isEncording(String contentType) {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>291</td>
-      <td class='paths'>
-        <span style='cursor:default; background-color:#55aa00' onclick='hidePath()'>Path coverage: 2/3</span>
-        <span class='uncovered' onclick="showPath(this,'l43s0 l43s1')">A: 0</span>
-        <span class='covered' onclick="showPath(this,'l43s0 l44s0 l44s1')">B: 43</span>
-        <span class='covered' onclick="showPath(this,'l43s0 l44s0 l45s0')">C: 248</span>
-      </td>
+      <td class='line'>43</td><td class='count'>23</td>
+      <td><pre class='prettyprint jmp'>		<span id='l43s0' title='Executions: 23' class='covered'>if (contentType == null)</span> <span id='l43s1' title='Executions: 0' class='uncovered'>return false;</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>43</td><td class='count'>291</td>
-      <td><pre class='prettyprint jmp'>		<span id='l43s0' title='Executions: 291' class='covered'>if (contentType == null)</span> <span id='l43s1' title='Executions: 0' class='uncovered'>return false;</span></pre></td>
+      <td class='line'>44</td><td class='count'>23</td>
+      <td><pre class='prettyprint jmp'>		<span id='l44s0' title='Executions: 23' class='covered'>if (contentType.toUpperCase().indexOf(this.charset.toUpperCase()) != -1)</span> <span id='l44s1' title='Executions: 1' class='covered'>return true;</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>44</td><td class='count'>291</td>
-      <td><pre class='prettyprint jmp'>		<span id='l44s0' title='Executions: 291' class='covered'>if (contentType.toUpperCase().indexOf(this.charset.toUpperCase()) != -1) return true;</span></pre></td>
-    </tr>
-    <tr>
-      <td class='line'>45</td><td class='count'>248</td>
+      <td class='line'>45</td><td class='count'>22</td>
       <td><pre class='prettyprint covered' id='l45s0'>		return false;</pre></td>
     </tr>
     <tr>
