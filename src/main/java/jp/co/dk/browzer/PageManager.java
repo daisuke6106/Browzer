@@ -397,8 +397,14 @@ public class PageManager {
 		return new PageManager(parentPage, page, error, pageRedirectHandler, pageEventHandlerList, nestLevel, maxNestLevel);
 	}
 	
-	@Override
-	public String toString() {
+	/**
+	 * <p>このページマネージャをツリー構造を文字列で返却します。</p>
+	 * 最上位のページから接続したすべてのページ情報をツリー構造で表した文字列を返却します。<br/>
+	 * 改行コードは実行時ＯＳに依存する。
+	 * 
+	 * @return ツリー構造文字列
+	 */
+	public String toTreeString() {
 		PageManager pageManager;
 		for (pageManager = this; pageManager.parentPage != null; pageManager = pageManager.parentPage){}
 		
