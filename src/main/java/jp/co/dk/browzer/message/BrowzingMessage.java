@@ -145,6 +145,16 @@ public class BrowzingMessage extends AbstractMessage {
 	/** レスポンスヘッダが不正です。 */
 	public static final BrowzingMessage ERROR_RESPONSE_HEADER_IS_INVALID = new BrowzingMessage("E042");
 	
+	/** リクエストヘッダが設定されていません。 */
+	public static final BrowzingMessage ERROR_REQUEST_HEADER_IS_NOT_SET = new BrowzingMessage("E043");
+	
+	/** レスポンスヘッダが設定されていません。 */
+	public static final BrowzingMessage ERROR_RESPONSE_HEADER_IS_NOT_SET = new BrowzingMessage("E044");
+	
+	/** バイトダンプが設定されていません。 */
+	public static final BrowzingMessage ERROR_BYTE_DUMP_IS_NOT_SET = new BrowzingMessage("E045");
+	
+	
 	/** リダイレクトに失敗しました。 */
 	public static final BrowzingMessage ERROR_FAILED_TO_REDIRECT = new BrowzingMessage("E043");
 	

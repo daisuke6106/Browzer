@@ -131,6 +131,7 @@ public class Page {
 	 * @param url URLを表す文字列
 	 * @param requestHeader リクエストヘッダ
 	 * @param readDataFlg データ読み込みフラグ
+	 * @param pageEventHandlerList ページイベントハンドラ
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
@@ -228,6 +229,7 @@ public class Page {
 	 * @param form FORM要素
 	 * @param requestProperty リクエストヘッダマップ
 	 * @param readDataFlg データ読み込みフラグ
+	 * @param pageEventHandlerList ページイベントハンドラ
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
@@ -278,24 +280,53 @@ public class Page {
 	}
 	
 	/**
-	 * コンストラクタ<p>
+	 * <p>コンストラクタ</p>
 	 * 指定のURL文字列、通信した際のヘッダ、ページデータといった過去に通信した際に取得したデータからページのインスタンスを生成する。
 	 * 
 	 * @param url            URLを表す文字列
 	 * @param requestHeader  リクエストヘッダ
 	 * @param responseHeader レスポンスヘッダ
 	 * @param data           ページデータ
+	 * @param pageEventHandlerList ページイベントハンドラ
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 * @throws PageHeaderImproperException  リクエストヘッダ、またはレスポンスヘッダが不正であった場合
 	 */
 	protected Page(String url, Map<String,String> requestHeader, Map<String, List<String>> responseHeader, ByteDump data, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException, PageHeaderImproperException {
 		this.logger.constractor(this.getClass(), url, requestHeader, responseHeader, data, pageEventHandlerList);
 		if (url == null || url.equals("")) throw new PageIllegalArgumentException(ERROR_URL_IS_NOT_SET);
+		if (this.requestHeader  == null ) throw new PageIllegalArgumentException(ERROR_REQUEST_HEADER_IS_NOT_SET);
+		if (this.responseHeader == null ) throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_NOT_SET);
+		if (this.byteDump       == null ) throw new PageIllegalArgumentException(ERROR_BYTE_DUMP_IS_NOT_SET);
 		this.url            = this.createUrl(url);
 		this.requestHeader  = this.createRequestHeader(requestHeader);
 		this.responseHeader = this.createResponseHeader(responseHeader);
 		this.byteDump       = data;
 		this.eventHandler   = pageEventHandlerList;
+	}
+	
+	/**
+	 * <p>コンストラクタ</p>
+	 * 指定のURL文字列、通信した際のヘッダ、ページデータといった過去に通信した際に取得したデータからページのインスタンスを生成する。
+	 * 
+	 * @param url            URLを表す文字列
+	 * @param requestHeader  リクエストヘッダ
+	 * @param responseHeader レスポンスヘッダ
+	 * @param data           ページデータ
+	 * @param pageEventHandlerList ページイベントハンドラ
+	 * 
+	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
+	 */
+	public Page(String url, RequestHeader requestHeader, ResponseHeader responseHeader, ByteDump data, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException {
+		this.logger.constractor(this.getClass(), url, requestHeader, responseHeader, data, pageEventHandlerList);
+		if (url == null || url.equals("")) throw new PageIllegalArgumentException(ERROR_URL_IS_NOT_SET);
+		if (this.requestHeader  == null ) throw new PageIllegalArgumentException(ERROR_REQUEST_HEADER_IS_NOT_SET);
+		if (this.responseHeader == null ) throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_NOT_SET);
+		if (this.byteDump       == null ) throw new PageIllegalArgumentException(ERROR_BYTE_DUMP_IS_NOT_SET);
+		this.url                 = this.createUrl(url);
+		this.requestHeader       = requestHeader;
+		this.responseHeader      = responseHeader;
+		this.byteDump            = data;
+		this.eventHandler        = pageEventHandlerList;
 	}
 	
 	/**
