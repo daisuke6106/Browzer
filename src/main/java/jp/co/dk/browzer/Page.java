@@ -294,9 +294,9 @@ public class Page {
 	protected Page(String url, Map<String,String> requestHeader, Map<String, List<String>> responseHeader, ByteDump data, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException, PageHeaderImproperException {
 		this.logger.constractor(this.getClass(), url, requestHeader, responseHeader, data, pageEventHandlerList);
 		if (url == null || url.equals("")) throw new PageIllegalArgumentException(ERROR_URL_IS_NOT_SET);
-		if (this.requestHeader  == null ) throw new PageIllegalArgumentException(ERROR_REQUEST_HEADER_IS_NOT_SET);
-		if (this.responseHeader == null ) throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_NOT_SET);
-		if (this.byteDump       == null ) throw new PageIllegalArgumentException(ERROR_BYTE_DUMP_IS_NOT_SET);
+		if (requestHeader  == null ) throw new PageIllegalArgumentException(ERROR_REQUEST_HEADER_IS_NOT_SET);
+		if (responseHeader == null ) throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_NOT_SET);
+		if (data           == null ) throw new PageIllegalArgumentException(ERROR_BYTE_DUMP_IS_NOT_SET);
 		this.url            = this.createUrl(url);
 		this.requestHeader  = this.createRequestHeader(requestHeader);
 		this.responseHeader = this.createResponseHeader(responseHeader);
@@ -319,9 +319,9 @@ public class Page {
 	public Page(String url, RequestHeader requestHeader, ResponseHeader responseHeader, ByteDump data, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException {
 		this.logger.constractor(this.getClass(), url, requestHeader, responseHeader, data, pageEventHandlerList);
 		if (url == null || url.equals("")) throw new PageIllegalArgumentException(ERROR_URL_IS_NOT_SET);
-		if (this.requestHeader  == null ) throw new PageIllegalArgumentException(ERROR_REQUEST_HEADER_IS_NOT_SET);
-		if (this.responseHeader == null ) throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_NOT_SET);
-		if (this.byteDump       == null ) throw new PageIllegalArgumentException(ERROR_BYTE_DUMP_IS_NOT_SET);
+		if (requestHeader  == null ) throw new PageIllegalArgumentException(ERROR_REQUEST_HEADER_IS_NOT_SET);
+		if (responseHeader == null ) throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_NOT_SET);
+		if (data           == null ) throw new PageIllegalArgumentException(ERROR_BYTE_DUMP_IS_NOT_SET);
 		this.url                 = this.createUrl(url);
 		this.requestHeader       = requestHeader;
 		this.responseHeader      = responseHeader;
