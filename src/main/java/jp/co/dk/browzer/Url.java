@@ -56,6 +56,7 @@ public class Url {
 	 */
 	public Url(String url) throws PageIllegalArgumentException {
 		if (url == null || url.equals("")) throw new PageIllegalArgumentException(ERROR_URL_IS_NOT_SET);
+		if (url.endsWith("/")) url = url.substring(0, url.length() -1);
 		Matcher fragmentMatcher = fragmentPattern.matcher(url);
 		if (fragmentMatcher.find()) url = fragmentMatcher.group(1);
 		this.url        = url;
