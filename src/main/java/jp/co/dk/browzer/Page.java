@@ -10,6 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,6 +79,9 @@ public class Page {
 	
 	/** ロガーインスタンス */
 	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	/** アクセス日付 */
+	protected Date accessDate ;
 	
 	/**
 	 * コンストラクタ<p>
@@ -175,6 +179,8 @@ public class Page {
 			this.byteDump = this.getByteDump(connection);
 			this.logger.info("download fin size=[" + this.byteDump.length() + " Byte]");
 		}
+		
+		this.accessDate = new Date();
 	}
 	
 	/**
@@ -277,6 +283,8 @@ public class Page {
 			this.byteDump = this.getByteDump(connection);
 			this.logger.info("download fin size=[" + this.byteDump.length() + " Byte]");
 		}
+		
+		this.accessDate = new Date();
 	}
 	
 	/**
@@ -287,19 +295,22 @@ public class Page {
 	 * @param requestHeader  リクエストヘッダ
 	 * @param responseHeader レスポンスヘッダ
 	 * @param data           ページデータ
+	 * @param accessDate     アクセス日付
 	 * @param pageEventHandlerList ページイベントハンドラ
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 * @throws PageHeaderImproperException  リクエストヘッダ、またはレスポンスヘッダが不正であった場合
 	 */
-	protected Page(String url, Map<String,String> requestHeader, Map<String, List<String>> responseHeader, ByteDump data, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException, PageHeaderImproperException {
+	protected Page(String url, Map<String,String> requestHeader, Map<String, List<String>> responseHeader, Date accessDate, ByteDump data, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException, PageHeaderImproperException {
 		this.logger.constractor(this.getClass(), url, requestHeader, responseHeader, data, pageEventHandlerList);
 		if (url == null || url.equals("")) throw new PageIllegalArgumentException(ERROR_URL_IS_NOT_SET);
 		if (requestHeader  == null ) throw new PageIllegalArgumentException(ERROR_REQUEST_HEADER_IS_NOT_SET);
 		if (responseHeader == null ) throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_NOT_SET);
+		if (accessDate     == null ) throw new PageIllegalArgumentException(ERROR_ACCESS_DATE_IS_NOT_SET);
 		if (data           == null ) throw new PageIllegalArgumentException(ERROR_BYTE_DUMP_IS_NOT_SET);
 		this.url            = this.createUrl(url);
 		this.requestHeader  = this.createRequestHeader(requestHeader);
 		this.responseHeader = this.createResponseHeader(responseHeader);
+		this.accessDate     = accessDate;
 		this.byteDump       = data;
 		this.eventHandler   = pageEventHandlerList;
 	}
@@ -312,19 +323,21 @@ public class Page {
 	 * @param requestHeader  リクエストヘッダ
 	 * @param responseHeader レスポンスヘッダ
 	 * @param data           ページデータ
+	 * @param accessDate     アクセス日付
 	 * @param pageEventHandlerList ページイベントハンドラ
-	 * 
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 */
-	public Page(String url, RequestHeader requestHeader, ResponseHeader responseHeader, ByteDump data, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException {
+	public Page(String url, RequestHeader requestHeader, ResponseHeader responseHeader, Date accessDate, ByteDump data, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException {
 		this.logger.constractor(this.getClass(), url, requestHeader, responseHeader, data, pageEventHandlerList);
 		if (url == null || url.equals("")) throw new PageIllegalArgumentException(ERROR_URL_IS_NOT_SET);
 		if (requestHeader  == null ) throw new PageIllegalArgumentException(ERROR_REQUEST_HEADER_IS_NOT_SET);
 		if (responseHeader == null ) throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_NOT_SET);
+		if (accessDate     == null ) throw new PageIllegalArgumentException(ERROR_ACCESS_DATE_IS_NOT_SET);
 		if (data           == null ) throw new PageIllegalArgumentException(ERROR_BYTE_DUMP_IS_NOT_SET);
 		this.url                 = this.createUrl(url);
 		this.requestHeader       = requestHeader;
 		this.responseHeader      = responseHeader;
+		this.accessDate          = accessDate;
 		this.byteDump            = data;
 		this.eventHandler        = pageEventHandlerList;
 	}
@@ -757,6 +770,15 @@ public class Page {
 	 */
 	public ResponseHeader getResponseHeader() {
 		return this.responseHeader;
+	}
+	
+	/**
+	 * このページのアクセス日付を取得します。<p/>
+	 * 
+	 * @return レスポンスヘッダ
+	 */
+	public Date getAccessDate() {
+		return this.accessDate;
 	}
 	
 	/**

@@ -3,6 +3,7 @@ package jp.co.dk.browzer;
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -148,7 +149,8 @@ public class PageTest extends BrowzerFoundationTest {
 				Map<String, List<String>> responseHeader = new HashMap<String, List<String>>();
 				ByteDump byteData = new ByteDump(this.getInputStreamByOwnClass("test.html"));
 				List<PageEventHandler> pageEventHandlerList = new ArrayList<PageEventHandler>();
-				this.sut = new Page(url, requestHeader, responseHeader, byteData, pageEventHandlerList);
+				Date accessDate = new Date();
+				this.sut = new Page(url, requestHeader, responseHeader, accessDate, byteData, pageEventHandlerList);
 			} catch (PageIllegalArgumentException e) {
 				fail(e);
 			} catch (PageHeaderImproperException e) {

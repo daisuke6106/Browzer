@@ -154,6 +154,9 @@ public class BrowzingMessage extends AbstractMessage {
 	/** バイトダンプが設定されていません。 */
 	public static final BrowzingMessage ERROR_BYTE_DUMP_IS_NOT_SET = new BrowzingMessage("E045");
 	
+	/** アクセス日付が設定されていません。 */
+	public static final BrowzingMessage ERROR_ACCESS_DATE_IS_NOT_SET = new BrowzingMessage("E046");
+	
 	
 	/** リダイレクトに失敗しました。 */
 	public static final BrowzingMessage ERROR_FAILED_TO_REDIRECT = new BrowzingMessage("E043");
