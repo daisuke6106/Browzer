@@ -7,7 +7,6 @@
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="src" path="src/test/resources"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Document"/>
-	<classpathentry kind="lib" path="lib/document_0.1.0.jar"/>
 	<classpathentry kind="lib" path="lib/jericho-html-3.2.jar"/>
 	<classpathentry kind="lib" path="lib/logger_1.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.17.jar"/>
@@ -22,5 +21,6 @@
 	<classpathentry kind="lib" path="lib/test/jmockit.jar"/>
 	<classpathentry kind="lib" path="lib/test/junit-4.10.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="lib/document_0.1.0a.jar"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>
