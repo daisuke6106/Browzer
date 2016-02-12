@@ -6,9 +6,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.ERROR_URL_IS_NOT_SET;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,7 +39,7 @@ public class Url {
 	protected List<String> pathList;
 	
 	/** パラメータ一覧 */
-	protected Map<String, String> parameter;
+	protected Parameter parameter;
 	
 	/** フラグメントパターン */
 	protected static Pattern fragmentPattern = Pattern.compile("^(.+?)#(.*?)$");
@@ -103,13 +101,12 @@ public class Url {
 	}
 
 	/**
-	 * URLに設定されているパラメータを取得する。<p>
-	 * パラメータが設定されていない場合、空のマップを返却します。
+	 * URLに設定されているパラメータを取得する。
 	 * 
-	 * @return パラメータのマップ
+	 * @return パラメータ
 	 */
-	public Map<String, String> getParameter() {
-		return new HashMap<String,String>(this.parameter);
+	public Parameter getParameter() {
+		return this.parameter;
 	}
 	
 	
@@ -216,30 +213,13 @@ public class Url {
 	}
 	
 	/**
-	 * 指定のURLに設定されているパラメータ部を取得し、マップ形式に整形し、返却します。<p>
-	 * 指定のURLにパラメータが設定されていなかった場合は空のマップを返却します。
+	 * 指定のURLに設定されているパラメータ部を取得し、パラメータオブジェクトへ変換し、返却します。<p>
 	 * 
 	 * @param url URLオブジェクト
-	 * @return パラメータマップ
+	 * @return パラメータ
 	 */
-	protected Map<String, String> getParameter(URL url) {
-		Map<String, String> parameters = new HashMap<String, String>();
-		String query = url.getQuery();
-		if (query == null) {
-			return parameters;
-		}
-		String[] queries = query.split("&");
-		for (String param : queries) {
-			String[] val = param.split("=");
-			if (val.length == 1) {
-				parameters.put(val[0], "");
-			} else if (val.length == 2) {
-				parameters.put(val[0], val[1]);
-			} else {
-				continue;
-			}
-		}
-		return parameters;
+	protected Parameter getParameter(URL url) {
+		return new Parameter(url.getQuery());
 	}
 	
 	@Override

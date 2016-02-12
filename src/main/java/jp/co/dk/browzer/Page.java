@@ -475,12 +475,11 @@ public class Page {
 	}
 	
 	/**
-	 * URLに設定されているパラメータを取得する。<p>
-	 * パラメータが設定されていない場合、空のマップを返却します。
+	 * URLに設定されているパラメータを取得する。
 	 * 
-	 * @return パラメータのマップ
+	 * @return パラメータ
 	 */
-	public Map<String, String> getParameter() {
+	public Parameter getParameter() {
 		return this.url.getParameter();
 	}
 	
