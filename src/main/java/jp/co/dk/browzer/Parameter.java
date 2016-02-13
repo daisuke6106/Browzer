@@ -4,7 +4,11 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Queryは、URLのパラメータ部をマップ形式で保持する不変クラスです。
+ * <p>Queryは、URLのパラメータ部をマップ形式で保持する不変クラスです。</p>
+ * パラメータは順序が異なる場合でも異なるオブジェクトとして認識する。
+ * 例：以下の場合は別のオブジェクトとして判定される。
+ * 1.aaa=bbb&ccc=ddd
+ * 2.ccc=ddd&aaa=bbb
  * 
  * @version 1.0
  * @author D.Kanno
@@ -28,6 +32,7 @@ public class Parameter {
 		if (queryStr == null) {
 			this.queryStr = "";
 		} else {
+			this.queryStr = queryStr;
 			String[] queries = queryStr.split("&");
 			for (String param : queries) {
 				String[] val = param.split("=");
@@ -84,5 +89,8 @@ public class Parameter {
 		return true;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return this.queryStr;
+	}
 }
