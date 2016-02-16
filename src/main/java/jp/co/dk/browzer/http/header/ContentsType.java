@@ -88,6 +88,7 @@ public enum ContentsType {
 	APPLICATION_IOTP("application/iotp",null),
 	APPLICATION_IPP("application/ipp",null),
 	APPLICATION_ISUP("application/isup",null),
+	APPLICATION_JSON("application/json",null),
 	APPLICATION_MAC_BINHEX40("application/mac-binhex40",new String[]{"hqx"}),
 	APPLICATION_MAC_COMPACTPRO("application/mac-compactpro",new String[]{"cpt"}),
 	APPLICATION_MACWRITEII("application/macwriteii",null),

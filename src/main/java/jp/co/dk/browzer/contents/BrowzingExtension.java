@@ -12,7 +12,10 @@ public enum BrowzingExtension {
 	HTML(new String[]{"html", "php"}),
 	
 	/** XML */
-	XML(new String[]{"xml"})
+	XML(new String[]{"xml"}),
+	
+	/** JSON */
+	JSON(new String[]{"json"}),
 	
 	;
 	

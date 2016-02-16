@@ -46,6 +46,8 @@ public class DocumentFactory {
 				return new jp.co.dk.document.html.HtmlDocument(inputStream, new HtmlElementFactory(this.page));
 			case XML:
 				return new jp.co.dk.document.xml.XmlDocument(inputStream);
+			case JSON:
+				return new jp.co.dk.document.json.Json(inputStream);
 			default:
 				return new jp.co.dk.document.File(inputStream);
 		}
@@ -66,6 +68,8 @@ public class DocumentFactory {
 				return new jp.co.dk.document.html.HtmlDocument(inputStream, new HtmlElementFactory(this.page));
 			case TEXT_XML:
 				return new jp.co.dk.document.xml.XmlDocument(inputStream);
+			case APPLICATION_JSON:
+				return new jp.co.dk.document.json.Json(inputStream);
 			default:
 				return new jp.co.dk.document.File(inputStream);
 		}
