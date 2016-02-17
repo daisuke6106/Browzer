@@ -47,7 +47,7 @@ public class DocumentFactory {
 			case XML:
 				return new jp.co.dk.document.xml.XmlDocument(inputStream);
 			case JSON:
-				return new jp.co.dk.document.json.Json(inputStream);
+				return new jp.co.dk.document.json.JsonDocument(inputStream);
 			default:
 				return new jp.co.dk.document.File(inputStream);
 		}
@@ -69,7 +69,7 @@ public class DocumentFactory {
 			case TEXT_XML:
 				return new jp.co.dk.document.xml.XmlDocument(inputStream);
 			case APPLICATION_JSON:
-				return new jp.co.dk.document.json.Json(inputStream);
+				return new jp.co.dk.document.json.JsonDocument(inputStream);
 			default:
 				return new jp.co.dk.document.File(inputStream);
 		}
