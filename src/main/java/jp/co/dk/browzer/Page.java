@@ -36,6 +36,8 @@ import jp.co.dk.document.html.element.Form;
 import jp.co.dk.document.html.exception.HtmlDocumentException;
 import jp.co.dk.logger.Logger;
 import jp.co.dk.logger.LoggerFactory;
+import jp.co.dk.morphologicalanalysis.Alanalysis;
+import jp.co.dk.morphologicalanalysis.Token;
 import jp.co.dk.property.Property;
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
@@ -874,6 +876,14 @@ public class Page {
 		} catch (MalformedURLException e) {
 			throw new PageIllegalArgumentException(ERROR_COMPRETION_URL, new String[]{this.url.getURL(), url}, e);
 		}
+	}
+	
+	public List<Token> getNounsByTitle() {
+		if (!(this.document instanceof HtmlDocument)) return new ArrayList<>();
+		String title = ((HtmlDocument)this.document).getTitle();
+		if (title == null || title.equals("")) return new ArrayList<>();
+		Alanalysis alanalisys = new Alanalysis(title);
+		return alanalisys.getNouns();
 	}
 	
 	/**
