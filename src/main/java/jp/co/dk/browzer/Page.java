@@ -879,34 +879,6 @@ public class Page {
 	}
 	
 	/**
-	 * タイトルから名詞一覧を取得する。
-	 * ページがHTMLでない、またはタイトルが存在しなかった場合、空のリストを返却します。
-	 * 
-	 * @return 名詞一覧
-	 */
-	public List<Token> getNounsByTitle() {
-		if (!(this.document instanceof HtmlDocument)) return new ArrayList<>();
-		String title = ((HtmlDocument)this.document).getTitle();
-		if (title == null || title.equals("")) return new ArrayList<>();
-		Alanalysis alanalisys = new Alanalysis(title);
-		return alanalisys.getNouns();
-	}
-
-	/**
-	 * コンテンツから名詞一覧を取得する。
-	 * ページがHTMLでない、またはコンテンツが存在しなかった場合、空のリストを返却します。
-	 * 
-	 * @return 名詞一覧
-	 */
-	public List<Token> getNouns() {
-		if (!(this.document instanceof HtmlDocument)) return new ArrayList<>();
-		String content = ((HtmlDocument)this.document).getContent();
-		if (content == null || content.equals("")) return new ArrayList<>();
-		Alanalysis alanalisys = new Alanalysis(content);
-		return alanalisys.getNouns();
-	}
-	
-	/**
 	 * 指定のURLオブジェクトからURLコネクションを指定メソッドで生成します。<p>
 	 * 
 	 * @param urlObj URLオブジェクト
