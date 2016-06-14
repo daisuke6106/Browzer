@@ -22,5 +22,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="lib/document_0.2.0a.jar"/>
 	<classpathentry kind="lib" path="lib/jsoup-1.8.3.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/MorphologicalAnalysis"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>
