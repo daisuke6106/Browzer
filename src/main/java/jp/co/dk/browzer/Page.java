@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import jp.co.dk.browzer.contents.BrowzingExtension;
 import jp.co.dk.browzer.exception.PageAccessException;
@@ -651,6 +652,30 @@ public class Page {
 			}
 		}
 		return sameDomainAnchorList;
+	}
+	
+	/**
+	 * 指定の正規表現に合致するURLを保持するアンカーを取得します。
+	 * このページに存在するすべてのアンカータグを取り出し、指定の正規表現に合致するアンカーを取得します。<br/>
+	 * このページと同じドメインとパスのアンカータグが存在しなかった場合、空のリストを返却します。<br/>
+	 * このページがHTMLでない場合、例外を送出します。
+	 * @param pattern URL正規表現パターン
+	 * @return 正規表現に合致したアンカー一覧
+	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
+	 */
+	public List<A> getAnchor(Pattern pattern) throws PageAccessException, DocumentException {
+		List<A> allAnchorList        = this.getAnchor();
+		List<A> hitPatternAnchorList = new ArrayList<A>();
+		for (A anchor : allAnchorList) {
+			try {
+				Url url = this.createUrl(anchor.getUrl());
+				if (pattern.matcher(url.toString()).find()) hitPatternAnchorList.add(anchor);
+			} catch (PageIllegalArgumentException e) {
+				continue;
+			}
+		}
+		return hitPatternAnchorList;
 	}
 	
 	/**
