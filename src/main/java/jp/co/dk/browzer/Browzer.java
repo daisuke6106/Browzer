@@ -3,6 +3,7 @@ package jp.co.dk.browzer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import jp.co.dk.browzer.Page;
 import jp.co.dk.browzer.PageRedirectHandler;
@@ -220,6 +221,26 @@ public class Browzer {
 	public List<A> getAnchorSamePath() throws PageAccessException, DocumentException {
 		List<A> returnAnchorList = new ArrayList<A>();
 		List<jp.co.dk.document.html.element.A> anchorList = this.pageManager.getPage().getAnchorSamePath();
+		for (jp.co.dk.document.html.element.A anchor : anchorList) {
+			if (anchor instanceof A) returnAnchorList.add((A)anchor);
+		}
+		return returnAnchorList;
+	}
+	
+	/**
+	 * 指定の正規表現に合致するURLを保持するアンカーを取得します。
+	 * このページに存在するすべてのアンカータグを取り出し、指定の正規表現に合致するアンカーを取得します。<br/>
+	 * このページと同じドメインとパスのアンカータグが存在しなかった場合、空のリストを返却します。<br/>
+	 * このページがHTMLでない場合、例外を送出します。
+	 * 
+	 * @param pattern URL正規表現パターン
+	 * @return 正規表現に合致したアンカー一覧
+	 * @throws PageAccessException ページデータの取得に失敗した場合
+	 * @throws DocumentException ドキュメントオブジェクトの生成に失敗した、またはこのページがHTMLでない場合
+	 */
+	public List<A> getAnchor(Pattern p) throws PageAccessException, DocumentException {
+		List<A> returnAnchorList = new ArrayList<A>();
+		List<jp.co.dk.document.html.element.A> anchorList = this.pageManager.getPage().getAnchor(p);
 		for (jp.co.dk.document.html.element.A anchor : anchorList) {
 			if (anchor instanceof A) returnAnchorList.add((A)anchor);
 		}
