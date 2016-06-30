@@ -37,8 +37,6 @@ import jp.co.dk.document.html.element.Form;
 import jp.co.dk.document.html.exception.HtmlDocumentException;
 import jp.co.dk.logger.Logger;
 import jp.co.dk.logger.LoggerFactory;
-import jp.co.dk.morphologicalanalysis.Alanalysis;
-import jp.co.dk.morphologicalanalysis.Token;
 import jp.co.dk.property.Property;
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
@@ -157,15 +155,15 @@ public class Page {
 		requestHeaderByProperty.putAll(requestHeader);
 		try {
 			this.requestHeader = this.createRequestHeader(requestHeaderByProperty);
-			this.logger.info("request_header=[" + this.requestHeader + "]");
+			this.logger.debug("request_header=[" + this.requestHeader + "]");
 		} catch (PageHeaderImproperException e) {
 			throw new PageIllegalArgumentException(ERROR_REQUEST_HEADER_IS_INVALID, e);
 		}
 		this.setRequestProperty(connection, requestHeaderByProperty);
 		try {
-			this.logger.info("connection start url=[" + this.url + "]");
+			this.logger.debug("connection start url=[" + this.url + "]");
 			connection.connect();
-			this.logger.info("connection fin");
+			this.logger.debug("connection fin");
 			this.connection = connection;
 		} catch (IOException e) {
 			throw new PageAccessException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, this.url.toString(), e );
@@ -173,14 +171,14 @@ public class Page {
 		Map<String, List<String>> responseHeader = connection.getHeaderFields();
 		try {
 			this.responseHeader = this.createResponseHeader(responseHeader);
-			this.logger.info("response_header=[" + this.responseHeader + "]");
+			this.logger.debug("response_header=[" + this.responseHeader + "]");
 		} catch (PageHeaderImproperException e) {
 			throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_INVALID, e);
 		}
 		if (readDataFlg) {
-			this.logger.info("download start");
+			this.logger.debug("download start");
 			this.byteDump = this.getByteDump(connection);
-			this.logger.info("download fin size=[" + this.byteDump.length() + " Byte]");
+			this.logger.debug("download fin size=[" + this.byteDump.length() + " Byte]");
 		}
 		
 		this.accessDate = new Date();
@@ -258,33 +256,33 @@ public class Page {
 		 
 		try {
 			this.requestHeader = this.createRequestHeader(requestProperty);
-			this.logger.info("request_header=[" + this.requestHeader + "]");
+			this.logger.debug("request_header=[" + this.requestHeader + "]");
 		} catch (PageHeaderImproperException e) {
 			throw new PageIllegalArgumentException(ERROR_REQUEST_HEADER_IS_INVALID, e);
 		}
 		URLConnection connection = this.createURLConnection(this.url.getUrlObject(), form.getMethod());
 		this.connection = this.setRequestProperty(connection, requestProperty);
 		try {
-			this.logger.info("connection start url=[" + this.url + "]");
+			this.logger.debug("connection start url=[" + this.url + "]");
 			BufferedWriter outputStream = new BufferedWriter(new OutputStreamWriter(this.connection.getOutputStream()));
 			outputStream.write(form.createMessage());
 			outputStream.close();
-			this.logger.info("connection fin");
+			this.logger.debug("connection fin");
 		} catch (IOException e) {
 			throw new PageAccessException(ERROR_FAILED_TO_SEND_MESSAGE, new String[]{this.url.getURL(), form.getMethod().toString()}, e);
 		}
 		Map<String, List<String>> responseHeader = connection.getHeaderFields();
 		try {
 			this.responseHeader = this.createResponseHeader(responseHeader);
-			this.logger.info("response_header=[" + this.responseHeader + "]");
+			this.logger.debug("response_header=[" + this.responseHeader + "]");
 			
 		} catch (PageHeaderImproperException e) {
 			throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_INVALID, e);
 		}
 		if (readDataFlg) {
-			this.logger.info("download start");
+			this.logger.debug("download start");
 			this.byteDump = this.getByteDump(connection);
-			this.logger.info("download fin size=[" + this.byteDump.length() + " Byte]");
+			this.logger.debug("download fin size=[" + this.byteDump.length() + " Byte]");
 		}
 		
 		this.accessDate = new Date();

@@ -112,7 +112,7 @@ public class Browzer {
 			if (!this.pageManager.getPage().equals(movable.getPage()))throw new PageIllegalArgumentException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
 			String url = movable.getUrl();
 			
-			this.logger.info("move url=[" + url + "]");
+			this.logger.debug("move url=[" + url + "]");
 			
 			if (url.equals("")) throw new PageIllegalArgumentException(ERROR_ANCHOR_HAS_NOT_URL);
 			this.pageManager = this.pageManager.move(url);
@@ -147,7 +147,7 @@ public class Browzer {
 			if (form == null) throw new PageIllegalArgumentException(ERROR_SPECIFIED_FORM_IS_NOT_SET);
 			if (!this.pageManager.getPage().equals(form.getPage()))throw new PageIllegalArgumentException(ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
 			
-			this.logger.info("move form=[" + form + "]");
+			this.logger.debug("move form=[" + form + "]");
 			
 			this.pageManager = this.pageManager.move(form);
 			return this.pageManager.getPage();
