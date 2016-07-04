@@ -148,9 +148,8 @@ public class PageTest extends BrowzerFoundationTest {
 				Map<String,String> requestHeader = new HashMap<String, String>();
 				Map<String, List<String>> responseHeader = new HashMap<String, List<String>>();
 				ByteDump byteData = new ByteDump(this.getInputStreamByOwnClass("test.html"));
-				List<PageEventHandler> pageEventHandlerList = new ArrayList<PageEventHandler>();
 				Date accessDate = new Date();
-				this.sut = new Page(url, requestHeader, responseHeader, accessDate, byteData, pageEventHandlerList);
+				this.sut = new Page(url, requestHeader, responseHeader, accessDate, byteData);
 			} catch (PageIllegalArgumentException e) {
 				fail(e);
 			} catch (PageHeaderImproperException e) {

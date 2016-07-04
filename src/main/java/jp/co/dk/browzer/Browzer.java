@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 import jp.co.dk.browzer.Page;
 import jp.co.dk.browzer.PageRedirectHandler;
 import jp.co.dk.browzer.download.DownloadJudge;
-import jp.co.dk.browzer.event.PrintPageEventHandler;
 import jp.co.dk.browzer.exception.BrowzingException;
 import jp.co.dk.browzer.exception.PageAccessException;
 import jp.co.dk.browzer.exception.PageIllegalArgumentException;
@@ -52,9 +51,6 @@ public class Browzer {
 	/** ページリダイレクト制御オブジェクト */
 	protected PageRedirectHandler pageRedirectHandler;
 	
-	/** ページイベントハンドラ一覧 */
-	protected List<PageEventHandler> pageEventHandlerList;
-	
 	/** ロガーインスタンス */
 	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -68,7 +64,6 @@ public class Browzer {
 	 */
 	public Browzer(String url) throws PageIllegalArgumentException, PageAccessException {
 		this.logger.constractor(this.getClass(), url);
-		this.pageEventHandlerList = this.getPageEventHandler();
 		this.pageRedirectHandler  = this.createPageRedirectHandler();
 		this.pageManager          = this.createPageManager(url, this.pageRedirectHandler);
 	}
@@ -84,7 +79,6 @@ public class Browzer {
 	 */
 	public Browzer(String url, int maxNestLevel) throws PageIllegalArgumentException, PageAccessException {
 		this.logger.constractor(this.getClass(), url, new Integer(maxNestLevel));
-		this.pageEventHandlerList = this.getPageEventHandler();
 		this.pageRedirectHandler  = this.createPageRedirectHandler();
 		this.pageManager          = this.createPageManager(url, this.pageRedirectHandler, maxNestLevel);
 	}
@@ -106,7 +100,6 @@ public class Browzer {
 	 * @throws PageMovableLimitException ページ遷移可能上限数に達した場合
 	 */
 	public Page move(MovableElement movable) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException {
-		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.beforeMove(this, movable);
 		try {
 			if (movable == null) throw new PageIllegalArgumentException(ERROR_SPECIFIED_ANCHOR_IS_NOT_SET);
 			if (!this.pageManager.getPage().equals(movable.getPage()))throw new PageIllegalArgumentException(ERROR_ANCHOR_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
@@ -118,10 +111,7 @@ public class Browzer {
 			this.pageManager = this.pageManager.move(url);
 			return this.pageManager.getPage();
 		} catch (BrowzingException e ) {
-			for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.moveError(this, movable, e);
 			throw e;
-		} finally {
-			for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.afterMove(this, movable);
 		}
 	}
 	
@@ -142,7 +132,6 @@ public class Browzer {
 	 * @throws PageMovableLimitException ページ遷移可能上限数に達した場合
 	 */
 	public Page move(Form form) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException {
-		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.beforeMove(this, form);
 		try {
 			if (form == null) throw new PageIllegalArgumentException(ERROR_SPECIFIED_FORM_IS_NOT_SET);
 			if (!this.pageManager.getPage().equals(form.getPage()))throw new PageIllegalArgumentException(ERROR_FORM_THAT_HAS_BEEN_SPECIFIED_DOES_NOT_EXISTS_ON_THE_PAGE_THAT_IS_CURRENTLY_ACTIVE);
@@ -152,10 +141,7 @@ public class Browzer {
 			this.pageManager = this.pageManager.move(form);
 			return this.pageManager.getPage();
 		} catch (BrowzingException e ) {
-			for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.moveError(this, form, e);
 			throw e;
-		}finally {
-			for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.afterMove(this, form);
 		}
 	}
 	
@@ -357,7 +343,7 @@ public class Browzer {
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
 	protected PageManager createPageManager(String url, PageRedirectHandler handler) throws PageIllegalArgumentException, PageAccessException {
-		return new PageManager(url, handler, this.pageEventHandlerList);
+		return new PageManager(url, handler);
 	}
 	
 	/**
@@ -371,28 +357,17 @@ public class Browzer {
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
 	protected PageManager createPageManager(String url, PageRedirectHandler handler, int maxNestLevel) throws PageIllegalArgumentException, PageAccessException {
-		return new PageManager(url, handler, this.pageEventHandlerList, maxNestLevel);
+		return new PageManager(url, handler, maxNestLevel);
 	}
 	
 	/**
 	 * ページリダイレクトハンドラを生成する。
-	 * @param pageEventHandlerList ページイベントハンドラ一覧
 	 * @return ページリダイレクトハンドラ
 	 */
 	protected PageRedirectHandler createPageRedirectHandler() {
-		return new PageRedirectHandler(this.getPageEventHandler());
+		return new PageRedirectHandler();
 	}
-	
-	/**
-	 * ページイベントハンドラを取得します。
-	 * @return ページイベントハンドラ一覧
-	 */
-	protected List<PageEventHandler> getPageEventHandler() {
-		List<PageEventHandler> list = new ArrayList<PageEventHandler>();
-		list.add(new PrintPageEventHandler());
-		return list;
-	}
-	
+		
 	@Override
 	public String toString() {
 		return this.pageManager.toString();

@@ -75,9 +75,6 @@ public class Page {
 	/** URLコネクション */
 	protected URLConnection connection;
 	
-	/** ページイベントハンドラ */
-	protected List<PageEventHandler> eventHandler = new ArrayList<PageEventHandler>();
-	
 	/** ロガーインスタンス */
 	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -94,7 +91,7 @@ public class Page {
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
 	public Page(String url) throws PageIllegalArgumentException, PageAccessException {
-		this(url, new HashMap<String,String>(), true, new ArrayList<PageEventHandler>());
+		this(url, new HashMap<String,String>(), true);
 	}
 	
 	/**
@@ -108,22 +105,7 @@ public class Page {
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
 	public Page(String url, Map<String, String> requestHeader) throws PageIllegalArgumentException, PageAccessException {
-		this(url, requestHeader, true, new ArrayList<PageEventHandler>());
-	}
-	
-	/**
-	 * コンストラクタ<p/>
-	 * 指定のURL文字 列と、リクエストヘッダ、データ読み込みフラグを元にページのインスタンスを生成する。<br/>
-	 * ページの情報はインスタンス生成時に読み込みます。<br/>
-	 * 
-	 * @param url URLを表す文字列
-	 * @param requestHeader リクエストヘッダ
-	 * @param readDataFlg データ読み込みフラグ
-	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
-	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
-	 */
-	public Page(String url, Map<String, String> requestHeader, boolean readDataFlg) throws PageIllegalArgumentException, PageAccessException {
-		this(url, requestHeader, readDataFlg, new ArrayList<PageEventHandler>());
+		this(url, requestHeader, true);
 	}
 	
 	/**
@@ -136,18 +118,15 @@ public class Page {
 	 * @param url URLを表す文字列
 	 * @param requestHeader リクエストヘッダ
 	 * @param readDataFlg データ読み込みフラグ
-	 * @param pageEventHandlerList ページイベントハンドラ
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	public Page(String url, Map<String, String> requestHeader, boolean readDataFlg, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException, PageAccessException {
-		this.logger.constractor(this.getClass(), url, requestHeader, new Boolean(readDataFlg), pageEventHandlerList);
+	public Page(String url, Map<String, String> requestHeader, boolean readDataFlg) throws PageIllegalArgumentException, PageAccessException {
 		
 		if (url == null || url.equals("")) throw new PageIllegalArgumentException(ERROR_URL_IS_NOT_SET);
 		if (requestHeader == null) requestHeader = new HashMap<String, String>();
 		this.url                 = this.createUrl(url);
 		this.readDataFlg         = readDataFlg;
-		this.eventHandler        = pageEventHandlerList;
 		
 		URLConnection connection = this.createURLConnection(this.url.getUrlObject(), HtmlRequestMethodName.GET);
 		
@@ -194,7 +173,7 @@ public class Page {
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
 	protected Page(Form form) throws PageIllegalArgumentException, PageAccessException {
-		this(form, new HashMap<String, String>(), true, new ArrayList<PageEventHandler>());
+		this(form, new HashMap<String, String>(), true);
 	}
 	
 	/**
@@ -208,22 +187,7 @@ public class Page {
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
 	protected Page(Form form, Map<String, String> requestProperty) throws PageIllegalArgumentException, PageAccessException {
-		this(form, requestProperty, true, new ArrayList<PageEventHandler>());
-	}
-	
-	/**
-	 * コンストラクタ<p>
-	 * 指定のFORM要素からページのインスタンスを生成します。<br/>
-	 * ページの情報はインスタンス生成時に読み込みます。<br/>
-	 * 
-	 * @param form FORM要素
-	 * @param requestProperty リクエストヘッダマップ
-	 * @param readDataFlg データ読み込みフラグ
-	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
-	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
-	 */
-	protected Page(Form form, Map<String, String> requestProperty, boolean readDataFlg) throws PageIllegalArgumentException, PageAccessException {
-		this(form, requestProperty, readDataFlg, new ArrayList<PageEventHandler>());
+		this(form, requestProperty, true);
 	}
 	
 	/**
@@ -236,12 +200,10 @@ public class Page {
 	 * @param form FORM要素
 	 * @param requestProperty リクエストヘッダマップ
 	 * @param readDataFlg データ読み込みフラグ
-	 * @param pageEventHandlerList ページイベントハンドラ
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	protected Page(Form form, Map<String, String> requestProperty, boolean readDataFlg, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException, PageAccessException {
-		this.logger.constractor(this.getClass(), form, requestProperty, new Boolean(readDataFlg), pageEventHandlerList);
+	protected Page(Form form, Map<String, String> requestProperty, boolean readDataFlg) throws PageIllegalArgumentException, PageAccessException {
 		
 		if (form == null) throw new PageIllegalArgumentException(ERROR_FORM_IS_NOT_SPECIFIED);
 		if (requestProperty == null) requestProperty = new HashMap<String, String>();
@@ -252,7 +214,6 @@ public class Page {
 			throw new PageIllegalArgumentException(ERROR_AN_INVALID_URL_WAS_SPECIFIED, e.getEmbeddedStrList(), e);
 		}
 		this.readDataFlg    = readDataFlg;
-		this.eventHandler   = pageEventHandlerList;
 		 
 		try {
 			this.requestHeader = this.createRequestHeader(requestProperty);
@@ -297,12 +258,10 @@ public class Page {
 	 * @param responseHeader レスポンスヘッダ
 	 * @param data           ページデータ
 	 * @param accessDate     アクセス日付
-	 * @param pageEventHandlerList ページイベントハンドラ
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 * @throws PageHeaderImproperException  リクエストヘッダ、またはレスポンスヘッダが不正であった場合
 	 */
-	protected Page(String url, Map<String,String> requestHeader, Map<String, List<String>> responseHeader, Date accessDate, ByteDump data, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException, PageHeaderImproperException {
-		this.logger.constractor(this.getClass(), url, requestHeader, responseHeader, data, pageEventHandlerList);
+	protected Page(String url, Map<String,String> requestHeader, Map<String, List<String>> responseHeader, Date accessDate, ByteDump data) throws PageIllegalArgumentException, PageHeaderImproperException {
 		if (url == null || url.equals("")) throw new PageIllegalArgumentException(ERROR_URL_IS_NOT_SET);
 		if (requestHeader  == null ) throw new PageIllegalArgumentException(ERROR_REQUEST_HEADER_IS_NOT_SET);
 		if (responseHeader == null ) throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_NOT_SET);
@@ -313,7 +272,6 @@ public class Page {
 		this.responseHeader = this.createResponseHeader(responseHeader);
 		this.accessDate     = accessDate;
 		this.byteDump       = data;
-		this.eventHandler   = pageEventHandlerList;
 	}
 	
 	/**
@@ -328,8 +286,7 @@ public class Page {
 	 * @param pageEventHandlerList ページイベントハンドラ
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 */
-	public Page(String url, RequestHeader requestHeader, ResponseHeader responseHeader, Date accessDate, ByteDump data, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException {
-		this.logger.constractor(this.getClass(), url, requestHeader, responseHeader, data, pageEventHandlerList);
+	public Page(String url, RequestHeader requestHeader, ResponseHeader responseHeader, Date accessDate, ByteDump data) throws PageIllegalArgumentException {
 		if (url == null || url.equals("")) throw new PageIllegalArgumentException(ERROR_URL_IS_NOT_SET);
 		if (requestHeader  == null ) throw new PageIllegalArgumentException(ERROR_REQUEST_HEADER_IS_NOT_SET);
 		if (responseHeader == null ) throw new PageIllegalArgumentException(ERROR_RESPONSE_HEADER_IS_NOT_SET);
@@ -340,7 +297,6 @@ public class Page {
 		this.responseHeader      = responseHeader;
 		this.accessDate          = accessDate;
 		this.byteDump            = data;
-		this.eventHandler        = pageEventHandlerList;
 	}
 	
 	/**
@@ -382,7 +338,7 @@ public class Page {
 		Map<String, String> cookieRequestHeader   = this.getCookies();
 		defaultRequestHeader.putAll(cookieRequestHeader);
 		defaultRequestHeader.putAll(requestHeader);
-		return new Page(form, defaultRequestHeader, this.readDataFlg, this.eventHandler);
+		return new Page(form, defaultRequestHeader, this.readDataFlg);
 	}
 	
 	/**
@@ -435,15 +391,11 @@ public class Page {
 	 */
 	public jp.co.dk.document.File getDocument() throws PageAccessException, DocumentException {
 		if (this.document != null) return this.document;
-		for (PageEventHandler handler : this.eventHandler) handler.beforeCreateDocument(this);
 		try {
 			this.document = this.getDocument(new DocumentFactory(this));
 			return this.document;
 		} catch (PageAccessException e) {
-			for (PageEventHandler handler : this.eventHandler) handler.errorCreateDocument(e);
 			throw e;
-		}finally {
-			for (PageEventHandler handler : this.eventHandler) handler.afterCreateDocument(this);
 		}
 	}
 	
@@ -910,7 +862,6 @@ public class Page {
 	 * @throws BrowzingException URLが参照するリモートオブジェクトへの接続時に入出力例外が発生した場合
 	 */
 	protected HttpURLConnection createURLConnection(URL urlObj, HtmlRequestMethodName method) throws PageAccessException{
-		for (PageEventHandler handler : this.eventHandler) handler.beforeOpenConnection(this.url, method);
 		HttpURLConnection urlConnection;
 		try {
 			urlConnection = (HttpURLConnection)urlObj.openConnection();
@@ -920,10 +871,7 @@ public class Page {
 			urlConnection.setFollowRedirects(false);
 		} catch (IOException e) {
 			PageAccessException pageAccessException = new PageAccessException( ERROR_INPUT_OUTPUT_EXCEPTION_OCCURRED_WHEN_CONNECTING_TO_A_URL, urlObj.toString(), e );
-			for (PageEventHandler handler : this.eventHandler) handler.errorOpenConnection(pageAccessException);
 			throw pageAccessException;
-		} finally {
-			for (PageEventHandler handler : this.eventHandler) handler.afterOpenConnection();
 		}
 		return urlConnection;
 	}
@@ -1063,19 +1011,14 @@ public class Page {
 	 * @throws PageAccessException 読み込みにて例外が発生、またはドキュメント解析に失敗した場合
 	 */
 	protected ByteDump getByteDump(URLConnection connection) throws PageAccessException {
-		for (PageEventHandler handler : this.eventHandler) handler.beforeGetData(this);
 		InputStream pageDataStream = this.getUrlInputStream(connection);
 		try {
 			ByteDump data = new ByteDump(pageDataStream);
 			return data;
 		} catch (DocumentException e) {
 			PageAccessException pageAccessError = new PageAccessException(ERROR_READ_PROCESS_FAILED, this.url.getURL(), e);
-			for (PageEventHandler handler : this.eventHandler) handler.errorGetData(pageAccessError);
 			throw pageAccessError;
-		} finally {
-			for (PageEventHandler handler : this.eventHandler) handler.afterGetData(this);
 		}
-		
 	}
 	
 	/**

@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.Arrays;
 
 import jp.co.dk.browzer.Page;
+import jp.co.dk.browzer.Url;
+import jp.co.dk.browzer.exception.PageIllegalArgumentException;
 import jp.co.dk.document.html.HtmlElement;
 
 /**
@@ -15,6 +17,7 @@ import jp.co.dk.document.html.HtmlElement;
  */
 public class A extends jp.co.dk.document.html.element.A implements MovableElement{
 	
+	/** ページオブジェクト */
 	private Page page;
 	
 	/**
@@ -63,6 +66,14 @@ public class A extends jp.co.dk.document.html.element.A implements MovableElemen
 		}
 	}
 	
+	/**
+	 * このアンカーのURLからURLオブジェクトを取得します。
+	 * @return URLオブジェクト
+	 * @throws PageIllegalArgumentException URL文字列がnullまたは、空文字だった場合
+	 */
+	public Url getUrlObj() throws PageIllegalArgumentException {
+		return new Url(this.getHref());
+	}
 	
 	public double samelevel() {
 		String url1 = this.page.getURL();

@@ -33,9 +33,6 @@ public class PageManager {
 	/** ページリダイレクトハンドラ */
 	protected PageRedirectHandler pageRedirectHandler;
 	
-	/** ページイベントハンドラ一覧 */
-	protected List<PageEventHandler> pageEventHandlerList;
-	
 	/** この画面に属する小画面のページオブジェクト一覧 */
 	protected List<PageManager> childPageList;
 	
@@ -51,13 +48,11 @@ public class PageManager {
 	 * 
 	 * @param url URL文字列
 	 * @param pageRedirectHandler  ページリダイレクト制御オブジェクト
-	 * @param pageEventHandlerList ページイベントハンドラ一覧
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	public PageManager(String url, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList) throws PageIllegalArgumentException, PageAccessException {
+	public PageManager(String url, PageRedirectHandler pageRedirectHandler) throws PageIllegalArgumentException, PageAccessException {
 		this.pageRedirectHandler  = pageRedirectHandler;
-		this.pageEventHandlerList = pageEventHandlerList;
 		this.page                 = this.createPage(url);
 		this.childPageList        = new ArrayList<PageManager>();
 	}
@@ -68,14 +63,12 @@ public class PageManager {
 	 * 
 	 * @param url URL文字列
 	 * @param pageRedirectHandler ページリダイレクト制御オブジェクト
-	 * @param pageEventHandlerList ページイベントハンドラ一覧
 	 * @param maxNestLevel ページ遷移上限数
 	 * @throws PageIllegalArgumentException URLが指定されていない、不正なURLが指定されていた場合
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
-	public PageManager(String url, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int maxNestLevel) throws PageIllegalArgumentException, PageAccessException {
+	public PageManager(String url, PageRedirectHandler pageRedirectHandler, int maxNestLevel) throws PageIllegalArgumentException, PageAccessException {
 		this.pageRedirectHandler  = pageRedirectHandler;
-		this.pageEventHandlerList = pageEventHandlerList;
 		this.page                 = this.createPage(url);
 		this.maxNestLevel         = maxNestLevel;
 		this.childPageList        = new ArrayList<PageManager>();
@@ -88,15 +81,13 @@ public class PageManager {
 	 * @param parentPage           遷移元ページのページマネージャ
 	 * @param page                 遷移先のページオブジェクト
 	 * @param pageRedirectHandler  ページリダイレクト制御オブジェクト
-	 * @param pageEventHandlerList ページイベントハンドラ一覧
 	 * @param nestLevel            現在のページ遷移数
 	 * @param maxNestLevel         ページ遷移上限数
 	 */
-	protected PageManager(PageManager parentPage, Page page, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {
+	protected PageManager(PageManager parentPage, Page page, PageRedirectHandler pageRedirectHandler, int nestLevel, int maxNestLevel) {
 		this.parentPage           = parentPage;
 		this.page                 = page;
 		this.pageRedirectHandler  = pageRedirectHandler;
-		this.pageEventHandlerList = pageEventHandlerList;
 		this.nestLevel            = nestLevel;
 		this.maxNestLevel         = maxNestLevel;
 		this.childPageList        = new ArrayList<PageManager>();
@@ -107,15 +98,13 @@ public class PageManager {
 	 * @param parentPage           遷移元ページのページマネージャ
 	 * @param error                ページインスタンスの生成に失敗した際に発生した例外
 	 * @param pageRedirectHandler  ページリダイレクト制御オブジェクト
-	 * @param pageEventHandlerList ページイベントハンドラ一覧
 	 * @param nestLevel            現在のページ遷移数
 	 * @param maxNestLevel         ページ遷移上限数
 	 */
-	protected PageManager(PageManager parentPage, BrowzingException error, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {
+	protected PageManager(PageManager parentPage, BrowzingException error, PageRedirectHandler pageRedirectHandler, int nestLevel, int maxNestLevel) {
 		this.parentPage           = parentPage;
 		this.error                = error;
 		this.pageRedirectHandler  = pageRedirectHandler;
-		this.pageEventHandlerList = pageEventHandlerList;
 		this.nestLevel            = nestLevel;
 		this.maxNestLevel         = maxNestLevel;
 		this.childPageList        = new ArrayList<PageManager>();
@@ -127,16 +116,14 @@ public class PageManager {
 	 * @param page                 遷移先のページオブジェクト
 	 * @param error                リダイレクトに失敗した際に発生した例外
 	 * @param pageRedirectHandler  ページリダイレクト制御オブジェクト
-	 * @param pageEventHandlerList ページイベントハンドラ一覧
 	 * @param nestLevel            現在のページ遷移数
 	 * @param maxNestLevel         ページ遷移上限数
 	 */
-	protected PageManager(PageManager parentPage, Page page, BrowzingException error, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {
+	protected PageManager(PageManager parentPage, Page page, BrowzingException error, PageRedirectHandler pageRedirectHandler, int nestLevel, int maxNestLevel) {
 		this.parentPage           = parentPage;
 		this.page                 = page;
 		this.error                = error;
 		this.pageRedirectHandler  = pageRedirectHandler;
-		this.pageEventHandlerList = pageEventHandlerList;
 		this.nestLevel            = nestLevel;
 		this.maxNestLevel         = maxNestLevel;
 		this.childPageList        = new ArrayList<PageManager>();
@@ -160,18 +147,18 @@ public class PageManager {
 		try {
 			nextPage = this.createPage(url);
 		} catch (PageIllegalArgumentException | PageAccessException e) {
-			PageManager errorPageManager = this.createPageManager(this, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);
+			PageManager errorPageManager = this.createPageManager(this, e, this.pageRedirectHandler, nextLevel, this.maxNestLevel);
 			this.childPageList.add(errorPageManager);
 			return this;
 		}
 		try {
 			nextPage = pageRedirectHandler.redirect(nextPage);
 		} catch (PageRedirectException e) {
-			PageManager errorPageManager = this.createPageManager(this, nextPage, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);
+			PageManager errorPageManager = this.createPageManager(this, nextPage, e, this.pageRedirectHandler, nextLevel, this.maxNestLevel);
 			this.childPageList.add(errorPageManager);
 			return this;
 		}
-		PageManager childPageManager = this.createPageManager(this, nextPage, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);
+		PageManager childPageManager = this.createPageManager(this, nextPage, this.pageRedirectHandler, nextLevel, this.maxNestLevel);
 		this.childPageList.add(childPageManager);
 		return childPageManager;
 	}
@@ -194,18 +181,18 @@ public class PageManager {
 		try {
 			nextPage = this.createPage(form);
 		} catch (BrowzingException e) {
-			PageManager errorPageManager = this.createPageManager(this, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);
+			PageManager errorPageManager = this.createPageManager(this, e, this.pageRedirectHandler, nextLevel, this.maxNestLevel);
 			this.childPageList.add(errorPageManager);
 			return this;
 		}
 		try {
 			nextPage = pageRedirectHandler.redirect(nextPage);
 		} catch (BrowzingException e) {
-			PageManager errorPageManager = this.createPageManager(this, nextPage, e, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);
+			PageManager errorPageManager = this.createPageManager(this, nextPage, e, this.pageRedirectHandler, nextLevel, this.maxNestLevel);
 			this.childPageList.add(errorPageManager);
 			return this;
 		}
-		PageManager childPageManager = this.createPageManager(this, nextPage, this.pageRedirectHandler, this.pageEventHandlerList, nextLevel, this.maxNestLevel);
+		PageManager childPageManager = this.createPageManager(this, nextPage, this.pageRedirectHandler, nextLevel, this.maxNestLevel);
 		this.childPageList.add(childPageManager);
 		return childPageManager;
 	}
@@ -304,9 +291,7 @@ public class PageManager {
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
 	protected Page createPage(String url) throws PageIllegalArgumentException, PageAccessException {
-		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.beforeMove(this, url);
-		Page nextPage = new Page(url, new HashMap<String, String>(), false, this.pageEventHandlerList);
-		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.afterMove();
+		Page nextPage = new Page(url, new HashMap<String, String>(), false);
 		return nextPage;
 	}
 	
@@ -319,9 +304,7 @@ public class PageManager {
 	 * @throws PageAccessException ページにアクセスした際にサーバが存在しない、ヘッダが不正、データの取得に失敗した場合
 	 */
 	protected Page createPage(Form form) throws PageIllegalArgumentException, PageAccessException {
-		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.beforeMove(this, form.getPage().toString());
-		Page nextPage = new Page(form, new HashMap<String, String>(), false, this.pageEventHandlerList);
-		for (PageEventHandler pageEventHandler : pageEventHandlerList) pageEventHandler.afterMove();
+		Page nextPage = new Page(form, new HashMap<String, String>(), false);
 		return nextPage;
 	}
 	
@@ -340,13 +323,12 @@ public class PageManager {
 	 * @param pageManager          遷移元ページのページマネージャ
 	 * @param page                 遷移先のページオブジェクト
 	 * @param pageRedirectHandler  ページリダイレクトハンドラ
-	 * @param pageEventHandlerList ページイベントハンドラ一覧
 	 * @param nextLevel            次ページのページ遷移数
 	 * @param maxNestLevel         ページ遷移上限数
 	 * @return ページマネージャ
 	 */
-	protected PageManager createPageManager(PageManager pageManager, Page page, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int nextLevel, int maxNestLevel) {
-		return new PageManager(pageManager, page, pageRedirectHandler, pageEventHandlerList, nextLevel, maxNestLevel);
+	protected PageManager createPageManager(PageManager pageManager, Page page, PageRedirectHandler pageRedirectHandler, int nextLevel, int maxNestLevel) {
+		return new PageManager(pageManager, page, pageRedirectHandler, nextLevel, maxNestLevel);
 	}
 	
 	/**
@@ -363,13 +345,12 @@ public class PageManager {
 	 * @param parentPage           遷移元ページのページマネージャ
 	 * @param error                ページインスタンスの生成に失敗した際に発生した例外
 	 * @param pageRedirectHandler  ページリダイレクト制御オブジェクト
-	 * @param pageEventHandlerList ページイベントハンドラ一覧
 	 * @param nestLevel            現在のページ遷移数
 	 * @param maxNestLevel         ページ遷移上限数
 	 * @return ページマネージャ
 	 */
-	protected PageManager createPageManager(PageManager parentPage, BrowzingException error, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {
-		return new PageManager(parentPage, error, pageRedirectHandler, pageEventHandlerList, nestLevel, maxNestLevel);
+	protected PageManager createPageManager(PageManager parentPage, BrowzingException error, PageRedirectHandler pageRedirectHandler, int nestLevel, int maxNestLevel) {
+		return new PageManager(parentPage, error, pageRedirectHandler, nestLevel, maxNestLevel);
 	}
 	
 	/**
@@ -388,13 +369,12 @@ public class PageManager {
 	 * @param page                 遷移先のページオブジェクト
 	 * @param error                リダイレクトに失敗した際に発生した例外
 	 * @param pageRedirectHandler  ページリダイレクト制御オブジェクト
-	 * @param pageEventHandlerList ページイベントハンドラ一覧
 	 * @param nestLevel            現在のページ遷移数
 	 * @param maxNestLevel         ページ遷移上限数
 	 * @return ページマネージャ
 	 */
-	protected PageManager createPageManager(PageManager parentPage, Page page, BrowzingException error, PageRedirectHandler pageRedirectHandler, List<PageEventHandler> pageEventHandlerList, int nestLevel, int maxNestLevel) {
-		return new PageManager(parentPage, page, error, pageRedirectHandler, pageEventHandlerList, nestLevel, maxNestLevel);
+	protected PageManager createPageManager(PageManager parentPage, Page page, BrowzingException error, PageRedirectHandler pageRedirectHandler, int nestLevel, int maxNestLevel) {
+		return new PageManager(parentPage, page, error, pageRedirectHandler, nestLevel, maxNestLevel);
 	}
 	
 	/**

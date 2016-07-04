@@ -5,7 +5,6 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.dk.browzer.Page;
@@ -29,27 +28,6 @@ import jp.co.dk.document.html.element.Meta;
  * @author D.Kanno
  */
 public class PageRedirectHandler {
-	
-	/** イベントハンドラ */
-	List<PageEventHandler> eventHandler;
-	
-	/**
-	 * コンストラクタ<p/>
-	 * イベントハンドラの指定無しにページリダイレクトハンドラを生成します。
-	 */
-	protected PageRedirectHandler() {
-		this.eventHandler = new ArrayList<PageEventHandler>();
-	}
-	
-	/**
-	 * コンストラクタ<p/>
-	 * 指定のイベントハンドラ一覧を元にページリダイレクトハンドラを生成します。
-	 * 
-	 * @param eventHandler イベントハンドラ一覧
-	 */
-	protected PageRedirectHandler(List<PageEventHandler> eventHandler) {
-		this.eventHandler = eventHandler;
-	}
 	
 	/**
 	 * ページへの接続時、ヘッダ情報やページ内容を解析し、新しいページへのリダイレクトを行う。<p/>
@@ -101,8 +79,6 @@ public class PageRedirectHandler {
 	 * @throws PageRedirectException 遷移に失敗した場合
 	 */
 	protected Page redirectBy_INFOMATIONAL(ResponseHeader header, Page page) throws PageRedirectException {
-		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);
-		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
 		return page;
 	}
 	
@@ -119,7 +95,6 @@ public class PageRedirectHandler {
 	 * @throws PageRedirectException 遷移に失敗した場合
 	 */
 	protected Page redirectBy_SUCCESS(ResponseHeader header, Page page) throws PageRedirectException {
-		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);
 		try {
 			File file = page.getDocument();
 			if (file instanceof HtmlDocument) {
@@ -147,16 +122,11 @@ public class PageRedirectHandler {
 				return page;
 			}
 		} catch (PageIllegalArgumentException e) {
-			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.errorRedirect(e);
 			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);
 		} catch (PageAccessException e) {
-			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.errorRedirect(e);
 			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);
 		} catch (DocumentException e) {
-			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.errorRedirect(e);
 			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);
-		} finally {
-			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
 		}
 	}
 	
@@ -172,7 +142,6 @@ public class PageRedirectHandler {
 	 * @throws PageRedirectException 遷移に失敗した場合
 	 */
 	protected Page redirectBy_REDIRECTION(ResponseHeader header, Page page) throws PageRedirectException {
-		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);
 		String location = header.getLocation();
 		if (location == null || location.equals("")) throw new PageRedirectException(ERROR_REDIRECT_LOCATION_NOT_FOUND); 
 		Page nextPage;
@@ -183,8 +152,6 @@ public class PageRedirectHandler {
 			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);
 		} catch (PageAccessException e) {
 			throw new PageRedirectException(ERROR_FAILED_TO_REDIRECT ,e);
-		} finally {
-			for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
 		}
 	}
 	
@@ -199,7 +166,6 @@ public class PageRedirectHandler {
 	 * @throws PageRedirectException 遷移に失敗した場合
 	 */
 	protected Page redirectBy_CLIENT_ERROR(ResponseHeader header, Page page) throws PageRedirectException {
-		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);
 		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();
 		if (httpStatusCode == HttpStatusCode.STATUS_401) {
 			BufferedReader reader = new BufferedReader( new InputStreamReader(System.in));
@@ -217,7 +183,6 @@ public class PageRedirectHandler {
 			
 			System.out.print(INFO_USER.getMessage());
 		}
-		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
 		throw new PageRedirectException(ERROR_HTTP_STATUS_CODE_IS_SENT_BACK_FROM_SERVER_HAS_RETURNED_NON_NORMAL, 
 				new String[]{ httpStatusCode.getCode(), httpStatusCode.getMessage().getMessage(), page.getURL()});
 		
@@ -233,9 +198,7 @@ public class PageRedirectHandler {
 	 * @throws PageRedirectException 遷移に失敗した場合
 	 */
 	protected Page redirectBy_SERVER_ERROR(ResponseHeader header, Page page) throws PageRedirectException {
-		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.beforeRedirect(header, page);
 		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();
-		for (PageEventHandler pageEventHandler : eventHandler) pageEventHandler.afterRedirect();
 		throw new PageRedirectException(ERROR_HTTP_STATUS_CODE_IS_SENT_BACK_FROM_SERVER_HAS_RETURNED_NON_NORMAL, 
 				new String[]{ httpStatusCode.getCode(), httpStatusCode.getMessage().getMessage(), page.getURL()});
 		
