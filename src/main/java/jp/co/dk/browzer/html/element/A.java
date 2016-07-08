@@ -18,7 +18,7 @@ import jp.co.dk.document.html.HtmlElement;
 public class A extends jp.co.dk.document.html.element.A implements MovableElement{
 	
 	/** ページオブジェクト */
-	private Page page;
+	protected Page page;
 	
 	/**
 	 * コンストラクタ

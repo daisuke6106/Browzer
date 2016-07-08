@@ -19,7 +19,7 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
  */
 public class DocumentFactory {
 	
-	private Page page;
+	protected Page page;
 	
 	/**
 	 * コンストラクタ<p/>

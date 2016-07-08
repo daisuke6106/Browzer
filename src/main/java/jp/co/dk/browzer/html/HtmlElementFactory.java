@@ -16,7 +16,7 @@ import jp.co.dk.document.html.HtmlElement;
  */
 public class HtmlElementFactory extends jp.co.dk.document.html.HtmlElementFactory {
 	
-	private Page page;
+	protected Page page;
 	
 	public HtmlElementFactory(Page page) {
 		this.page = page;
