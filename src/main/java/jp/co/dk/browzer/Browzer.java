@@ -334,6 +334,20 @@ public class Browzer {
 	}
 	
 	/**
+	 * このページの遷移元である親ページを削除します。
+	 */
+	public void removeParent() {
+		this.pageManager.removeParent();
+	}
+	
+	/**
+	 * このページから遷移したページオブジェクトを空に設定します。
+	 */
+	public void removeChild() {
+		this.pageManager.removeChild();
+	}
+	
+	/**
 	 * 指定のURL、ページリダイレクトハンドラからページマネージャを作成する。
 	 * 
 	 * @param url URL
