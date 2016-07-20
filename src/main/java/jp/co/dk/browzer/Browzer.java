@@ -9,6 +9,8 @@ import jp.co.dk.browzer.Page;
 import jp.co.dk.browzer.PageRedirectHandler;
 import jp.co.dk.browzer.download.DownloadJudge;
 import jp.co.dk.browzer.exception.BrowzingException;
+import jp.co.dk.browzer.exception.MoveActionException;
+import jp.co.dk.browzer.exception.MoveActionFatalException;
 import jp.co.dk.browzer.exception.PageAccessException;
 import jp.co.dk.browzer.exception.PageIllegalArgumentException;
 import jp.co.dk.browzer.exception.PageMovableLimitException;
@@ -111,6 +113,18 @@ public class Browzer {
 			this.pageManager = this.pageManager.move(url);
 			return this.pageManager.getPage();
 		} catch (BrowzingException e ) {
+			throw e;
+		}
+	}
+	
+	public Page move(MovableElement movable, MoveAction moveAction) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, MoveActionFatalException, MoveActionException {
+		try {
+			moveAction.before(movable, this);
+			Page returnPage = this.move(movable);
+			moveAction.after(movable, this);
+			return returnPage;
+		} catch (PageIllegalArgumentException | PageAccessException | PageRedirectException | PageMovableLimitException e) {
+			moveAction.error(movable, this);
 			throw e;
 		}
 	}
