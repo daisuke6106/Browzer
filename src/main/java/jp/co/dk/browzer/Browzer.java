@@ -128,6 +128,16 @@ public class Browzer {
 			throw e;
 		}
 	}
+
+	void start(MoveScenario scenario) throws MoveActionException, MoveActionFatalException, PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException {
+		List<A> moveAnchor = scenario.getMoveAnchor(this);
+		if (moveAnchor == null) return;
+		for (A anchor : moveAnchor) {
+			this.move(anchor, scenario.getAction());
+			if (scenario.hasChildScenario()) this.start(scenario.getChildScenario());
+			this.back();
+		}
+	}
 	
 	/**
 	 * ページ遷移実行<p/>
