@@ -1,5 +1,6 @@
-package jp.co.dk.browzer;
+package jp.co.dk.browzer.scenario.action;
 
+import jp.co.dk.browzer.Browzer;
 import jp.co.dk.browzer.exception.MoveActionException;
 import jp.co.dk.browzer.exception.MoveActionFatalException;
 import jp.co.dk.browzer.html.element.MovableElement;
@@ -20,7 +21,7 @@ public interface MoveAction {
 	 * @throws MoveActionException 再起可能例外が発生した場合
 	 * @throws MoveActionFatalException 致命的例外が発生した場合
 	 */
-	public default void before(MovableElement movable, Browzer browzer) throws MoveActionException, MoveActionFatalException {}
+	public default void beforeAction(MovableElement movable, Browzer browzer) throws MoveActionException, MoveActionFatalException {}
 	
 	/**
 	 * ページ移動後に行う処理
@@ -30,7 +31,7 @@ public interface MoveAction {
 	 * @throws MoveActionException 再起可能例外が発生した場合
 	 * @throws MoveActionFatalException 致命的例外が発生した場合
 	 */
-	public default void after(MovableElement movable, Browzer browzer) throws MoveActionException, MoveActionFatalException {}
+	public default void afterAction(MovableElement movable, Browzer browzer) throws MoveActionException, MoveActionFatalException {}
 	
 	/**
 	 * ページ移動時にエラーが発生した場合に行う処理
@@ -40,5 +41,5 @@ public interface MoveAction {
 	 * @throws MoveActionException 再起可能例外が発生した場合
 	 * @throws MoveActionFatalException 致命的例外が発生した場合
 	 */
-	public default void error(MovableElement movable, Browzer browzer) throws MoveActionException, MoveActionFatalException {}
+	public default void errorAction(MovableElement movable, Browzer browzer) throws MoveActionException, MoveActionFatalException {}
 }

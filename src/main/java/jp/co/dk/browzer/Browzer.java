@@ -19,6 +19,8 @@ import jp.co.dk.browzer.exception.PageSaveException;
 import jp.co.dk.browzer.html.element.A;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.html.element.MovableElement;
+import jp.co.dk.browzer.scenario.MoveScenario;
+import jp.co.dk.browzer.scenario.action.MoveAction;
 import jp.co.dk.document.exception.DocumentException;
 import jp.co.dk.logger.Logger;
 import jp.co.dk.logger.LoggerFactory;
@@ -119,17 +121,17 @@ public class Browzer {
 	
 	public Page move(MovableElement movable, MoveAction moveAction) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, MoveActionFatalException, MoveActionException {
 		try {
-			moveAction.before(movable, this);
+			moveAction.beforeAction(movable, this);
 			Page returnPage = this.move(movable);
-			moveAction.after(movable, this);
+			moveAction.afterAction(movable, this);
 			return returnPage;
 		} catch (PageIllegalArgumentException | PageAccessException | PageRedirectException | PageMovableLimitException e) {
-			moveAction.error(movable, this);
+			moveAction.errorAction(movable, this);
 			throw e;
 		}
 	}
 
-	void start(MoveScenario scenario) throws MoveActionException, MoveActionFatalException, PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException {
+	public void start(MoveScenario scenario) throws MoveActionException, MoveActionFatalException, PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, DocumentException {
 		List<A> moveAnchor = scenario.getMoveAnchor(this);
 		if (moveAnchor == null) return;
 		for (A anchor : moveAnchor) {
