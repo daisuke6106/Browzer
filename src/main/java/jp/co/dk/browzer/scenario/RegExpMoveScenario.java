@@ -1,5 +1,6 @@
 package jp.co.dk.browzer.scenario;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,9 +16,9 @@ import jp.co.dk.document.exception.DocumentException;
 public class RegExpMoveScenario extends MoveScenario {
 	
 	protected Pattern urlPattern;
-		
-	public RegExpMoveScenario(MoveAction moveAction, Pattern urlPattern) {
-		super(moveAction);
+	
+	public RegExpMoveScenario(Pattern urlPattern, List<MoveAction> moveActionList) {
+		super(moveActionList);
 		this.urlPattern = urlPattern;
 	}
 	
@@ -25,7 +26,7 @@ public class RegExpMoveScenario extends MoveScenario {
 		return browzer.getAnchor(this.urlPattern);
 	}
 
-	private static Pattern commandPattern = Pattern.compile("^(.+):\\((.+)\\)$");
+	private static Pattern commandPattern = Pattern.compile("^(.+)\\{(.+)\\}$");
 	
 	public static RegExpMoveScenario create(String command) {
 		String[] commandList = command.split("->");
@@ -51,17 +52,26 @@ public class RegExpMoveScenario extends MoveScenario {
 			} catch (PatternSyntaxException e) {
 				throw new MoveActionFatalException(null);
 			}
-			MoveAction moveAction;
-			try {
-				Class<MoveAction> actionClass = (Class<MoveAction>) Class.forName(actionStr);
-				moveAction = actionClass.newInstance();
-			} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-				throw new MoveActionFatalException(null);
+			List<MoveAction> moveActionList = new ArrayList<>();
+			String[] actionClassList = actionStr.split(";");
+			for (String actionClass : actionClassList) {
+				moveActionList.add(createMoveActionByClassName(actionClass));
 			}
-			return new RegExpMoveScenario(moveAction, urlPattern);
+			
+			return new RegExpMoveScenario(urlPattern, moveActionList);
 		} else {
 			throw new MoveActionFatalException(null);
 		}
 	}
-
+	
+	protected static MoveAction createMoveActionByClassName(String className) {
+		MoveAction moveAction;
+		try {
+			Class<MoveAction> actionClass = (Class<MoveAction>) Class.forName(className);
+			moveAction = actionClass.newInstance();
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+			throw new MoveActionFatalException(null);
+		}
+		return moveAction;
+	}
 }

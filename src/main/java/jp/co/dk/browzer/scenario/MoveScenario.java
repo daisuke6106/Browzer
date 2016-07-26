@@ -14,14 +14,14 @@ public abstract class MoveScenario {
 	protected MoveScenario childScenario;
 	
 	/** 移動時に実行するアクション */
-	protected MoveAction moveAction;
+	protected List<MoveAction> moveActionList;
 	
-	public MoveScenario(MoveAction moveAction) {
-		this.moveAction = moveAction;
+	public MoveScenario(List<MoveAction> moveActionList) {
+		this.moveActionList = moveActionList;
 	}
 	
-	public MoveAction getAction() {
-		return this.moveAction;
+	public List<MoveAction> getActionList() {
+		return this.moveActionList;
 	}
 	
 	public boolean hasChildScenario() {

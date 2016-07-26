@@ -130,14 +130,33 @@ public class Browzer {
 			throw e;
 		}
 	}
+	
+	public Page move(MovableElement movable, List<MoveAction> moveActionList) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, MoveActionFatalException, MoveActionException {
+		try {
+			for(MoveAction moveAction : moveActionList) moveAction.beforeAction(movable, this);
+			Page returnPage = this.move(movable);
+			for(MoveAction moveAction : moveActionList) moveAction.afterAction(movable, this);
+			return returnPage;
+		} catch (PageIllegalArgumentException | PageAccessException | PageRedirectException | PageMovableLimitException e) {
+			for(MoveAction moveAction : moveActionList) moveAction.errorAction(movable, this);
+			throw e;
+		}
+	}
 
 	public void start(MoveScenario scenario) throws MoveActionException, MoveActionFatalException, PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, DocumentException {
+		this.start(scenario, 1L);
+	}
+	
+	public void start(MoveScenario scenario, long interval) throws MoveActionException, MoveActionFatalException, PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, DocumentException {
 		List<A> moveAnchor = scenario.getMoveAnchor(this);
 		if (moveAnchor == null) return;
 		for (A anchor : moveAnchor) {
-			this.move(anchor, scenario.getAction());
-			if (scenario.hasChildScenario()) this.start(scenario.getChildScenario());
+			this.move(anchor, scenario.getActionList());
+			if (scenario.hasChildScenario()) this.start(scenario.getChildScenario(), interval);
 			this.back();
+			try {
+				Thread.sleep(interval * 1000);
+			} catch (InterruptedException e) {}
 		}
 	}
 	
