@@ -19,6 +19,7 @@ import jp.co.dk.browzer.exception.PageSaveException;
 import jp.co.dk.browzer.html.element.A;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.html.element.MovableElement;
+import jp.co.dk.browzer.scenario.MoveControl;
 import jp.co.dk.browzer.scenario.MoveScenario;
 import jp.co.dk.browzer.scenario.action.MoveAction;
 import jp.co.dk.document.exception.DocumentException;
@@ -119,27 +120,16 @@ public class Browzer {
 		}
 	}
 	
-	public Page move(MovableElement movable, MoveAction moveAction) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, MoveActionFatalException, MoveActionException {
-		try {
-			moveAction.beforeAction(movable, this);
-			Page returnPage = this.move(movable);
-			moveAction.afterAction(movable, this);
-			return returnPage;
-		} catch (PageIllegalArgumentException | PageAccessException | PageRedirectException | PageMovableLimitException e) {
-			moveAction.errorAction(movable, this);
-			throw e;
-		}
-	}
-	
-	public Page move(MovableElement movable, List<MoveAction> moveActionList) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, MoveActionFatalException, MoveActionException {
-		try {
-			for(MoveAction moveAction : moveActionList) moveAction.beforeAction(movable, this);
-			Page returnPage = this.move(movable);
-			for(MoveAction moveAction : moveActionList) moveAction.afterAction(movable, this);
-			return returnPage;
-		} catch (PageIllegalArgumentException | PageAccessException | PageRedirectException | PageMovableLimitException e) {
-			for(MoveAction moveAction : moveActionList) moveAction.errorAction(movable, this);
-			throw e;
+	public void move(MovableElement movable, MoveScenario scenario) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, MoveActionFatalException, MoveActionException {
+		MoveControl control = scenario.beforeAction(movable, this);
+		if (control == MoveControl.Continuation) {
+			try {
+				this.move(movable);
+				scenario.afterAction(movable, this);
+			} catch (PageIllegalArgumentException | PageAccessException | PageRedirectException | PageMovableLimitException e) {
+				scenario.errorAction(movable, this);
+				throw e;
+			}
 		}
 	}
 
@@ -151,7 +141,7 @@ public class Browzer {
 		List<A> moveAnchor = scenario.getMoveAnchor(this);
 		if (moveAnchor == null) return;
 		for (A anchor : moveAnchor) {
-			this.move(anchor, scenario.getActionList());
+			this.move(anchor, scenario);
 			if (scenario.hasChildScenario()) this.start(scenario.getChildScenario(), interval);
 			this.back();
 			try {
