@@ -120,7 +120,26 @@ public class Browzer {
 		}
 	}
 	
-	public void move(MovableElement movable, MoveScenario scenario) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, MoveActionFatalException, MoveActionException {
+	public void start(MoveScenario scenario) throws MoveActionException, MoveActionFatalException, PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, DocumentException {
+		this.start(scenario, 1L);
+	}
+	
+	public void start(MoveScenario scenario, long interval) throws MoveActionException, MoveActionFatalException, PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, DocumentException {
+		List<A> moveAnchor = scenario.getMoveAnchor(this);
+		if (moveAnchor == null) return;
+		for (A anchor : moveAnchor) {
+			MoveControl moveControl = this.move(anchor, scenario);
+			if (moveControl == MoveControl.Continuation) {
+				if (scenario.hasChildScenario()) this.start(scenario.getChildScenario(), interval);
+				this.back();
+			}
+			try {
+				Thread.sleep(interval * 1000);
+			} catch (InterruptedException e) {}
+		}
+	}
+	
+	protected MoveControl move(MovableElement movable, MoveScenario scenario) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, MoveActionFatalException, MoveActionException {
 		MoveControl control = scenario.beforeAction(movable, this);
 		if (control == MoveControl.Continuation) {
 			try {
@@ -131,25 +150,9 @@ public class Browzer {
 				throw e;
 			}
 		}
+		return control;
 	}
 
-	public void start(MoveScenario scenario) throws MoveActionException, MoveActionFatalException, PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, DocumentException {
-		this.start(scenario, 1L);
-	}
-	
-	public void start(MoveScenario scenario, long interval) throws MoveActionException, MoveActionFatalException, PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, DocumentException {
-		List<A> moveAnchor = scenario.getMoveAnchor(this);
-		if (moveAnchor == null) return;
-		for (A anchor : moveAnchor) {
-			this.move(anchor, scenario);
-			if (scenario.hasChildScenario()) this.start(scenario.getChildScenario(), interval);
-			this.back();
-			try {
-				Thread.sleep(interval * 1000);
-			} catch (InterruptedException e) {}
-		}
-	}
-	
 	/**
 	 * ページ遷移実行<p/>
 	 * 指定されたFORMに設定されているURLへページ遷移を実行します。<br/>
