@@ -13,7 +13,10 @@ import jp.co.dk.document.exception.DocumentException;
 
 public abstract class MoveScenario {
 	
-	/** シナリオ */
+	/** 親シナリオ */
+	protected MoveScenario parentScenario;
+	
+	/** 子シナリオ */
 	protected MoveScenario childScenario;
 	
 	/** 移動時に実行するアクション */
@@ -33,6 +36,24 @@ public abstract class MoveScenario {
 	
 	public void setChildScenario(MoveScenario scenario) {
 		this.childScenario = scenario;
+	}
+	
+	public boolean hasParentScenario() {
+		return parentScenario != null;
+	}
+	
+	public MoveScenario getParentScenario() {
+		return this.parentScenario;
+	}
+	
+	public void setParentScenario(MoveScenario scenario) {
+		this.parentScenario = scenario;
+	}
+	
+	public MoveScenario getTopScenario() {
+		MoveScenario topScenario = this;
+		while (topScenario.hasParentScenario()) topScenario = topScenario.getParentScenario();
+		return topScenario;
 	}
 	
 	/**
