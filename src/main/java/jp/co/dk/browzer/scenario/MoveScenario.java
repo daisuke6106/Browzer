@@ -10,8 +10,13 @@ import jp.co.dk.browzer.html.element.A;
 import jp.co.dk.browzer.html.element.MovableElement;
 import jp.co.dk.browzer.scenario.action.MoveAction;
 import jp.co.dk.document.exception.DocumentException;
+import jp.co.dk.logger.Logger;
+import jp.co.dk.logger.LoggerFactory;
 
 public abstract class MoveScenario {
+	
+	/** ロガーインスタンス */
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	/** 親シナリオ */
 	protected MoveScenario parentScenario;
