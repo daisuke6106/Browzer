@@ -1,15 +1,11 @@
 package jp.co.dk.browzer.scenario;
 
+import java.util.ArrayDeque;
 import java.util.List;
+import java.util.Queue;
 
-import jp.co.dk.browzer.Browzer;
-import jp.co.dk.browzer.exception.MoveActionException;
-import jp.co.dk.browzer.exception.MoveActionFatalException;
-import jp.co.dk.browzer.exception.PageAccessException;
-import jp.co.dk.browzer.html.element.A;
 import jp.co.dk.browzer.html.element.MovableElement;
 import jp.co.dk.browzer.scenario.action.MoveAction;
-import jp.co.dk.document.exception.DocumentException;
 import jp.co.dk.logger.Logger;
 import jp.co.dk.logger.LoggerFactory;
 
@@ -26,6 +22,9 @@ public abstract class MoveScenario {
 	
 	/** 移動時に実行するアクション */
 	protected List<MoveAction> moveActionList;
+	
+	/** 実行待ちキュー */
+	protected Queue<QueueTask> moveableQueue = new ArrayDeque<>();
 	
 	public MoveScenario(List<MoveAction> moveActionList) {
 		this.moveActionList = moveActionList;
@@ -62,43 +61,40 @@ public abstract class MoveScenario {
 	}
 	
 	/**
-	 * ページ移動前に行う処理
-	 * 
-	 * @param movable 移動先が記載された要素
-	 * @param browzer 移動前のブラウザオブジェクト
-	 * @throws MoveActionException 再起可能例外が発生した場合
-	 * @throws MoveActionFatalException 致命的例外が発生した場合
+	 * 次のタスクをポップする。
+	 * @return タスク
 	 */
-	public MoveControl beforeAction(MovableElement movable, Browzer browzer) throws MoveActionException, MoveActionFatalException {
-		for(MoveAction moveAction : moveActionList) moveAction.beforeAction(movable, browzer);
-		return MoveControl.Continuation;
+	public QueueTask popTask() {
+		return this.moveableQueue.poll();
 	}
 	
 	/**
-	 * ページ移動後に行う処理
-	 * 
-	 * @param movable 移動先が記載された要素
-	 * @param browzer 移動後のブラウザオブジェクト
-	 * @throws MoveActionException 再起可能例外が発生した場合
-	 * @throws MoveActionFatalException 致命的例外が発生した場合
+	 * 未実行のタスクが存在するか判定します。
+	 * @return 判定結果(true=キューの件数が0ではない、false=キューの件数が0)
 	 */
-	public void afterAction(MovableElement movable, Browzer browzer) throws MoveActionException, MoveActionFatalException {
-		for(MoveAction moveAction : moveActionList) moveAction.afterAction(movable, browzer);
+	public boolean hasTask() {
+		return (this.moveableQueue.size() != 0);
 	}
 	
 	/**
-	 * ページ移動時にエラーが発生した場合に行う処理
-	 * 
-	 * @param movable 移動先が記載された要素
-	 * @param browzer 移動後のブラウザオブジェクト
-	 * @throws MoveActionException 再起可能例外が発生した場合
-	 * @throws MoveActionFatalException 致命的例外が発生した場合
+	 * タスクを追加する。
+	 * @param movableElement
+	 * @param moveActionList
 	 */
-	public void errorAction(MovableElement movable, Browzer browzer) throws MoveActionException, MoveActionFatalException {
-		for(MoveAction moveAction : moveActionList) moveAction.errorAction(movable, browzer);
+	public void addTask(MovableElement movableElement, List<MoveAction> moveActionList) {
+		this.moveableQueue.add(this.createTask(movableElement, moveActionList));
 	}
 	
-	public abstract List<A> getMoveAnchor(Browzer browzer) throws PageAccessException, DocumentException;
+	/**
+	 * タスクを作成する。
+	 * 
+	 * @param movableElement 繊維先要素
+	 * @param moveActionList 繊維先で実行するアクション一覧
+	 * @return タスクオブジェクト
+	 */
+	protected QueueTask createTask(MovableElement movableElement, List<MoveAction> moveActionList) {
+		return new QueueTask(movableElement, moveActionList);
+	}
 	
 	@Override
 	public abstract String toString();

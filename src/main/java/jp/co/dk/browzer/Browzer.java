@@ -21,6 +21,7 @@ import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.html.element.MovableElement;
 import jp.co.dk.browzer.scenario.MoveControl;
 import jp.co.dk.browzer.scenario.MoveScenario;
+import jp.co.dk.browzer.scenario.QueueTask;
 import jp.co.dk.browzer.scenario.action.MoveAction;
 import jp.co.dk.document.exception.DocumentException;
 import jp.co.dk.logger.Logger;
@@ -125,10 +126,10 @@ public class Browzer {
 	}
 	
 	public void start(MoveScenario scenario, long interval) throws MoveActionException, MoveActionFatalException, PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, DocumentException {
-		List<A> moveAnchor = scenario.getMoveAnchor(this);
-		if (moveAnchor == null) return;
-		for (A anchor : moveAnchor) {
-			MoveControl moveControl = this.move(anchor, scenario);
+		while(scenario.hasTask()) {
+			QueueTask queueTask = scenario.popTask();
+			queueTask.beforeScenario(this);
+			MoveControl moveControl = this.move(queueTask);
 			if (moveControl == MoveControl.Continuation) {
 				if (scenario.hasChildScenario()) this.start(scenario.getChildScenario(), interval);
 				this.back();
@@ -136,17 +137,19 @@ public class Browzer {
 			try {
 				Thread.sleep(interval * 1000);
 			} catch (InterruptedException e) {}
+			queueTask.afterScenario(this);
 		}
 	}
 	
-	protected MoveControl move(MovableElement movable, MoveScenario scenario) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, MoveActionFatalException, MoveActionException {
-		MoveControl control = scenario.beforeAction(movable, this);
+	protected MoveControl move(QueueTask queueTask) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, MoveActionFatalException, MoveActionException {
+		MovableElement movableElement = queueTask.getMovableElement();
+		MoveControl control = queueTask.beforeAction(this);
 		if (control == MoveControl.Continuation) {
 			try {
-				this.move(movable);
-				scenario.afterAction(movable, this);
+				this.move(movableElement);
+				queueTask.afterAction(this);
 			} catch (PageIllegalArgumentException | PageAccessException | PageRedirectException | PageMovableLimitException e) {
-				scenario.errorAction(movable, this);
+				queueTask.errorAction(this);
 				throw e;
 			}
 		}
