@@ -210,6 +210,16 @@ public class PageManager {
 	}
 	
 	/**
+	 * 最上位のページマネージャを取得し、返却する。
+	 * 
+	 * @return 最上位のページマネージャ
+	 */
+	public PageManager getTopPageManager() {
+		if (this.parentPage == null) return this;
+		return this.parentPage.getTopPageManager();
+	}
+	
+	/**
 	 * このページの遷移元である親ページを取得します。
 	 * 現在のページの遷移元が存在しなかった場合、nullが返却されます。
 	 * 
@@ -280,6 +290,17 @@ public class PageManager {
 		} else {
 			return PageStatus.ERROR_ACCESS;
 		}
+	}
+	
+	public PageManager getPageManager(Page page) {
+		if (this.page == page) return this;
+		for (PageManager childPage : childPageList) {
+			PageManager childPageManager = childPage.getPageManager(page);
+			if (childPageManager != null) {
+				return childPageManager;
+			}
+		}
+		return null;
 	}
 	
 	/**
@@ -442,6 +463,32 @@ public class PageManager {
 		}
 		return sb.toString();
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((page == null) ? 0 : page.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PageManager other = (PageManager) obj;
+		if (page == null) {
+			if (other.page != null)
+				return false;
+		} else if (!page.equals(other.page))
+			return false;
+		return true;
+	}
+	
 }
 
 /**

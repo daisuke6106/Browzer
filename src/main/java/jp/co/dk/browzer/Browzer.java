@@ -9,8 +9,6 @@ import jp.co.dk.browzer.Page;
 import jp.co.dk.browzer.PageRedirectHandler;
 import jp.co.dk.browzer.download.DownloadJudge;
 import jp.co.dk.browzer.exception.BrowzingException;
-import jp.co.dk.browzer.exception.MoveActionException;
-import jp.co.dk.browzer.exception.MoveActionFatalException;
 import jp.co.dk.browzer.exception.PageAccessException;
 import jp.co.dk.browzer.exception.PageIllegalArgumentException;
 import jp.co.dk.browzer.exception.PageMovableLimitException;
@@ -19,10 +17,6 @@ import jp.co.dk.browzer.exception.PageSaveException;
 import jp.co.dk.browzer.html.element.A;
 import jp.co.dk.browzer.html.element.Form;
 import jp.co.dk.browzer.html.element.MovableElement;
-import jp.co.dk.browzer.scenario.MoveControl;
-import jp.co.dk.browzer.scenario.MoveScenario;
-import jp.co.dk.browzer.scenario.QueueTask;
-import jp.co.dk.browzer.scenario.action.MoveAction;
 import jp.co.dk.document.exception.DocumentException;
 import jp.co.dk.logger.Logger;
 import jp.co.dk.logger.LoggerFactory;
@@ -121,41 +115,6 @@ public class Browzer {
 		}
 	}
 	
-	public void start(MoveScenario scenario) throws MoveActionException, MoveActionFatalException, PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, DocumentException {
-		this.start(scenario, 1L);
-	}
-	
-	public void start(MoveScenario scenario, long interval) throws MoveActionException, MoveActionFatalException, PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, DocumentException {
-		while(scenario.hasTask()) {
-			QueueTask queueTask = scenario.popTask();
-			queueTask.beforeScenario(this);
-			MoveControl moveControl = this.move(queueTask);
-			if (moveControl == MoveControl.Continuation) {
-				if (scenario.hasChildScenario()) this.start(scenario.getChildScenario(), interval);
-				this.back();
-			}
-			try {
-				Thread.sleep(interval * 1000);
-			} catch (InterruptedException e) {}
-			queueTask.afterScenario(this);
-		}
-	}
-	
-	protected MoveControl move(QueueTask queueTask) throws PageIllegalArgumentException, PageAccessException, PageRedirectException, PageMovableLimitException, MoveActionFatalException, MoveActionException {
-		MovableElement movableElement = queueTask.getMovableElement();
-		MoveControl control = queueTask.beforeAction(this);
-		if (control == MoveControl.Continuation) {
-			try {
-				this.move(movableElement);
-				queueTask.afterAction(this);
-			} catch (PageIllegalArgumentException | PageAccessException | PageRedirectException | PageMovableLimitException e) {
-				queueTask.errorAction(this);
-				throw e;
-			}
-		}
-		return control;
-	}
-
 	/**
 	 * ページ遷移実行<p/>
 	 * 指定されたFORMに設定されているURLへページ遷移を実行します。<br/>
@@ -196,6 +155,15 @@ public class Browzer {
 	public Page back() {
 		this.pageManager =	this.pageManager.back();
 		return this.pageManager.getPage();
+	}
+	
+	/** 
+	 * 現在アクティブになっているページを指定のページに変更します。
+	 * @param page 変更対象のページ
+	 */
+	public void change(Page page) {
+		PageManager topPageManager = this.pageManager.getTopPageManager();
+		this.pageManager = topPageManager.getPageManager(page);
 	}
 	
 	/**
