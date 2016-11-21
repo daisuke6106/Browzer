@@ -357,6 +357,16 @@ public class Browzer {
 	}
 	
 	/**
+	 * <p>ヒストリーを返却します。</p>
+	 * 現在のアクティブなページに遷移したURLの履歴を一覧にして返却します。
+	 * 
+	 * @return URL履歴一覧
+	 */
+	public List<Url> getHistoryUrlList() {
+		return this.pageManager.getHistoryUrlList();
+	}
+	
+	/**
 	 * 指定のURL、ページリダイレクトハンドラからページマネージャを作成する。
 	 * 
 	 * @param url URL

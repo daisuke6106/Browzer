@@ -3,6 +3,7 @@ package jp.co.dk.browzer;
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -398,6 +399,22 @@ public class PageManager {
 		return new PageManager(parentPage, page, error, pageRedirectHandler, nestLevel, maxNestLevel);
 	}
 	
+	/**
+	 * <p>ヒストリーを返却します。</p>
+	 * 現在のアクティブなページに遷移したURLの履歴を一覧にして返却します。
+	 * 
+	 * @return URL履歴一覧
+	 */
+	public List<Url> getHistoryUrlList() {
+		List<Url> urlList = new ArrayList<>();
+		PageManager pageManager = this;
+		do {
+			urlList.add(pageManager.getPage().getUrl());
+			pageManager = pageManager.parentPage;
+		} while (pageManager != null);
+		Collections.reverse(urlList);
+		return urlList;
+	}
 	/**
 	 * <p>このページマネージャをツリー構造を文字列で返却します。</p>
 	 * 最上位のページから接続したすべてのページ情報をツリー構造で表した文字列を返却します。<br/>
