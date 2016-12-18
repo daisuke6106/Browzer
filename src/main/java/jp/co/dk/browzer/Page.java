@@ -854,10 +854,11 @@ public class Page {
 	}
 	
 	/**
-	 * ダウンロードしたデータをメモリ無いから除去する。
+	 * ダウンロードしたデータをメモリ内から除去する。
 	 */
 	public void clearData() {
 		this.byteDump = null;
+		this.document = null;
 	}
 	
 	/**
