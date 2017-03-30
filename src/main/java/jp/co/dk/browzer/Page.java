@@ -854,6 +854,14 @@ public class Page {
 	}
 	
 	/**
+	 * ダウンロードしたデータをメモリ内から除去する。
+	 */
+	public void clearData() {
+		this.byteDump = null;
+		this.document = null;
+	}
+	
+	/**
 	 * 指定のURLオブジェクトからURLコネクションを指定メソッドで生成します。<p>
 	 * 
 	 * @param urlObj URLオブジェクト
