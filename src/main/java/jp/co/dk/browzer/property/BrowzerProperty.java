@@ -23,7 +23,7 @@ public class BrowzerProperty extends AbstractProperty {
 	 * @param key プロパティキー
 	 */
 	protected BrowzerProperty (String key) throws PropertyException {
-		super(new File("BrowzerProperty.properties"), key);
+		super(new File(System.getProperty("browzer_property_file")), key);
 	}
 	
 }
