@@ -35,10 +35,10 @@ class PyBrowzer(Browzer):
         
     def print_pageinfo(self, page):
         httpstatuscode = page.getResponseHeader().getResponseRecord().getHttpStatusCode()
-        print("http status = " + httpstatuscode.getCode() + ":" + httpstatuscode.getMessage().getMessage())
+        print("url = " + page.getURL())
+        print("http_status = " + httpstatuscode.getCode() + ":" + httpstatuscode.getMessage().getMessage())
+        print("responseh_header = " + page.getResponseHeader().toString())
         
-    def get_url(self):
-        return self.getURL()
         
     def get_anchor(self, pattern_str):
         doc = self.getPage().getDocument()
@@ -60,6 +60,15 @@ class PyBrowzer(Browzer):
         else:
            return ""
 
+    def responseh_contents_type(self):
+        return self.getPage().getResponseHeader().getContentsType()
+    
+    def responseh_charset(self):
+        return self.getPage().getResponseHeader().getCharSet()
+        
+    def responseh_header(self):
+        return self.getPage().getResponseHeader().toString()
+
     def get_element(self, selector):
         doc = self.getPage().getDocument()
         if type(doc) is jp.co.dk.document.html.HtmlDocument :
@@ -67,8 +76,13 @@ class PyBrowzer(Browzer):
         else:
            return ()
 
-    def save(self, file_path): 
-        Browzer.save(self, File( file_path ) )
+    def write(self, output_dir, output_file): 
+        try :
+            os.makedirs(output_dir, mode=0777)
+        except OSError:
+            # print("dir is exsts already dir=[" + output_dir + "]")
+            pass
+        self.getPage().save(File( output_dir ), output_file )
         
 #====================================================================================================
 # 関数定義部
