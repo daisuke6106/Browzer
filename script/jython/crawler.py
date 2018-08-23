@@ -3,6 +3,7 @@ import sys
 import os
 import shutil
 import argparse
+from time import sleep
 
 #====================================================================================================
 # 初期処理
@@ -31,14 +32,13 @@ class PyBrowzer(Browzer):
     
     def __init__(self, url):
         Browzer.__init__(self, url)
-        self.print_pageinfo( self.getPage() )
         
     def print_pageinfo(self, page):
-        httpstatuscode = page.getResponseHeader().getResponseRecord().getHttpStatusCode()
-        print("url = " + page.getURL())
-        print("http_status = " + httpstatuscode.getCode() + ":" + httpstatuscode.getMessage().getMessage())
-        print("responseh_header = " + page.getResponseHeader().toString())
-        
+        pass
+        # httpstatuscode = page.getResponseHeader().getResponseRecord().getHttpStatusCode()
+        # print("url = " + page.getURL())
+        # print("http_status = " + httpstatuscode.getCode() + ":" + httpstatuscode.getMessage().getMessage())
+        # print("responseh_header = " + page.getResponseHeader().toString())
         
     def get_anchor(self, pattern_str):
         doc = self.getPage().getDocument()
