@@ -20,6 +20,8 @@ import jp.co.dk.document.html.HtmlDocument;
 import jp.co.dk.document.html.constant.HtmlElementName;
 import jp.co.dk.document.html.constant.HttpEquivName;
 import jp.co.dk.document.html.element.Meta;
+import jp.co.dk.logger.Logger;
+import jp.co.dk.logger.LoggerFactory;
 
 /**
  * PageRedirectHandlerは、ページ接続完了後、その結果に対してのイベントを定義するクラスです。
@@ -28,6 +30,9 @@ import jp.co.dk.document.html.element.Meta;
  * @author D.Kanno
  */
 public class PageRedirectHandler {
+
+	/** ロガーインスタンス */
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	/**
 	 * ページへの接続時、ヘッダ情報やページ内容を解析し、新しいページへのリダイレクトを行う。<p/>
@@ -47,6 +52,7 @@ public class PageRedirectHandler {
 	Page redirect(Page page) throws PageRedirectException {
 		ResponseHeader header = page.getResponseHeader();
 		HttpStatusCode httpStatusCode = header.getResponseRecord().getHttpStatusCode();
+		logger.debug( httpStatusCode.getMessage() );
 		switch(httpStatusCode.getStatusType()) {
 			case INFOMATIONAL:
 				return this.redirectBy_INFOMATIONAL(header, page);
@@ -143,6 +149,7 @@ public class PageRedirectHandler {
 	 */
 	protected Page redirectBy_REDIRECTION(ResponseHeader header, Page page) throws PageRedirectException {
 		String location = header.getLocation();
+		this.logger.debug("next url=[" + location + "]");
 		if (location == null || location.equals("")) throw new PageRedirectException(ERROR_REDIRECT_LOCATION_NOT_FOUND); 
 		Page nextPage;
 		try {
