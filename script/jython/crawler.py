@@ -3,6 +3,7 @@ import sys
 import os
 import shutil
 import argparse
+import re
 from time import sleep
 
 #====================================================================================================
@@ -14,16 +15,19 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 #====================================================================================================
+# Pythonライブラリ郡の読み込み
+#====================================================================================================
+import hashlib
+
+#====================================================================================================
 # Javaライブラリ郡の読み込み
 #====================================================================================================
 import jp.co.dk.browzer.Browzer as Browzer
+import jp.co.dk.browzer.PageManager as PageManager
 import jp.co.dk.browzer.Page as Page
 import java.util.regex.Pattern as Pattern
 import java.io.File as File
 import jp.co.dk.document.html.HtmlDocument
-
-
-import hashlib
 
 #====================================================================================================
 # クラス郡
@@ -35,10 +39,6 @@ class PyBrowzer(Browzer):
         
     def print_pageinfo(self, page):
         pass
-        # httpstatuscode = page.getResponseHeader().getResponseRecord().getHttpStatusCode()
-        # print("url = " + page.getURL())
-        # print("http_status = " + httpstatuscode.getCode() + ":" + httpstatuscode.getMessage().getMessage())
-        # print("responseh_header = " + page.getResponseHeader().toString())
         
     def get_anchor(self, pattern_str):
         doc = self.getPage().getDocument()
@@ -84,6 +84,23 @@ class PyBrowzer(Browzer):
             pass
         self.getPage().save(File( output_dir ), output_file )
         
+    def createPageManager(self, url, handler):
+        return PyPageManager(url, handler)
+    
+
+class PyPageManager(PageManager):
+    
+    def __init__(self, url, pageRedirectHandler):
+        PageManager.__init__(self, url, pageRedirectHandler)
+    
+    def createPage(self, url):
+        return PyPage(url, {}, False)
+
+class PyPage(Page):
+    
+    def __init__(self, url, requestHeader, readDataFlg):
+        Page.__init__(self, url, requestHeader, readDataFlg)
+    
 #====================================================================================================
 # 関数定義部
 #====================================================================================================
