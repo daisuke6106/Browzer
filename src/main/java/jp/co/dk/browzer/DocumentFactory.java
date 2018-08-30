@@ -1,13 +1,17 @@
 package jp.co.dk.browzer;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 import jp.co.dk.browzer.contents.BrowzingExtension;
 import jp.co.dk.browzer.exception.PageAccessException;
 import jp.co.dk.browzer.html.HtmlElementFactory;
+import jp.co.dk.browzer.http.header.CharSet;
 import jp.co.dk.browzer.http.header.ContentsType;
 import jp.co.dk.document.File;
 import jp.co.dk.document.exception.DocumentException;
+import jp.co.dk.logger.Logger;
+import jp.co.dk.logger.LoggerFactory;
 
 import static jp.co.dk.browzer.message.BrowzingMessage.*;
 
@@ -20,7 +24,10 @@ import static jp.co.dk.browzer.message.BrowzingMessage.*;
 public class DocumentFactory {
 	
 	protected Page page;
-	
+
+	/** ロガーインスタンス */
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	/**
 	 * コンストラクタ<p/>
 	 * Documentを生成するためのFactoryクラスを生成する。
@@ -43,7 +50,25 @@ public class DocumentFactory {
 		if (extension == null) return new jp.co.dk.document.File(inputStream);
 		switch (extension) {
 			case HTML:
-				return new jp.co.dk.document.html.HtmlDocument(inputStream, new HtmlElementFactory(this.page));
+				CharSet charset = this.page.getResponseHeader().getCharSet();
+				if ( charset == null ) {
+					this.logger.debug("charset is not set.");
+					return new jp.co.dk.document.html.HtmlDocument(inputStream, new HtmlElementFactory(this.page)) {
+						@Override
+						protected String getEncodeByData() throws IOException {
+							String encode = super.getEncodeByData();
+							if ( encode == null || encode.equals( "" ) ) {
+								this.logger.warn("Encoding could not be determined from the data.　We will temporarily return UTF-8.");
+								return "UTF-8";
+							} else {
+								return encode;
+							}
+						}
+					};
+				} else {
+					this.logger.debug("charset=[" + charset.getEncoding() + "]");
+					return new jp.co.dk.document.html.HtmlDocument(inputStream, charset.getEncoding(), new HtmlElementFactory(this.page));
+				}
 			case XML:
 				return new jp.co.dk.document.xml.XmlDocument(inputStream);
 			case JSON:
@@ -65,7 +90,25 @@ public class DocumentFactory {
 		if (contentsType == null) throw new DocumentException(ERROR_EXTENSION_IS_NOT_SET);
 		switch (contentsType) {
 			case TEXT_HTML:
-				return new jp.co.dk.document.html.HtmlDocument(inputStream, new HtmlElementFactory(this.page));
+				CharSet charset = this.page.getResponseHeader().getCharSet();
+				if ( charset == null ) {
+					this.logger.debug("charset is not set.");
+					return new jp.co.dk.document.html.HtmlDocument(inputStream, new HtmlElementFactory(this.page)) {
+						@Override
+						protected String getEncodeByData() throws IOException {
+							String encode = super.getEncodeByData();
+							if ( encode == null || encode.equals( "" ) ) {
+								this.logger.warn("Encoding could not be determined from the data.　We will temporarily return UTF-8.");
+								return "UTF-8";
+							} else {
+								return encode;
+							}
+						}
+					};
+				} else {
+					this.logger.debug("charset=[" + charset.getEncoding() + "]");
+					return new jp.co.dk.document.html.HtmlDocument(inputStream, charset.getEncoding(), new HtmlElementFactory(this.page));
+				}
 			case TEXT_XML:
 				return new jp.co.dk.document.xml.XmlDocument(inputStream);
 			case APPLICATION_JSON:
