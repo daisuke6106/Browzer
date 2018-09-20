@@ -226,6 +226,8 @@ public class Page {
 		try {
 			this.logger.debug("connection start url=[" + this.url + "]");
 			BufferedWriter outputStream = new BufferedWriter(new OutputStreamWriter(this.connection.getOutputStream()));
+			String message = form.createMessage();
+			this.logger.debug("data=["+message + "]");
 			outputStream.write(form.createMessage());
 			outputStream.close();
 			this.logger.debug("connection fin");

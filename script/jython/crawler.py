@@ -42,7 +42,7 @@ class PyBrowzer(Browzer):
         
     def get_anchor(self, pattern_str):
         doc = self.getPage().getDocument()
-        if type(doc) is jp.co.dk.document.html.HtmlDocument :
+        if isinstance( doc, jp.co.dk.document.html.HtmlDocument ):
             anchor_rlt = []
             pattern_obj = Pattern.compile(pattern_str)
             anchor_list = self.getAnchor()
@@ -55,7 +55,7 @@ class PyBrowzer(Browzer):
         
     def get_title(self):
         doc = self.getPage().getDocument()
-        if type(doc) is jp.co.dk.document.html.HtmlDocument :
+        if isinstance( doc, jp.co.dk.document.html.HtmlDocument ):
            return doc.getTitle()
         else:
            return ""
@@ -71,7 +71,7 @@ class PyBrowzer(Browzer):
 
     def get_element(self, selector):
         doc = self.getPage().getDocument()
-        if type(doc) is jp.co.dk.document.html.HtmlDocument :
+        if isinstance( doc, jp.co.dk.document.html.HtmlDocument ):
            return doc.getNode( selector )
         else:
            return ()
