@@ -120,28 +120,28 @@ def output_company_page_data(company_page, job_type, output_dir, output_file):
 #====================================================================================================
 if __name__ == "__main__":
     # クリエイティブ（メディア・アパレル・デザイン）-> 広告・グラフィック関連の一覧をクローリング
-#    crawle_job(\
-#        "https://next.rikunabi.com/creative/lst_jb0303010000/", \
-#        u"クリエイティブ（メディア・アパレル・デザイン）-> 広告・グラフィック",\
-#        u"/home/develop/デスクトップ/crawler/data",\
-#        "rikunabi.csv",\
-#    )
-    
+    crawle_job(\
+        "https://next.rikunabi.com/creative/lst_jb0303010000/", \
+        u"クリエイティブ（メディア・アパレル・デザイン）-> 広告・グラフィック",\
+        u"/home/develop/デスクトップ/crawler/data",\
+        "rikunabi.csv",\
+    )
+   
     # クリエイティブ（メディア・アパレル・デザイン）-> 出版・印刷関連関連の一覧をクローリング
-#    crawle_job(\
-#        "https://next.rikunabi.com/creative/lst_jb0303020000/", \
-#        u"クリエイティブ（メディア・アパレル・デザイン）-> 出版・印刷関連",\
-#        u"/home/develop/デスクトップ/crawler/data",\
-#        "rikunabi.csv",\
-#    )
-    
+    crawle_job(\
+        "https://next.rikunabi.com/creative/lst_jb0303020000/", \
+        u"クリエイティブ（メディア・アパレル・デザイン）-> 出版・印刷関連",\
+        u"/home/develop/デスクトップ/crawler/data",\
+        "rikunabi.csv",\
+    )
+   
     # クリエイティブ（メディア・アパレル・デザイン）-> 映像・音響・イベント・芸能・テレビ・放送関連をクローリング
-#    crawle_job(\
-#        "https://next.rikunabi.com/creative/lst_jb0303030000/",\
-#        u"クリエイティブ（メディア・アパレル・デザイン）-> 映像・音響・イベント・芸能・テレビ・放送関連", \
-#        u"/home/develop/デスクトップ/crawler/data",\
-#        "rikunabi.csv",\
-#    )
+    crawle_job(\
+        "https://next.rikunabi.com/creative/lst_jb0303030000/",\
+        u"クリエイティブ（メディア・アパレル・デザイン）-> 映像・音響・イベント・芸能・テレビ・放送関連", \
+        u"/home/develop/デスクトップ/crawler/data",\
+        "rikunabi.csv",\
+    )
     
     # クリエイティブ（メディア・アパレル・デザイン）-> ファッション・インテリア・空間・プロダクトデザインをクローリング
     crawle_job(\
